@@ -1,0 +1,8 @@
+Flask==0.11.1
+Flask-Admin==1.4.2
+Flask-Cors==2.1.2
+Jinja2==2.8
+WTForms==2.1
+Flask-Migrate==2.0.3 
+Flask-SQLAlchemy==2.2
+psycopg2==2.6.2
