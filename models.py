@@ -1,19 +1,40 @@
-from app import db
-from sqlalchemy.dialects.postgresql import JSON
+from app import db, app
 
-
-class Result(db.Model):
-    __tablename__ = 'results'
-
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String())
-    result_all = db.Column(JSON)
-    result_no_stop_words = db.Column(JSON)
+    first_name = db.Column(db.String(100))
+    last_name = db.Column(db.String(100))
+    login = db.Column(db.String(80), unique=True)
+    email = db.Column(db.String(120))
+    password = db.Column(db.String(64))
 
-    def __init__(self, url, result_all, result_no_stop_words):
-        self.url = url
-        self.result_all = result_all
-        self.result_no_stop_words = result_no_stop_words
+    # Flask-Login integration
+    def is_authenticated(self):
+        return True
 
-    def __repr__(self):
-        return '<id {}>'.format(self.id)
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
+
+    # Required for administrative interface
+    def __unicode__(self):
+        return self.username
+
+if __name__ == '__main__':
+    import os
+    from flask.ext.script import Manager
+    from flask.ext.migrate import Migrate, MigrateCommand
+
+    app.config.from_object(os.environ['APP_SETTINGS'])
+
+    migrate = Migrate(app, db)
+    manager = Manager(app)
+
+    manager.add_command('db', MigrateCommand)
+
+    manager.run()
