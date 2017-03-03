@@ -1,4 +1,4 @@
-This is repository of new version of [GoTo Site](https://goto.msk.ru/).
+This is repository of new version of GoToSite_.
 
 To run site:
 
@@ -20,3 +20,4 @@ To run site:
 
      python app.py
 
+.. _GoToSite: https://goto.msk.ru/
