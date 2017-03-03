@@ -1,29 +1,26 @@
-import os
+# Create dummy secrey key so we can use sessions
+SECRET_KEY = '123456790'
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+# Create in-memory database
+DATABASE_FILE = 'sample_db.sqlite'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + DATABASE_FILE
+SQLALCHEMY_ECHO = True
 
+# Flask-Security config
+SECURITY_URL_PREFIX = "/admin"
+SECURITY_PASSWORD_HASH = "pbkdf2_sha512"
+SECURITY_PASSWORD_SALT = "ATGUOHAELKiubahiughaerGOJAEGj"
 
-class Config(object):
-    DEBUG = False
-    TESTING = False
-    CSRF_ENABLED = True
-    SECRET_KEY = 'this-really-needs-to-be-changed'
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+# Flask-Security URLs, overridden because they don't put a / at the end
+SECURITY_LOGIN_URL = "/login/"
+SECURITY_LOGOUT_URL = "/logout/"
+SECURITY_REGISTER_URL = "/register/"
 
-class ProductionConfig(Config):
-    DEBUG = False
+SECURITY_POST_LOGIN_VIEW = "/admin/"
+SECURITY_POST_LOGOUT_VIEW = "/admin/"
+SECURITY_POST_REGISTER_VIEW = "/admin/"
 
-
-class StagingConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
-
-
-class DevelopmentConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
-
-
-class TestingConfig(Config):
-    TESTING = True
+# Flask-Security features
+SECURITY_REGISTERABLE = True
+SECURITY_SEND_REGISTER_EMAIL = False
+SQLALCHEMY_TRACK_MODIFICATIONS = False
