@@ -4,10 +4,7 @@ from flask_security import UserMixin, RoleMixin, current_user
 from flask import url_for, redirect, request, abort
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
-import sqlalchemy_utils
 
-
-# Create customized model view class
 class MyModelView(sqla.ModelView):
     def is_accessible(self):
         if not current_user.is_active or not current_user.is_authenticated:
@@ -19,24 +16,11 @@ class MyModelView(sqla.ModelView):
         return False
 
     def _handle_view(self, name, **kwargs):
-        """
-        Override builtin _handle_view in order to redirect users when a view is not accessible.
-        """
         if not self.is_accessible():
             if current_user.is_authenticated:
-                # permission denied
                 abort(403)
             else:
-                # login
                 return redirect(url_for('security.login', next=request.url))
-
-
-# Define models
-roles_users = db.Table(
-    'roles_users',
-    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
-    db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
-)
 
 
 class Role(db.Model, RoleMixin):
@@ -46,6 +30,13 @@ class Role(db.Model, RoleMixin):
 
     def __str__(self):
         return self.name
+
+
+roles_users = db.Table(
+    'roles_users',
+    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+    db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
+)
 
 
 class User(db.Model, UserMixin):
@@ -59,18 +50,14 @@ class User(db.Model, UserMixin):
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
 
-    GENDER = (('M', 'Мужской'),
-              ('F', 'Женский'),
-              ('N', 'Не указан'),)
-    gender = db.Column(sqlalchemy_utils.ChoiceType(GENDER))
-    surname = db.Column(db.String(40))
+    surname = db.Column(db.String(255))
     about = db.Column(db.Text())
     organization = db.Column(db.String(255))
     email_verified = db.Column(db.Boolean())
 
     city = db.Column(db.String(40))
 
-    birthday = db.Column(sqlalchemy_utils.TimezoneType())
+    birthday = db.Column(db.DateTime())
     phone_number = db.Column(db.String(40))
     parent_phone_number = db.Column(db.String(40))
     health_issues = db.Column(db.Text())
@@ -78,13 +65,6 @@ class User(db.Model, UserMixin):
     programming_languages = db.Column(db.Text())
     experience = db.Column(db.Text())
 
-    education_types = (
-        ('school', 'Школа'),
-        ('university', 'ВУЗ'),
-        ('other', 'Другое')
-    )
-
-    education_type = db.Column(sqlalchemy_utils.ChoiceType(education_types))
     education_name = db.Column(db.String(255))
     education_years = db.Column(db.Integer())
     graduation_year = db.Column(db.Integer())
@@ -102,7 +82,8 @@ class User(db.Model, UserMixin):
     position = db.String(140)
 
     def __str__(self):
-        return '%s %s' % (self.first_name, self.last_name)
+        return self.email
+
 
 class Event(db.Model):
     __tablename__ = 'events'
@@ -132,6 +113,7 @@ class Event(db.Model):
 
 if __name__ == '__main__':
     db.create_all()
+
     manager = Manager(app)
     migrate = Migrate(app, db)
     manager.add_command('db', MigrateCommand)
