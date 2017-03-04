@@ -4,7 +4,7 @@ from flask import url_for, render_template, request, abort
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_admin import helpers as admin_helpers
 from flask_login import current_user
-from models import Role, GotoUser, User, MyModelView, Event
+from models import Role, User, MyModelView, Event
 
 
 @app.route('/')
@@ -45,7 +45,7 @@ def security_context_processor():
 
 
 admin.add_view(MyModelView(Role, db.session))
-admin.add_view(MyModelView(GotoUser, db.session))
+admin.add_view(MyModelView(User, db.session))
 admin.add_view(MyModelView(Event, db.session))
 
 # Build a sample db on the fly, if one does not exist yet.
