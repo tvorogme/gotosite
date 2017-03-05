@@ -3,7 +3,7 @@ from main import app, db, admin
 from flask import url_for, render_template, request, abort
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_admin import helpers as admin_helpers
-from flask_login import current_user
+from flask_login import current_user, login_required
 from models import Role, User, MyModelView, Event
 from flask_security.utils import encrypt_password
 
@@ -23,8 +23,14 @@ def camp():
 
 
 @app.route('/camp/take_part')
+@login_required
 def takepart_camp():
     last_event = Event.query.first()
+    user = current_user
+    values = [user.graduation_year, user.birthday, len(user.city) > 0, len(user.phone_number) > 0,
+              len(user.programming_languages) > 0, len(user.experience) > 0]
+
+
     return render_template("take_part.html", event=last_event)
 
 
@@ -51,6 +57,7 @@ admin.add_view(MyModelView(Event, db.session))
 
 app_dir = os.path.realpath(os.path.dirname(__file__))
 database_path = os.path.join(app_dir, app.config['DATABASE_FILE'])
+
 
 def build_sample_db():
     """
@@ -100,6 +107,7 @@ def build_sample_db():
             )
         db.session.commit()
     return
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -69,20 +69,19 @@ class User(db.Model, UserMixin):
     education_years = db.Column(db.Integer())
     graduation_year = db.Column(db.Integer())
     subscribed_to_email = db.Column(db.Boolean())
-
-    def profile_completed(self):
-        ret = self.graduation_year is not None
-        ret &= self.birthday is not None
-        ret &= len(self.city) > 0
-        ret &= len(self.phone_number) > 0
-        ret &= len(self.programming_languages) > 0
-        ret &= len(self.experience) > 0
-        return ret
-
     position = db.String(140)
 
     def __str__(self):
         return self.email
+
+
+class Application(db.Model):
+    __tablename__ = "aplications"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    user_id = db.Column(db.Integer())
+    event_id = db.Column(db.Integer())
 
 
 class Event(db.Model):
