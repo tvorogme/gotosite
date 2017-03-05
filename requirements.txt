@@ -4,3 +4,4 @@ Flask-SQLAlchemy
 Flask-Security>=1.7.5
 flask-migrate
 sqlalchemy-utils
+Flask-wtf

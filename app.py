@@ -4,8 +4,10 @@ from flask import url_for, render_template, request, abort
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_admin import helpers as admin_helpers
 from flask_login import current_user, login_required
-from models import Role, User, MyModelView, Event
+from models import Role, User, MyModelView, Event, Application
 from flask_security.utils import encrypt_password
+from flask_wtf import Form
+from wtforms.ext.sqlalchemy.orm import model_form
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
@@ -22,17 +24,18 @@ def camp():
     return render_template("camp.html", event=last_event)
 
 
-@app.route('/camp/take_part')
+@app.route('/camp/take_part', methods=["GET", "POST"])
 @login_required
 def takepart_camp():
     last_event = Event.query.first()
-    user = current_user
-    values = [user.graduation_year, user.birthday, len(user.city) > 0, len(user.phone_number) > 0,
-              len(user.programming_languages) > 0, len(user.experience) > 0]
+    take_part_form = model_form(User, Form)
 
+    if not current_user.has_role('участник'):
+        user = user_datastore.find_user(email=current_user.email)
+        user_datastore.add_role_to_user(user, Role(name="участник"))
+        db.session.commit()
 
-    return render_template("take_part.html", event=last_event)
-
+    return render_template("take_part.html", event=last_event, form=take_part_form(name='take_part'))
 
 @app.before_request
 def check_for_admin(*args, **kw):
@@ -54,6 +57,7 @@ def security_context_processor():
 admin.add_view(MyModelView(Role, db.session))
 admin.add_view(MyModelView(User, db.session))
 admin.add_view(MyModelView(Event, db.session))
+admin.add_view(MyModelView(Application, db.session))
 
 app_dir = os.path.realpath(os.path.dirname(__file__))
 database_path = os.path.join(app_dir, app.config['DATABASE_FILE'])
