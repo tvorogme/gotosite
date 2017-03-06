@@ -71,6 +71,10 @@ class User(db.Model, UserMixin):
     subscribed_to_email = db.Column(db.Boolean())
     position = db.String(140)
 
+    def __init__(self, iterator: dict):
+        for field_name in iterator:
+            eval("self.{} = {}".format([field_name, iterator[field_name]]))
+
     def __str__(self):
         return self.email
 

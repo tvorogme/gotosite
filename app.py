@@ -34,13 +34,17 @@ def takepart_camp():
     validators = get_fields_validators(fields)
 
     take_part_form = model_form(User, Form, only=fields, field_args=validators)
+    take_part_form = take_part_form(name='take_part')
 
     if not current_user.has_role('участник'):
         user = user_datastore.find_user(email=current_user.email)
         user_datastore.add_role_to_user(user, Role(name="участник"))
         db.session.commit()
 
-    return render_template("take_part.html", event=last_event, user_form=take_part_form(name='take_part'))
+    if request.method == 'POST' and take_part_form.validate():
+        return True
+
+    return render_template("take_part.html", event=last_event, user_form=take_part_form)
 
 
 @app.before_request
