@@ -74,8 +74,6 @@ class User(db.Model, UserMixin):
     def __str__(self):
         return self.email
 
-
-
 class Application(db.Model):
     __tablename__ = "aplications"
 

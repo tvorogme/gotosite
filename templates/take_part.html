@@ -7,25 +7,34 @@
 <body>
 
 <form method=post>
-    {{ form.csrf_token }}
-    {{ form.first_name }}
-    {{ form.last_name }}
-    {{ form.email }}
-    {{ form.surname }}
-    {{ form.about }}
-    {{ form.organization }}
-    {{ form.birthday }}
-    {{ form.phone_number }}
-    {{ form.parent_phone_number }}
-    {{ form.health_issues }}
-    {{ form.programming_languages }}
-    {{ form.experience }}
-    {{ form.education_name }}
-    {{ form.education_years }}
-    {{ form.graduation_year }}
-    {{ form.subscribed_to_email }}
+    {{ user_form.csrf_token }}
+
+
+    {% for field in user_form %}
+        <tr>
+            {% if field.type == "BooleanField" %}
+                <td></td>
+                <td>{{ field }} {{ field.label }}</td>
+            {% else %}
+                <td>{{ field.label }}</td>
+                <td>{{ field }}</td>
+            {% endif %}
+            {% if not loop.last %}
+                <br/>
+            {% endif %}
+        </tr>
+    {% endfor %}
     <p><input type=submit value=Register></p>
 </form>
+
+<span style="color: red;">
+    {% for error in user_form.errors %}
+        {{ error }}
+        {% if not loop.last %}
+            <br/>
+        {% endif %}
+    {% endfor %}
+</span>
 
 
 </body>

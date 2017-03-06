@@ -10,7 +10,6 @@ from flask_security.utils import encrypt_password
 from flask_wtf import Form
 from wtforms.ext.sqlalchemy.orm import model_form
 
-
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
@@ -34,15 +33,14 @@ def takepart_camp():
     fields = get_need_fields_for_application(current_user)
     validators = get_fields_validators(fields)
 
-
-    take_part_form = model_form(User, Form, only=fields, )
+    take_part_form = model_form(User, Form, only=fields, field_args=validators)
 
     if not current_user.has_role('участник'):
         user = user_datastore.find_user(email=current_user.email)
         user_datastore.add_role_to_user(user, Role(name="участник"))
         db.session.commit()
 
-    return render_template("take_part.html", event=last_event, form=take_part_form(name='take_part'))
+    return render_template("take_part.html", event=last_event, user_form=take_part_form(name='take_part'))
 
 
 @app.before_request
