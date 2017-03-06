@@ -75,6 +75,7 @@ class User(db.Model, UserMixin):
         return self.email
 
 
+
 class Application(db.Model):
     __tablename__ = "aplications"
 

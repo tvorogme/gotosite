@@ -5,9 +5,11 @@ from flask_security import Security, SQLAlchemyUserDatastore
 from flask_admin import helpers as admin_helpers
 from flask_login import current_user, login_required
 from models import Role, User, MyModelView, Event, Application
+from helpers import get_need_fields_for_application, get_fields_validators
 from flask_security.utils import encrypt_password
 from flask_wtf import Form
 from wtforms.ext.sqlalchemy.orm import model_form
+
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
@@ -28,7 +30,12 @@ def camp():
 @login_required
 def takepart_camp():
     last_event = Event.query.first()
-    take_part_form = model_form(User, Form)
+
+    fields = get_need_fields_for_application(current_user)
+    validators = get_fields_validators(fields)
+
+
+    take_part_form = model_form(User, Form, only=fields, )
 
     if not current_user.has_role('участник'):
         user = user_datastore.find_user(email=current_user.email)
@@ -36,6 +43,7 @@ def takepart_camp():
         db.session.commit()
 
     return render_template("take_part.html", event=last_event, form=take_part_form(name='take_part'))
+
 
 @app.before_request
 def check_for_admin(*args, **kw):
