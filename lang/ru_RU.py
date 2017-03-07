@@ -11,5 +11,5 @@ user_labels = {"first_name": "Имя",
                "programming_languages": "Языки программирования",
                "experience": "Опыт",
                "education_name": "Учебное заведение",
-               "education_years": "Сколько проучились",
+               "education_years": "Год выпуска",
                "graduation_year": "Сколько вам лет"}

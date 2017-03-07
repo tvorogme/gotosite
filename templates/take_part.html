@@ -28,12 +28,14 @@
 </form>
 
 <span style="color: red;">
-    {% for error in user_form.errors %}
-        {{ error }}: {{ user_form.errors[error][0] }}
-        {% if not loop.last %}
-            <br/>
-        {% endif %}
-    {% endfor %}
+ {% for field in user_form.errors %}
+     {% for error in user_form.errors[field] %}
+         <div class="alert alert-error">
+        <strong>Error!</strong> {{ error }}
+    </div>
+     {% endfor %}
+ {% endfor %}
+
 </span>
 
 
