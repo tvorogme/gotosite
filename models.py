@@ -60,6 +60,7 @@ class User(db.Model, UserMixin):
     birthday = db.Column(db.DateTime())
     phone_number = db.Column(db.String(40))
     parent_phone_number = db.Column(db.String(40))
+
     health_issues = db.Column(db.Text())
 
     programming_languages = db.Column(db.Text())

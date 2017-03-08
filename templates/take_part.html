@@ -9,33 +9,30 @@
 <form method=post>
     {{ user_form.csrf_token }}
 
-
     {% for field in user_form %}
         <tr>
             {% if field.type == "BooleanField" %}
-                <td></td>
-                <td>{{ field }} {{ field.label }}</td>
+                {{ field }} {{ field.label }}
             {% else %}
-                <td>{{ field.label }}</td>
-                <td>{{ field }}</td>
+                {{ field.label }}
+                {{ field }}
             {% endif %}
             {% if not loop.last %}
                 <br/>
             {% endif %}
         </tr>
     {% endfor %}
-    <p><input type=submit value=Register></p>
+
+
+    <p><input type=submit></p>
 </form>
 
 <span style="color: red;">
- {% for field in user_form.errors %}
-     {% for error in user_form.errors[field] %}
-         <div class="alert alert-error">
-        <strong>Error!</strong> {{ error }}
-    </div>
-     {% endfor %}
- {% endfor %}
-
+    {% for field, errors in user_form.errors.items() %}
+        <div class="alert alert-error">
+            {{ user_form[field].label }}: {{ ', '.join(errors) }}
+        </div>
+    {% endfor %}
 </span>
 
 

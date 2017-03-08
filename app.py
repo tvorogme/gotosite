@@ -1,5 +1,4 @@
 import os
-
 from flask import url_for, render_template, request, abort, redirect
 from flask_admin import helpers as admin_helpers
 from flask_login import current_user, login_required
@@ -7,7 +6,6 @@ from flask_security import Security, SQLAlchemyUserDatastore
 from flask_security.utils import encrypt_password
 from flask_wtf import Form
 from wtforms.ext.sqlalchemy.orm import model_form
-
 from helpers import get_need_fields_for_application, get_fields_validators
 from lang.ru_RU import user_labels
 from main import app, db, admin
@@ -44,14 +42,18 @@ def takepart_camp():
         user_datastore.add_role_to_user(user, Role(name="участник"))
         db.session.commit()
 
-    if request.method == 'POST' and take_part_form.validate():
-        user_information = []
+    if request.method == 'POST':
+        take_part_form = model_form(User, Form, only=fields, field_args=validators)
+        take_part_form = take_part_form(request.form)
 
-        for field_name in user_labels.keys():
-            print(getattr(take_part_form, field_name))
+        if take_part_form.validate():
+            user_information = User()
 
-        return redirect("/")
+            for field_name in user_labels.keys():
+                setattr(user_information, field_name, getattr(take_part_form, field_name))
+                print(getattr(take_part_form, field_name))
 
+            return redirect("/")
 
     return render_template("take_part.html", event=last_event, user_form=take_part_form)
 
