@@ -5,6 +5,7 @@ from flask import url_for, redirect, request, abort
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
+
 class MyModelView(sqla.ModelView):
     def is_accessible(self):
         if not current_user.is_active or not current_user.is_authenticated:
@@ -41,36 +42,35 @@ roles_users = db.Table(
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(255))
-    last_name = db.Column(db.String(255))
-    email = db.Column(db.String(255), unique=True)
+    first_name = db.Column(db.String(40))
+    last_name = db.Column(db.String(40))
+    email = db.Column(db.String(40), unique=True)
     password = db.Column(db.String(255))
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
 
-    surname = db.Column(db.String(255))
+    surname = db.Column(db.String(40))
     about = db.Column(db.Text())
-    organization = db.Column(db.String(255))
+    organization = db.Column(db.String(40))
     email_verified = db.Column(db.Boolean())
 
     city = db.Column(db.String(40))
 
     birthday = db.Column(db.String(10))
-    phone_number = db.Column(db.String(40))
-    parent_phone_number = db.Column(db.String(40))
+    phone_number = db.Column(db.String(12))
+    parent_phone_number = db.Column(db.String(12))
 
     health_issues = db.Column(db.Text())
 
     programming_languages = db.Column(db.Text())
     experience = db.Column(db.Text())
 
-    education_name = db.Column(db.String(255))
+    education_name = db.Column(db.String(40))
     education_years = db.Column(db.Integer())
-    graduation_year = db.Column(db.Integer())
     subscribed_to_email = db.Column(db.Boolean())
-    position = db.String(140)
+    position = db.String(70)
 
     def __init__(self, iterator: dict):
         for field_name in iterator:
@@ -78,6 +78,7 @@ class User(db.Model, UserMixin):
 
     def __str__(self):
         return self.email
+
 
 class Application(db.Model):
     __tablename__ = "aplications"
