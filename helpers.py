@@ -1,5 +1,23 @@
-from wtforms.validators import Email, Length, NumberRange, Optional
+from wtforms.validators import Email, Length, NumberRange, Regexp
 from lang.ru_RU import user_labels
+
+validators_dictionary = {
+        "email": {'validators' :[], "label": user_labels["email"]},
+        "first_name": {'validators' :[], "label": user_labels["first_name"]},
+        "last_name":{'validators' :[], "label": user_labels["last_name"]},
+        "surname": {'validators' :[], "label": user_labels["surname"]},
+        "city": {'validators' :[], "label": user_labels["city"]},
+        "phone_number": {'validators' :[], "label": user_labels["phone_number"]},
+        "education_name": {'validators' :[], "label": user_labels["education_name"]},
+        "programming_languages": {'validators' :[], "label": user_labels["programming_languages"]},
+        "about": {'validators' :[], "label": user_labels["about"]},
+        "birthday": {'validators' :[], "label": user_labels["birthday"]},
+        "health_issues": {'validators' :[], "label": user_labels["health_issues"]},
+        "parent_phone_number": {'validators' :[], "label": user_labels["parent_phone_number"]},
+        "graduation_year": {'validators' :[], "label": user_labels["graduation_year"]},
+        "experience": {'validators' :[], "label": user_labels["experience"]},
+        "education_years": {'validators' :[], "label": user_labels["education_years"]}
+}
 
 def get_need_fields_for_application(current_user):
     need_from_user = []
@@ -14,28 +32,8 @@ def get_need_fields_for_application(current_user):
 
 
 def get_fields_validators(fields):
-    validators = {}
-    for field in fields:
-        if field in ["email", "first_name", "last_name", "surname", "city", "phone_number",
-                     "education_name"]:
-            validators[field] = {"validators": [Length(min=3, max=50)], "label": user_labels[field]}
+    global validators_dictionary
 
-        if field in ["programming_languages", "about"]:
-            validators[field] = {"validators": [Length(min=3, max=255)], "label": user_labels[field]}
-
-        if field in ["graduation_year"]:
-            validators[field] = {"validators": [NumberRange(min=12, max=40)], "label": user_labels[field]}
-
-        if field in ["education_years"]:
-            validators[field] = {"validators": [NumberRange(min=1999, max=2100)], "label": user_labels[field]}
-
-        if field == "birthday":
-            validators[field] = {"validators": [Optional()], "label": user_labels[field]}
-
-        if field == "email":
-            validators[field] = {"validators": [Email()], "label": user_labels[field]}
-
-        if field in ["health_issues", "parent_phone_number"]:
-            validators[field] = {"validators": [Length(min=0, max=255)], "label": user_labels[field]}
+    validators = {field: validators_dictionary[field] for field in fields}
 
     return validators

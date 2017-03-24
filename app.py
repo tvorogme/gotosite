@@ -14,7 +14,6 @@ from models import Role, User, MyModelView, Event, Application
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -47,12 +46,6 @@ def takepart_camp():
         take_part_form = take_part_form(request.form)
 
         if take_part_form.validate():
-            user_information = User()
-
-            for field_name in user_labels.keys():
-                setattr(user_information, field_name, getattr(take_part_form, field_name))
-                print(getattr(take_part_form, field_name))
-
             return redirect("/")
 
     return render_template("take_part.html", event=last_event, user_form=take_part_form)
