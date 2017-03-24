@@ -6,18 +6,18 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from lang.ru_RU import user_labels
 
+
 class GoToAdminView(sqla.ModelView):
     column_exclude_list = ['password', 'active', 'confirmed_at', 'roles', 'position', 'organization', 'email_verified',
                            'subscribed_to_email', 'email', 'education_years']
 
-    # Coming soon
     column_labels = user_labels
 
     def is_accessible(self):
         if not current_user.is_active or not current_user.is_authenticated:
             return False
 
-        if current_user.has_role('superuser'):
+        if current_user.has_role('админ'):
             return True
 
         return False

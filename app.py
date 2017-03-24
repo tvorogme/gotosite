@@ -9,9 +9,11 @@ from wtforms.ext.sqlalchemy.orm import model_form
 from helpers import get_need_fields_for_application, get_fields_validators
 from main import app, db, admin
 from models import Role, User, GoToAdminView, Event, Application
+from config import CREATE_DEFAULT_USER
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
+
 
 @app.route('/')
 def index():
@@ -61,7 +63,7 @@ def takepart_camp():
 @app.before_request
 def check_for_admin(*args, **kw):
     if request.path == '/admin/':
-        if not current_user.is_active or not current_user.is_authenticated or not current_user.has_role('superuser'):
+        if not current_user.is_active or not current_user.is_authenticated or not current_user.has_role('админ'):
             return abort(404)
 
 
@@ -83,54 +85,27 @@ database_path = os.path.join(app_dir, app.config['DATABASE_FILE'])
 
 
 def build_sample_db():
-    """
-    Function for debug only
-    """
-
-    import string
-    import random
-
     db.drop_all()
     db.create_all()
 
     with app.app_context():
-        user_role = Role(name='user')
-        super_user_role = Role(name='superuser')
-        db.session.add(user_role)
-        db.session.add(super_user_role)
-        db.session.commit()
-
-        test_user = user_datastore.create_user(
+        for role in ["yчастник", "преподаватель", "лектор"]:
+            db.session.add(Role(name=role))
+        admin_role = Role(name="админ")
+        db.session.add(User(dict(
             first_name='Admin',
             email='admin',
             password=encrypt_password('admin'),
-            roles=[user_role, super_user_role]
-        )
+            active = 1,
+            roles=[admin_role]
+        )))
 
-        first_names = [
-            'Harry', 'Amelia', 'Oliver', 'Jack', 'Isabella', 'Charlie', 'Sophie', 'Mia',
-            'Jacob', 'Thomas', 'Emily', 'Lily', 'Ava', 'Isla', 'Alfie', 'Olivia', 'Jessica',
-            'Riley', 'William', 'James', 'Geoffrey', 'Lisa', 'Benjamin', 'Stacey', 'Lucy'
-        ]
-        last_names = [
-            'Brown', 'Smith', 'Patel', 'Jones', 'Williams', 'Johnson', 'Taylor', 'Thomas',
-            'Roberts', 'Khan', 'Lewis', 'Jackson', 'Clarke', 'James', 'Phillips', 'Wilson',
-            'Ali', 'Mason', 'Mitchell', 'Rose', 'Davis', 'Davies', 'Rodriguez', 'Cox', 'Alexander'
-        ]
-
-        for i in range(len(first_names)):
-            tmp_email = first_names[i].lower() + "." + last_names[i].lower() + "@example.com"
-            tmp_pass = ''.join(random.choice(string.ascii_lowercase + string.digits) for i in range(10))
-            user_datastore.create_user(
-                first_name=first_names[i],
-                last_name=last_names[i],
-                email=tmp_email,
-                password=encrypt_password(tmp_pass),
-                roles=[user_role, ]
-            )
         db.session.commit()
     return
 
 
 if __name__ == '__main__':
+    if CREATE_DEFAULT_USER:
+        build_sample_db()
+
     app.run(debug=True)
