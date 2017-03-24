@@ -9,7 +9,7 @@ from wtforms.ext.sqlalchemy.orm import model_form
 from helpers import get_need_fields_for_application, get_fields_validators
 from lang.ru_RU import user_labels
 from main import app, db, admin
-from models import Role, User, MyModelView, Event, Application
+from models import Role, User, GoToAdminView, Event, Application
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
@@ -42,10 +42,15 @@ def takepart_camp():
         db.session.commit()
 
     if request.method == 'POST':
+        model = User.query.filter_by(email=current_user.email).first()
         take_part_form = model_form(User, Form, only=fields, field_args=validators)
         take_part_form = take_part_form(request.form)
 
         if take_part_form.validate():
+            for fileld in fields:
+                setattr(model, fileld, getattr(getattr(take_part_form, fileld), "data"))
+            db.session.commit()
+
             return redirect("/")
 
     return render_template("take_part.html", event=last_event, user_form=take_part_form)
@@ -68,10 +73,8 @@ def security_context_processor():
     )
 
 
-admin.add_view(MyModelView(Role, db.session))
-admin.add_view(MyModelView(User, db.session))
-admin.add_view(MyModelView(Event, db.session))
-admin.add_view(MyModelView(Application, db.session))
+admin.add_view(GoToAdminView(User, db.session))
+admin.add_view(GoToAdminView(Event, db.session))
 
 app_dir = os.path.realpath(os.path.dirname(__file__))
 database_path = os.path.join(app_dir, app.config['DATABASE_FILE'])
