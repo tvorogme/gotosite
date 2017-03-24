@@ -48,6 +48,9 @@ def takepart_camp():
         if take_part_form.validate():
             for field in fields:
                 setattr(model, field, getattr(getattr(take_part_form, field), "data"))
+
+            last_camp = Event.query.filter_by(type="camp").first()
+            db.session.add(Application({"user_id": current_user.id, "event_id": last_camp.id}))
             db.session.commit()
 
             return redirect("/")
@@ -72,8 +75,8 @@ def security_context_processor():
     )
 
 
-admin.add_view(GoToAdminView(User, db.session))
-admin.add_view(GoToAdminView(Event, db.session))
+admin.add_view(GoToAdminView(User, db.session, name="Пользователи"))
+admin.add_view(GoToAdminView(Event, db.session, name="Мероприятия"))
 
 app_dir = os.path.realpath(os.path.dirname(__file__))
 database_path = os.path.join(app_dir, app.config['DATABASE_FILE'])

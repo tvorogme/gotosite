@@ -4,9 +4,15 @@ from flask_security import UserMixin, RoleMixin, current_user
 from flask import url_for, redirect, request, abort
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
-
+from lang.ru_RU import user_labels
 
 class GoToAdminView(sqla.ModelView):
+    column_exclude_list = ['password', 'active', 'confirmed_at', 'roles', 'position', 'organization', 'email_verified',
+                           'subscribed_to_email', 'email', 'education_years']
+
+    # Coming soon
+    column_labels = user_labels
+
     def is_accessible(self):
         if not current_user.is_active or not current_user.is_authenticated:
             return False
@@ -74,7 +80,7 @@ class User(db.Model, UserMixin):
 
     def __init__(self, iterator: dict):
         for field_name in iterator:
-            eval("self.{} = {}".format([field_name, iterator[field_name]]))
+            setattr(self, field_name, iterator[field_name])
 
     def __str__(self):
         return self.email
@@ -88,11 +94,17 @@ class Application(db.Model):
     user_id = db.Column(db.Integer())
     event_id = db.Column(db.Integer())
 
+    def __init__(self, iterator: dict):
+        for field_name in iterator:
+            setattr(self, field_name, iterator[field_name])
+
 
 class Event(db.Model):
     __tablename__ = 'events'
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
+    type = db.Column(db.String(255))
 
     first_title = db.Column(db.String(255))
     second_title = db.Column(db.String(255))

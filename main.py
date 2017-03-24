@@ -7,7 +7,7 @@ app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 admin = flask_admin.Admin(
     app,
-    'Example: Auth',
-    base_template='my_master.html',
+    'GoToAdmin',
+    base_template='admin-master.html',
     template_mode='bootstrap3',
 )
