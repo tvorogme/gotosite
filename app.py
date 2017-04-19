@@ -8,8 +8,8 @@ from flask_wtf import Form
 from wtforms.ext.sqlalchemy.orm import model_form
 from helpers import get_need_fields_for_application, get_fields_validators
 from main import app, db, admin
-from models import Role, User, GoToAdminView, Event, Application
-from config import CREATE_DEFAULT_USER
+from models import Role, User, GoToAdminView, Event, Application, Event_type
+from config import INIT_DB
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
@@ -89,9 +89,14 @@ def build_sample_db():
     db.create_all()
 
     with app.app_context():
+        for event in ["школа","интенсив","хакатон","лекторий"]:
+            db.session.add(Event_type(dict(name=event)))
+
         for role in ["yчастник", "преподаватель", "лектор"]:
             db.session.add(Role(name=role))
+
         admin_role = Role(name="админ")
+
         db.session.add(User(dict(
             first_name='Admin',
             email='admin',
@@ -101,11 +106,12 @@ def build_sample_db():
         )))
 
         db.session.commit()
+
     return
 
 
 if __name__ == '__main__':
-    if CREATE_DEFAULT_USER:
+    if INIT_DB:
         build_sample_db()
 
     app.run(debug=True)

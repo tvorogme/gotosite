@@ -25,5 +25,5 @@ SECURITY_REGISTERABLE = True
 SECURITY_SEND_REGISTER_EMAIL = False
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-# If you build new db this will add admin user
-CREATE_DEFAULT_USER = False
+# If you build new db this will add admin user with all needed stuff
+INIT_DB = True

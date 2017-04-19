@@ -39,6 +39,20 @@ class Role(db.Model, RoleMixin):
         return self.name
 
 
+class Event_type(db.Model):
+    __tablename__ = 'events'
+
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(255))
+
+    def __str__(self):
+        return self.name
+
+    def __init__(self, iterator: dict):
+        for field_name in iterator:
+            setattr(self, field_name, iterator[field_name])
+
+
 roles_users = db.Table(
     'roles_users',
     db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
