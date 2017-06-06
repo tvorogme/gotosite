@@ -1,7 +1,1073 @@
-<html>
-    <body>
-        <div>
-            <a href="{{ url_for('admin.index') }}">Go to admin!</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hi!</title>
+</head>
+<body onresize="location.reload();">
+<!-- Большая не нужная библиотека -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!--Шрифты-->
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
+
+<!--Основные стили -->
+<link rel="stylesheet" href="css/index_new.css">
+
+<!--Стили меню-->
+<link rel="stylesheet" type="text/css" href="css/menu/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="css/menu/demo.css">
+<link rel="stylesheet" type="text/css" href="css/menu/icons.css"/>
+<link rel="stylesheet" type="text/css" href="css/menu/menu.css"/>
+
+<!--Reset all browsers-->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+
+<!--Красивые значки-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--UI for navigation-->
+<script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+
+<!--Библиотеки-->
+<script src="js/menu/modernizr.custom.js"></script>
+<script src="js/mo.min.js"></script>
+
+<!--Бутстрап-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<!--Навигация-->
+<div class="dotstyle dotstyle-hop">
+    <ul>
+        <li class="current"><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+
+
+<!-- меню -->
+<nav id="bt-menu" class="bt-menu">
+    <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+    <ul>
+        <li><a href="">Лагерь</a></li>
+        <li><a href="">Хакатон</a></li>
+        <li><a href="">Лекторий</a></li>
+        <li><a href="">Коворкинг</a></li>
+        <li><a href="">О нас</a></li>
+    </ul>
+</nav>
+
+<!-- социальная штука -->
+<div id='ss_menu' style="transform: rotate(90deg)">
+    <div class="hor-fix"><a href="https://www.facebook.com/GoToCampPage/"><i class="fa fa-facebook-official"></i></a>
+    </div>
+    <div class="hor-fix"><a href="https://t.me/goto_channel"><i class="fa fa-telegram" aria-hidden="true"></i></a></div>
+    <div class="hor-fix"><a href="https://vk.com/goto_msk"><i class="fa fa-vk"></i></a></div>
+    <div class="hor-fix"><a href="https://www.instagram.com/goto_goto_goto/"><i class="fa fa-instagram"></i></a></div>
+    <div class='menu hor-fix'>
+        <div class='share' id='ss_toggle' data-rot='90'>
+            <div class='circle'></div>
+            <div class='bar'></div>
         </div>
-    </body>
+    </div>
+</div>
+
+<!-- LoGo and MORE! -->
+<div class="first-slide">
+    <canvas id="demo-canvas"></canvas>
+    <table id='large-header' class="header">
+        <tbody>
+        <tr>
+            <td valign="middle">
+                <svg
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:cc="http://creativecommons.org/ns#"
+                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                        id="logo"
+                        version="1.1"
+                        inkscape:version="0.92.0 r"
+                        width="503.46667"
+                        height="340.26666"
+                        sodipodi:docname="logo.svg"
+                        inkscape:export-filename="/root/Downloads/goto.svg.png"
+                        inkscape:export-xdpi="90"
+                        inkscape:export-ydpi="90"
+                        viewBox="0 0 472 319">
+                    <metadata
+                            id="metadata3045">
+                        <rdf:RDF>
+                            <cc:Work
+                                    rdf:about="">
+                                <dc:format>image/svg+xml</dc:format>
+                                <dc:type
+                                        rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                                <dc:title/>
+                            </cc:Work>
+                        </rdf:RDF>
+                    </metadata>
+                    <defs
+                            id="defs3043"/>
+                    <sodipodi:namedview
+                            pagecolor="#ffffff"
+                            bordercolor="#666666"
+                            borderopacity="1"
+                            objecttolerance="10"
+                            gridtolerance="10"
+                            guidetolerance="10"
+                            inkscape:pageopacity="0"
+                            inkscape:pageshadow="2"
+                            inkscape:window-width="1344"
+                            inkscape:window-height="710"
+                            id="namedview3041"
+                            showgrid="false"
+                            inkscape:zoom="1.4142136"
+                            inkscape:cx="185.78381"
+                            inkscape:cy="138.46418"
+                            inkscape:window-x="9"
+                            inkscape:window-y="27"
+                            inkscape:window-maximized="0"
+                            inkscape:current-layer="svg3039"
+                            inkscape:measure-start="32.3279,65.2324"
+                            inkscape:measure-end="468.161,63.6944"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l14"
+                            width="25.254168"
+                            height="2.907552"
+                            x="181.43124"
+                            y="66.956772"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l13"
+                            width="38.711979"
+                            height="3.6552083"
+                            x="174.03777"
+                            y="76.759377"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l12"
+                            width="3.4070172"
+                            height="78.830986"
+                            x="191.73201"
+                            y="-159.10583"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l15"
+                            width="140.65633"
+                            height="2.2909138"
+                            x="193.96417"
+                            y="117.16447"
+                            ry="0"
+                            style="stroke-width:1.0046258"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l21"
+                            width="3.4648397"
+                            height="80.89315"
+                            x="331.15564"
+                            y="-117.16447"
+                            style="stroke-width:0.9938947"
+                            inkscape:label="#l21"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l16"
+                            width="3.3229043"
+                            height="80.414581"
+                            x="281.28488"
+                            y="36.884377"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l17"
+                            width="3.0545654"
+                            height="142.15425"
+                            x="281.37143"
+                            y="118.92671"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l18"
+                            width="153.5858"
+                            height="2.8195679"
+                            x="281.37143"
+                            y="258.26138"
+                            style="stroke-width:0.9798438"
+                            inkscape:label="#18"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l25"
+                            width="3.4648335"
+                            height="43.356323"
+                            x="331.15564"
+                            y="-160.52078"
+                            style="stroke-width:1.0544796"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l24"
+                            width="104.37209"
+                            height="3.171093"
+                            x="-435.50983"
+                            y="157.36731"
+                            style="stroke-width:1.30944657"
+                            transform="scale(-1,1)"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l23"
+                            width="2.8713379"
+                            height="124.2485"
+                            x="432.63849"
+                            y="36.289906"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l22"
+                            width="104.27111"
+                            height="2.9910061"
+                            x="331.15564"
+                            y="36.271313"
+                            style="stroke-width:1.16072607"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l8"
+                            width="165.31509"
+                            height="3.3229218"
+                            x="90.217186"
+                            y="156.34323"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l11"
+                            width="3.4890594"
+                            height="105.06878"
+                            x="252.04323"
+                            y="156.34323"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l9"
+                            width="3.5244904"
+                            height="103.85484"
+                            x="150.37804"
+                            y="-260.9635"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l7"
+                            width="3.7690902"
+                            height="43.059231"
+                            x="90.217186"
+                            y="-199.40247"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l6"
+                            width="45.593002"
+                            height="3.2895203"
+                            x="-135.81018"
+                            y="196.11295"
+                            style="stroke-width:0.99488616"
+                            transform="scale(-1,1)"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l5"
+                            width="2.8195882"
+                            height="64.615562"
+                            x="132.99059"
+                            y="-260.72852"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l4"
+                            width="105.5028"
+                            height="2.8839457"
+                            x="30.307379"
+                            y="257.84457"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l3"
+                            width="2.9768591"
+                            height="224.40488"
+                            x="30.307379"
+                            y="36.323631"
+                            style="stroke-width:1.00854242"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l2"
+                            width="102.48154"
+                            height="3.0746872"
+                            x="-132.78238"
+                            y="36.323631"
+                            transform="scale(-1,1)"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l1"
+                            width="2.6854546"
+                            height="61.299072"
+                            x="130.28442"
+                            y="-97.622704"
+                            style="stroke-width:2.54346585"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l10"
+                            width="105.15425"
+                            height="3.878531"
+                            x="-255.53229"
+                            y="257.53348"
+                            style="stroke-width:1.01679945"
+                            transform="scale(-1,1)"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l19"
+                            width="60.081383"
+                            height="3.2563105"
+                            x="-485.858"
+                            y="111.03612"
+                            transform="matrix(-0.7263686,-0.68730536,0.75530287,-0.6553759,0,0)"
+                            inkscape:transform-center-x="-2.0080374"
+                            inkscape:transform-center-y="1.2641921"
+                            style="stroke-width:0.54062748"/>
+                    <rect
+                            stroke="#373a3c"
+                            fill="#373a3c"
+                            id="l20"
+                            width="59.504265"
+                            height="3.2257044"
+                            x="-171.79764"
+                            y="-497.78763"
+                            transform="matrix(-0.69850739,0.71560284,-0.64063175,-0.76784827,0,0)"
+                            inkscape:transform-center-x="-1.2841308"
+                            inkscape:transform-center-y="-1.9701991"
+                            style="stroke-width:0.53549027"/>
+                    <rect
+                            style="fill:#633b92;fill-opacity:1;stroke:#633b92;stroke-width:1.01518762;stroke-opacity:1"
+                            id="f2"
+                            width="97.120377"
+                            height="12.89807"
+                            x="154.25607"
+                            y="160.08438"/>
+                    <rect
+                            style="fill:#633b92;fill-opacity:1;stroke:#633b92;stroke-opacity:1"
+                            id="f3"
+                            width="14.101059"
+                            height="96.67984"
+                            x="237.45216"
+                            y="160.37509"/>
+                    <rect
+                            style="fill:#633b92;fill-opacity:1;stroke:#633b92;stroke-width:0.99802643;stroke-opacity:1"
+                            id="f4"
+                            width="97.283607"
+                            height="12.554064"
+                            x="-251.54645"
+                            y="244.44427"
+                            transform="scale(-1,1)"/>
+                    <rect
+                            style="fill:#633b92;fill-opacity:1;stroke:#633b92;stroke-width:1.00154507;stroke-opacity:1"
+                            id="f1"
+                            width="13.246033"
+                            height="96.530945"
+                            x="154.26285"
+                            y="-256.99835"
+                            inkscape:label="#f1"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            style="fill:#ec8b6d;fill-opacity:1;stroke:#ec8b6d;stroke-width:1.1043483;stroke-opacity:1"
+                            id="o2"
+                            width="85.080566"
+                            height="13.008534"
+                            x="195.65213"
+                            y="103.61953"
+                            inkscape:label="#o2"/>
+                    <rect
+                            style="fill:#ec8b6d;fill-opacity:1;stroke:#ec8b6d;stroke-width:0.98586935;stroke-opacity:1"
+                            id="o1"
+                            width="12.3459"
+                            height="79.35215"
+                            x="284.99423"
+                            y="-116.72614"
+                            inkscape:label="#o1"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            style="fill:#ec8b6d;fill-opacity:1;stroke:#ec8b6d;stroke-opacity:1"
+                            id="o3"
+                            width="12.445862"
+                            height="137.87376"
+                            x="284.91214"
+                            y="119.85478"/>
+                    <rect
+                            style="fill:#ec8b6d;fill-opacity:1;stroke:#ec8b6d;stroke-width:1.03497195;stroke-opacity:1"
+                            id="o4"
+                            width="133.78148"
+                            height="12.701582"
+                            x="284.91953"
+                            y="245.01959"
+                            ry="0"
+                            inkscape:label="#o4"/>
+                    <path
+                            style="fill:#ec8b6d;fill-opacity:1;stroke:#ec8b6d;stroke-width:0.13236099;stroke-opacity:1"
+                            inkscape:transform-center-x="-0.043321041"
+                            inkscape:transform-center-y="-2.1486765"
+                            d="m 433.65201,258.22424 -15.54659,-0.0478 0.004,-11.86762 1.11489,-1.70548 3.90632,3.70888 z"
+                            id="o5"
+                            inkscape:connector-curvature="0"
+                            sodipodi:nodetypes="cccccc"/>
+                    <rect
+                            style="fill:#4bb199;fill-opacity:1;stroke-width:0.94326967"
+                            id="g1"
+                            width="12.859791"
+                            height="118.06738"
+                            x="334.56671"
+                            y="-157.31934"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            style="fill:#4bb199;fill-opacity:1;stroke-width:0.93728149"
+                            id="g3"
+                            width="12.69458"
+                            height="118.0902"
+                            x="419.94391"
+                            y="39.259113"/>
+                    <rect
+                            style="fill:#4bb199;fill-opacity:1;stroke-width:0.9375"
+                            id="g2"
+                            width="96.136391"
+                            height="12.768278"
+                            x="334.73193"
+                            y="39.251953"/>
+                    <rect
+                            style="fill:#4bb199;fill-opacity:1;stroke-width:0.94800091"
+                            id="g4"
+                            width="98.07177"
+                            height="12.798264"
+                            x="-432.63849"
+                            y="144.55106"
+                            transform="scale(-1,1)"/>
+                    <rect
+                            style="fill:#f6e76a;fill-opacity:1;stroke-width:0.94645733;image-rendering:auto"
+                            id="first_yellow"
+                            width="11.170944"
+                            height="58.465397"
+                            x="119.11347"
+                            y="-97.622711"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            style="fill:#f6e76a;fill-opacity:1;stroke-width:1.37446415"
+                            id="second_yellow"
+                            width="96.801811"
+                            height="13.744041"
+                            x="-130.28442"
+                            y="39.15731"
+                            transform="scale(-1,1)"/>
+                    <rect
+                            style="fill:#f6e76a;fill-opacity:1;stroke-width:2.53241658"
+                            id="third_yellow"
+                            width="13.148556"
+                            height="218.69647"
+                            x="33.268436"
+                            y="39.157318"/>
+                    <rect
+                            style="fill:#f6e76a;fill-opacity:1;stroke-width:1.04482234"
+                            id="five_yellow"
+                            width="99.74662"
+                            height="13.813522"
+                            x="33.268436"
+                            y="244.04027"/>
+                    <rect
+                            style="fill:#f6e76a;fill-opacity:1;stroke-width:0.94531274"
+                            id="six_yellow"
+                            width="13.308807"
+                            height="58.496136"
+                            x="119.70625"
+                            y="-257.85379"
+                            transform="scale(1,-1)"/>
+                    <rect
+                            style="fill:#f6e76a;fill-opacity:1;stroke-width:1.85976994"
+                            id="seven_yellow"
+                            width="55.683327"
+                            height="13.412837"
+                            x="-133.01506"
+                            y="199.35767"
+                            transform="scale(-1,1)"/>
+                    <rect
+                            style="fill:#f6e76a;fill-opacity:1;stroke-width:1.20284641"
+                            id="eight_yellow"
+                            width="12.865559"
+                            height="43.096901"
+                            x="77.351624"
+                            y="-199.40247"
+                            transform="scale(1,-1)"/>
+                    <flowRoot
+xml:space="preserve"
+id="flowRoot127"
+style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:25px;letter-spacing:0px;word-spacing:0px"><flowRegion
+id="flowRegion129"><rect
+id="rect131"
+width="386.11795"
+height="41.240044"
+x="35.503185"
+y="278.11041" /></flowRegion><flowPara
+id="flowPara133"></flowPara></flowRoot>
+                </svg>
+            </td>
+        <tr>
+        </tbody>
+    </table>
+
+    <div class="text">
+        Образовательный проект в сфере высоких технологий
+    </div>
+
+    <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src="img/down_arrow.png" style="display: none;">
+</div>
+
+<!--Тетрис-->
+<div class="tetris">
+
+    <table>
+        <tbody>
+        <tr>
+            <td valign="middle">
+                <canvas id="tetris"></canvas>
+                <div onclick="start_tetris()" id="we-teach">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td valign="middle">
+                                <p id="what_we_do">Чему мы <br> учим?</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Весёлые покрутяшки -->
+<div class="krutyashki">
+    <table id="krutyashki-wrapper">
+        <tbody>
+        <tr>
+            <td valign="middle">
+                <div class="container">
+                    <div class="row crugleski">
+                        <div class="opisanie">
+                            <a onclick="awesome()">
+                                <svg width="64" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64"
+                                     viewBox="0 0 64 64"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
+                                    <g>
+                                        <path
+                                                d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"/>
+                                    </g>
+                                </svg>
+                            </a>
+                            <table>
+                                <td valign="middle">
+                                    <p class="programm-text">В начинающей группе запланирован базовый курс из лекций и
+                                        воркшопов,
+                                        сопровождающихся заданиями из различных областей, в рамках которых ребята
+                                        сделают 5-6
+                                        мини-проектов.<br>
+                                        Участники, попавшие в старшую группу по результатам тестирования, все время
+                                        посвятят
+                                        реализации основного проекта в командах. Их ждут как технологические
+                                        мастер-классы, так и
+                                        семинары по организации работы в проекте, формированию тз и исследованию
+                                        требований от
+                                        пользователей, тестированию, а также ежедневная работа под руководством куратора
+                                        и общение с
+                                        опытными разработчиками.
+                                    </p>
+
+                                    <p class="robot-text">
+                                        Участники направления будут разделены на 2 группы: Опытные ребята возьмутся
+                                        сразу за проекты
+                                        – пройдут все стадии от идеи до реализации. Второй поток специально предназначен
+                                        для
+                                        новичков, которые получат базовые навыки и инструментарий: познакомятся с
+                                        платформой Arduino
+                                        и средой разработки; научатся работать с различными датчиками, микросхемами,
+                                        сервомоторами и
+                                        объединять это все, чтобы получить умные устройства.
+                                        <br>
+                                        Каждый участник направления получит к концу школы результат в виде прототипа или
+                                        законченного устройства, а также пройдет серию мастер-классов по проектной
+                                        работе,
+                                        промдизайну и 3д-печати, интернету вещей.
+                                    </p>
+
+                                    <p class="ad-text">
+                                        Небольшая группа участников с опытом в прикладном программировании займется
+                                        изучением одной
+                                        из самых актуальных тем – анализ данных и машинное обучение. Ребята реализуют
+                                        исследовательские проекты и познакомятся с Big Data, Machine Learning и SNA,
+                                        освоят основные
+                                        инструментарии и разберутся с математикой и статистикой, которые стоят за
+                                        основными методами
+                                        в этих областях.<br>
+                                        В рамках направления для всех желающих будет проведена подготовка к нашим
+                                        хакатонам и
+                                        Олимпиаде НТИ по большим данным и машинному обучению.
+
+                                    </p>
+
+                                    <p class="bio-text">
+                                        Биоинформатика - это стремительно развивающаяся область, точка смешения
+                                        биологии, медицины,
+                                        информатики и математики, целью которой является выявление новых биологических
+                                        закономерностей алгоритмическими и статистическими методами. С развитием
+                                        технологий
+                                        появилась возможность исследовать весь геном организма в целом, определять
+                                        уровни активности
+                                        генов, исследовать их более сложные взаимодействия.
+                                        <br>
+                                        Участники узнают об основных задачах биоинформатики, получат опыт работы с
+                                        реальными
+                                        данными, рассмотрят примеры современных исследований. К участию приглашаются
+                                        все, кто хочет
+                                        познакомиться с новой областью и попробовать силы в решении нестандартных
+                                        междисциплинарных
+                                        задач. Знание биологии не является обязательным в отличие от базового знания
+                                        Python/R.
+                                    </p>
+                                </td>
+                            </table>
+                        </div>
+                        <div onclick="cool(0)" class="up flip-container col-md-4">
+                            <div class="flipper">
+                                <div class="front robot">
+                                    <table>
+                                        <td valign="middle"><h3>Выездные школы</h3></td>
+                                    </table>
+                                </div>
+                                <div class="back robot-back">
+                                    <table>
+                                        <p>подробнее</p>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div onclick="cool(1)" class="up flip-container vertical col-md-4">
+                            <div class="flipper">
+                                <div class="front programm">
+                                    <table>
+                                        <td valign="middle"><h3>Курсы</h3></td>
+                                    </table>
+                                </div>
+                                <div class="back programm-back">
+                                    <table>
+                                        <p>подробнее</p>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div onclick="cool(2)" class="up flip-container col-md-4">
+                            <div class="flipper">
+                                <div class="front ad">
+                                    <table>
+                                        <td valign="middle"><h3>Хакатоны</h3></td>
+                                    </table>
+                                </div>
+                                <div class="back ad-back">
+                                    <table>
+                                        <p>подробнее</p>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div onclick="ntcool(3)" class="down flip-container vertical col-md-4">
+                            <div class="flipper">
+                                <div class="front bio">
+                                    <table>
+                                        <td valign="middle"><h3>Городские школы</h3></td>
+                                    </table>
+                                </div>
+                                <div class="back bio-back">
+                                    <table>
+                                        <p>подробнее</p>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div onclick="ntcool(0)" class="down flip-container col-md-4">
+                            <div class="flipper">
+                                <div class="front robot">
+                                    <table>
+                                        <td valign="middle"><h3>Митапы</h3></td>
+                                    </table>
+                                </div>
+                                <div class="back robot-back">
+                                    <table>
+                                        <p>подробнее</p>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div onclick="ntcool(1)" class="down flip-container vertical col-md-4">
+                            <div class="flipper">
+                                <div class="front programm">
+                                    <table>
+                                        <td valign="middle"><h3>Коворкинг</h3></td>
+                                    </table>
+                                </div>
+                                <div class="back programm-back">
+                                    <table>
+                                        <p>подробнее</p>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ХОЧУ -->
+<div class="button-big-picture">
+    <a class="back-hochu"><img src="img/arrow_black.png"></a>
+    <canvas id="shariki" class="shariki"></canvas>
+    <table class="table-shar">
+        <tr>
+            <td valign="middle">
+                <button id="component-2" class="button button--2">
+                    <p id="want">Хочу</p>
+                    <p class="subscription_alert">Вы <br> успешно <br> подписались</p>
+                </button>
+                <div id="come_to_us_brother">
+                        <span class="input input--akira">
+                            <input class="input__field input__field--akira" type="text" id="input-22"/>
+                            <label class="input__label input__label--akira" for="input-22">
+                                <span class="input__label-content input__label-content--akira">Email</span>
+                            </label>
+                        </span>
+                </div>
+
+
+            </td>
+        </tr>
+    </table>
+
+
+    <div id="take-part">
+        <table>
+            <tr>
+                <td valign="middle">
+                    <div class="take_part_in programm">
+                        Хакатон
+                    </div>
+
+                    <div id="middle_shar" class="take_part_in robot">
+                        Школа
+                    </div>
+
+                    <div style="margin-bottom: 0;" class="take_part_in ad">
+                        Курсы
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="partners_grid">
+
+
+        <!-- Партнёры -->
+        <div class="partners normal-otstup">
+            <table class="cool_table">
+                <tr>
+                    <td valign="middle">
+                        <div class="container">
+                            <div class="row">
+                                <div class="partners-header col-md-12"><h1>Партнёры</h1></div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="img/partners/abitur.jpg"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="img/partners/amperka.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="img/partners/blastim.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/cat.jpg"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="img/partners/codeforces.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="img/partners/cossa.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="img/partners/golograph.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/hse.jpg"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="img/partners/innopols.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="img/partners/intel.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/krok.gif"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/mfti.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="img/partners/newtonew.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/nts.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="img/partners/popmech.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="img/partners/rambler.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/rvk.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <a onclick="come_to_us_brother()" id="but1">Подписаться</a>
+    <a onclick="partners_grid()" id="but2">Партнёры</a>
+    <a onclick="take_part()" id="but3">Принять <br> участие</a>
+    <a id="but4">Преподавать</a>
+    <a id="but5">О проекте</a>
+    <a id="but6">Новости</a>
+</div>
+
+<!-- Партнёры -->
+<div id="partners" class="partners normal-otstup">
+    <table class="cool_table">
+        <tr>
+            <td valign="middle">
+                <div class="goho">
+                    <div class="row">
+                        <!-- Если вы -->
+                        <div id="if_you">
+                            <canvas id="wave_canvas">
+
+                            </canvas>
+                            <div class="left">
+                                <div id="cool-left">
+                                    <h2>Ваш вопрос</h2>
+                                    <form id="question-footer">
+                                        <input id="question-footer-email" placeholder="Email" type="text"><br>
+
+
+                                        <textarea rows="1" id="question-footer-question"
+                                                  placeholder="Задавайте любой"></textarea><br>
+
+                                        <input value="Отправить" type="submit">
+                                        <div id="pseudo-helper-kostil"></div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="right">
+                                <div id="cool-right">
+                                    <h2>Контакты</h2><br>
+                                    <p id="phone-email"><a href="tel:89852443226">+7 (985) 244-32-26</a><br> <a
+                                            href="mailto:school@goto.msk.ru">school@goto.msk.ru</a></p><br>
+                                    <p>Образовательный проект, посвященный проектной деятельности в различных
+                                        высокотехнологических областях. Использование визуальных материалов только с
+                                        согласия
+                                        создателей проекта. Все права защищены.</p><br>
+                                    <p class="soc-footer">
+                                        <a href="https://www.facebook.com/GoToCampPage/"><i
+                                                class="fa fa-facebook-official"></i></a>
+                                        <a href="https://t.me/goto_channel"><i class="fa fa-telegram"
+                                                                               aria-hidden="true"></i></a>
+                                        <a href="https://vk.com/goto_msk"><i class="fa fa-vk"></i></a>
+                                        <a href="https://www.instagram.com/goto_goto_goto/"><i
+                                                class="fa fa-instagram"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- Скриптики -->
+
+<!--Для красивой динамики-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
+
+<!--Переключение слайдов-->
+<script src="js/index_new.js"></script>
+
+<!--Кнопка хочу-->
+<script src="js/hochu/hochu.js"></script>
+
+<!--Меню-->
+<script src="js/menu/classie.js"></script>
+<script src="js/menu/borderMenu.js"></script>
+
+<!--Тетрис-->
+<script src="js/tetris/tetris.js"></script>
+
+<!--Библиотеки-->
+<script src="js/animated/EasePack.min.js"></script>
+<script src="js/animated/rAF.js"></script>
+
+<!--Задний фон первого слайда-->
+<script src="js/animated/beatuful-header.js"></script>
+
+<!--Анимация логотипа-->
+<script src="js/logo/logo_animation.js"></script>
+
+<!--Волна футера-->
+<script src="js/wave.js"></script>
+
+<!--Слайдер-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.css">
+
+
+<!--Навигация-->
+<script src="js/navigation/modernizr.min.js"></script>
+<script src="js/navigation/dots.js"></script>
+
+<script>
+    $('.slick').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000
+    });
+
+    [].slice.call(document.querySelectorAll('.dotstyle > ul')).forEach(function (nav) {
+        new DotNav(nav, {
+            callback: function (idx) {
+                //console.log( idx )
+            }
+        });
+    });
+</script>
+</body>
 </html>
