@@ -60,21 +60,27 @@
 <nav id="bt-menu" class="bt-menu">
     <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
     <ul>
-        <li><a href="">Лагерь</a></li>
+        <li><a href="camp">Лагерь</a></li>
         <li><a href="">Хакатон</a></li>
         <li><a href="">Лекторий</a></li>
         <li><a href="">Коворкинг</a></li>
-        <li><a href="">О нас</a></li>
+        <li><a href="about_us">О нас</a></li>
+
+        {% if not current_user.is_authenticated %}
+            <li><a href="admin/login">Войти</a></li>
+        {% else %}
+            <li><a href="../profile">Профиль</a></li>
+        {% endif %}
     </ul>
 </nav>
 
 <!-- социальная штука -->
 <div id='ss_menu' style="transform: rotate(90deg)">
-    <div class="hor-fix"><a href="https://www.facebook.com/GoToCampPage/"><i class="fa fa-facebook-official"></i></a>
+    <div class="hor-fix"><a href="{{ socials['facebook'] }}"><i class="fa fa-facebook-official"></i></a>
     </div>
-    <div class="hor-fix"><a href="https://t.me/goto_channel"><i class="fa fa-telegram" aria-hidden="true"></i></a></div>
-    <div class="hor-fix"><a href="https://vk.com/goto_msk"><i class="fa fa-vk"></i></a></div>
-    <div class="hor-fix"><a href="https://www.instagram.com/goto_goto_goto/"><i class="fa fa-instagram"></i></a></div>
+    <div class="hor-fix"><a href="{{ socials['telegram'] }}"><i class="fa fa-telegram" aria-hidden="true"></i></a></div>
+    <div class="hor-fix"><a href="{{ socials['vk'] }}"><i class="fa fa-vk"></i></a></div>
+    <div class="hor-fix"><a href="{{ socials['instagram'] }}"><i class="fa fa-instagram"></i></a></div>
     <div class='menu hor-fix'>
         <div class='share' id='ss_toggle' data-rot='90'>
             <div class='circle'></div>
@@ -553,7 +559,8 @@ id="flowPara133"></flowPara></flowRoot>
         Образовательный проект в сфере высоких технологий
     </div>
 
-    <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src="img/down_arrow.png" style="display: none;">
+    <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src="static/img/down_arrow.png"
+         style="display: none;">
 </div>
 
 <!--Тетрис-->
@@ -766,7 +773,7 @@ id="flowPara133"></flowPara></flowRoot>
 
 <!-- ХОЧУ -->
 <div class="button-big-picture">
-    <a class="back-hochu"><img src="img/arrow_black.png"></a>
+    <a class="back-hochu"><img src="static/img/arrow_black.png"></a>
     <canvas id="shariki" class="shariki"></canvas>
     <table class="table-shar">
         <tr>
@@ -824,113 +831,113 @@ id="flowPara133"></flowPara></flowRoot>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="img/partners/abitur.jpg"></a>
+                                                src="static/img/partners/abitur.jpg"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="img/partners/amperka.png"></a>
+                                                src="static/img/partners/amperka.png"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="img/partners/blastim.png"></a>
+                                                src="static/img/partners/blastim.png"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
-                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/cat.jpg"></a>
-                                        </td>
-                                    </table>
-                                </div>
-                                <div class="partner col-md-2 little-partner">
-                                    <table>
-                                        <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="img/partners/codeforces.png"></a>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="static/img/partners/cat.jpg"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="img/partners/cossa.png"></a>
+                                                src="static/img/partners/codeforces.png"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="img/partners/golograph.png"></a>
-                                        </td>
-                                    </table>
-                                </div>
-                                <div class="partner col-md-2 little-partner">
-                                    <table>
-                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/hse.jpg"></a>
+                                                src="static/img/partners/cossa.png"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="img/partners/innopols.png"></a>
+                                                src="static/img/partners/golograph.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="static/img/partners/hse.jpg"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="img/partners/intel.png"></a>
-                                        </td>
-                                    </table>
-                                </div>
-                                <div class="partner col-md-2 little-partner">
-                                    <table>
-                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/krok.gif"></a>
-                                        </td>
-                                    </table>
-                                </div>
-                                <div class="partner col-md-2 little-partner">
-                                    <table>
-                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/mfti.png"></a>
+                                                src="static/img/partners/innopols.png"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="img/partners/newtonew.png"></a>
+                                                src="static/img/partners/intel.png"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
-                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/nts.png"></a>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="static/img/partners/krok.gif"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="static/img/partners/mfti.png"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="img/partners/popmech.png"></a>
+                                                src="static/img/partners/newtonew.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="static/img/partners/nts.png"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="img/partners/rambler.png"></a>
+                                                src="static/img/partners/popmech.png"></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
-                                        <td valign="middle"><a href="https://mipt.ru/"><img src="img/partners/rvk.png"></a>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img
+                                                src="static/img/partners/rambler.png"></a>
+                                        </td>
+                                    </table>
+                                </div>
+                                <div class="partner col-md-2 little-partner">
+                                    <table>
+                                        <td valign="middle"><a href="https://mipt.ru/"><img src="static/img/partners/rvk.png"></a>
                                         </td>
                                     </table>
                                 </div>

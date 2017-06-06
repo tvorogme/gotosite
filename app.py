@@ -9,10 +9,11 @@ from wtforms.ext.sqlalchemy.orm import model_form
 from helpers import get_need_fields_for_application, get_fields_validators
 from main import app, db, admin
 from models import Role, User, GoToAdminView, Event, Application, Event_type
-from config import INIT_DB, DEBUG, PORT, HOST
+from config import INIT_DB, DEBUG, PORT, HOST, SOCIALS
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
+
 
 #
 #  INDEX PAGES
@@ -21,7 +22,7 @@ security = Security(app, user_datastore)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('pages/index.html', socials=SOCIALS, user=current_user)
 
 
 #
@@ -31,7 +32,7 @@ def index():
 @app.route('/camp')
 def camp():
     last_event = Event.query.first()
-    return render_template("camp.html", event=last_event)
+    return render_template("pages/camp.html", event=last_event)
 
 
 @app.route('/camp/take_part', methods=["GET", "POST"])
@@ -65,8 +66,19 @@ def takepart_camp():
 
             return redirect("/")
 
-    return render_template("take_part.html", event=last_event, user_form=take_part_form)
+    return render_template("helpers/take_part.html", event=last_event, user_form=take_part_form)
 
+#
+# Profile funcs
+#
+
+@app.route('/profile')
+@login_required
+def get_profile():
+    return render_template('profile/profile.html')
+#
+# HELPERS FUNCS
+#
 
 @app.before_request
 def check_for_admin(*args, **kw):
@@ -83,6 +95,7 @@ def security_context_processor():
         h=admin_helpers,
         get_url=url_for
     )
+
 
 #
 #   HOST JS AND CSS FILES

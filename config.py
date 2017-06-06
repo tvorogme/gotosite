@@ -29,7 +29,14 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 INIT_DB = True
 
 # Flask common vals
-
 PORT = 8000
 HOST = '0.0.0.0'
 DEBUG = True
+
+# Social links
+SOCIALS = {
+    'vk': 'https://vk.com/goto_msk',
+    'instagram': 'https://www.instagram.com/goto_goto_goto/',
+    'facebook': 'https://www.facebook.com/GoToCampPage/',
+    'telegram': 'https://t.me/goto_channel'
+}
