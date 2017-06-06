@@ -137,3 +137,6 @@ fabric.properties
 
 .sass-cache/
 .idea/
+
+# Test db
+test.sqlite

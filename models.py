@@ -40,7 +40,7 @@ class Role(db.Model, RoleMixin):
 
 
 class Event_type(db.Model):
-    __tablename__ = 'events'
+    __tablename__ = 'events_type'
 
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(255))

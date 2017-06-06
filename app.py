@@ -9,7 +9,7 @@ from wtforms.ext.sqlalchemy.orm import model_form
 from helpers import get_need_fields_for_application, get_fields_validators
 from main import app, db, admin
 from models import Role, User, GoToAdminView, Event, Application, Event_type
-from config import INIT_DB
+from config import INIT_DB, DEBUG, PORT, HOST
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
@@ -89,7 +89,7 @@ def build_sample_db():
     db.create_all()
 
     with app.app_context():
-        for event in ["школа","интенсив","хакатон","лекторий"]:
+        for event in ["школа", "интенсив", "хакатон", "лекторий"]:
             db.session.add(Event_type(dict(name=event)))
 
         for role in ["yчастник", "преподаватель", "лектор"]:
@@ -101,7 +101,7 @@ def build_sample_db():
             first_name='Admin',
             email='admin',
             password=encrypt_password('admin'),
-            active = 1,
+            active=1,
             roles=[admin_role]
         )))
 
@@ -114,4 +114,4 @@ if __name__ == '__main__':
     if INIT_DB:
         build_sample_db()
 
-    app.run(debug=True)
+    app.run(debug=DEBUG, port=PORT, host=HOST)
