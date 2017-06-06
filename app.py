@@ -1,5 +1,5 @@
 import os
-from flask import url_for, render_template, request, abort, redirect
+from flask import url_for, render_template, request, abort, redirect, send_from_directory
 from flask_admin import helpers as admin_helpers
 from flask_login import current_user, login_required
 from flask_security import Security, SQLAlchemyUserDatastore
@@ -14,11 +14,19 @@ from config import INIT_DB, DEBUG, PORT, HOST
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
+#
+#  INDEX PAGES
+#
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
+
+#
+#   CAMP PAGES
+#
 
 @app.route('/camp')
 def camp():
@@ -75,6 +83,20 @@ def security_context_processor():
         h=admin_helpers,
         get_url=url_for
     )
+
+#
+#   HOST JS AND CSS FILES
+#
+
+
+@app.route('/js/<path:path>')
+def send_js(path):
+    return send_from_directory('js', path)
+
+
+@app.route('/css/<path:path>')
+def send_css(path):
+    return send_from_directory('css', path)
 
 
 admin.add_view(GoToAdminView(User, db.session, name="Пользователи"))

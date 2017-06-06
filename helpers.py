@@ -1,6 +1,8 @@
 from wtforms.validators import Email, Length, NumberRange, Regexp
 from lang.ru_RU import user_labels
 
+# Validations in registration page
+
 validators_dictionary = {
     "email": {'validators': [Email()], "label": user_labels["email"]},
     "first_name": {'validators': [Length(1, 40)], "label": user_labels["first_name"]},
@@ -21,6 +23,7 @@ validators_dictionary = {
 
 
 def get_need_fields_for_application(current_user):
+    '''Get db fields for current user to update them'''
     need_from_user = []
 
     for field_name in user_labels.keys():
@@ -33,6 +36,7 @@ def get_need_fields_for_application(current_user):
 
 
 def get_fields_validators(fields):
+    '''Get fields validations from validators_dictionary in needed format.'''
     global validators_dictionary
 
     validators = {field: validators_dictionary[field] for field in fields}

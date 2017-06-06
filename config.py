@@ -28,6 +28,8 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 # If you build new db this will add admin user with all needed stuff
 INIT_DB = True
 
+# Flask common vals
+
 PORT = 8000
 HOST = '0.0.0.0'
 DEBUG = True
