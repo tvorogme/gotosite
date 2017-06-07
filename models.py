@@ -100,6 +100,17 @@ class User(db.Model, UserMixin):
         return self.email
 
 
+class Projects(db.Model):
+    __tablename__ = "projects"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer)
+    url = db.Column(db.String(60))
+    name = db.Column(db.String(40))
+    description = db.Column(db.Text())
+    year_started = db.Column(db.Integer)
+
+
 class Application(db.Model):
     __tablename__ = "aplications"
 

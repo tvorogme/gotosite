@@ -18,6 +18,9 @@
     <!-- Большая не нужная библиотека -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
+    <!-- Автоматическая высота для textarea -->
+    <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+
 </head>
 <body>
 
@@ -30,9 +33,7 @@
     <div class="header">
         <input type="text" id="name" value="{{ user.first_name }} {{ user.last_name }}">
 
-        <p class="about-me">
-            {{ user.about }}
-        </p>
+        <textarea id="about-me">{{ user.about }}</textarea>
     </div>
     <div class="whitespace"></div>
 
@@ -123,32 +124,39 @@
             <h2>Projects</h2>
         </div>
 
-        <div class="col-md-9">
-            <h3><a href="https://github.com/xenx/voice2vec_0.01">Voice2Vec</a></h3>
-            <p class="date">2016 - present</p>
-            <p class="description">Trying predict the voice vector by spectrograms and some meta information (eg.
-                gender,
-                country, age). And do something like authorization, personalization of voice services with the help of
-                the
-                vector.</p>
-        </div>
+        {% for project in projects %}
+            <div class="col-md-9">
+                <form id="project_{{ project.id }}" method="post" action="/project/update">
 
-        <div class="col-md-9 not-first">
-            <h3>Validating novel Ig germline</h3>
-            <p class="date">2016</p>
-            <p class="description">Validating novel Ig germline segments using the whole genome sequence analysis. Novel
-                Ig
-                germline
-                was obtained by the Bioinformatic Institute.</p>
-        </div>
+                    <a onclick="del_project({{ project.id }})" class="field close">
+                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                    </a>
 
-        <div class="col-md-9 not-first">
-            <h3><a href="https://github.com/xenx/recommendation_system">TVRain recommendation system</a></h3>
-            <p class="date">2016</p>
-            <p class="description">The model that recommends you articles from TVRain. Based on the real data from the
-                portal obtained by
-                e-contenta.</p>
-        </div>
+                    <input name="id" type="hidden" value="{{ project.id }}">
+                    <input name="delete" type="hidden">
+
+
+                    <h3 class="value"><a href="{{ project.url }}">{{ project.name }}</a></h3>
+
+
+                    <input placeholder="Название" class="project_name field" name="title" type="text"
+                           value="{{ project.name }}">
+                    <input placeholder="Ссылка" class="project_url field" name="title" type="text"
+                           value="{{ project.url }}">
+
+                    <p class="date value">{{ project.year_from }} -
+                        {% if project.year_to != None %}
+                            project.year_to
+                        {% else %}
+                            текущее время
+                        {% endif %}</p>
+
+
+                    <textarea placeholder="Описание" name="description" onclick="edit_project({{ project.id }})"
+                              class="description">{{ project.description }}</textarea>
+                </form>
+            </div>
+        {% endfor %}
 
     </div>
 

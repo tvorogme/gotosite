@@ -1,9 +1,6 @@
-/**
- * Created by tvorogme on 6/7/17.
- */
-
-
 function save() {
+    var success = false;
+
     // Get name input value
     var name_value = $('#name').val().split(" ");
 
@@ -12,12 +9,17 @@ function save() {
         return false
     }
 
+
+    // Values
     var first_name = name_value[0];
     var second_name = name_value[1];
+    var about = $('#about-me').val();
 
+    // Dict for request
     var request_data = {
         'first_name': first_name,
-        'last_name': second_name
+        'last_name': second_name,
+        'about': about
     };
 
 
@@ -53,18 +55,33 @@ function save() {
     $.ajax({
         type: "POST",
         url: '/profile/edit/',
-        data: request_data
+        data: request_data,
+        dataType: 'json'
     });
+
+    window.location.reload();
 }
 
+var project_edit = -1;
+function edit_project(project_id) {
+
+    if (project_edit !== project_id) {
+        $("#project_" + project_id + " .field").toggle();
+        $("#project_" + project_id + " .value").toggle();
+        project_edit = project_id
+    }
+}
 
 $(document).ready(function () {
     var displaied = false;
 
-    $('input').click(function () {
+    autosize(document.getElementsByClassName("description"));
+
+    $('input, textarea').click(function () {
         if (!displaied) {
             $("#save_ico").toggle();
             displaied = true;
         }
     });
+
 });

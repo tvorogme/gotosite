@@ -75,14 +75,18 @@ h2 {
     font-size: 19px;
 }
 
-.about-me {
+#about-me {
     font-size: 14px;
     line-height: 16px;
     padding-top: 10px;
     width: 306px;
+    height: 60px;
     display: block;
     margin: 0 auto;
     text-align: center;
+    border: none;
+    color: #080808;
+    overflow: hidden;
 }
 
 .footer {
@@ -127,6 +131,8 @@ h3 {
 
     font-size: 14px;
     line-height: 16px;
+    border: none;
+    font-weight: 300;
 }
 
 .col-3 {
@@ -188,7 +194,7 @@ a {
     padding-top: 5px;
 }
 
-#save_ico{
+#save_ico {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -197,4 +203,27 @@ a {
     width: 40px;
     height: 50px;
     cursor: pointer;
+    color: #080808;
+}
+
+.close {
+    float: right !important;
+    z-index: 30;
+    width: auto !important;
+    cursor: pointer;
+    color: #080808;
+}
+
+.field {
+    display: none;
+    border: none;
+    width: calc(100% - 17px);
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-weight: 300;
+    float: left;
+}
+
+.description {
+    overflow: hidden;
 }
