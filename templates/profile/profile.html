@@ -5,24 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>Andrey Tvorozhkov</title>
+    <title>{{ user.first_name }} {{ user.last_name }}</title>
 
     <!--Шрифты-->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
 
     <link href="/css/profile.css" rel="stylesheet">
+
+    <!--Красивые значки-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Большая не нужная библиотека -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
 
 {% include 'helpers/menu.html' %}
 
 <div id="profile_container">
+    <i id="save_ico" onclick="save()" class="fa fa-floppy-o fa-2x" aria-hidden="true"></i>
+
     <div class="whitespace"></div>
     <div class="header">
-        <h1>Andrey Tvorozhkov</h1>
+        <input type="text" id="name" value="{{ user.first_name }} {{ user.last_name }}">
 
         <p class="about-me">
-            I'm a web and data engeneer who's doing machine learning and interactive animated landing pages.
+            {{ user.about }}
         </p>
     </div>
     <div class="whitespace"></div>
@@ -182,5 +191,9 @@
 
     <div class="whitespace"></div>
 </div>
+
+<!-- Работа с формами -->
+<script src="/js/profile/forms.js"></script>
+
 </body>
 </html>

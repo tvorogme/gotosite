@@ -10,6 +10,7 @@ from helpers import get_need_fields_for_application, get_fields_validators
 from main import app, db, admin
 from models import Role, User, GoToAdminView, Event, Application, Event_type
 from config import INIT_DB, DEBUG, PORT, HOST, SOCIALS
+from json import dumps
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
@@ -22,6 +23,7 @@ security = Security(app, user_datastore)
 
 @app.route('/')
 def index():
+    # Just render the index page
     return render_template('pages/index.html', socials=SOCIALS, user=current_user)
 
 
@@ -31,42 +33,73 @@ def index():
 
 @app.route('/camp')
 def camp():
-    last_event = Event.query.first()
+    # Get last camp event
+    last_event = Event.query.filter_by(type="camp").first()
+
+    # Render it!
     return render_template("pages/camp.html", event=last_event)
 
 
 @app.route('/camp/take_part', methods=["GET", "POST"])
 @login_required
 def takepart_camp():
-    last_event = Event.query.first()
+    # Get last camp event
+    last_event = Event.query.filter_by(type="camp").first()
 
+    # Get fields for user
     fields = get_need_fields_for_application(current_user)
+
+    # Generate validators
     validators = get_fields_validators(fields)
 
+    # Create form from fields and validators
     take_part_form = model_form(User, Form, only=fields, field_args=validators)
+
+    # Build form
     take_part_form = take_part_form(name='take_part')
 
     if not current_user.has_role('участник'):
+        # Get user object
         user = user_datastore.find_user(email=current_user.email)
+
+        # Set участник label
         user_datastore.add_role_to_user(user, Role(name="участник"))
+
+        # Update user
         db.session.commit()
 
+    # If receive data
     if request.method == 'POST':
-        model = User.query.filter_by(email=current_user.email).first()
+        # Get user
+        user = User.query.filter_by(email=current_user.email).first()
+
+        # Create another form
         take_part_form = model_form(User, Form, only=fields, field_args=validators)
+
+        # Build it with received values
         take_part_form = take_part_form(request.form)
 
+        # If it valid
         if take_part_form.validate():
-            for field in fields:
-                setattr(model, field, getattr(getattr(take_part_form, field), "data"))
 
+            # Save data
+            for field in fields:
+                setattr(user, field, getattr(getattr(take_part_form, field), "data"))
+            # Get last camp
             last_camp = Event.query.filter_by(type="camp").first()
+
+            # Add application form
             db.session.add(Application({"user_id": current_user.id, "event_id": last_camp.id}))
+
+            # Save it
             db.session.commit()
 
-            return redirect("/")
+            # Redirect to profile page
+            return redirect("/camp")
 
-    return render_template("helpers/templates/pages/take_part.html", event=last_event, user_form=take_part_form)
+    # Render camp with event and form
+    return render_template("pages/take_part.html", event=last_event, user_form=take_part_form)
+
 
 #
 # Profile funcs
@@ -75,15 +108,62 @@ def takepart_camp():
 @app.route('/profile')
 @login_required
 def get_profile():
-    return render_template('profile/profile.html')
+    # Just render current user information
+    return render_template('profile/profile.html', user=current_user)
+
+
+@app.route('/profile/edit/', methods=['POST'])
+@login_required
+def edit_profile():
+    # Here we store field errors
+    errors = ""
+
+    # Alias request.form to data
+    data = request.form
+
+    # Get received fields
+    fields = data.keys()
+
+    print(data)
+    # Get validators for all fields
+    validators = get_fields_validators(fields)
+
+    # Generate form
+    form = model_form(User, Form, only=fields, field_args=validators)
+
+    # Build form
+    form = form(data)
+
+    # If form valid
+    if form.validate():
+        # Get user
+        user = User.query.filter_by(email=current_user.email).first()
+
+        # Save data
+        for key in data.keys():
+            setattr(user, key, data[key])
+
+        # Save it
+        db.session.commit()
+
+    else:
+        # Save errors
+        errors = dumps(form.errors.items())
+
+    return errors
+
+
 #
 # HELPERS FUNCS
 #
 
 @app.before_request
 def check_for_admin(*args, **kw):
+    # If user want to get admin page
     if request.path == '/admin/':
+        # And he has no rights
         if not current_user.is_active or not current_user.is_authenticated or not current_user.has_role('админ'):
+            # 404
             return abort(404)
 
 
@@ -112,7 +192,10 @@ def send_css(path):
     return send_from_directory('css', path)
 
 
+# Add label to admin page
 admin.add_view(GoToAdminView(User, db.session, name="Пользователи"))
+
+# Add label to admin page
 admin.add_view(GoToAdminView(Event, db.session, name="Мероприятия"))
 
 app_dir = os.path.realpath(os.path.dirname(__file__))

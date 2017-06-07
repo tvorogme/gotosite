@@ -26,7 +26,7 @@ SECURITY_SEND_REGISTER_EMAIL = False
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # If you build new db this will add admin user with all needed stuff
-INIT_DB = True
+INIT_DB = False
 
 # Flask common vals
 PORT = 8000

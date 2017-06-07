@@ -60,10 +60,13 @@ table {
     color: #080808;
 }
 
-h1 {
+#name {
     color: rgb(67, 180, 152);
     font-weight: 500;
     text-align: center;
+    border: none;
+    width: 100%;
+    font-size: 32px;
 }
 
 h2 {
@@ -82,15 +85,15 @@ h2 {
     text-align: center;
 }
 
-.footer{
+.footer {
     float: right;
 }
 
-.left_idea{
+.left_idea {
     float: left;
 }
 
-.header{
+.header {
     overflow: auto;
 }
 
@@ -183,4 +186,15 @@ a {
 
 .keybase {
     padding-top: 5px;
+}
+
+#save_ico{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: none;
+    width: 40px;
+    height: 50px;
+    cursor: pointer;
 }
