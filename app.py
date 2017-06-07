@@ -66,7 +66,7 @@ def takepart_camp():
 
             return redirect("/")
 
-    return render_template("helpers/take_part.html", event=last_event, user_form=take_part_form)
+    return render_template("helpers/templates/pages/take_part.html", event=last_event, user_form=take_part_form)
 
 #
 # Profile funcs

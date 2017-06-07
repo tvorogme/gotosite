@@ -1,0 +1,25 @@
+{% block menu %}
+    <!--Стили меню-->
+    <link rel="stylesheet" type="text/css" href="/css/menu/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/menu/demo.css">
+    <link rel="stylesheet" type="text/css" href="/css/menu/icons.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/menu/menu.css"/>
+
+    <!-- меню -->
+    <nav id="bt-menu" class="bt-menu">
+        <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+        <ul>
+            <li><a href="camp">Лагерь</a></li>
+            <li><a href="">Хакатон</a></li>
+            <li><a href="">Лекторий</a></li>
+            <li><a href="">Коворкинг</a></li>
+            <li><a href="about_us">О нас</a></li>
+
+            {% if not current_user.is_authenticated %}
+                <li><a href="admin/login">Войти</a></li>
+            {% else %}
+                <li><a href="../profile">Профиль</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}
