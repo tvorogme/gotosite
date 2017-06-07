@@ -144,12 +144,7 @@
                     <input placeholder="Ссылка" class="project_url field" name="title" type="text"
                            value="{{ project.url }}">
 
-                    <p class="date value">{{ project.year_from }} -
-                        {% if project.year_to != None %}
-                            project.year_to
-                        {% else %}
-                            текущее время
-                        {% endif %}</p>
+                    <p class="date value">{{ project.date_started.year }}</p>
 
 
                     <textarea placeholder="Описание" name="description" onclick="edit_project({{ project.id }})"

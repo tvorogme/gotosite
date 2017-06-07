@@ -100,15 +100,26 @@ class User(db.Model, UserMixin):
         return self.email
 
 
+project_team = db.Table('project_team', db.Base.metadata,
+                        db.Column('project_id', db.Integer, db.ForeignKey('project.id')),
+                        db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+                        db.PrimaryKeyConstraint('project_id', 'user_id'),
+                        )
+
+
 class Projects(db.Model):
     __tablename__ = "projects"
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer)
+    project_team = db.relationship(
+        "User",
+        secondary="project_team",
+        back_populates="projects")
+
     url = db.Column(db.String(60))
     name = db.Column(db.String(40))
     description = db.Column(db.Text())
-    year_started = db.Column(db.Integer)
+    date_started = db.Column(db.DateTime())
 
 
 class Application(db.Model):
