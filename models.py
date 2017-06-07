@@ -100,21 +100,22 @@ class User(db.Model, UserMixin):
         return self.email
 
 
-project_team = db.Table('project_team', db.Base.metadata,
-                        db.Column('project_id', db.Integer, db.ForeignKey('project.id')),
-                        db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-                        db.PrimaryKeyConstraint('project_id', 'user_id'),
-                        )
+project_team = db.Table(
+    'project_team',
+    db.Column('project_id', db.Integer(), db.ForeignKey('project.id')),
+    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+)
 
 
-class Projects(db.Model):
-    __tablename__ = "projects"
+class Project(db.Model):
+    __tablename__ = "project"
 
     id = db.Column(db.Integer, primary_key=True)
-    project_team = db.relationship(
+
+    team = db.relationship(
         "User",
-        secondary="project_team",
-        back_populates="projects")
+        secondary=project_team,
+        backref=db.backref('project', lazy='dynamic'))
 
     url = db.Column(db.String(60))
     name = db.Column(db.String(40))

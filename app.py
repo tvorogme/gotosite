@@ -8,7 +8,7 @@ from flask_wtf import Form
 from wtforms.ext.sqlalchemy.orm import model_form
 from helpers import get_need_fields_for_application, get_fields_validators
 from main import app, db, admin
-from models import Role, User, GoToAdminView, Event, Application, Event_type, Projects
+from models import Role, User, GoToAdminView, Event, Application, Event_type, Project
 from config import INIT_DB, DEBUG, PORT, HOST, SOCIALS
 from json import dumps
 
@@ -108,9 +108,8 @@ def takepart_camp():
 @app.route('/profile')
 @login_required
 def get_profile():
-
     # Get user projects
-    projects = Projects.query.filter_by(user_id=current_user.id).all()
+    projects = Project.query.filter(Project.team.contains(current_user)).all()
 
     # Just render current user information
     return render_template('profile/profile.html', user=current_user, projects=projects)
@@ -198,7 +197,7 @@ def send_css(path):
 # Add labels to admin page
 admin.add_view(GoToAdminView(User, db.session, name="Пользователи"))
 admin.add_view(GoToAdminView(Event, db.session, name="Мероприятия"))
-admin.add_view(GoToAdminView(Projects, db.session, name="Проекты"))
+admin.add_view(GoToAdminView(Project, db.session, name="Проекты"))
 
 app_dir = os.path.realpath(os.path.dirname(__file__))
 database_path = os.path.join(app_dir, app.config['DATABASE_FILE'])
