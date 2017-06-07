@@ -28,7 +28,7 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
-body {
+#profile_container {
     line-height: 1;
 }
 
@@ -51,12 +51,13 @@ table {
     border-spacing: 0;
 }
 
-body {
+#profile_container {
     font-family: 'Ubuntu', sans-serif;
     width: 595px;
     display: block;
     margin: 0 auto;
     font-weight: 300;
+    color: #080808;
 }
 
 h1 {

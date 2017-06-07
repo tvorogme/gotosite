@@ -2,171 +2,185 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
     <title>Andrey Tvorozhkov</title>
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500" rel="stylesheet">
+
+    <!--Шрифты-->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
+
     <link href="/css/profile.css" rel="stylesheet">
 </head>
 <body>
-<div class="whitespace"></div>
-<div class="header">
-    <h1>Andrey Tvorozhkov</h1>
 
-    <p class="about-me">
-        I'm a web and data engeneer who's doing machine learning and interactive animated landing pages.
-    </p>
-</div>
-<div class="whitespace"></div>
+{% include 'helpers/menu.html' %}
 
-<div class="block-wrapper">
-    <div class="col-md-3">
-        <h2>Skills</h2>
+<div id="profile_container">
+    <div class="whitespace"></div>
+    <div class="header">
+        <h1>Andrey Tvorozhkov</h1>
+
+        <p class="about-me">
+            I'm a web and data engeneer who's doing machine learning and interactive animated landing pages.
+        </p>
     </div>
+    <div class="whitespace"></div>
 
-    <div class="col-md-9">
-        <div class="skills-wrapper">
-            <div class="col-3">
-                <h4>Languages</h4>
-                <p>Python</p>
-                <p>JavaScript</p>
-                <p>C++</p>
-            </div>
-            <div class="col-3">
-                <h4>Webstack</h4>
-                <p>HTML5</p>
-                <p>CSS</p>
-                <p>JQuery</p>
-            </div>
+    <div class="block-wrapper">
+        <div class="col-md-3">
+            <h2>Skills</h2>
+        </div>
 
-            <div class="col-3">
-                <h4></h4>
-                <p>Bootstrap</p>
-                <p>GSAP</p>
-                <p>Snap.SVG</p>
+        <div class="col-md-9">
+            <div class="skills-wrapper">
+                <div class="col-3">
+                    <h4>Languages</h4>
+                    <p>Python</p>
+                    <p>JavaScript</p>
+                    <p>C++</p>
+                </div>
+                <div class="col-3">
+                    <h4>Webstack</h4>
+                    <p>HTML5</p>
+                    <p>CSS</p>
+                    <p>JQuery</p>
+                </div>
+
+                <div class="col-3">
+                    <h4></h4>
+                    <p>Bootstrap</p>
+                    <p>GSAP</p>
+                    <p>Snap.SVG</p>
+                </div>
+            </div>
+            <div class="skills-wrapper not-first">
+                <div class="col-3">
+                    <h4>Common</h4>
+                    <p>GNU/Linux</p>
+                    <p>Bash</p>
+                    <p>Git</p>
+                </div>
+                <div class="col-3">
+                    <h4>PM</h4>
+                    <p>Slack</p>
+                    <p>Jira</p>
+                    <p>Jenkins</p>
+                </div>
+
+                <div class="col-3">
+                    <h4>Database</h4>
+                    <p>PostgreSQL</p>
+                    <p>MongoDB</p>
+                    <p>SQLAlchemy</p>
+                </div>
             </div>
         </div>
-        <div class="skills-wrapper not-first">
-            <div class="col-3">
-                <h4>Common</h4>
-                <p>GNU/Linux</p>
-                <p>Bash</p>
-                <p>Git</p>
-            </div>
-            <div class="col-3">
-                <h4>PM</h4>
-                <p>Slack</p>
-                <p>Jira</p>
-                <p>Jenkins</p>
-            </div>
+    </div>
 
-            <div class="col-3">
-                <h4>Database</h4>
-                <p>PostgreSQL</p>
-                <p>MongoDB</p>
-                <p>SQLAlchemy</p>
-            </div>
+    <div class="whitespace"></div>
+
+    <div class="block-wrapper">
+        <div class="col-md-3">
+            <h2>Employment</h2>
+        </div>
+
+        <div class="col-md-9">
+            <h3><a href="http://goto.msk.ru/">GoTo</a></h3>
+            <p class="date">2015 - present</p>
+            <p class="description">IT educational project promoting industry connectedness. Creating interactive landing
+                pages.</p>
+        </div>
+
+        <div class="col-md-9 not-first">
+            <h3><a href="https://profilum.ru/">Profilum</a></h3>
+            <p class="date">2016 - present</p>
+            <p class="description">Technology for identifying and developing talents.</p>
+        </div>
+
+        <div class="col-md-9 not-first">
+            <h3><a href="https://e-contenta.com/en/">E-contenta</a></h3>
+            <p class="date">2016</p>
+            <p class="description">Personalized online marketing service. Developing recommendation systems for big
+                companies.</p>
+        </div>
+
+    </div>
+
+    <div class="whitespace"></div>
+
+    <div class="block-wrapper">
+        <div class="col-md-3">
+            <h2>Projects</h2>
+        </div>
+
+        <div class="col-md-9">
+            <h3><a href="https://github.com/xenx/voice2vec_0.01">Voice2Vec</a></h3>
+            <p class="date">2016 - present</p>
+            <p class="description">Trying predict the voice vector by spectrograms and some meta information (eg.
+                gender,
+                country, age). And do something like authorization, personalization of voice services with the help of
+                the
+                vector.</p>
+        </div>
+
+        <div class="col-md-9 not-first">
+            <h3>Validating novel Ig germline</h3>
+            <p class="date">2016</p>
+            <p class="description">Validating novel Ig germline segments using the whole genome sequence analysis. Novel
+                Ig
+                germline
+                was obtained by the Bioinformatic Institute.</p>
+        </div>
+
+        <div class="col-md-9 not-first">
+            <h3><a href="https://github.com/xenx/recommendation_system">TVRain recommendation system</a></h3>
+            <p class="date">2016</p>
+            <p class="description">The model that recommends you articles from TVRain. Based on the real data from the
+                portal obtained by
+                e-contenta.</p>
+        </div>
+
+    </div>
+
+    <div class="whitespace"></div>
+
+    <div class="block-wrapper">
+        <div class="col-md-3">
+            <h2>Recogition</h2>
+        </div>
+
+        <div class="col-md-9">
+            <h3><a href="http://goto.msk.ru/hackathon">1st place, GoToHack2 BigData</a></h3>
+            <p class="date">2016</p>
+            <p class="description">Our team created the Telegram bot which could predict the courses you need to study
+                for
+                getting a job on Facebook.
+                Based on skills you possess.</p>
+        </div>
+
+        <div class="col-md-9">
+            <h3><a href="http://tceh.com/medhack/">1st place, MedHack</a></h3>
+            <p class="date">2016</p>
+            <p class="description">Our team created the DiaFriend project. DiaFriend helps patients with diabetes.</p>
+        </div>
+
+        <div class="col-md-9 not-first">
+            <h3><a href="https://inclass.kaggle.com/c/taxi-hack-test-drive">8th place, HSE Data Night</a></h3>
+            <p class="date">2015</p>
+            <p class="description">Our team created the model which could predict the customer churn on Yandex.Taxi
+                data.</p>
         </div>
     </div>
+
+    <div class="whitespace"></div>
+
+    <div class="footer">
+        <p><a href="mailto:tovorog@tvorog.me">tvorog@tvorog.me</a></p>
+        <p class="keybase"><a href="https://keybase.io/xenx">keybase.io/xenx</a></p>
+    </div>
+
+    <div class="whitespace"></div>
 </div>
-
-<div class="whitespace"></div>
-
-<div class="block-wrapper">
-    <div class="col-md-3">
-        <h2>Employment</h2>
-    </div>
-
-    <div class="col-md-9">
-        <h3><a href="http://goto.msk.ru/">GoTo</a></h3>
-        <p class="date">2015 - present</p>
-        <p class="description">IT educational project promoting industry connectedness. Creating interactive landing
-            pages.</p>
-    </div>
-
-    <div class="col-md-9 not-first">
-        <h3><a href="https://profilum.ru/">Profilum</a></h3>
-        <p class="date">2016 - present</p>
-        <p class="description">Technology for identifying and developing talents.</p>
-    </div>
-
-    <div class="col-md-9 not-first">
-        <h3><a href="https://e-contenta.com/en/">E-contenta</a></h3>
-        <p class="date">2016</p>
-        <p class="description">Personalized online marketing service. Developing recommendation systems for big
-            companies.</p>
-    </div>
-
-</div>
-
-<div class="whitespace"></div>
-
-<div class="block-wrapper">
-    <div class="col-md-3">
-        <h2>Projects</h2>
-    </div>
-
-    <div class="col-md-9">
-        <h3><a href="https://github.com/xenx/voice2vec_0.01">Voice2Vec</a></h3>
-        <p class="date">2016 - present</p>
-        <p class="description">Trying predict the voice vector by spectrograms and some meta information (eg. gender,
-            country, age). And do something like authorization, personalization of voice services with the help of the
-            vector.</p>
-    </div>
-
-    <div class="col-md-9 not-first">
-        <h3>Validating novel Ig germline</h3>
-        <p class="date">2016</p>
-        <p class="description">Validating novel Ig germline segments using the whole genome sequence analysis. Novel Ig
-            germline
-            was obtained by the Bioinformatic Institute.</p>
-    </div>
-
-    <div class="col-md-9 not-first">
-        <h3><a href="https://github.com/xenx/recommendation_system">TVRain recommendation system</a></h3>
-        <p class="date">2016</p>
-        <p class="description">The model that recommends you articles from TVRain. Based on the real data from the
-            portal obtained by
-            e-contenta.</p>
-    </div>
-
-</div>
-
-<div class="whitespace"></div>
-
-<div class="block-wrapper">
-    <div class="col-md-3">
-        <h2>Recogition</h2>
-    </div>
-
-    <div class="col-md-9">
-        <h3><a href="http://goto.msk.ru/hackathon">1st place, GoToHack2 BigData</a></h3>
-        <p class="date">2016</p>
-        <p class="description">Our team created the Telegram bot which could predict the courses you need to study for
-            getting a job on Facebook.
-            Based on skills you possess.</p>
-    </div>
-
-    <div class="col-md-9">
-        <h3><a href="http://tceh.com/medhack/">1st place, MedHack</a></h3>
-        <p class="date">2016</p>
-        <p class="description">Our team created the DiaFriend project. DiaFriend helps patients with diabetes.</p>
-    </div>
-
-    <div class="col-md-9 not-first">
-        <h3><a href="https://inclass.kaggle.com/c/taxi-hack-test-drive">8th place, HSE Data Night</a></h3>
-        <p class="date">2015</p>
-        <p class="description">Our team created the model which could predict the customer churn on Yandex.Taxi
-            data.</p>
-    </div>
-</div>
-
-<div class="whitespace"></div>
-
-<div class="footer">
-    <p><a href="mailto:tovorog@tvorog.me">tvorog@tvorog.me</a></p>
-    <p class="keybase"><a href="https://keybase.io/xenx">keybase.io/xenx</a></p>
-</div>
-
-<div class="whitespace"></div>
-
 </body>
 </html>
