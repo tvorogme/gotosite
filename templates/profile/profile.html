@@ -31,9 +31,12 @@
 
     <div class="whitespace"></div>
     <div class="header">
-        <input type="text" id="name" value="{{ user.first_name }} {{ user.last_name }}">
 
-        <textarea id="about-me">{{ user.about }}</textarea>
+        <input type="text" {{ "readonly='readonly'" if request.path != '/profile' }} id="name"
+               value="{{ user.first_name }} {{ user.last_name }}">
+
+        <textarea {{ "readonly='readonly'" if request.path != '/profile' }} id="about-me">{{ user.about }}</textarea>
+
     </div>
     <div class="whitespace"></div>
 
@@ -132,23 +135,39 @@
                         <i class="fa fa-times fa-lg" aria-hidden="true"></i>
                     </a>
 
-                    <input name="id" type="hidden" value="{{ project.id }}">
-                    <input name="delete" type="hidden">
-
 
                     <h3 class="value"><a href="{{ project.url }}">{{ project.name }}</a></h3>
 
 
-                    <input placeholder="Название" class="project_name field" name="title" type="text"
-                           value="{{ project.name }}">
-                    <input placeholder="Ссылка" class="project_url field" name="title" type="text"
-                           value="{{ project.url }}">
-
                     <p class="date value">{{ project.date_started.year }}</p>
 
 
-                    <textarea placeholder="Описание" name="description" onclick="edit_project({{ project.id }})"
-                              class="description">{{ project.description }}</textarea>
+                    <br><br>
+                    <p class="team">
+                        Команда:
+
+                        {% for user in project.team %}
+                            <a href="/profile/{{ user.id }}">{{ user.first_name }}
+                                {{ user.last_name }}{{ "," if not loop.last }}</a>
+                        {% endfor %}
+                    </p>
+
+
+                    <div>
+                        <input name="id" type="hidden" value="{{ project.id }}">
+                        <input name="delete" type="hidden">
+                        <input placeholder="Название" class="project_name field" name="title" type="text"
+                               value="{{ project.name }}">
+                        <input placeholder="Ссылка" class="project_url field" name="title" type="text"
+                               value="{{ project.url }}">
+
+                    </div>
+
+
+                    <textarea {{ "readonly='readonly'" if request.path != '/profile' }} placeholder="Описание"
+                                                                                        name="description"
+                                                                                        onclick="edit_project({{ project.id }})"
+                                                                                        class="description">{{ project.description }}</textarea>
                 </form>
             </div>
         {% endfor %}
@@ -195,8 +214,11 @@
     <div class="whitespace"></div>
 </div>
 
-<!-- Работа с формами -->
-<script src="/js/profile/forms.js"></script>
+{%- if request.path == '/profile' %}
+    <!-- Работа с формами -->
+    <script src="/js/profile/forms.js"></script>
+{% endif %}
+
 
 </body>
 </html>

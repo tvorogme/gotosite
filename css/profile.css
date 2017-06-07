@@ -227,3 +227,8 @@ a {
 .description {
     overflow: hidden;
 }
+
+.team {
+    display: block;
+    float: none;
+}

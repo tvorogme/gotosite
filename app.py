@@ -107,12 +107,29 @@ def takepart_camp():
 
 @app.route('/profile')
 @login_required
-def get_profile():
+def get_my_profile():
     # Get user projects
     projects = Project.query.filter(Project.team.contains(current_user)).all()
 
     # Just render current user information
     return render_template('profile/profile.html', user=current_user, projects=projects)
+
+
+@app.route('/profile/<_id>')
+def get_profile(_id):
+    # If current user wants to view his profile
+    if int(_id) == int(current_user.id):
+        # Return editable profile
+        return redirect('/profile')
+
+    # Get user
+    now_user = User.query.filter_by(id=_id).first()
+
+    # Get user projects
+    projects = Project.query.filter(Project.team.contains(now_user)).all()
+
+    # Just render current user information
+    return render_template('profile/profile.html', user=now_user, projects=projects)
 
 
 @app.route('/profile/edit/', methods=['POST'])
@@ -217,11 +234,20 @@ def build_sample_db():
         admin_role = Role(name="админ")
 
         db.session.add(User(dict(
-            first_name='Admin',
-            email='admin',
+            first_name='Андрей',
+            last_name='Творожков',
+            email='admin@goto.msk.ru',
             password=encrypt_password('admin'),
             active=1,
             roles=[admin_role]
+        )))
+
+        db.session.add(User(dict(
+            first_name='Алёна',
+            last_name='Ильина',
+            email='alena@goto.msk.ru',
+            password=encrypt_password('admin'),
+            active=1
         )))
 
         db.session.commit()
