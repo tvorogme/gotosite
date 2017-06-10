@@ -18,6 +18,16 @@
     <!-- Большая не нужная библиотека -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
+    <!-- UI for autocomplite -->
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+
+    <!-- Стиль UI -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
     <!-- Автоматическая высота для textarea -->
     <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
 
@@ -91,7 +101,8 @@
 
 
         </div>
-
+    
+        {#        #FIXME: Displaing correctly only when editing profile#}
         <div id="socials">
             <div class="row">
                 <div class="col-md-2">
@@ -126,35 +137,24 @@
 
         <div class="col-md-9">
             <div class="skills-wrapper">
-                <div class="col-3">
-                    <p>Python</p>
-                </div>
 
-                <div class="col-3">
-                    <p>C++</p>
-                </div>
-
-                <div class="col-3">
-                    <p>HTML</p>
-                </div>
-
-                <div class="col-3">
-                    <p>Javascript</p>
-                </div>
+                {% for skill in user.skills %}
+                    <div class="col-3">
+                        <form action="/update_skill" method="post">
+                            <input type="hidden" value="{{ skill.id }}">
+                            <input placeholder="Скилл" id="skill_{{ skill.id }}" class="after_name skill"
+                                   value="{{ skill.skill_name }}" type="text">
+                        </form>
+                    </div>
+                {% endfor %}
 
 
-                <div class="col-3">
-                    <p>Bootstrap</p>
-                </div>
 
-
-                <div id="skill_wrapper" class="col-3">
-                    <input class="after_name" placeholder="Скилл" type="text" id="skill">
-                </div>
-
-                <div class="col-3">
-                    <p onclick="$('#skill_wrapper').toggle();" id="add">Добавить</p>
-                </div>
+                {% if request.path == '/profile' %}
+                    <div id="add_wrapper" class="col-3">
+                        <p onclick="add_input_field()" id="add">Добавить</p>
+                    </div>
+                {% endif %}
 
 
             </div>

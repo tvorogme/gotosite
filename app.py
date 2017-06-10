@@ -6,9 +6,9 @@ from flask_security import Security, SQLAlchemyUserDatastore
 from flask_security.utils import encrypt_password
 from flask_wtf import Form
 from wtforms.ext.sqlalchemy.orm import model_form
-from helpers import get_need_fields_for_application, get_fields_validators
+from helpers import get_need_fields_for_application, get_fields_validators, crossdomain
 from main import app, db, admin
-from models import Role, User, GoToAdminView, Event, Application, Event_type, Project
+from models import Role, User, GoToAdminView, Event, Application, Event_type, Project, Skill
 from config import INIT_DB, DEBUG, PORT, HOST, SOCIALS
 from json import dumps
 from datetime import datetime
@@ -184,10 +184,23 @@ def edit_profile():
 # HELPERS FUNCS
 #
 
+@app.route("/get_needed_skills")
+@crossdomain(origin='*')
+def get_needed_skills():
+    # Get skill from user
+    skill_from_user = request.args['skill']
+
+    # Search similar in db
+    needed_skills = Skill.query.filter(Skill.skill_name.contains(skill_from_user)).limit(10).all()
+
+    # Dump to json
+    return dumps([skill.skill_name for skill in needed_skills])
+
+
 @app.before_request
 def check_for_admin(*args, **kw):
     # If user want to get admin page
-    if request.path == '/admin/':
+    if '/admin/' in request.path and request.path not in ['/admin/login', '/admin/logout']:
         # And he has no rights
         if not current_user.is_active or not current_user.is_authenticated or not current_user.has_role('админ'):
             # 404
@@ -223,6 +236,7 @@ def send_css(path):
 admin.add_view(GoToAdminView(User, db.session, name="Пользователи"))
 admin.add_view(GoToAdminView(Event, db.session, name="Мероприятия"))
 admin.add_view(GoToAdminView(Project, db.session, name="Проекты"))
+admin.add_view(GoToAdminView(Skill, db.session, name="Скиллы"))
 
 app_dir = os.path.realpath(os.path.dirname(__file__))
 database_path = os.path.join(app_dir, app.config['DATABASE_FILE'])

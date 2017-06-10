@@ -60,44 +60,62 @@ roles_users = db.Table(
 )
 
 
+class Skill(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    skill_name = db.Column(db.String(60))
+
+    def __str__(self):
+        return self.skill_name
+
+
+user_skills = db.Table(
+    'user_skills',
+    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+    db.Column('skill_id', db.Integer(), db.ForeignKey('skill.id'))
+)
+
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
+
+    # Basics
     first_name = db.Column(db.String(40))
     last_name = db.Column(db.String(40))
+    surname = db.Column(db.String(40))
     email = db.Column(db.String(40), unique=True)
-    password = db.Column(db.String(255))
+
+    # Special for lectors
+    organization = db.Column(db.String(40))
+    position = db.String(70)
+
+    # Special for participant
+    city = db.Column(db.String(40))
+    birthday = db.Column(db.Date())
+    phone_number = db.Column(db.String(12))
+    parent_phone_number = db.Column(db.String(12))
+    health_issues = db.Column(db.Text())
+    education_name = db.Column(db.String(40))
+    education_years = db.Column(db.Integer())
+    skills = db.relationship('Skill', secondary=user_skills,
+                             backref=db.backref('users', lazy='dynamic'))
+
+    # Specific
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
-
-    surname = db.Column(db.String(40))
-    organization = db.Column(db.String(40))
+    password = db.Column(db.String(255))
     email_verified = db.Column(db.Boolean())
 
-    city = db.Column(db.String(40))
-
-    birthday = db.Column(db.Date())
-    phone_number = db.Column(db.String(12))
-    parent_phone_number = db.Column(db.String(12))
-
-    health_issues = db.Column(db.Text())
-
-    programming_languages = db.Column(db.Text())
-    experience = db.Column(db.Text())
-
-    education_name = db.Column(db.String(40))
-    education_years = db.Column(db.Integer())
+    # Subscribe
     subscribed_to_email = db.Column(db.Boolean())
-    position = db.String(70)
 
     def __init__(self, iterator: dict):
         for field_name in iterator:
             setattr(self, field_name, iterator[field_name])
 
     def __str__(self):
-        return self.email
-
+        return "%s %s" % (self.first_name, self.last_name)
 
 
 project_team = db.Table(
