@@ -5,14 +5,17 @@ function save() {
     var name_value = $('#name').val().split(" ");
 
     if (name_value.length !== 2) {
-        alert('Не правильно указана имя и фамилия');
-        return false
+        if (name_value.length !== 3) {
+            alert('Не правильно указана имя и фамилия');
+            return false
+        }
     }
 
 
     // Values
     var first_name = name_value[0];
     var second_name = name_value[1];
+    var surname = name_value[2];
     var email = $('#email').val();
     var phone_number = $('#phone').val();
     var parent_phone_number = $('#parent_phone').val();
@@ -21,18 +24,13 @@ function save() {
     var request_data = {
         'first_name': first_name,
         'last_name': second_name,
+        'surname': surname,
         'email': email,
         'phone_number': phone_number,
         'parent_phone_number': parent_phone_number
     };
 
 
-    // password = db.Column(db.String(255))
-    // active = db.Column(db.Boolean())
-    // confirmed_at = db.Column(db.DateTime())
-    // roles = db.relationship('Role', secondary = roles_users,
-    //     backref = db.backref('users', lazy = 'dynamic'))
-    //
     // surname = db.Column(db.String(40))
     // organization = db.Column(db.String(40))
     // email_verified = db.Column(db.Boolean())

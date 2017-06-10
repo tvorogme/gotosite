@@ -34,9 +34,9 @@
         <div class="col-md-3"><img class="profile-img"
                                    src="https://goto.msk.ru/media/k2/items/cache/274936c4b649c88ffad7944bfc7a744a_L.jpg">
         </div>
-        <div class="col-md-9"><input placeholder="Имя Фамилия"
+        <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ "readonly='readonly'" if request.path != '/profile' }} id="name"
-                                     value="{{ user.first_name }} {{ user.last_name }}">
+                                     value="{{ user.last_name if user.last_name != None else ""}} {{ user.first_name }} {{ user.surname if user.surname != None else ""}}">
 
 
             <p class="label">Email: <input placeholder="E-mail" class="after_name"
@@ -60,20 +60,17 @@
 
 
 
-                <p class="label">Телефон родителей: <input placeholder="Телефон родителей" class=" after_name"
-                                                           type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
-                                                           id="parent_phone"
-                                                           value="{{ user.parent_phone_number if user.parent_phone_number != None }}">
-                </p>
+            <p class="label">Телефон родителей: <input placeholder="Телефон родителей" class=" after_name"
+                                                       type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
+                                                       id="parent_phone"
+                                                       value="{{ user.parent_phone_number if user.parent_phone_number != None }}">
+            </p>
 
 
-
-                <p class="label"> День рождения: <input placeholder="День рождения" class=" after_name"
-                                                        type="date" {{ "readonly='readonly'" if request.path != '/profile' }}
-                                                        id="birthday"
-                                                        value="{{ user.birthday if user.birthday != None }}"></p>
-
-
+            <p class="label"> День рождения: <input placeholder="День рождения" class=" after_name"
+                                                    type="date" {{ "readonly='readonly'" if request.path != '/profile' }}
+                                                    id="birthday"
+                                                    value="{{ user.birthday if user.birthday != None }}"></p>
 
 
         </div>
