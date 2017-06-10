@@ -88,10 +88,6 @@ input[type="date"] {
     width: 133px;
 }
 
-#skill_wrapper {
-    display: none;
-}
-
 h2 {
     color: rgb(67, 180, 152);
     font-weight: 400;
