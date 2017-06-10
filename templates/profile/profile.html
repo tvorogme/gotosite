@@ -36,7 +36,7 @@
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ "readonly='readonly'" if request.path != '/profile' }} id="name"
-                                     value="{{ user.last_name if user.last_name != None else ""}} {{ user.first_name }} {{ user.surname if user.surname != None else ""}}">
+                                     value="{{ user.last_name if user.last_name != None }} {{ user.first_name if user.last_name != None }} {{ user.surname if user.surname != None }}">
 
 
             <p class="label">Email: <input placeholder="E-mail" class="after_name"
@@ -47,7 +47,6 @@
 
 
 
-
             {% if request.path != '/profile' and user.phone_number != None or request.path == '/profile' %}
                 <p class="label">Телефон: <input placeholder="Телефон" class="after_name"
                                                  type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
@@ -55,6 +54,11 @@
                                                  value="{{ user.phone_number if user.phone_number != None }}">
                 </p>
             {% endif %}
+
+
+
+
+
 
 
 

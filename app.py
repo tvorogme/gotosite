@@ -11,6 +11,7 @@ from main import app, db, admin
 from models import Role, User, GoToAdminView, Event, Application, Event_type, Project
 from config import INIT_DB, DEBUG, PORT, HOST, SOCIALS
 from json import dumps
+from datetime import datetime
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
@@ -144,9 +145,6 @@ def edit_profile():
     # Get received fields
     fields = data.keys()
 
-    for key in fields:
-        print("$" * 100, "\n", key, '\n', "$" * 100)
-
     # Get validators for all fields
     validators = get_fields_validators(fields)
 
@@ -163,7 +161,14 @@ def edit_profile():
 
         # Save data
         for key in data.keys():
-            setattr(user, key, data[key])
+            value = data[key]
+
+            # We need to wrap birthday
+            if key == 'birthday':
+                # Into datetime object
+                value = datetime.strptime(value, '%Y-%m-%d')
+
+            setattr(user, key, value)
 
         # Save it
         db.session.commit()

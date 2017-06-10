@@ -77,7 +77,7 @@ class User(db.Model, UserMixin):
 
     city = db.Column(db.String(40))
 
-    birthday = db.Column(db.DateTime())
+    birthday = db.Column(db.Date())
     phone_number = db.Column(db.String(12))
     parent_phone_number = db.Column(db.String(12))
 

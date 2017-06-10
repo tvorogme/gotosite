@@ -13,12 +13,13 @@ function save() {
 
 
     // Values
-    var first_name = name_value[0];
-    var second_name = name_value[1];
+    var first_name = name_value[1];
+    var second_name = name_value[0];
     var surname = name_value[2];
     var email = $('#email').val();
     var phone_number = $('#phone').val();
     var parent_phone_number = $('#parent_phone').val();
+    var birthday = $('#birthday').val();
 
     // Dict for request
     var request_data = {
@@ -27,27 +28,9 @@ function save() {
         'surname': surname,
         'email': email,
         'phone_number': phone_number,
-        'parent_phone_number': parent_phone_number
+        'parent_phone_number': parent_phone_number,
+        'birthday': birthday
     };
-
-
-    // surname = db.Column(db.String(40))
-    // organization = db.Column(db.String(40))
-    // email_verified = db.Column(db.Boolean())
-    //
-    // city = db.Column(db.String(40))
-    //
-    // birthday = db.Column(db.String(10))
-    // health_issues = db.Column(db.Text())
-    //
-    // programming_languages = db.Column(db.Text())
-    // experience = db.Column(db.Text())
-    //
-    // education_name = db.Column(db.String(40))
-    // education_years = db.Column(db.Integer())
-    // subscribed_to_email = db.Column(db.Boolean())
-    // position = db.String(70)
-
 
     $.ajax({
         type: "POST",
