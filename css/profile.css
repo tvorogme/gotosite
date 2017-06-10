@@ -61,12 +61,12 @@ table {
 }
 
 input[type="text"],
-input[type="date"]{
+input[type="date"] {
     text-align: left;
     border: none;
 }
 
-.label{
+.label {
     font-weight: 500;
 }
 
@@ -83,6 +83,15 @@ input[type="date"]{
     color: #080808;
 }
 
+#skill {
+    padding-top: 0 !important;
+    width: 133px;
+}
+
+#skill_wrapper {
+    display: none;
+}
+
 h2 {
     color: rgb(67, 180, 152);
     font-weight: 400;
@@ -90,7 +99,8 @@ h2 {
 }
 
 #socials {
-    width: 100%;
+    float: left;
+    height: 100%;
     padding-top: 10px;
 }
 
@@ -162,6 +172,17 @@ h3 {
 .col-3 {
     width: 133px;
     float: left;
+    padding-bottom: 20px;
+}
+
+#add {
+    font-weight: 400;
+    opacity: 0.1;
+}
+
+#add:hover {
+    opacity: 1;
+    cursor: pointer;
 }
 
 .col-3 p {
@@ -210,10 +231,6 @@ h4 {
 a {
     text-decoration: none;
     color: black;
-}
-
-.skills-wrapper {
-    overflow: auto;
 }
 
 .footer {

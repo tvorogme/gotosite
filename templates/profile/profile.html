@@ -47,6 +47,7 @@
 
 
 
+
             {% if request.path != '/profile' and user.phone_number != None or request.path == '/profile' %}
                 <p class="label">Телефон: <input placeholder="Телефон" class="after_name"
                                                  type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
@@ -57,49 +58,61 @@
 
 
 
+            {% if request.path != '/profile' and user.parent_phone_number != None or request.path == '/profile' %}
+                <p class="label">Телефон родителей: <input placeholder="Телефон родителей" class=" after_name"
+                                                           type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
+                                                           id="parent_phone"
+                                                           value="{{ user.parent_phone_number if user.parent_phone_number != None }}">
+                </p>
+            {% endif %}
 
 
 
 
+            {% if request.path != '/profile' and user.city != None or request.path == '/profile' %}
+
+                <p class="label"> Город проживания: <input placeholder="Город проживания" class="after_name"
+                                                           type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
+                                                           id="city"
+                                                           value="{{ user.city if user.city != None }}"></p>
+
+            {% endif %}
 
 
 
-            <p class="label">Телефон родителей: <input placeholder="Телефон родителей" class=" after_name"
-                                                       type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
-                                                       id="parent_phone"
-                                                       value="{{ user.parent_phone_number if user.parent_phone_number != None }}">
-            </p>
 
+            {% if request.path != '/profile' and user.birthday != None or request.path == '/profile' %}
 
-            <p class="label"> День рождения: <input placeholder="День рождения" class=" after_name"
-                                                    type="date" {{ "readonly='readonly'" if request.path != '/profile' }}
-                                                    id="birthday"
-                                                    value="{{ user.birthday if user.birthday != None }}"></p>
+                <p class="label"> День рождения: <input placeholder="День рождения" class="after_name"
+                                                        type="date" {{ "readonly='readonly'" if request.path != '/profile' }}
+                                                        id="birthday"
+                                                        value="{{ user.birthday if user.birthday != None }}"></p>
+            {% endif %}
 
 
         </div>
-    </div>
 
-    <div id="socials">
-        <div class="row">
-            <div class="col-md-2">
-                <i class="fa fa-vk fa-lg" aria-hidden="true"></i>
-            </div>
+        <div id="socials">
+            <div class="row">
+                <div class="col-md-2">
+                    <i class="fa fa-vk fa-lg" aria-hidden="true"></i>
+                </div>
 
-            <div class="col-md-2">
-                <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i>
-            </div>
+                <div class="col-md-2">
+                    <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i>
+                </div>
 
-            <div class="col-md-2">
-                <i class="fa fa-github fa-lg" aria-hidden="true"></i>
-            </div>
+                <div class="col-md-2">
+                    <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+                </div>
 
-            <div class="col-md-2">
-                <i class="fa fa-bitbucket fa-lg" aria-hidden="true"></i>
-            </div>
+                <div class="col-md-2">
+                    <i class="fa fa-bitbucket fa-lg" aria-hidden="true"></i>
+                </div>
 
-            <div class="col-md-2">
-                <i class="fa fa-gitlab fa-lg" aria-hidden="true"></i>
+                <div class="col-md-2">
+                    <i class="fa fa-gitlab fa-lg" aria-hidden="true"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -115,20 +128,35 @@
             <div class="skills-wrapper">
                 <div class="col-3">
                     <p>Python</p>
-                    <p>JavaScript</p>
-                    <p>C++</p>
-                </div>
-                <div class="col-3">
-                    <p>HTML5</p>
-                    <p>CSS</p>
-                    <p>JQuery</p>
                 </div>
 
                 <div class="col-3">
-                    <p>Bootstrap</p>
-                    <p>GSAP</p>
-                    <p>Snap.SVG</p>
+                    <p>C++</p>
                 </div>
+
+                <div class="col-3">
+                    <p>HTML</p>
+                </div>
+
+                <div class="col-3">
+                    <p>Javascript</p>
+                </div>
+
+
+                <div class="col-3">
+                    <p>Bootstrap</p>
+                </div>
+
+
+                <div id="skill_wrapper" class="col-3">
+                    <input class="after_name" placeholder="Скилл" type="text" id="skill">
+                </div>
+
+                <div class="col-3">
+                    <p onclick="$('#skill_wrapper').toggle();" id="add">Добавить</p>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -207,6 +235,9 @@
 {%- if request.path == '/profile' %}
     <!-- Работа с формами -->
     <script src="/js/profile/forms.js"></script>
+
+    <!-- Автодополнение скиллов, препов и кураторов -->
+    <script src="/js/profile/autocomplite.js"></script>
 {% endif %}
 
 

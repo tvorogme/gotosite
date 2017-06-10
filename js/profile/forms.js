@@ -20,6 +20,7 @@ function save() {
     var phone_number = $('#phone').val();
     var parent_phone_number = $('#parent_phone').val();
     var birthday = $('#birthday').val();
+    var city = $('#city').val();
 
     // Dict for request
     var request_data = {
@@ -29,7 +30,8 @@ function save() {
         'email': email,
         'phone_number': phone_number,
         'parent_phone_number': parent_phone_number,
-        'birthday': birthday
+        'birthday': birthday,
+        'city': city
     };
 
     $.ajax({
