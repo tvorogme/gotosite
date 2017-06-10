@@ -38,26 +38,71 @@
                                      type="text" {{ "readonly='readonly'" if request.path != '/profile' }} id="name"
                                      value="{{ user.first_name }} {{ user.last_name }}">
 
-            <input placeholder="E-mail" class="after_name"
-                   type="text" {{ "readonly='readonly'" if request.path != '/profile' }} id="email"
-                   value="{{ user.email }}">
 
-            <input placeholder="Телефон" class="after_name"
-                   type="text" {{ "readonly='readonly'" if request.path != '/profile' }} id="phone"
-                   value="{{ user.phone_number if user.phone_number != None }}">
+            <p class="label">Email: <input placeholder="E-mail" class="after_name"
+                                           type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
+                                           id="email"
+                                           value="{{ user.email }}">
+            </p>
 
 
-            {% if current_user.has_role('участник') %}
-                <input placeholder="Телефон родителей" class=" after_name"
-                       type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
-                       id="parent_phone"
-                       value="{{ user.parent_phone_number if user.parent_phone_number != None }}">
+
+
+            {% if request.path != '/profile' and user.phone_number != None or request.path == '/profile' %}
+                <p class="label">Телефон: <input placeholder="Телефон" class="after_name"
+                                                 type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
+                                                 id="phone"
+                                                 value="{{ user.phone_number if user.phone_number != None }}">
+                </p>
             {% endif %}
 
 
-        </div>
 
+
+
+                <p class="label">Телефон родителей: <input placeholder="Телефон родителей" class=" after_name"
+                                                           type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
+                                                           id="parent_phone"
+                                                           value="{{ user.parent_phone_number if user.parent_phone_number != None }}">
+                </p>
+
+
+
+                <p class="label"> День рождения: <input placeholder="День рождения" class=" after_name"
+                                                        type="date" {{ "readonly='readonly'" if request.path != '/profile' }}
+                                                        id="birthday"
+                                                        value="{{ user.birthday if user.birthday != None }}"></p>
+
+
+
+
+        </div>
     </div>
+
+    <div id="socials">
+        <div class="row">
+            <div class="col-md-2">
+                <i class="fa fa-vk fa-lg" aria-hidden="true"></i>
+            </div>
+
+            <div class="col-md-2">
+                <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i>
+            </div>
+
+            <div class="col-md-2">
+                <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+            </div>
+
+            <div class="col-md-2">
+                <i class="fa fa-bitbucket fa-lg" aria-hidden="true"></i>
+            </div>
+
+            <div class="col-md-2">
+                <i class="fa fa-gitlab fa-lg" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    <div class="whitespace"></div>
     <div class="whitespace"></div>
 
     <div class="block-wrapper">

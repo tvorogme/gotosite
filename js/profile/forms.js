@@ -13,17 +13,20 @@ function save() {
     // Values
     var first_name = name_value[0];
     var second_name = name_value[1];
-    var about = $('#about-me').val();
+    var email = $('#email').val();
+    var phone_number = $('#phone').val();
+    var parent_phone_number = $('#parent_phone').val();
 
     // Dict for request
     var request_data = {
         'first_name': first_name,
         'last_name': second_name,
-        'about': about
+        'email': email,
+        'phone_number': phone_number,
+        'parent_phone_number': parent_phone_number
     };
 
 
-    // email = db.Column(db.String(40), unique = True)
     // password = db.Column(db.String(255))
     // active = db.Column(db.Boolean())
     // confirmed_at = db.Column(db.DateTime())
@@ -31,16 +34,12 @@ function save() {
     //     backref = db.backref('users', lazy = 'dynamic'))
     //
     // surname = db.Column(db.String(40))
-    // about = db.Column(db.Text())
     // organization = db.Column(db.String(40))
     // email_verified = db.Column(db.Boolean())
     //
     // city = db.Column(db.String(40))
     //
     // birthday = db.Column(db.String(10))
-    // phone_number = db.Column(db.String(12))
-    // parent_phone_number = db.Column(db.String(12))
-    //
     // health_issues = db.Column(db.Text())
     //
     // programming_languages = db.Column(db.Text())

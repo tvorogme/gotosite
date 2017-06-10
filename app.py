@@ -144,6 +144,9 @@ def edit_profile():
     # Get received fields
     fields = data.keys()
 
+    for key in fields:
+        print("$" * 100, "\n", key, '\n', "$" * 100)
+
     # Get validators for all fields
     validators = get_fields_validators(fields)
 
