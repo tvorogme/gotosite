@@ -12,7 +12,6 @@ validators_dictionary = {
     "phone_number": {'validators': [Regexp("^\+{1}[7]{1}[0-9]{10}$")], "label": user_labels["phone_number"]},
     "education_name": {'validators': [Length(1, 40)], "label": user_labels["education_name"]},
     "programming_languages": {'validators': [Length(1, 255)], "label": user_labels["programming_languages"]},
-    "about": {'validators': [Length(1, 40)], "label": user_labels["about"]},
     "birthday": {'validators': [Length(1, 255)], "label": user_labels["birthday"]},
     "health_issues": {'validators': [Length(1, 255)], "label": user_labels["health_issues"]},
     "parent_phone_number": {'validators': [Regexp("^\+{1}[7]{1}[0-9]{10}$")],

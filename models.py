@@ -72,7 +72,6 @@ class User(db.Model, UserMixin):
                             backref=db.backref('users', lazy='dynamic'))
 
     surname = db.Column(db.String(40))
-    about = db.Column(db.Text())
     organization = db.Column(db.String(40))
     email_verified = db.Column(db.Boolean())
 
@@ -98,6 +97,7 @@ class User(db.Model, UserMixin):
 
     def __str__(self):
         return self.email
+
 
 
 project_team = db.Table(
