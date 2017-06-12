@@ -168,6 +168,29 @@ def edit_profile():
                 # Into datetime object
                 value = datetime.strptime(value, '%Y-%m-%d')
 
+            if key == 'skills':
+                # Here we store skill elements
+                answer = []
+
+                print(value.split(", "))
+                
+                for skill_name in value.split(", ")[:-1]:
+
+                    # Find skill in database
+                    el = Skill.query.filter(Skill.skill_name == skill_name).first()
+
+                    # If it existed
+                    if el:
+                        # Save it
+                        answer.append(el)
+
+                    else:
+                        # Else create the skill
+                        answer.append(Skill(skill_name=skill_name))
+
+                # Alias answer to value
+                value = answer
+
             setattr(user, key, value)
 
         # Save it

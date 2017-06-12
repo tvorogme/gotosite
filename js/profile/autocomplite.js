@@ -56,7 +56,6 @@ var current_input_field_number = 0;
 
 function add_input_field() {
     var html = function (_id) {
-        // FIXME: Find batter way to do it
         return '<div id="skill_wrapper" class="col-3"><input class="after_name skill" id="new_skill_' + _id + '" placeholder="Скилл" type="text"></div>'
     };
 
@@ -64,7 +63,8 @@ function add_input_field() {
 
     $("#add_wrapper").before(html(current_input_field_number));
     update_autocomplete("#new_skill_" + current_input_field_number);
-    console.log(html(current_input_field_number));
+
+    $("#new_skill_" + current_input_field_number).focus();
 }
 
 $(update_autocomplete());

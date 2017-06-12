@@ -20,7 +20,8 @@ validators_dictionary = {
     "parent_phone_number": {'validators': [Regexp("^\+{1}[7]{1}[0-9]{10}$")],
                             "label": user_labels["parent_phone_number"]},
     "experience": {'validators': [Length(1, 255)], "label": user_labels["experience"]},
-    "education_years": {'validators': [NumberRange(1999, 2100)], "label": user_labels["education_years"]}
+    "education_years": {'validators': [NumberRange(1999, 2100)], "label": user_labels["education_years"]},
+    "skills": {'validators': []}
 }
 
 

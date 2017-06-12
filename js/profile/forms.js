@@ -22,6 +22,16 @@ function save() {
     var birthday = $('#birthday').val();
     var city = $('#city').val();
 
+
+    // Skills
+
+    var all_skills = [];
+
+    $('.skill').each(function (el) {
+        all_skills.push([$(this).attr('skill_id'), $(this).val()]);
+    });
+
+
     // Dict for request
     var request_data = {
         'first_name': first_name,
@@ -31,7 +41,8 @@ function save() {
         'phone_number': phone_number,
         'parent_phone_number': parent_phone_number,
         'birthday': birthday,
-        'city': city
+        'city': city,
+        'skills': ", ".join(all_skills)
     };
 
     $.ajax({

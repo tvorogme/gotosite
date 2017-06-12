@@ -140,11 +140,8 @@
 
                 {% for skill in user.skills %}
                     <div class="col-3">
-                        <form action="/update_skill" method="post">
-                            <input type="hidden" value="{{ skill.id }}">
-                            <input placeholder="Скилл" id="skill_{{ skill.id }}" class="after_name skill"
-                                   value="{{ skill.skill_name }}" type="text">
-                        </form>
+                        <input skill_id="{{ skill.id }}" placeholder="Скилл" id="skill_{{ skill.id }}" class="after_name skill"
+                               value="{{ skill.skill_name }}" type="text">
                     </div>
                 {% endfor %}
 
