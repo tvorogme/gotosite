@@ -1,0 +1,19 @@
+html, body{
+   overflow-x: hidden;
+}
+
+
+.preps img {
+    width: 300px;
+    height: 300px;
+}
+
+#viewport {
+    height: 100vh;
+    width: 100vw;
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}

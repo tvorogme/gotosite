@@ -103,6 +103,15 @@ def takepart_camp():
 
 
 #
+# About us funcs
+#
+
+@app.route('/about_us')
+def about_us():
+    return render_template("about/index.html")
+
+
+#
 # Profile funcs
 #
 

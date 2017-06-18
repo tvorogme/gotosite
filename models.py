@@ -93,9 +93,11 @@ class User(db.Model, UserMixin):
     birthday = db.Column(db.Date())
     phone_number = db.Column(db.String(12))
     parent_phone_number = db.Column(db.String(12))
-    health_issues = db.Column(db.Text())
+
+    # Fixme: multiple
     education_name = db.Column(db.String(40))
     education_years = db.Column(db.Integer())
+
     skills = db.relationship('Skill', secondary=user_skills,
                              backref=db.backref('users', lazy='dynamic'))
 
