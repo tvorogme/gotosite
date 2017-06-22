@@ -9,37 +9,6 @@ Physics(function (world) {
     var viewWidth = $(document).width();
     var viewHeight = $(document).height();
 
-    // renderer = Physics.renderer('pixi', {
-    //     el: 'myworld',
-    //     width: viewWidth,
-    //     height: viewHeight,
-    //     meta: false
-    //     // styles: {
-    //     //     'circle': {
-    //     //         strokeStyle: 'rgb(67, 180, 152)',
-    //     //         lineWidth: 1,
-    //     //         fillStyle: 'rgb(67, 180, 152)',
-    //     //         angleIndicator: false
-    //     //     },
-    //     //     'convex-polygon': {
-    //     //         strokeStyle: 'rgb(255, 140, 102)',
-    //     //         lineWidth: 1,
-    //     //         fillStyle: 'rgb(255, 140, 102)',
-    //     //         angleIndicator: false
-    //     //     }
-    //     // }
-    // });
-
-    var renderer = Physics.renderer('pixi', {
-        el: 'myworld',
-        width: viewWidth,
-        height: viewHeight,
-        meta: false
-    });
-
-
-    world.add(renderer);
-
     world.subscribe('step', function () {
         world.render();
     });
@@ -53,54 +22,94 @@ Physics(function (world) {
     }));
 
     var x_pos = [viewWidth / 2, viewWidth / 5, viewWidth];
+
+    var texts = ['20 школ', '3000 участников', '2 хакатона', '100 городов', '600 экспертов'];
+    var k = 0;
     for (var i = 0; i < 3; i++) {
 
-        var a = viewWidth / getRandomInt(4, 10);
-        world.add(Physics.body('convex-polygon', {
+        var a = viewWidth / getRandomInt(5, 7);
+        var body = Physics.body('convex-polygon', {
             x: x_pos[i],
             y: -100,
             vx: 0,
             vy: 0,
-            angle: 30 * Math.random(),
-            vertices: [{x: 0, y: 0}, {x: a, y: 0}, {x: a, y: a}, {x: 0, y: a}]
-        }));
+            angle: Math.random(),
+            vertices: [{x: 0, y: 0}, {x: a, y: 0}, {x: a, y: a}, {x: 0, y: a}],
+            text: {
+                text: texts[k], style: {
+                    fontFamily: 'Ubuntu',
+                    fontSize: 13,
+                    fill: '#ffffff',
+                    strokeThickness: 0,
+                    wordWrap: true,
+                    wordWrapWidth: j,
+                    align: 'center'
+                }
+            }
+        });
 
+        world.add(body);
 
+        k += 1;
+
+        var j = viewWidth / getRandomInt(6, 12);
         var myWheel = Physics.body('circle', {
             x: x_pos[i],
             y: -100,
-            radius: viewWidth / 10 * Math.random(),
-            mass: 0.1
+            radius: j,
+            text: {
+                text: texts[k], style: {
+                    fontFamily: 'Ubuntu',
+                    fontSize: 13,
+                    fill: '#ffffff',
+                    strokeThickness: 0,
+                    wordWrap: true,
+                    wordWrapWidth: j,
+                    align: 'center'
+                }
+            }
         });
+
         world.add(myWheel);
 
 
     }
 
-    for (i = 0; i < 15; i++) {
+    for (i = 0; i < 10; i++) {
 
         a = viewWidth / 18 * Math.random();
-        world.add(Physics.body('convex-polygon', {
+
+        var body = Physics.body('convex-polygon', {
             x: x_pos.random(),
             y: -100,
             vx: 0,
             vy: 0,
-            angle: 30 * Math.random(),
-            cof: 0,
-            vertices: [{x: 0, y: 0}, {x: a, y: 0}, {x: a, y: a}, {x: 0, y: a}]
-        }));
+            angle: Math.random(),
+            vertices: [{x: 0, y: 0}, {x: a, y: 0}, {x: a, y: a}, {x: 0, y: a}],
+        });
+
+
+        world.add(body);
 
 
         myWheel = Physics.body('circle', {
             x: x_pos.random(),
             y: -100,
             radius: viewWidth / 30 * Math.random(),
-            text: 'lol'
         });
 
         world.add(myWheel);
     }
 
+    var renderer = Physics.renderer('pixi', {
+        el: 'myworld',
+        width: viewWidth,
+        height: viewHeight,
+        meta: true
+    });
+
+
+    world.add(renderer);
     world.add(Physics.behavior('body-collision-detection'));
     world.add(Physics.behavior('sweep-prune'));
 

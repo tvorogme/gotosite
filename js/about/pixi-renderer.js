@@ -141,20 +141,21 @@ Physics.renderer('pixi', function (proto) {
          * @param  {Number} x      The x coord
          * @param  {Number} y      The y coord
          * @param  {Number} r      The circle radius
-         * @param  {Object|String} styles The styles configuration
+         * @param  {Object|String} style The styles configuration
+         * @param  {Object} text The text to render on object
          * @return {PIXI.Graphics} A graphic object representing a stage
          */
-        createCircle: function (x, y, r, style) {
+        createCircle: function (x, y, r, style, text) {
 
             var graphics = new PIXI.Graphics();
             graphics.beginFill(colors.random());
 
+            if (text) {
+                var richText = new PIXI.Text(text.text, text.style);
+                richText.pivot.x = -x + richText.width / 2;
+                richText.pivot.y = -y + richText.height / 2;
+                graphics.addChild(richText);
 
-            if ('text' in style) {
-                graphics.fillStyle = "0x000000";
-                graphics.strokeStyle = "0x000000";
-                graphics.font = "italic 30pt Arial";
-                graphics.fillText("Fill text", (x / 2) + (r / 2), (y / 2) + (r / 2));
             }
 
             graphics.lineStyle(style.lineWidth, style.strokeStyle);
@@ -168,10 +169,10 @@ Physics.renderer('pixi', function (proto) {
          * Creates a polygon for PIXI
          * @param  {Array} verts  Array of vectorish vertices
          * @param  {Object|String} styles The styles configuration
-         * @param  {Canvas2DContext} ctx    (optional) The canvas context
+         * @param  {Object} text The text to render on object
          * @return {PIXI.Graphics} a graphic object representing a polygon
          */
-        createPolygon: function (verts, styles) {
+        createPolygon: function (verts, styles, text) {
 
             var vert = verts[0]
                 , x = vert.x === undefined ? vert.get(0) : vert.x
@@ -188,6 +189,14 @@ Physics.renderer('pixi', function (proto) {
             graphics.lineStyle(styles.lineWidth, styles.strokeStyle);
 
             graphics.moveTo(x, y);
+
+            if (text) {
+                var a = verts[3].get(0);
+                var richText = new PIXI.Text(text.text, text.style);
+                richText.pivot.x = richText.pivot.x + richText.width / 2;
+                richText.pivot.y = richText.pivot.y + richText.height / 2;
+                graphics.addChild(richText);
+            }
 
             for (var i = 1; i < l; ++i) {
 
@@ -237,7 +246,6 @@ Physics.renderer('pixi', function (proto) {
          * @return {PIXI.DisplayObject}    An image cache of the geometry
          */
         createView: function (geometry) {
-
             var view = null
                 , aabb = geometry.aabb()
                 , hw = aabb.halfWidth + Math.abs(aabb.pos.x)
@@ -248,15 +256,16 @@ Physics.renderer('pixi', function (proto) {
             ;
 
             var styles = styles || defaults.style[name];
+            var text = geometry.text;
 
             x += styles.lineWidth | 0;
             y += styles.lineWidth | 0;
 
             if (name === 'circle') {
-                var view = this.createCircle(x, y, geometry.radius, styles);
+                var view = this.createCircle(x, y, geometry.radius, styles, text);
 
             } else if (name === 'convex-polygon') {
-                var view = this.createPolygon(geometry.vertices, styles);
+                var view = this.createPolygon(geometry.vertices, styles, text);
             }
 
             if (styles.angleIndicator) {
