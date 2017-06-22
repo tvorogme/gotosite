@@ -4,6 +4,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+
 Physics(function (world) {
 
     var viewWidth = $(document).width();
@@ -52,7 +53,7 @@ Physics(function (world) {
 
         k += 1;
 
-        var j = viewWidth / getRandomInt(6, 12);
+        var j = viewWidth / getRandomInt(6, 10);
         var myWheel = Physics.body('circle', {
             x: x_pos[i],
             y: -100,
@@ -105,7 +106,7 @@ Physics(function (world) {
         el: 'myworld',
         width: viewWidth,
         height: viewHeight,
-        meta: true
+        meta: false
     });
 
 
@@ -128,5 +129,12 @@ Physics(function (world) {
     // start the ticker
     Physics.util.ticker.start();
 
+    setTimeout(function () {
+        Physics.util.ticker.stop();
+    }, 100);
 
 });
+
+function run_world() {
+    Physics.util.ticker.start();
+}

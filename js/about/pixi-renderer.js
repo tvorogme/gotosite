@@ -73,15 +73,15 @@ Physics.renderer('pixi', function (proto) {
             if (typeof PIXI === 'undefined')
                 throw "PIXI obj not present - cannot continue ";
 
-            // call proto init
+            // Hook in PIXI stage here
+            this.stage = new PIXI.Stage(defaults.style.color);
+
             proto.init.call(this, options);
 
             // further options
             this.options = Physics.util.extend({}, defaults, this.options, deep);
             this.options.offset = Physics.vector(this.options.offset);
 
-            // Hook in PIXI stage here
-            this.stage = new PIXI.Stage(defaults.style.color);
             this.renderer = new PIXI.autoDetectRenderer(this.options.width, this.options.height);
 
             // Create empty meta object for use later
