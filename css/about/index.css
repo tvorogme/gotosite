@@ -48,19 +48,52 @@ html, body {
     margin-top: 0 !important;
 }
 
+#about_us_header {
+    max-width: 60%;
+    top: 24px;
+    text-align: center;
+    font-size: 60px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
 #typed {
     position: absolute;
     font-size: 20px;
     font-weight: bold;
     max-width: 60%;
     margin: 0 auto;
-    top: 14px;
+    top: 110px;
     left: 0;
     right: 0;
 }
 
-#about_us_header {
-    text-align: center;
-    font-size: 60px;
-    margin-bottom: 30px;
+#grad_wrapper {
+    height: 120vh;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+}
+
+#photo_with_gradient {
+    height: 120vh;
+    background: url(/static/img/background/back.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#back-grad {
+    height: 120vh;
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.0), rgb(255, 255, 255));
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.0), rgb(255, 255, 255));
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }

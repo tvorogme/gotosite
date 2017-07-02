@@ -53,7 +53,7 @@ Physics(function (world) {
 
         k += 1;
 
-        var j = viewWidth / getRandomInt(6, 10);
+        var j = viewWidth / getRandomInt(8, 10);
         var myWheel = Physics.body('circle', {
             x: x_pos[i],
             y: -100,
@@ -78,7 +78,7 @@ Physics(function (world) {
 
     for (i = 0; i < 10; i++) {
 
-        a = viewWidth / 18;
+        a = viewWidth / getRandomInt(25, 30);
 
         var body = Physics.body('convex-polygon', {
             x: x_pos.random(),
@@ -96,7 +96,7 @@ Physics(function (world) {
         myWheel = Physics.body('circle', {
             x: x_pos.random(),
             y: -100,
-            radius: viewWidth / 30
+            radius: viewWidth / getRandomInt(50, 60)
         });
 
         world.add(myWheel);

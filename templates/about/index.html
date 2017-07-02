@@ -32,9 +32,22 @@
 </head>
 <body>
 
-<p id="typed"></p>
+<h1 id='about_us_header'>О нас</h1>
+<p id="typed">
+    Образовательные программы GoTo помогают молодежи со всей России воплощать в жизнь
+    самые смелые идеи, получать знания у практикующих специалистов и предпринимателей, находить единомышленников и
+    необходимые ресурсы, обрести мотивацию к дальнейшему саморазвитию. Участник каждой школы, лагеря, интенсива или
+    хакатона
+    GoTo получает возможность реализовать свои или предложенные компаниями-партнерами проекты и исследования по
+    направлениям: анализ данных и машинное обучение, робототехника и интернет вещей, биоинформатика, веб и мобильная
+    разработка, информационная безопасность, виртуальная реальность, промдизайн и др.</p>
 
 <div id="myworld"></div>
+
+<div id="grad_wrapper">
+    <div id="photo_with_gradient"></div>
+    <div id="back-grad"></div>
+</div>
 
 <div class="row preps">
     <div class="col-md-12 big_placs">
@@ -132,11 +145,30 @@
 
 <script>
     $(function () {
-        $("#typed").typed({
-            strings: ["<h1 id='about_us_header'>О нас</h1>Образовательные программы GoTo помогают молодежи со всей России воплощать в жизнь самые смелые идеи, получать знания у практикующих специалистов и предпринимателей, находить единомышленников и необходимые ресурсы, обрести мотивацию к дальнейшему саморазвитию. Участник каждой школы, лагеря, интенсива или хакатона GoTo получает возможность реализовать свои или предложенные компаниями-партнерами проекты и исследования по направлениям: анализ данных и машинное обучение, робототехника и интернет вещей, биоинформатика, веб и мобильная разработка, информационная безопасность, виртуальная реальность, промдизайн и др."],
-            typeSpeed: 1,
-            showCursor: false
+        //get the welcome msg element
+        var $all_msg = $('#typed');
+        //get a list of letters from the welcome text
+        var $wordList = $('#typed').text().split(" ");
+        //clear the welcome text msg
+        $('#typed').text("");
+        //loop through the letters in the $wordList array
+        $.each($wordList, function (idx, elem) {
+            //create a span for the letter and set opacity to 0
+            var newEL = $("<span/>").text(elem + " ");
+
+            newEL.css({
+                opacity: 0
+            });
+            //append it to the welcome message
+            newEL.appendTo($all_msg);
+            //set the delay on the animation for this element
+            newEL.delay(idx * 70);
+            //animate the opacity back to full 1
+            newEL.animate({
+                opacity: 1
+            }, 1100);
         });
+
     });
 </script>
 
