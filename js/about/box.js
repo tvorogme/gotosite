@@ -7,8 +7,8 @@ function getRandomInt(min, max) {
 
 Physics(function (world) {
 
-    var viewWidth = $(document).width();
-    var viewHeight = $(document).height();
+    var viewWidth = $(window).width();
+    var viewHeight = $(window).height();
 
     world.subscribe('step', function () {
         world.render();
@@ -78,7 +78,7 @@ Physics(function (world) {
 
     for (i = 0; i < 10; i++) {
 
-        a = viewWidth / 18 * Math.random();
+        a = viewWidth / 18;
 
         var body = Physics.body('convex-polygon', {
             x: x_pos.random(),
@@ -96,7 +96,7 @@ Physics(function (world) {
         myWheel = Physics.body('circle', {
             x: x_pos.random(),
             y: -100,
-            radius: viewWidth / 30 * Math.random(),
+            radius: viewWidth / 30
         });
 
         world.add(myWheel);
@@ -108,7 +108,6 @@ Physics(function (world) {
         height: viewHeight,
         meta: false
     });
-
 
     world.add(renderer);
     world.add(Physics.behavior('body-collision-detection'));
@@ -129,9 +128,6 @@ Physics(function (world) {
     // start the ticker
     Physics.util.ticker.start();
 
-    setTimeout(function () {
-        Physics.util.ticker.stop();
-    }, 100);
 
 });
 

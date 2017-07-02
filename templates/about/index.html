@@ -19,18 +19,22 @@
             crossorigin="anonymous"></script>
 
 
-    <script src="/js/about/pixi.dev.js"></script>
-
+    <!-- Физика -->
     <script src="/js/about/physicsjs-full.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PhysicsJS/0.7.0/bodies/rectangle.js"></script>
+
+    <!-- Рендеринг -->
+    <script src="/js/about/pixi.dev.js"></script>
     <script src="/js/about/pixi-renderer.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PhysicsJS/0.7.0/bodies/rectangle.js"></script>
+    <!-- Тайпинг -->
+    <script src="/js/about/typed.js"></script>
 </head>
 <body>
 
-<div id="cool">
+<p id="typed"></p>
 
-</div>
+<div id="myworld"></div>
 
 <div class="row preps">
     <div class="col-md-12 big_placs">
@@ -78,7 +82,7 @@
             <img class="left_img" src="/static/preps/Eg-Sasha/001.jpg">
         </div>
         <div class="col-md-3">
-            <h1 class="right_tex no_top">Кутрухин Николай</h1>
+            <h1 class="right_text no_top">Кутрухин Николай</h1>
             <p class="right_text">Старший разработчик в Volkswagen Group, cтарший преподаватель кафедры Математики и
                 прикладной информатики
                 МФТИ, координатор Международной Компьютерной Школы имени В.Волокитина и Е.Ширковой, организатор
@@ -120,14 +124,21 @@
     </div>
 </div>
 
-
-<div id="myworld"></div>
-
 <link rel="stylesheet" type="text/css" href="/css/about/index.css">
 
 
 <script src="/js/about/index.js"></script>
 <script src="/js/about/box.js"></script>
+
+<script>
+    $(function () {
+        $("#typed").typed({
+            strings: ["<h1 id='about_us_header'>О нас</h1>Образовательные программы GoTo помогают молодежи со всей России воплощать в жизнь самые смелые идеи, получать знания у практикующих специалистов и предпринимателей, находить единомышленников и необходимые ресурсы, обрести мотивацию к дальнейшему саморазвитию. Участник каждой школы, лагеря, интенсива или хакатона GoTo получает возможность реализовать свои или предложенные компаниями-партнерами проекты и исследования по направлениям: анализ данных и машинное обучение, робототехника и интернет вещей, биоинформатика, веб и мобильная разработка, информационная безопасность, виртуальная реальность, промдизайн и др."],
+            typeSpeed: 1,
+            showCursor: false
+        });
+    });
+</script>
 
 </body>
 </html>

@@ -48,7 +48,19 @@ html, body {
     margin-top: 0 !important;
 }
 
-#cool {
-    width: 100vw;
-    height: 100vh;
+#typed {
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    max-width: 60%;
+    margin: 0 auto;
+    top: 14px;
+    left: 0;
+    right: 0;
+}
+
+#about_us_header {
+    text-align: center;
+    font-size: 60px;
+    margin-bottom: 30px;
 }
