@@ -1,5 +1,6 @@
 html, body {
     overflow-x: hidden;
+    color: #080808;
 }
 
 .preps img {
@@ -55,9 +56,14 @@ html, body {
     font-size: 60px;
     margin: 0 auto;
     margin-bottom: 30px;
+    position: absolute;
+    color: #080808;
+    right: 0;
+    left: 0;
 }
 
 #typed {
+    color: #080808;
     position: absolute;
     font-size: 20px;
     font-weight: bold;
