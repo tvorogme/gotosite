@@ -78,14 +78,3 @@ $(document).mousemove(function (e) {
 });
 
 var locker_shars = false;
-
-$(document).scroll(function () {
-    var isElementInView = Utils.isElementInView($('#myworld'), false);
-
-    if (isElementInView) {
-        if (!locker_shars) {
-            run_world();
-            locker_shars = true
-        }
-    }
-});

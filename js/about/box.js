@@ -10,6 +10,15 @@ Physics(function (world) {
     var viewWidth = $(window).width();
     var viewHeight = $(window).height();
 
+
+    var renderer = Physics.renderer('pixi', {
+        el: 'myworld',
+        width: viewWidth,
+        height: viewHeight
+    });
+
+    world.add(renderer);
+
     world.subscribe('step', function () {
         world.render();
     });
@@ -102,21 +111,9 @@ Physics(function (world) {
         world.add(myWheel);
     }
 
-    var renderer = Physics.renderer('pixi', {
-        el: 'myworld',
-        width: viewWidth,
-        height: viewHeight,
-        meta: false
-    });
-
-    world.add(renderer);
     world.add(Physics.behavior('body-collision-detection'));
     world.add(Physics.behavior('sweep-prune'));
-
-    // ensure objects bounce when edge collision is detected
     world.add(Physics.behavior('body-impulse-response'));
-
-    // add some gravity
     world.add(Physics.behavior('constant-acceleration'));
 
 
@@ -125,9 +122,13 @@ Physics(function (world) {
         world.step(time);
     });
 
+
     // start the ticker
     Physics.util.ticker.start();
 
+    setTimeout(function () {
+        Physics.util.ticker.stop();
+    }, 5000);
 
 });
 

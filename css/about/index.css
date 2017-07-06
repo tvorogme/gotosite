@@ -1,6 +1,7 @@
 html, body {
     overflow-x: hidden;
     color: #080808;
+    width: 100vw;
 }
 
 .preps img {
@@ -84,14 +85,14 @@ html, body {
 #photo_with_gradient {
     height: 120vh;
     background: url(/static/img/background/back.jpg);
-    background-attachment: fixed;
     background-size: cover;
-    background-color: #000;
     background-repeat: no-repeat;
     background-position: center center;
     margin: 0;
     padding: 0;
     border: 0;
+    background-color: #000;
+    background-attachment: fixed;
 }
 
 #back-grad {
@@ -99,7 +100,13 @@ html, body {
     background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.0), rgb(255, 255, 255));
     background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.0), rgb(255, 255, 255));
     width: 100%;
+    background-attachment: fixed;
     position: absolute;
     top: 0;
     left: 0;
+}
+
+#otzivi{
+    width: 100vw;
+    height: 100vh;
 }

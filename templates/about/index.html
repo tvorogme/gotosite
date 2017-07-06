@@ -27,8 +27,11 @@
     <script src="/js/about/pixi.dev.js"></script>
     <script src="/js/about/pixi-renderer.js"></script>
 
-    <!-- Тайпинг -->
+    <!-- Тайпинг библиотека -->
     <script src="/js/about/typed.js"></script>
+
+    <!-- D3 -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
 <body>
 {% include 'helpers/menu.html' %}
@@ -137,40 +140,21 @@
     </div>
 </div>
 
+{#<div id="otzivi"></div>#}
+
 <link rel="stylesheet" type="text/css" href="/css/about/index.css">
 
-
+<!-- Глаза препов -->
 <script src="/js/about/index.js"></script>
+
+<!-- Падающие шары -->
 <script src="/js/about/box.js"></script>
 
-<script>
-    $(function () {
-        //get the welcome msg element
-        var $all_msg = $('#typed');
-        //get a list of letters from the welcome text
-        var $wordList = $('#typed').text().split(" ");
-        //clear the welcome text msg
-        $('#typed').text("");
-        //loop through the letters in the $wordList array
-        $.each($wordList, function (idx, elem) {
-            //create a span for the letter and set opacity to 0
-            var newEL = $("<span/>").text(elem + " ");
+<!-- Тайпинг скрипт -->
+<script src="/js/about/tuping.js"></script>
 
-            newEL.css({
-                opacity: 0
-            });
-            //append it to the welcome message
-            newEL.appendTo($all_msg);
-            //set the delay on the animation for this element
-            newEL.delay(idx * 70);
-            //animate the opacity back to full 1
-            newEL.animate({
-                opacity: 1
-            }, 1100);
-        });
-
-    });
-</script>
+<!-- Отзывы -->
+<script src="/js/about/bubbles.js"></script>
 
 </body>
 </html>
