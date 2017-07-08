@@ -87,11 +87,13 @@ function packup() {
         .attr("cx", function (d) {
             return d.x;
         }).on("mouseover", function (d) {
+        force.resume();
         d.radius += 20;
         d.padding -= 20;
         d.r = d.radius;
         d3.select(this).attr("r", d.radius);
     }).on("mouseout", function (d) {
+        force.resume();
         d.radius -= 20;
         d.padding += 20;
         d.r = d.radius;
@@ -135,7 +137,9 @@ function forceup() {
     force = d3.layout.force()
         .nodes(nodes)
         .gravity(0.01)
-        .charge(0)
+        .charge(-30)
+        .theta(0.8)
+        .alpha(0.1)
         .size([width, height])
         .start();
 
@@ -192,9 +196,3 @@ function forceup() {
 
 packup();
 forceup();
-
-$(document).scroll(function () {
-    if (isOnScreen($("svg"))) {
-        force.resume();
-    }
-});
