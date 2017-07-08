@@ -115,8 +115,8 @@ function border_check(a, b) {
         }
         return a
     } else {
-        if (a < 0) {
-            a = 100;
+        if (a < 300) {
+            a = 300;
         } else if (a > $(window).height()) {
             a = $(window).height() - 100;
         }
