@@ -108,5 +108,7 @@ html, body {
 
 #otzivi{
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 200px);
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
