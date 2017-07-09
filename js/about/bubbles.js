@@ -1,5 +1,9 @@
 var width = $(window).width();
-var height = 1600;
+var height = $(window).height();
+
+if (height < 900){
+    height = 900;
+}
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
@@ -22,22 +26,9 @@ var photo_urls = ["https://goto.msk.ru/camp_summer/images/comments/nast.jpg",
     "https://goto.msk.ru/camp_summer/images/comments/popkova.jpg",
     "https://goto.msk.ru/camp_summer/images/comments/svatoslav.jpg",
     "https://goto.msk.ru/camp_summer/images/comments/gleb.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/kurilev.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/nast.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/maxim.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/gridasov.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/zajceva.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/andreeva.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/dimaantonov.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/kabo.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/tsiplenkov.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/sere.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/popkova.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/svatoslav.jpg",
-    "https://goto.msk.ru/camp_summer/images/comments/gleb.jpg",
     "https://goto.msk.ru/camp_summer/images/comments/kurilev.jpg"];
 
-var nodes = d3.range(24).map(function (i) {
+var nodes = d3.range(12).map(function (i) {
     return {radius: getRandom(50, 150), id: i, url: photo_urls[i], padding: 50};
 });
 
@@ -108,28 +99,22 @@ function packup() {
 
 function border_check(a, b) {
     if (b) {
-        if (a > $(window).width()) {
-            a = $(window).width() - 100;
-        } else if (a < 0) {
-            a = 100;
+        if (a > width - 150) {
+            a = width - 150;
+        } else if (a < 150) {
+            a = 150;
         }
         return a
     } else {
-        if (a < 300) {
-            a = 300;
-        } else if (a > $(window).height()) {
-            a = $(window).height() - 100;
+        if (a < 150) {
+            a = 150;
+        } else if (a > height - 150) {
+            a = height - 150;
         }
         return a
     }
 }
 
-function isOnScreen(element) {
-    var curPos = element.offset();
-    var curTop = curPos.top;
-    var screenHeight = $(window).height();
-    return (curTop > screenHeight) ? false : true;
-}
 
 var force;
 

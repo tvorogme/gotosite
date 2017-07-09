@@ -175,14 +175,14 @@ $(document).ready(function () {
     var runner = Runner.create();
     Runner.run(runner, engine);
     var viewWidth = $(window).width();
-    var x_pos = [viewWidth / 2, viewWidth / 5, viewWidth];
-    for (var i = 0; i < 3; i++) {
-        World.add(world, Bodies.circle(x_pos[i] * Math.random(), 10, viewWidth / Common.random(13, 20)), {
+    var viewHeight = $(window).height();
+    for (var i = 0; i < 5; i++) {
+        World.add(world, Bodies.circle(viewWidth / 2, viewHeight / 2, viewWidth / Common.random(8, 11)), {
             render: {
                 fillStyle: colors.random()
             }
         });
-        World.add(world, Bodies.polygon(x_pos[i] * Math.random(), 10, 4, viewWidth / Common.random(13, 20), {render: {fillStyle: colors.random()}}))
+        World.add(world, Bodies.polygon(viewWidth / 2, viewHeight / 2, 4, viewWidth / Common.random(8, 11), {render: {fillStyle: colors.random()}}))
     }
 
     //Bodies.polygon(x, y, sides, Common.random(25, 50), {chamfer: chamfer});
@@ -228,9 +228,12 @@ $(document).ready(function () {
                 stiffness: 0.2,
                 render: {
                     visible: false
-                }
+                },
             }
         });
+
+    mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
+    mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
 
     World.add(world, mouseConstraint);
 
