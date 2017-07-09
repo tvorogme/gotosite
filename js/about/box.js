@@ -134,9 +134,10 @@ function getRandomInt(min, max) {
 //     Physics.util.ticker.start();
 // }
 
-var Example = Example || {};
+$(document).ready(function () {
+    var Example = Example || {};
 
-Example.mixed = function() {
+
     var Engine = Matter.Engine,
         Render = Matter.Render,
         Runner = Matter.Runner,
@@ -145,7 +146,8 @@ Example.mixed = function() {
         MouseConstraint = Matter.MouseConstraint,
         Mouse = Matter.Mouse,
         World = Matter.World,
-        Bodies = Matter.Bodies;
+        Bodies = Matter.Bodies,
+        Svg = Matter.Svg;
 
     // create engine
     var engine = Engine.create(),
@@ -153,13 +155,15 @@ Example.mixed = function() {
 
     // create renderer
     var render = Render.create({
-        element: "#myworld",
+        element: document.getElementById("myworld"),
         engine: engine,
         options: {
-            width: 800,
-            height: 600,
-            showAngleIndicator: true,
+            width: $(window).width(),
+            height: $(window).height(),
+            background: '#fafafa',
+            wireframes: false
         }
+
     });
 
     Render.run(render);
@@ -169,7 +173,7 @@ Example.mixed = function() {
     Runner.run(runner, engine);
 
     // add bodies
-    var stack = Composites.stack(20, 20, 10, 5, 0, 0, function(x, y) {
+    var stack = Composites.stack(20, 20, 10, 5, 0, 0, function (x, y) {
         var sides = Math.round(Common.random(1, 8));
 
         // triangles can be a little unstable, so avoid until fixed
@@ -184,28 +188,52 @@ Example.mixed = function() {
         }
 
         switch (Math.round(Common.random(0, 1))) {
-        case 0:
-            if (Common.random() < 0.8) {
-                return Bodies.rectangle(x, y, Common.random(25, 50), Common.random(25, 50), { chamfer: chamfer });
-            } else {
-                return Bodies.rectangle(x, y, Common.random(80, 120), Common.random(25, 30), { chamfer: chamfer });
-            }
-        case 1:
-            return Bodies.polygon(x, y, sides, Common.random(25, 50), { chamfer: chamfer });
+            case 0:
+                if (Common.random() < 0.8) {
+                    return Bodies.rectangle(x, y, Common.random(25, 50), Common.random(25, 50), {chamfer: chamfer});
+                } else {
+                    return Bodies.rectangle(x, y, Common.random(80, 120), Common.random(25, 30), {chamfer: chamfer});
+                }
+            case 1:
+                return Bodies.polygon(x, y, sides, Common.random(25, 50), {chamfer: chamfer});
         }
     });
 
     World.add(world, stack);
 
-    World.add(world, [
-        // walls
-        Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
-        Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
-        Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
-        Bodies.rectangle(0, 300, 50, 600, { isStatic: true })
-    ]);
+    var a = 50;
+    var wall1 = Bodies.rectangle($(window).width() / 2, 0, $(window).width(), a, {
+        isStatic: true, render: {
+            fillStyle: "#fff",
+            lineWidth: 0
+        }
+    });
+    World.add(world, wall1);
 
-    // add mouse control
+    var wall2 = Bodies.rectangle($(window).width() / 2, $(window).height(), $(window).width(), a, {
+        isStatic: true, render: {
+            fillStyle: "#fff",
+            lineWidth: 0
+        }
+    });
+    World.add(world, wall2);
+
+    var wall3 = Bodies.rectangle($(window).width(), $(window).height() / 2, a, $(window).height(), {
+        isStatic: true, render: {
+            fillStyle: "#fff",
+            lineWidth: 0
+        }
+    });
+    World.add(world, wall3);
+
+    var wall4 = Bodies.rectangle(0, $(window).height() / 2, a, $(window).height(), {
+        isStatic: true, render: {
+            fillStyle: "#fff",
+            lineWidth: 0
+        }
+    });
+    World.add(world, wall4);
+
     var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
             mouse: mouse,
@@ -219,24 +247,16 @@ Example.mixed = function() {
 
     World.add(world, mouseConstraint);
 
-    // keep the mouse in sync with rendering
     render.mouse = mouse;
 
-    // fit the render viewport to the scene
-    Render.lookAt(render, {
-        min: { x: 0, y: 0 },
-        max: { x: 800, y: 600 }
-    });
-
-    // context for MatterTools.Demo
     return {
         engine: engine,
         runner: runner,
         render: render,
         canvas: render.canvas,
-        stop: function() {
+        stop: function () {
             Matter.Render.stop(render);
             Matter.Runner.stop(runner);
         }
     };
-};
+});
