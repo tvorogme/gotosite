@@ -136,7 +136,6 @@ Array.prototype.random = function () {
     return this[Math.floor((Math.random() * this.length))];
 };
 
-
 $(document).ready(function () {
     var Example = Example || {};
 
@@ -228,7 +227,7 @@ $(document).ready(function () {
                 stiffness: 0.2,
                 render: {
                     visible: false
-                },
+                }
             }
         });
 
