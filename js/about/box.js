@@ -1,7 +1,3 @@
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 //
 // Physics(function (world) {
 //
@@ -133,6 +129,13 @@ function getRandomInt(min, max) {
 // function run_world() {
 //     Physics.util.ticker.start();
 // }
+var colors = ["rgb(255, 140, 102)", "rgb(81, 13, 129)", "rgb(67, 180, 152)", "rgb(238, 229, 58)"];
+
+
+Array.prototype.random = function () {
+    return this[Math.floor((Math.random() * this.length))];
+};
+
 
 $(document).ready(function () {
     var Example = Example || {};
@@ -171,35 +174,19 @@ $(document).ready(function () {
     // create runner
     var runner = Runner.create();
     Runner.run(runner, engine);
+    var viewWidth = $(window).width();
+    var x_pos = [viewWidth / 2, viewWidth / 5, viewWidth];
+    for (var i = 0; i < 3; i++) {
+        World.add(world, Bodies.circle(x_pos[i] * Math.random(), 10, viewWidth / Common.random(13, 20)), {
+            render: {
+                fillStyle: colors.random()
+            }
+        });
+        World.add(world, Bodies.polygon(x_pos[i] * Math.random(), 10, 4, viewWidth / Common.random(13, 20), {render: {fillStyle: colors.random()}}))
+    }
 
-    // add bodies
-    var stack = Composites.stack(20, 20, 10, 5, 0, 0, function (x, y) {
-        var sides = Math.round(Common.random(1, 8));
-
-        // triangles can be a little unstable, so avoid until fixed
-        sides = (sides === 3) ? 4 : sides;
-
-        // round the edges of some bodies
-        var chamfer = null;
-        if (sides > 2 && Common.random() > 0.7) {
-            chamfer = {
-                radius: 10
-            };
-        }
-
-        switch (Math.round(Common.random(0, 1))) {
-            case 0:
-                if (Common.random() < 0.8) {
-                    return Bodies.rectangle(x, y, Common.random(25, 50), Common.random(25, 50), {chamfer: chamfer});
-                } else {
-                    return Bodies.rectangle(x, y, Common.random(80, 120), Common.random(25, 30), {chamfer: chamfer});
-                }
-            case 1:
-                return Bodies.polygon(x, y, sides, Common.random(25, 50), {chamfer: chamfer});
-        }
-    });
-
-    World.add(world, stack);
+    //Bodies.polygon(x, y, sides, Common.random(25, 50), {chamfer: chamfer});
+    //World.add(world, stack);
 
     var a = 50;
     var wall1 = Bodies.rectangle($(window).width() / 2, 0, $(window).width(), a, {
