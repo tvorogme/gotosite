@@ -74,7 +74,7 @@ function packup() {
         .enter().append("circle")
         .attr("r", function (d) {
             return d.radius;
-        })
+        }).attr("class", "my_bubble_circle")
         .attr("cx", function (d) {
             return d.x;
         }).on("mouseover", function (d) {
@@ -164,7 +164,7 @@ function forceup() {
             q.visit(set_collide(nodes[i]));
         }
 
-        svg.selectAll("circle")
+        svg.selectAll(".my_bubble_circle")
             .attr("cx", function (d) {
                 d.x = border_check(d.x, true);
                 return d.x;
@@ -176,7 +176,7 @@ function forceup() {
 
     });
 
-    d3.selectAll("circle").call(drag);
+    d3.selectAll(".my_bubble_circle").call(drag);
 }
 
 packup();
