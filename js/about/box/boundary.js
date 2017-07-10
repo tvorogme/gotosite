@@ -36,11 +36,12 @@ function Boundary(x, y, w, h, a, fixed, styles) {
         // fill(styles['color']);
         rect(0, 0, this.w, this.h);
 
-        if ()
-        textAlign(CENTER, CENTER);
-        textSize(20);
-        text("100 участников", 0, 0, this.w, this.h);
-        fill(255, 255, 255);
+        if (styles["text"]) {
+            textAlign(CENTER, CENTER);
+            textSize(20);
+            text(styles["text"], 0, 0, this.w, this.h);
+            fill(255, 255, 255);
+        }
 
 
         pop();

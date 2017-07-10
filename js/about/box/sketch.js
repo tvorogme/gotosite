@@ -32,7 +32,7 @@ function setup() {
     world = engine.world;
 
 
-    boundaries.push(new Boundary(viewWidth / 2, viewHeight + 250, viewWidth, 500, 0,true,  {color: 0}));
+    boundaries.push(new Boundary(viewWidth / 2, viewHeight + 250, viewWidth, 500, 0,true, {color: 0}));
     boundaries.push(new Boundary(viewWidth / 2, -250, viewWidth, 500, 0, true, {color: 0}));
     boundaries.push(new Boundary(-250, viewHeight / 2, 500, viewHeight, 0, true, {color: 0}));
     boundaries.push(new Boundary(viewWidth + 250, viewHeight / 2, 500, viewHeight, 0, true, {color: 0}));
@@ -41,11 +41,11 @@ function setup() {
     canvasmouse.pixelRatio = pixelDensity();
 
     for (var i = 0; i < 3; i++) {
-        var p = new Particle(viewWidth / 2, viewHeight / 2, viewWidth / Common.random(8, 11), false, {color: colors.random()});
+        var p = new Particle(viewWidth / 2, viewHeight / 2, viewWidth / Common.random(8, 11), false, {color: colors.random(), text: "100 участников"});
         particles.push(p);
 
         var storona_kvadrata = viewWidth / Common.random(8, 11);
-        boundaries.push(new Boundary(viewWidth / 2, viewHeight / 2, storona_kvadrata, storona_kvadrata, 0, false, {color: colors.random()}));
+        boundaries.push(new Boundary(viewWidth / 2, viewHeight / 2, storona_kvadrata, storona_kvadrata, 0, false, {color: colors.random(), text: "100 участников"}));
     }
 
 
