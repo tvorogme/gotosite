@@ -5,12 +5,19 @@ var Engine = Matter.Engine,
     Bodies = Matter.Bodies,
     Constraint = Matter.Constraint,
     Mouse = Matter.Mouse,
+    Common = Matter.Common,
     MouseConstraint = Matter.MouseConstraint;
 
 var engine;
 var world;
 var particles = [];
 var boundaries = [];
+var colors = ["rgb(255, 140, 102)", "rgb(81, 13, 129)", "rgb(67, 180, 152)", "rgb(238, 229, 58)"];
+
+
+Array.prototype.random = function () {
+    return this[Math.floor((Math.random() * this.length))];
+};
 
 var ground;
 
@@ -25,16 +32,22 @@ function setup() {
     world = engine.world;
 
 
-    boundaries.push(new Boundary(viewWidth / 2, viewHeight + 250, viewWidth, 500, 0));
-    boundaries.push(new Boundary(viewWidth / 2, -250, viewWidth, 500, 0));
-    boundaries.push(new Boundary(-250, viewHeight / 2, 500, viewHeight, 0));
-    boundaries.push(new Boundary(viewWidth + 250, viewHeight / 2, 500, viewHeight, 0));
+    boundaries.push(new Boundary(viewWidth / 2, viewHeight + 250, viewWidth, 500, 0,true,  {color: 0}));
+    boundaries.push(new Boundary(viewWidth / 2, -250, viewWidth, 500, 0, true, {color: 0}));
+    boundaries.push(new Boundary(-250, viewHeight / 2, 500, viewHeight, 0, true, {color: 0}));
+    boundaries.push(new Boundary(viewWidth + 250, viewHeight / 2, 500, viewHeight, 0, true, {color: 0}));
 
     var canvasmouse = Mouse.create(canvas.elt);
     canvasmouse.pixelRatio = pixelDensity();
 
-    var p = new Particle(viewWidth / 2, viewHeight / 2, 100, false);
-    particles.push(p);
+    for (var i = 0; i < 3; i++) {
+        var p = new Particle(viewWidth / 2, viewHeight / 2, viewWidth / Common.random(8, 11), false, {color: colors.random()});
+        particles.push(p);
+
+        var storona_kvadrata = viewWidth / Common.random(8, 11);
+        boundaries.push(new Boundary(viewWidth / 2, viewHeight / 2, storona_kvadrata, storona_kvadrata, 0, false, {color: colors.random()}));
+    }
+
 
     var options = {
         mouse: canvasmouse
@@ -55,14 +68,5 @@ function draw() {
 
     for (var i = 0; i < particles.length; i++) {
         particles[i].show();
-    }
-
-    if (mConstraint.body) {
-        var pos = mConstraint.body.position;
-        var offset = mConstraint.constraint.pointB;
-        var m = mConstraint.mouse.position;
-
-        stroke(0, 255, 0);
-        line(pos.x + offset.x, pos.y + offset.y, m.x, m.y);
     }
 }

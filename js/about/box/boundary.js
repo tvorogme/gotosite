@@ -1,10 +1,23 @@
-function Boundary(x, y, w, h, a) {
-    var options = {
-        friction: 0,
-        restitution: 0.95,
-        angle: a,
-        isStatic: true
+function Boundary(x, y, w, h, a, fixed, styles) {
+
+    var options;
+
+    if (fixed) {
+        options = {
+            friction: 0,
+            restitution: 0.95,
+            angle: a,
+            isStatic: fixed
+        }
+    } else {
+        options = {
+            friction: 0,
+            restitution: 0.5,
+            angle: a,
+            isStatic: fixed
+        }
     }
+
     this.body = Bodies.rectangle(x, y, w, h, options);
     this.w = w;
     this.h = h;
@@ -19,7 +32,7 @@ function Boundary(x, y, w, h, a) {
         rectMode(CENTER);
         strokeWeight(1);
         noStroke();
-        fill(0);
+        fill(styles['color']);
         rect(0, 0, this.w, this.h);
         pop();
     }

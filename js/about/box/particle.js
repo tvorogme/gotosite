@@ -1,4 +1,4 @@
-function Particle(x, y, r, fixed) {
+function Particle(x, y, r, fixed, styles) {
     var options = {
         friction: 0,
         restitution: 0.95,
@@ -26,9 +26,8 @@ function Particle(x, y, r, fixed) {
         rectMode(CENTER);
         strokeWeight(1);
         stroke(255);
-        fill(127);
+        fill(styles['color']);
         ellipse(0, 0, this.r * 2);
-        line(0, 0, this.r, 0);
         pop();
     }
 
