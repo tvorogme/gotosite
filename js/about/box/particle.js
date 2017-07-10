@@ -25,10 +25,18 @@ function Particle(x, y, r, fixed, styles) {
         rotate(angle);
         rectMode(CENTER);
         strokeWeight(1);
-        stroke(255);
-        fill(styles['color']);
+        stroke(0);
+        // fill(styles['color']);
         ellipse(0, 0, this.r * 2);
-        pop();
+
+        if (styles["text"]) {
+            textAlign(CENTER, CENTER);
+            textSize(20);
+            text(styles["text"], 0, 0, this.r * 2, this.r * 2);
+            fill(255, 255, 255);
+            pop();
+        }
+
     }
 
 }

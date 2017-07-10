@@ -28,16 +28,19 @@ function Boundary(x, y, w, h, a, fixed, styles) {
         var angle = this.body.angle;
         push();
         translate(pos.x, pos.y);
-        // rotate(angle);
-        // rectMode(CENTER);
-        // strokeWeight(1);
+
+        rotate(angle);
+        rectMode(CENTER);
+        strokeWeight(1);
         // noStroke();
         // fill(styles['color']);
-        // rect(0, 0, this.w, this.h);
+        rect(0, 0, this.w, this.h);
 
-        textSize(32);
-        text("word", 0, 0);
-        fill(0, 102, 153);
+        if ()
+        textAlign(CENTER, CENTER);
+        textSize(20);
+        text("100 участников", 0, 0, this.w, this.h);
+        fill(255, 255, 255);
 
 
         pop();
