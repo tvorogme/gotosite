@@ -32,9 +32,10 @@ function Boundary(x, y, w, h, a, fixed, styles) {
         rotate(angle);
         rectMode(CENTER);
         strokeWeight(1);
-        // noStroke();
-        // fill(styles['color']);
+        noStroke();
+        fill(styles['color']);
         rect(0, 0, this.w, this.h);
+        fill(255, 255, 255);
 
         if (styles["text"]) {
             textAlign(CENTER, CENTER);
