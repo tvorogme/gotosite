@@ -40,14 +40,25 @@ function setup() {
     var canvasmouse = Mouse.create(canvas.elt);
     canvasmouse.pixelRatio = pixelDensity();
 
+
+    for (var i = 0; i < 5; i++) {
+        particles.push(new Particle(viewWidth / 2, viewHeight / 2, viewWidth / Common.random(15, 30), false, {
+            color: colors.random()
+        }));
+
+        storona_kvadrata = viewWidth / Common.random(9, 25);
+        boundaries.push(new Boundary(viewWidth / 2, viewHeight / 2, storona_kvadrata, storona_kvadrata, 0, false, {
+            color: colors.random()
+        }));
+    }
+
     for (var i = 0; i < 3; i++) {
-        var p = new Particle(viewWidth / 2, viewHeight / 2, viewWidth / Common.random(8, 11), false, {
+        particles.push(new Particle(viewWidth / 2, viewHeight / 2, viewWidth / Common.random(6, 11), false, {
             color: colors.random(),
             text: "100 участников"
-        });
-        particles.push(p);
+        }));
 
-        var storona_kvadrata = viewWidth / Common.random(8, 11);
+        var storona_kvadrata = viewWidth / Common.random(4, 7);
         boundaries.push(new Boundary(viewWidth / 2, viewHeight / 2, storona_kvadrata, storona_kvadrata, 0, false, {
             color: colors.random(),
             text: "100 участников"

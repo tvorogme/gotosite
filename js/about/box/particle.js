@@ -3,7 +3,8 @@ function Particle(x, y, r, fixed, styles) {
         friction: 0,
         restitution: 0.95,
         isStatic: fixed
-    }
+    };
+
     this.body = Bodies.circle(x, y, r, options);
     this.r = r;
     World.add(world, this.body);
@@ -34,9 +35,8 @@ function Particle(x, y, r, fixed, styles) {
             textAlign(CENTER, CENTER);
             textSize(20);
             text(styles["text"], 0, 0, this.r * 2, this.r * 2);
-            pop();
         }
-
+        pop();
     }
 
 }
