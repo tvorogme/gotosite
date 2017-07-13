@@ -12,12 +12,36 @@ var engine;
 var world;
 var particles = [];
 var boundaries = [];
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+
 var colors = ["rgb(255, 140, 102)", "rgb(81, 13, 129)", "rgb(67, 180, 152)", "rgb(238, 229, 58)"];
 
 
 Array.prototype.random = function () {
     return this[Math.floor((Math.random() * this.length))];
 };
+
+var colors_kvadrat = shuffle(colors);
+var colors_circles = shuffle(colors);
 
 var ground;
 var mConstraint;
@@ -64,11 +88,11 @@ function setup() {
 
     var max_r = viewWidth / Math.min(min_big_boundary, min_big_shar);
 
-    var first_spawn_x = viewWidth - max_r / 2;
-    var first_spawn_y = max_r / 2;
+    var first_spawn_x = viewWidth - max_r/2;
+    var first_spawn_y = max_r/2;
 
-    var second_spawn_x = max_r / 2;
-    var second_spawn_y = max_r / 2;
+    var second_spawn_x = max_r/2;
+    var second_spawn_y = max_r/2;
 
 
     var now_spawn_x, now_spawn_y;
@@ -90,10 +114,10 @@ function setup() {
             }));
             i1++;
 
-            if (i1 < 4) {
+            if (i1 < 6) {
                 myLoop1();
             }
-        }, 1000)
+        }, 800)
     }
 
     myLoop1();
@@ -118,10 +142,10 @@ function setup() {
             }));
 
             i2++;
-            if (i2 < 4) {
+            if (i2 < 6) {
                 myLoop2();
             }
-        }, 1000)
+        }, 900)
     }
 
     myLoop2();
@@ -140,14 +164,14 @@ function setup() {
             }
 
             particles.push(new Particle(now_spawn_x, now_spawn_y, viewWidth / Common.random(min_big_shar, max_big_shar), false, {
-                color: colors.random(),
+                color: colors_kvadrat[i],
                 text: "100 участников"
             }));
             i3++;
-            if (i3 < 2) {
+            if (i3 < 4) {
                 myLoop3();
             }
-        }, 1000)
+        }, 1100)
     }
 
     myLoop3();
@@ -167,15 +191,15 @@ function setup() {
 
             var storona_kvadrata = viewWidth / Common.random(min_big_boundary, max_big_boundary);
             boundaries.push(new Boundary(now_spawn_x, now_spawn_y, storona_kvadrata, storona_kvadrata, 0, false, {
-                color: colors.random(),
+                color: colors_circles[i],
                 text: "100 участников"
             }));
 
             i++;
-            if (i < 3) {
+            if (i < 4) {
                 myLoop();
             }
-        }, 1000)
+        }, 1200)
     }
 
     myLoop();
