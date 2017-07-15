@@ -16,14 +16,10 @@ var boundaries = [];
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
-    // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-
-        // Pick a remaining element...
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
 
-        // And swap it with the current element.
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
@@ -42,6 +38,10 @@ Array.prototype.random = function () {
 
 var colors_kvadrat = shuffle(colors);
 var colors_circles = shuffle(colors);
+
+if (colors_circles == colors_kvadrat){
+    colors_kvadrat = colors_kvadrat.reverse();
+}
 
 var ground;
 var mConstraint;

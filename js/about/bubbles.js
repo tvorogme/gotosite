@@ -1,7 +1,7 @@
 var width = $(window).width();
 var height = $(window).height();
 
-if (height < 900){
+if (height < 900) {
     height = 900;
 }
 
@@ -75,9 +75,7 @@ function packup() {
         .attr("r", function (d) {
             return d.radius;
         }).attr("class", "my_bubble_circle")
-        .attr("cx", function (d) {
-            return d.x;
-        }).on("mouseover", function (d) {
+        .on("mouseover", function (d) {
         force.resume();
         d.radius += 20;
         d.padding -= 20;
@@ -89,10 +87,7 @@ function packup() {
         d.padding += 20;
         d.r = d.radius;
         d3.select(this).attr("r", d.radius)
-    })
-        .attr("cy", function (d) {
-            return d.y;
-        }).style("fill", function (d) {
+    }).style("fill", function (d) {
         return ("url(#" + d.id + "-icon)")
     });
 }
