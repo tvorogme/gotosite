@@ -1,6 +1,17 @@
 var width = $(window).width();
 var height = $(window).height();
 
+var popup = false;
+
+var maxRadius = 120;
+var minRadius = 40;
+
+var right_border = width - maxRadius;
+var left_border = maxRadius;
+
+var top_border = maxRadius;
+var bottom_border = height - maxRadius;
+
 if (height < 900) {
     height = 900;
 }
@@ -29,10 +40,9 @@ var photo_urls = ["https://goto.msk.ru/camp_summer/images/comments/nast.jpg",
     "https://goto.msk.ru/camp_summer/images/comments/kurilev.jpg"];
 
 var nodes = d3.range(12).map(function (i) {
-    return {radius: getRandom(50, 150), id: i, url: photo_urls[i], padding: 50};
+    return {radius: getRandom(minRadius, maxRadius), id: i, url: photo_urls[i], padding: 50};
 });
 
-var maxRadius = 150;
 
 var alpha = .1;
 
@@ -76,12 +86,12 @@ function packup() {
             return d.radius;
         }).attr("class", "my_bubble_circle")
         .on("mouseover", function (d) {
-        force.resume();
-        d.radius += 20;
-        d.padding -= 20;
-        d.r = d.radius;
-        d3.select(this).attr("r", d.radius);
-    }).on("mouseout", function (d) {
+            force.resume();
+            d.radius += 20;
+            d.padding -= 20;
+            d.r = d.radius;
+            d3.select(this).attr("r", d.radius);
+        }).on("mouseout", function (d) {
         force.resume();
         d.radius -= 20;
         d.padding += 20;
@@ -94,17 +104,17 @@ function packup() {
 
 function border_check(a, b) {
     if (b) {
-        if (a > width - 150) {
-            a = width - 150;
-        } else if (a < 150) {
-            a = 150;
+        if (a > right_border) {
+            a = right_border;
+        } else if (a < left_border) {
+            a = left_border;
         }
         return a
     } else {
-        if (a < 150) {
-            a = 150;
-        } else if (a > height - 150) {
-            a = height - 150;
+        if (a < top_border) {
+            a = top_border;
+        } else if (a > bottom_border) {
+            a = bottom_border;
         }
         return a
     }
@@ -176,3 +186,20 @@ function forceup() {
 
 packup();
 forceup();
+
+function toggle_popup() {
+    if (popup) {
+        force.resume();
+
+        right_border = width - maxRadius;
+        popup = false;
+
+    } else {
+        force.resume();
+
+        right_border = width * 0.6 - maxRadius;
+        popup = true;
+
+    }
+
+}
