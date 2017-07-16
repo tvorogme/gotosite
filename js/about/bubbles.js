@@ -187,67 +187,50 @@ function forceup() {
 packup();
 forceup();
 
-function toggle_popup() {
-    var ten_by_ten;
+function sdvig(t) {
+    var i = 1;
 
-    var interval_count = 0;
-    var interval_times = 20;
+    function myLoop() {
+        setTimeout(function () {
+
+            svg.selectAll(".my_bubble_circle").attr("x", function (d) {
+                if (t) {
+                    d.x -= 6;
+                } else {
+                    d.x += 6;
+                }
+                return d.x;
+            })
+
+
+            i++;
+            if (i < 8) {
+                myLoop();
+            }
+        }, 50)
+    }
+
+    myLoop();
+}
+function toggle_popup() {
 
     if (popup) {
         force.resume();
         right_border = width - maxRadius;
 
-        ten_by_ten = setInterval(function () {
-            interval_count += 1;
-
-            if (interval_count > interval_times) {
-                clearInterval(ten_by_ten);
-            } else {
-                svg.selectAll(".my_bubble_circle").attr("x", function (d) {
-                    d.x += 5;
-                    d.x = border_check(d.x, true);
-                    return d.x;
-                })
-            }
-        }, 50);
+        sdvig(false);
 
         setTimeout(function () {
-            svg.selectAll(".my_bubble_circle").attr("x", function (d) {
-                d.x = border_check(d.x, true);
-                return d.x;
-            });
-
             popup = false;
-        }, interval_times * 50);
+        }, 700);
 
     } else {
         force.resume();
-        
-        ten_by_ten = setInterval(function () {
-            interval_count -= 1;
-
-            if (interval_count > interval_times) {
-                clearInterval(ten_by_ten);
-            } else {
-                svg.selectAll(".my_bubble_circle").attr("x", function (d) {
-                    if (d.x > width * 0.5 - maxRadius) {
-                        d.x -= 5;
-                    }
-                    d.x = border_check(d.x, true);
-                    return d.x;
-                })
-            }
-        }, 50);
+        sdvig(true);
 
         setTimeout(function () {
-            svg.selectAll(".my_bubble_circle").attr("x", function (d) {
-                d.x = border_check(d.x, true);
-                return d.x;
-            });
-
-
             right_border = width * 0.6 - maxRadius;
             popup = true;
-        }, interval_times * 50);
+        }, 700);
     }
 }
