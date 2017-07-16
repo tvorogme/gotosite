@@ -1,3 +1,3 @@
-This is repository of new version of GoToSite_.
+GoToSite_
 
 .. _GoToSite: https://goto.msk.ru/
