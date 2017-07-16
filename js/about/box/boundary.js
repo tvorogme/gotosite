@@ -23,29 +23,26 @@ function Boundary(x, y, w, h, a, fixed, styles) {
     this.h = h;
     World.add(world, this.body);
 
-    this.show = function () {
+    this.show = function (p_five_obj) {
         var pos = this.body.position;
         var angle = this.body.angle;
-        push();
-        translate(pos.x, pos.y);
+        p_five_obj.push();
+        p_five_obj.translate(pos.x, pos.y);
 
-        rotate(angle);
-        rectMode(CENTER);
-        strokeWeight(1);
-        noStroke();
-        fill(styles['color']);
-        rect(0, 0, this.w, this.h);
-        fill(255, 255, 255);
+        p_five_obj.rotate(angle);
+        p_five_obj.rectMode(p_five_obj.CENTER);
+        p_five_obj.strokeWeight(1);
+        p_five_obj.noStroke();
+        p_five_obj.fill(styles['color']);
+        p_five_obj.rect(0, 0, this.w, this.h);
+        p_five_obj.fill(255, 255, 255);
 
         if (styles["text"]) {
-            textAlign(CENTER, CENTER);
-            textSize(20);
-            text(styles["text"], 0, 0, this.w, this.h);
-            fill(255, 255, 255);
+            p_five_obj.textAlign(p_five_obj.CENTER, p_five_obj.CENTER);
+            p_five_obj.textSize(20);
+            p_five_obj.text(styles["text"], 0, 0, this.w, this.h);
         }
-
-
-        pop();
+        p_five_obj.pop();
     }
 
 }
