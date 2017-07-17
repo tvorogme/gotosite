@@ -16,7 +16,7 @@ if (height < 900) {
     height = 900;
 }
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#comments").append("svg")
     .attr("width", width)
     .attr("height", height);
 
@@ -99,6 +99,8 @@ function packup() {
         d3.select(this).attr("r", d.radius)
     }).style("fill", function (d) {
         return ("url(#" + d.id + "-icon)")
+    }).on("click", function (d) {
+        toggle_popup(d.id);
     });
 }
 
@@ -200,7 +202,7 @@ function sdvig(t) {
                     d.x += 6;
                 }
                 return d.x;
-            })
+            });
 
 
             i++;
@@ -212,25 +214,40 @@ function sdvig(t) {
 
     myLoop();
 }
-function toggle_popup() {
+function toggle_popup(id) {
 
-    if (popup) {
+    if (id === -1) {
+        // Hide content
         force.resume();
         right_border = width - maxRadius;
-
         sdvig(false);
+
+        $("#comment_wrapper").animate({
+            right: "-30vw"
+        }, 700);
+
 
         setTimeout(function () {
             popup = false;
         }, 700);
-
     } else {
-        force.resume();
-        sdvig(true);
+        if (popup) {
+            force.resume();
+            // Change content
 
-        setTimeout(function () {
-            right_border = width * 0.6 - maxRadius;
-            popup = true;
-        }, 700);
+        } else {
+            // Show content
+            force.resume();
+            sdvig(true);
+
+            $("#comment_wrapper").animate({
+                right: 0
+            }, 700);
+
+            setTimeout(function () {
+                right_border = width * 0.6 - maxRadius;
+                popup = true;
+            }, 700);
+        }
     }
 }

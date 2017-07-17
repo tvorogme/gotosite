@@ -106,14 +106,52 @@ html, body {
     left: 0;
 }
 
-#otzivi{
+#otzivi {
     width: 100vw;
     height: calc(100vh - 200px);
     padding-top: 100px;
     padding-bottom: 100px;
 }
 
-#myworld{
+#myworld {
     height: 100vh;
     width: 100vw;
+}
+
+#comments {
+    width: 100vw;
+    height: 100vh;
+}
+
+#comment_wrapper {
+    width: 30vw;
+    height: 100%;
+    position: absolute;
+    right: -30vw;
+}
+
+#comment_wrapper table {
+    height: 100%;
+    width: 100%;
+}
+
+#comment_wrapper h4 {
+    font-size: 17px;
+    margin-bottom: 16px;
+}
+
+#comment_wrapper p {
+    font-size: 14px;
+}
+
+#comment_wrapper a {
+    position: relative;
+    left: calc(30vw - 32px);
+    top: 46px;
+    color: black;
+    cursor: pointer;
+}
+
+svg circle{
+    cursor: pointer;
 }
