@@ -121,6 +121,7 @@ html, body {
 #comments {
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 #comment_wrapper {
@@ -128,6 +129,7 @@ html, body {
     height: 100%;
     position: absolute;
     right: -30vw;
+    overflow-y: scroll;
 }
 
 #comment_wrapper table {
