@@ -97,7 +97,8 @@ function get_slide(n) {
 
                 setTimeout(function () {
                     lock = false;
-                }, slide_speed + 200);
+                    start_tetris();
+                }, slide_speed + 300);
 
             }
             else {
@@ -116,6 +117,7 @@ function get_slide(n) {
         }
 
         else if (n == 3) {
+            playing = false;
             window.clearTimeout(boom_timer);
             $(".dotstyle li:eq(2)").click();
             lock = true;

@@ -4,7 +4,7 @@ var score = 0, offset = 0;
 var lock_first_interval = false;
 var game_field = [], game_freezed = [];
 var rows = 6, cols = 12;
-var step_time = 350;
+var step_time = 100;
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -151,24 +151,10 @@ $(document).ready(function () {
         game_field.push(tmp);
         game_freezed.push(tmp);
     }
-    tetris_first_param = {'rad': 130};
-    tetris_first_interval = window.setInterval(function () {
-        if (!lock_first_interval) {
-            tetris_context.clearRect(0, 0, W, H);
-            tetris_context.beginPath();
-            tetris_context.lineWidth = 4;
-            tetris_context.arc(W / 2, H / 2, tetris_first_param['rad'], 0, 2 * Math.PI, false);
-            tetris_context.strokeStyle = '#080808';
-            tetris_context.stroke();
-            tetris_context.closePath();
-        }
-    }, 10);
 });
 
 
 function start_tetris() {
-    window.clearInterval(tetris_first_interval);
-
     $('#tetris').css('width', '1170px').css('height', '600px');
     W = 1170;
     H = 600;
@@ -698,6 +684,7 @@ function start_tetris() {
     setInterval(render, 30);
 
     function keyPress(key) {
+        step_time = 500;
         playing = true;
         switch (key) {
             case 'left':
