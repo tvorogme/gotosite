@@ -122,6 +122,7 @@ html, body {
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 #comment_wrapper {
@@ -129,7 +130,6 @@ html, body {
     height: 100%;
     position: absolute;
     right: -30vw;
-    overflow-y: scroll;
 }
 
 #comment_wrapper table {
@@ -143,17 +143,18 @@ html, body {
 }
 
 #comment_wrapper p {
+    width: 90%;
     font-size: 14px;
 }
 
 #comment_wrapper a {
     position: relative;
-    left: calc(30vw - 32px);
+    left: calc(30vw - 61px);
     top: 46px;
     color: black;
     cursor: pointer;
 }
 
-svg circle{
+svg circle {
     cursor: pointer;
 }
