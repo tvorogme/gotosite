@@ -316,6 +316,12 @@ $(document).ready(function (ev) {
         }
     });
 
+    $("#email_subscribe").focusin(function () {
+        display_email_tick();
+    }).focusout(function () {
+        $('#subscribe_submit').css('display', 'none');
+    });
+
 });
 
 function cool(i) {
@@ -384,3 +390,7 @@ $('#question-footer-question ').click(function () {
         height: "0px"
     }, 300);
 });
+
+function display_email_tick() {
+    $('#subscribe_submit').css('display', 'block').css('left', $('.input--akira').position().left + $('.input--akira').outerWidth() + 26).css('top', $('.input--akira').position().top)
+}
