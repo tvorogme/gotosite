@@ -107,7 +107,7 @@ function reset_radius() {
     });
 
     TweenLite.to(cool_clas, 2, {
-        line_helper: 4,
+        line_helper: 1,
         ease: Power4.easeOut
     });
 
@@ -224,7 +224,7 @@ function start_shari() {
 
     reset_coor();
 
-    cool_clas["line_helper"] = 4;
+    cool_clas["line_helper"] = 1;
     c.width = window.innerWidth;     // equals window dimension
     c.height = window.innerHeight;
 
@@ -245,32 +245,32 @@ function start_shari() {
                 ctx.beginPath();
                 ctx.moveTo(cool_clas["x4"], cool_clas["y4"]);
                 ctx.lineTo(cool_clas["x5"], cool_clas["y5"]);
-                ctx.strokeStyle = 'rgba(97,97,97,0.5)';
+                ctx.strokeStyle = '#080808';
                 ctx.stroke();
 
                 ctx.beginPath();
                 ctx.moveTo(cool_clas["x6"], cool_clas["y6"]);
                 ctx.lineTo(cool_clas["x5"], cool_clas["y5"]);
-                ctx.strokeStyle = 'rgba(97,97,97,0.5)';
+                ctx.strokeStyle = '#080808';
                 ctx.stroke();
 
                 ctx.beginPath();
                 ctx.moveTo(cool_clas["x6"], cool_clas["y6"]);
                 ctx.lineTo(cool_clas["x2"], cool_clas["y2"]);
-                ctx.strokeStyle = 'rgba(97,97,97,0.5)';
+                ctx.strokeStyle = '#080808';
                 ctx.stroke();
 
 
                 ctx.beginPath();
                 ctx.moveTo(cool_clas["x1"], cool_clas["y1"]);
                 ctx.lineTo(cool_clas["x3"], cool_clas["y3"]);
-                ctx.strokeStyle = 'rgba(97,97,97,0.5)';
+                ctx.strokeStyle = '#080808';
                 ctx.stroke();
 
                 ctx.beginPath();
                 ctx.moveTo(cool_clas["x3"], cool_clas["y3"]);
                 ctx.lineTo(cool_clas["x2"], cool_clas["y2"]);
-                ctx.strokeStyle = 'rgba(97,97,97,0.5)';
+                ctx.strokeStyle = '#080808';
                 ctx.stroke();
 
 
@@ -340,7 +340,7 @@ function start_shari() {
                     ctx.beginPath();
                     ctx.moveTo($('#but3').position().left + 138, $('#but3').position().top + 110);
                     ctx.lineTo(c.width / 2, $(this).position().top + 37);
-                    ctx.strokeStyle = 'rgba(97,97,97,0.5)';
+                    ctx.strokeStyle = '#080808';
                     ctx.stroke();
                 });
 
@@ -557,7 +557,7 @@ $(".back-hochu").click(function () {
         }
 
         else if (step === 4) {
-            cool_clas["line_helper"] = 4;
+            cool_clas["line_helper"] = 1;
             TweenLite.to(cool_clas, 2, {
                 ease: Power4.easeOut,
                 line_helper: 0
@@ -611,7 +611,7 @@ function take_part() {
             locked_f = false;
 
             TweenLite.to(cool_clas, 2, {
-                line_helper: 4,
+                line_helper: 1,
                 ease: Power4.easeOut
             });
 
@@ -659,7 +659,7 @@ $('.input').keypress(function (e) {
 
         reset_coor();
 
-        cool_clas["line_helper"] = 4;
+        cool_clas["line_helper"] = 1;
         step = 0;
 
         setTimeout(function () {

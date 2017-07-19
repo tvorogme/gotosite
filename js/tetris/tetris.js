@@ -4,7 +4,7 @@ var score = 0, offset = 0;
 var lock_first_interval = false;
 var game_field = [], game_freezed = [];
 var rows = 6, cols = 12;
-var step_time = 100;
+var step_time = 200;
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
