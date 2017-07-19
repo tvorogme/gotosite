@@ -306,6 +306,7 @@ body {
 
 .down p {
     top: 10px;
+    cursor: pointer;
 }
 
 .opisanie table {
