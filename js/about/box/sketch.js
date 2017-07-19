@@ -86,6 +86,7 @@ var p5_mega_func = function (p_five) {
         var min_little_boundary = 9;
 
         var max_r = viewWidth / Math.min(min_big_boundary, min_big_shar);
+        var max_r_little = viewWidth / Math.min(min_little_boundary, min_little_shar);
 
         var first_spawn_x = viewWidth - max_r / 2;
         var first_spawn_y = max_r / 2;
@@ -93,6 +94,11 @@ var p5_mega_func = function (p_five) {
         var second_spawn_x = max_r / 2;
         var second_spawn_y = max_r / 2;
 
+        var first_spawn_x_little = viewWidth - max_r_little / 2;
+        var first_spawn_y_little = max_r_little;
+
+        var second_spawn_x_little = max_r_little;
+        var second_spawn_y_little = max_r_little;
 
         var now_spawn_x, now_spawn_y;
 
@@ -101,11 +107,11 @@ var p5_mega_func = function (p_five) {
         function myLoop1() {
             setTimeout(function () {
                 if (i1 % 2 === 0) {
-                    now_spawn_x = first_spawn_x;
-                    now_spawn_y = first_spawn_y;
+                    now_spawn_x = first_spawn_x_little;
+                    now_spawn_y = first_spawn_y_little;
                 } else {
-                    now_spawn_x = second_spawn_x;
-                    now_spawn_y = second_spawn_y;
+                    now_spawn_x = second_spawn_x_little;
+                    now_spawn_y = second_spawn_y_little;
                 }
 
                 particles.push(new Particle(now_spawn_x, now_spawn_y, viewWidth / Common.random(min_little_shar, max_little_shar), false, {
@@ -127,11 +133,11 @@ var p5_mega_func = function (p_five) {
             setTimeout(function () {
 
                 if (i2 % 2 !== 0) {
-                    now_spawn_x = first_spawn_x;
-                    now_spawn_y = first_spawn_y;
+                    now_spawn_x = first_spawn_x_little;
+                    now_spawn_y = first_spawn_y_little;
                 } else {
-                    now_spawn_x = second_spawn_x;
-                    now_spawn_y = second_spawn_y;
+                    now_spawn_x = second_spawn_x_little;
+                    now_spawn_y = second_spawn_y_little;
                 }
 
 
