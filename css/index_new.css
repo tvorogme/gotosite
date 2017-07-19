@@ -1310,7 +1310,7 @@ textarea:focus {
 
 .dotstyle {
     position: absolute;
-    top: calc(50% - 120.5px);
+    top: calc(50% - 89.5px);
     right: 20px;
     z-index: 1000;
 }
