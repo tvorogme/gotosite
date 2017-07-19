@@ -351,7 +351,6 @@ body {
     z-index: 1000;
 }
 
-
 .partners {
     position: absolute;
     width: 100vw;
@@ -382,7 +381,6 @@ body {
 .partner {
     text-align: center;
 }
-
 
 .partner img {
     max-width: 50%;
@@ -1185,7 +1183,6 @@ body {
     right: 0;
 }
 
-
 .subscription_alert {
     display: none;
     font-size: 20px;
@@ -1403,4 +1400,14 @@ textarea:focus {
     transform: rotate(0deg);
     -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
     transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#subscribe_submit {
+    height: 77px;
+    margin-top: 28px;
+    padding: 0;
+    position: absolute;
+    left: -18px;
+    display: none;
+    cursor: pointer;
 }

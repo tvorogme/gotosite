@@ -309,11 +309,13 @@
                 </button>
                 <div id="come_to_us_brother">
                         <span class="input input--akira">
-                            <input class="input__field input__field--akira" type="text" id="input-22"/>
+                            <input onclick="$('#subscribe_submit').css('display', 'block').css('left', $('.input--akira').position().left + $('.input--akira').outerWidth() + 13).css('top',  $('.input--akira').position().top)"
+                                   class="input__field input__field--akira" type="text" id="input-22"/>
                             <label class="input__label input__label--akira" for="input-22">
                                 <span class="input__label-content input__label-content--akira">Email</span>
                             </label>
                         </span>
+                    <img id="subscribe_submit" src="/static/img/helpers/second_tick.png">
                 </div>
 
 
