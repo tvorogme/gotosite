@@ -483,6 +483,19 @@ function come_to_us_brother() {
     }, 1000);
 }
 
+function what_we_want() {
+    locked_f = true;
+    hide_radius(false);
+
+    setTimeout(function () {
+        step = 6;
+        hide_buttons();
+        locked_f = false;
+
+        $('#what_we_want').toggle();
+    }, 1000);
+}
+
 var bask_locker = false;
 
 $(".back-hochu").click(function () {
@@ -571,6 +584,14 @@ $(".back-hochu").click(function () {
             reset_radius();
             bask_locker = false;
             $('#partners_grid').toggle();
+        }
+
+        else if (step == 6) {
+            $('#what_we_want').toggle();
+            step = 1;
+            display_buttons();
+            reset_radius();
+            bask_locker = false;
         }
     }
 });
