@@ -68,6 +68,7 @@ input[type="date"] {
 
 .label {
     font-weight: 500;
+    font-size: 13px;
 }
 
 #name {
@@ -79,7 +80,7 @@ input[type="date"] {
 
 .after_name {
     font-weight: 300;
-    padding-top: 10px;
+    padding-top: 5px;
     color: #080808;
 }
 
@@ -89,8 +90,7 @@ input[type="date"] {
 }
 
 h2 {
-    color: rgb(67, 180, 152);
-    font-weight: 400;
+    font-weight: 500;
     font-size: 19px;
 }
 
@@ -100,7 +100,7 @@ h2 {
     padding-top: 10px;
 }
 
-#socials i:hover {
+i:hover {
     cursor: pointer;
     color: rgb(67, 180, 152);
 }

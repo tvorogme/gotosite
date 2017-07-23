@@ -53,6 +53,10 @@ function get_slide(n) {
         }
 
         else if (n == 1) {
+            if (playing) {
+                playing = false;
+            }
+
             $(".dotstyle li:eq(0)").click();
             $("#demo-canvas").css('display', 'block');
             $("#in_helper").css('display', 'block');
@@ -67,6 +71,10 @@ function get_slide(n) {
                 }, slide_speed + 200);
             }
             else {
+                if (playing) {
+                    playing = false;
+                }
+
                 $('.first-slide').animate({
                     top: 0
                 }, slide_speed);
@@ -97,7 +105,8 @@ function get_slide(n) {
 
                 setTimeout(function () {
                     lock = false;
-                }, slide_speed + 200);
+                    start_tetris();
+                }, slide_speed + 300);
 
             }
             else {
@@ -116,6 +125,11 @@ function get_slide(n) {
         }
 
         else if (n == 3) {
+
+            if (playing) {
+                playing = false;
+            }
+
             window.clearTimeout(boom_timer);
             $(".dotstyle li:eq(2)").click();
             lock = true;
@@ -148,7 +162,13 @@ function get_slide(n) {
             }
         }
         else if (n == 4) {
+
+            if (playing) {
+                playing = false;
+            }
+
             $(".dotstyle li:eq(3)").click();
+
             // $(".dotstyle li a").animate({
             //     backgroundColor: '#080808'
             // }, 100);
@@ -296,6 +316,12 @@ $(document).ready(function (ev) {
         }
     });
 
+    $("#email_subscribe").focusin(function () {
+        display_email_tick();
+    }).focusout(function () {
+        $('#subscribe_submit').css('display', 'none');
+    });
+
 });
 
 function cool(i) {
@@ -364,3 +390,7 @@ $('#question-footer-question ').click(function () {
         height: "0px"
     }, 300);
 });
+
+function display_email_tick() {
+    $('#subscribe_submit').css('display', 'block').css('left', $('.input--akira').position().left + $('.input--akira').outerWidth() + 26).css('top', $('.input--akira').position().top)
+}
