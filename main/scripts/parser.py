@@ -1,12 +1,13 @@
-#-*-coding: UTF-8-*-
+# -*-coding: UTF-8-*-
 
 # Note: this program copies all content from olimpiada.ru/events/count/500 (entirely all events)
 # and saves them into a newly created file events.json
 # The program may take up to a few minutes to be finished. 
 
+import json
+
 import lxml.html
 import requests
-import json
 
 result = []
 tmpDict = {}
@@ -17,11 +18,11 @@ tmpDict = {}
 #     text = file.read()
 
 events_amount = 500  # Number of events will be parsed. 500 is recomended (they are less in fact)
-text = requests.get("http://olimpiada.ru/events/count/{0}".format(events_amount)) 
+text = requests.get("http://olimpiada.ru/events/count/{0}".format(events_amount))
 page = lxml.html.fromstring(text.text)
 page.make_links_absolute('http://olimpiada.ru/')
-news_list = page.find_class('news_list')[0] 
-uls = news_list.getchildren() 
+news_list = page.find_class('news_list')[0]
+uls = news_list.getchildren()
 
 for ul in uls[:-4]:
 
@@ -46,16 +47,16 @@ for ul in uls[:-4]:
             tds = trs[j].findall('td')
             for i in range(0, len(tds), 2):
                 key = str(tds[i].text_content())
-                value = str(tds[i+1].text_content())
+                value = str(tds[i + 1].text_content())
                 if value.find(u'\xa0') is not None:
-                    value = value.replace(u'\xa0',' ')
+                    value = value.replace(u'\xa0', ' ')
                 tmpDict[key] = value
 
         para = eventInfoPage.find('p')
         if para is not None:
             para_content = str(para.text_content())
             if para_content.find(u'\xa0') is not None:
-                    para_content = para_content.replace(u'\xa0',' ')
+                para_content = para_content.replace(u'\xa0', ' ')
             tmpDict["примечание"] = para_content
 
         result.append(tmpDict)

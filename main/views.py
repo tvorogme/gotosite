@@ -1,21 +1,21 @@
-import django
-from django.shortcuts import get_object_or_404, render, redirect
-from .models import Event, Organization, Person, Project
-from django.shortcuts import get_object_or_404, render
-from .models import Event, Organization, Person, Project, Skill
-from django.http import HttpResponse
-from django.shortcuts import render
+from json import dumps
 
-from django.views import View
+import django
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from .forms import RegisterPersonForm, RegisterEventForm, RegisterPersonForm, RegisterOrganizationForm
-from .forms import RegisterPersonForm, RegisterEventForm, RegisterProjectForm
-from .forms import RegisterPersonForm, RegisterOrganizationForm
-from json import dumps
-from .models import Person
+from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import render
+from django.views import View
+
 from main.apps import SOCIALS
+from .forms import RegisterEventForm, RegisterProjectForm
+from .forms import RegisterPersonForm, RegisterOrganizationForm
+from .models import Event, Project, Skill
+from .models import Person
+
 
 def profile(request):
     person_data_list = Person.objects.get(pk=1)
@@ -49,7 +49,7 @@ class RegisterPerson(View):
             return render(request, 'main/register_person.html', {'form': form})
 
     def get(self, request):
-        return render(request, 'main/register_person.html', {'form' : RegisterPersonForm})
+        return render(request, 'main/register_person.html', {'form': RegisterPersonForm})
 
 
 class RegisterEvent(View):
@@ -60,12 +60,12 @@ class RegisterEvent(View):
         return HttpResponseRedirect('where_ever_should_be_redirect_to')
 
     def get(self, request):
-        return render(request, 'main/create_event.html', {'form' : RegisterEventForm})
+        return render(request, 'main/create_event.html', {'form': RegisterEventForm})
 
 
 def get_needed_skills(request):
     skill_from_user = request.GET['skill']
-    #needed_skills = Skill.objects.get(icontains=skill_from_user)
+    # needed_skills = Skill.objects.get(icontains=skill_from_user)
     # needed_skills = Skill.query.filter(Skill.name.contains(skill_from_user)).limit(10).all()
     needed_skills = Skill.objects.filter(name__contains=skill_from_user)[:10]
     return HttpResponse(dumps([skill.name for skill in needed_skills]))
@@ -77,8 +77,9 @@ class RegisterProject(View):
         p = RegisterProjectForm(request.POST)
         p.save()
         return HttpResponseRedirect('where_ever_should_be_redirect_to')
+
     def get(self, request):
-        return render(request, 'main/create_project.html', {'form' : RegisterProjectForm})
+        return render(request, 'main/create_project.html', {'form': RegisterProjectForm})
 
 
 def project_profile(request, project_id):
@@ -92,11 +93,12 @@ class CreateProject(View):
         e = RegisterEventForm(request.POST)
         e.save()
         return HttpResponseRedirect('where_ever_should_be_redirect_to')
+
     def get(self, request):
-        return render(request, 'main/create_event.html', {'form' : RegisterEventForm})
+        return render(request, 'main/create_event.html', {'form': RegisterEventForm})
 
 
-def event_profile (request, event_id):
+def event_profile(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
     return render(request, 'main/event_profile.html', {'event': event})
 
@@ -110,7 +112,7 @@ class RegisterOrganization(View):
             org.save()
         else:
             print(form.errors)
-            return render(request, 'main/register_organization.html', {'form' : form})
+            return render(request, 'main/register_organization.html', {'form': form})
         return render(request, 'main/sucseed.html')
 
     def get(self, request):
@@ -162,5 +164,3 @@ class EditPerson(View):
         parent_phone = post['parent_phone']
         region = post['region']
         birthday = post['birthday']
-
-

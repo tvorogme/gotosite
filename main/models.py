@@ -15,9 +15,10 @@ class Skill(models.Model):
     def __str__(self):
         return self.name
 
+
 class Person(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    
+
     first_name = models.CharField(max_length=40)
     middle_name = models.CharField(max_length=40, blank=True, null=True)
     last_name = models.CharField(max_length=40)
@@ -36,13 +37,14 @@ class Person(models.Model):
     gender = models.CharField(choices=GENDER, default='N', max_length=2)
     education = models.TextField(blank=True, null=True)
     knowledge = models.TextField(blank=True, null=True)
-    skills = models.ManyToManyField(Skill, blank = True)
+    skills = models.ManyToManyField(Skill, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
 
 class Organization(models.Model):
     name = models.CharField(max_length=200)

@@ -1,10 +1,9 @@
 from django.apps import AppConfig
-from django.shortcuts import render
-
 
 
 class MainConfig(AppConfig):
     name = 'main'
+
 
 SOCIALS = {
     'vk': 'https://vk.com/goto_msk',
