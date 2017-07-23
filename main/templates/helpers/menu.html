@@ -11,7 +11,6 @@
         <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
         <ul>
             {% for item in menu_list %}
-
                 {% if request.path != item.0 %}
                     <li><a href="{{ item.0 }}">{{ item.1 }}</a></li>
                 {% endif %}

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,16 +19,16 @@
             crossorigin="anonymous"></script>
 
     <!-- Библиотеки рендеринга и физики -->
-    <script src="/js/about/box/libraries/p5.js"></script>
-    <script src="/js/about/box/libraries/matter.js"></script>
+    <script src={% static "/js/about/box/libraries/p5.js" %}></script>
+    <script src={% static "/js/about/box/libraries/matter.js" %}></script>
 
     <!-- Физика кастомная -->
-    <script src="/js/about/box/sketch.js"></script>
-    <script src="/js/about/box/particle.js"></script>
-    <script src="/js/about/box/boundary.js"></script>
+    <script src={% static "/js/about/box/sketch.js" %}></script>
+    <script src={% static "/js/about/box/particle.js" %}></script>
+    <script src={% static "/js/about/box/boundary.js" %}></script>
 
     <!-- Тайпинг библиотека -->
-    <script src="/js/about/typed.js"></script>
+    <script src={% static "/js/about/typed.js" %}></script>
 
     <!-- D3 -->
     <script src="https://d3js.org/d3.v3.min.js"></script>
@@ -54,7 +55,7 @@
 <div class="row preps">
     <div class="col-md-12 big_placs">
         <div id="alena" class="col-md-3">
-            <img class="right_img" src="/static/preps/alena/001.jpg">
+            <img class="right_img" src={% static "/img/preps/alena/001.jpg" %}>
         </div>
 
         <div class="col-md-3"><h1 class="no_top">Алёна Ильина</h1>
@@ -67,7 +68,7 @@
             </p></div>
 
         <div id="vanya" class="col-md-3">
-            <img class="right_img" src="/static/preps/vanya_bib/001.jpg">
+            <img class="right_img" src={% static "/img/preps/vanya_bib/001.jpg" %}>
         </div>
 
         <div class="col-md-3">
@@ -94,7 +95,7 @@
             </p>
         </div>
         <div id="sasha" class="col-md-3">
-            <img class="left_img" src="/static/preps/Eg-Sasha/001.jpg">
+            <img class="left_img" src={% static "/img/preps/Eg-Sasha/001.jpg" %}>
         </div>
         <div class="col-md-3">
             <h1 class="right_text no_top">Кутрухин Николай</h1>
@@ -105,13 +106,13 @@
         </div>
 
         <div id="kolya" class="col-md-3">
-            <img class="left_img" src="/static/preps/kolya/001.jpg">
+            <img class="left_img" src={% static "/img/preps/kolya/001.jpg" %}>
         </div>
     </div>
 
     <div class="col-md-12 big_placs">
         <div id="pasha" class="col-md-3">
-            <img class="right_img" src="/static/preps/Pasha_Kulikov/001.jpg">
+            <img class="right_img" src={% static "/img/preps/Pasha_Kulikov/001.jpg" %}>
         </div>
 
         <div class="col-md-3">
@@ -128,7 +129,7 @@
 
 
         <div id="roct" class="col-md-3">
-            <img class="right_img" src="/static/preps/Roct1/001.jpg">
+            <img class="right_img" src={% static "/img/preps/Roct1/001.jpg" %}>
         </div>
 
         <div class="col-md-3"><h1>
@@ -146,7 +147,7 @@
                 <td valign="middle">
                     <a onclick="toggle_popup(-1)">
                         <svg width="20" version="1.1" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 64 64"
-                             xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
+                             enable-background="new 0 0 64 64">
                             <g>
                                 <path d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"></path>
                             </g>
@@ -162,15 +163,15 @@
 
 </div>
 
-<link rel="stylesheet" type="text/css" href="/css/about/index.css">
+<link rel="stylesheet" type="text/css" href={% static "/css/about/index.css" %}>
 
 <!-- Глаза препов -->
-<script src="/js/about/index.js"></script>
+<script src={% static "/js/about/index.js" %}></script>
 
 <!-- Отзывы -->
-<script src="/js/about/bubbles.js"></script>
+<script src={% static "/js/about/bubbles.js" %}></script>
 
 <!-- Тайпинг скрипт -->
-<script src="/js/about/tuping.js"></script>
+<script src={% static "/js/about/tuping.js" %}></script>
 </body>
 </html>

@@ -17,6 +17,14 @@ from .models import Event, Project, Skill
 from .models import Person
 
 
+##########################
+#
+#
+# Old authors funcs, don't know what they actually do
+#
+#
+##########################
+
 def profile(request):
     person_data_list = Person.objects.get(pk=1)
     context = {'person_data_list': person_data_list}
@@ -119,11 +127,6 @@ class RegisterOrganization(View):
         return render(request, 'main/register_organization.html', {'form': RegisterOrganizationForm})
 
 
-def index(request):
-    context = {"socials": SOCIALS, "user": request.user}
-    return render(request, 'pages/index/index.html', context)
-
-
 class SelfProfileView(View):
     def get(self, request):
         user = request.user
@@ -164,3 +167,22 @@ class EditPerson(View):
         parent_phone = post['parent_phone']
         region = post['region']
         birthday = post['birthday']
+
+##########################
+#
+#
+# Simple rendering pages
+#
+#
+##########################
+
+def index(request):
+    '''Render index page with socials and user'''
+    context = {"socials": SOCIALS, "user": request.user}
+    return render(request, 'pages/index/index.html', context)
+
+
+def about_us(request):
+    '''Render about_us page with socials and user'''
+    context = {"socials": SOCIALS, "user": request.user}
+    return render(request, 'pages/about_us/about_us.html', context)
