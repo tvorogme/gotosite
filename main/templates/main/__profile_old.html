@@ -1,0 +1,20 @@
+{% if person_data_list %}
+    <ul>
+        <div>{{ Person.image }}</div>
+        <li><a>{{ Person.first_name }}</a></li>
+        <li><a>{{ Person.middle_name }}</a></li>
+        <li><a>{{ Person.last_name }}</a></li>
+
+        <li><a>{{ Person.birthday }}</a></li>
+
+        <li><a>{{ Person.email }}</a></li>
+        <li><a>{{ Person.phone_number }}</a></li>
+        <li><a>{{ Person.parent_phone_number }}</a></li>
+        <li><a>{{ Person.contacts }}</a></li>
+        <li><a>{{ Person.region }}</a></li>
+        <li><a>{{ Person.address }}</a></li>
+        <li><a>{{ Person.gender }}</a></li>
+    </ul>
+{% else %}
+    <p>There is no person data</p>
+{% endif %}

@@ -1,0 +1,13 @@
+<h1>{{ project.name }}</h1>
+    <img src="{{ project.image }}" style="width:304px;height:228px;"/>
+<h3>
+    <p>{{ project.prescription }}</p>
+</h3>
+<h5>
+    <p>Описание: {{ project.full_description }}</p>
+    <p>Дата создания: {{ project.created_at }}</p>
+    <p>Дата изменения: {{ project.updated_at }}</p>
+    <p>Авторы: {{ project.participants }}</p>
+    <p>Организация: {{ project.organization }}</p>
+    <p>Эксперты: {{ project.experts }}</p>
+</h5>

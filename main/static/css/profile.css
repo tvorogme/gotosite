@@ -1,0 +1,286 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+#profile_container {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#profile_container {
+    font-family: 'Ubuntu', sans-serif;
+    width: 595px;
+    display: block;
+    margin: 0 auto;
+    font-weight: 300;
+    color: #080808;
+}
+
+input[type="text"],
+input[type="date"] {
+    text-align: left;
+    border: none;
+}
+
+.label {
+    font-weight: 500;
+}
+
+#name {
+    font-size: 23px;
+    color: rgb(67, 180, 152);
+    font-weight: 500;
+    width: 100%;
+}
+
+.after_name {
+    font-weight: 300;
+    padding-top: 10px;
+    color: #080808;
+}
+
+.skill {
+    padding-top: 0 !important;
+    width: 133px;
+}
+
+h2 {
+    color: rgb(67, 180, 152);
+    font-weight: 400;
+    font-size: 19px;
+}
+
+#socials {
+    float: left;
+    height: 100%;
+    padding-top: 10px;
+}
+
+#socials i:hover {
+    cursor: pointer;
+    color: rgb(67, 180, 152);
+}
+
+#about-me {
+    font-size: 14px;
+    line-height: 16px;
+    padding-top: 10px;
+    width: 100%;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+    border: none;
+    color: #080808;
+    overflow: hidden;
+}
+
+.footer {
+    float: right;
+}
+
+.left_idea {
+    float: left;
+}
+
+.header {
+    overflow: hidden;
+}
+
+.little-whitespace {
+    height: 25px;
+    width: 100%;
+}
+
+h3 {
+    font-weight: 400;
+    float: left;
+}
+
+.date {
+    float: left;
+    padding-left: 10px;
+    padding-top: 4px;
+    font-size: 13px;
+}
+
+@media print {
+    .special {
+        page-break-inside: avoid;
+    }
+}
+
+.description {
+    width: 400px;
+    float: left;
+    padding-top: 14px;
+
+    font-size: 14px;
+    line-height: 16px;
+    border: none;
+    font-weight: 300;
+}
+
+.col-3 {
+    width: 133px;
+    float: left;
+    padding-bottom: 20px;
+}
+
+#add {
+    font-weight: 400;
+    opacity: 0.1;
+}
+
+#add:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.col-3 p {
+    line-height: 20px;
+}
+
+h4 {
+    font-size: 19px;
+    font-weight: 400;
+    height: 19px;
+    padding-bottom: 15px;
+}
+
+.block-wrapper {
+    overflow: hidden;
+    height: 100%;
+}
+
+.not-first {
+    padding-top: 25px;
+}
+
+.whitespace {
+    height: 25px;
+}
+
+.col-md-2 {
+    width: 30px;
+    float: left;
+    margin: 0;
+}
+
+.col-md-3 {
+    width: 100px;
+    padding-right: 50px;
+    float: left;
+    height: 100%;
+    margin: 0;
+}
+
+.col-md-9 {
+    float: right;
+    width: 400px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer {
+    float: right;
+}
+
+.keybase {
+    padding-top: 5px;
+}
+
+#save_ico {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: none;
+    width: 40px;
+    height: 50px;
+    cursor: pointer;
+    color: #080808;
+}
+
+.close {
+    float: right !important;
+    z-index: 30;
+    width: auto !important;
+    cursor: pointer;
+    color: #080808;
+}
+
+.field {
+    display: none;
+    border: none;
+    width: calc(100% - 17px);
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-weight: 300;
+    float: left;
+}
+
+.description {
+    overflow: hidden;
+}
+
+.team {
+    display: block;
+    float: none;
+}
+
+.little-add {
+    margin-top: 12px;
+    font-size: 12px;
+}
+
+.profile-img {
+    width: 150px;
+}
