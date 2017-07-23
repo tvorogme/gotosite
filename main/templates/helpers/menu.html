@@ -1,35 +1,28 @@
 {% block menu %}
+    {% load static %}
     <!--Стили меню-->
-    <link rel="stylesheet" type="text/css" href="/css/menu/normalize.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/menu/demo.css">
-    <link rel="stylesheet" type="text/css" href="/css/menu/icons.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/menu/menu.css"/>
+    <link rel="stylesheet" type="text/css" href={% static "/css/menu/normalize.css" %}/>
+    <link rel="stylesheet" type="text/css" href={% static "/css/menu/demo.css" %}>
+    <link rel="stylesheet" type="text/css" href={% static "/css/menu/icons.css" %}/>
+    <link rel="stylesheet" type="text/css" href={% static "/css/menu/menu.css" %}/>
 
     <!-- меню -->
     <nav id="bt-menu" class="bt-menu">
         <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
         <ul>
-            {% for item in [ ['/', 'Главная'],
-                             ['/camp', 'Лагерь'],
-                             ['/hackathon', 'Хакатон'],
-                             ['/lectoriy','Лекторий'],
-                             ['/coworking','Коворкинг'],
-                             ['/about_us','О нас']] %}
+            {% for item in menu_list %}
 
-                {%- if request.path != item[0] %}
-                    <li><a href="{{ item[0] }}">{{ item[1] }}</a></li>
+                {% if request.path != item.0 %}
+                    <li><a href="{{ item.0 }}">{{ item.1 }}</a></li>
                 {% endif %}
-
-
             {% endfor %}
 
-            {%- if request.path != '/profile' %}
-
-                {% if not current_user.is_authenticated %}
-                    <li><a href="/system/login">Войти</a></li>
-                {% else %}
+            {% if request.path != '/profile' %}
+                {% if request.user.is_authenticated %}
                     <li><a href="/profile">Профиль</a></li>
                     <li><a href="/system/logout">Выйти</a></li>
+                {% else %}
+                    <li><a href="/system/login">Войти</a></li>
                 {% endif %}
 
             {% else %}
@@ -42,6 +35,6 @@
     </nav>
 
     <!--Меню-->
-    <script src="/js/menu/classie.js"></script>
-    <script src="/js/menu/borderMenu.js"></script>
+    <script src={% static "/js/menu/classie.js" %}></script>
+    <script src={% static "/js/menu/borderMenu.js" %}></script>
 {% endblock %}

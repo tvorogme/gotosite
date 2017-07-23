@@ -121,7 +121,7 @@ class RegisterOrganization(View):
 
 def index(request):
     context = {"socials": SOCIALS, "user": request.user}
-    return render(request, 'main/index.html', context)
+    return render(request, 'pages/index/index.html', context)
 
 
 class SelfProfileView(View):
