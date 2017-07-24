@@ -17,6 +17,10 @@ urlpatterns = [
 
     # About
     url(r'^about_us/', about_us, name='about_us'),
+
+    url(r'^profile/', ProfileView.as_view(), name='SelfProfile'),
+    url(r'^profile/(?P<id>[0-9]+)', ProfileView.as_view(), name='Profile')
+
 ]
 
 if settings.DEBUG:

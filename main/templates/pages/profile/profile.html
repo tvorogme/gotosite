@@ -64,7 +64,7 @@
 
 
 
-            {% if request.path != '/profile' and user.phone_number != None or request.path == '/profile' %}
+            {% if request.path != '/profile' and user.phone_number != None or is_profile %}
                 <p class="label">Телефон: <input placeholder="Телефон" class="after_name"
                                                  type="text" {{ is_profile|yesno:",readonly" }}
                                                  id="phone"
@@ -74,7 +74,7 @@
 
 
 
-            {% if request.path != '/profile' and user.parent_phone_number != None or request.path == '/profile' %}
+            {% if request.path != '/profile' and user.parent_phone_number != None or is_profile %}
                 <p class="label">Телефон родителей: <input placeholder="Телефон родителей" class=" after_name"
                                                            type="text" {{ is_profile|yesno:",readonly" }}
                                                            id="parent_phone" parent_phone_number
@@ -85,53 +85,55 @@
 
 
 
-            {% if request.path != '/profile' and user.city != None or request.path == '/profile' %}
+            {% if request.path != '/profile' and user.city != None or is_profile %}
 
                 <p class="label"> Город проживания: <input placeholder="Город проживания" class="after_name"
                                                            type="text" {{ is_profile|yesno:",readonly" }}
                                                            id="city"
-                                                           value="{% if  user.region != None %} {{ user.region }} {% endif %}"></p>
+                                                           value="{% if  user.region != None %} {{ user.region }} {% endif %}">
+                </p>
 
             {% endif %}
 
 
 
 
-            {% if request.path != '/profile' and user.birthday != None or request.path == '/profile' %}
+            {% if request.path != '/profile' and user.birthday != None or is_profile %}
 
                 <p class="label"> День рождения: <input placeholder="День рождения" class="after_name"
                                                         type="date" {{ is_profile|yesno:",readonly" }}
                                                         id="birthday"
-                                                        value="{% if  user.birthday != None %} {{ user.birthday }} {% endif %}"></p>
+                                                        value="{% if  user.birthday != None %} {{ user.birthday }} {% endif %}">
+                </p>
             {% endif %}
 
 
         </div>
-
+{##}
         {#        #FIXME: Displaing correctly only when editing profile#}
-        <div id="socials">
-            <div class="row">
-                <div class="col-md-2">
-                    <i class="fa fa-vk fa-lg" aria-hidden="true"></i>
-                </div>
-
-                <div class="col-md-2">
-                    <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i>
-                </div>
-
-                <div class="col-md-2">
-                    <i class="fa fa-github fa-lg" aria-hidden="true"></i>
-                </div>
-
-                <div class="col-md-2">
-                    <i class="fa fa-bitbucket fa-lg" aria-hidden="true"></i>
-                </div>
-
-                <div class="col-md-2">
-                    <i class="fa fa-gitlab fa-lg" aria-hidden="true"></i>
-                </div>
-            </div>
-        </div>
+{#        <div id="socials">#}
+{#            <div class="row">#}
+{#                <div class="col-md-2">#}
+{#                    <i class="fa fa-vk fa-lg" aria-hidden="true"></i>#}
+{#                </div>#}
+{##}
+{#                <div class="col-md-2">#}
+{#                    <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i>#}
+{#                </div>#}
+{##}
+{#                <div class="col-md-2">#}
+{#                    <i class="fa fa-github fa-lg" aria-hidden="true"></i>#}
+{#                </div>#}
+{##}
+{#                <div class="col-md-2">#}
+{#                    <i class="fa fa-bitbucket fa-lg" aria-hidden="true"></i>#}
+{#                </div>#}
+{##}
+{#                <div class="col-md-2">#}
+{#                    <i class="fa fa-gitlab fa-lg" aria-hidden="true"></i>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
     </div>
     <div class="whitespace"></div>
     <div class="whitespace"></div>
@@ -146,14 +148,15 @@
 
                 {% for skill in user.skills.all %}
                     <div class="col-3">
-                        <input skill_id="{{ skill.id }}" placeholder="Скилл" id="skill_{{ skill.id }}" class="after_name skill"
+                        <input skill_id="{{ skill.id }}" placeholder="Скилл" id="skill_{{ skill.id }}"
+                               class="after_name skill"
                                value="{{ skill.name }}" type="text">
                     </div>
                 {% endfor %}
 
 
 
-                {% if request.path == '/profile' %}
+                {% if is_profile %}
                     <div id="add_wrapper" class="col-3">
                         <p onclick="add_input_field()" id="add">Добавить</p>
                     </div>
@@ -187,50 +190,50 @@
             <h2>Проекты</h2>
         </div>
 
-        {% for project in projects %}
-            <div class="col-md-9">
-                <form id="project_{{ project.id }}" method="post" action="/project/update">
-
-                    <a onclick="del_project({{ project.id }})" class="field close">
-                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>
-                    </a>
-
-
-                    <h3 class="value"><a href="{{ project.url }}">{{ project.name }}</a></h3>
-
-
-                    <p class="date value">{{ project.date_started.year }}</p>
-
-
-                    <br><br>
-                    <p class="team">
-                        Команда:
-
-                        {% for user in project.team %}
-                            <a href="/profile/{{ user.id }}">{{ user.first_name }}
-                                {{ user.last_name }}{% if loop.last %}, {% endif %}</a>
-                        {% endfor %}
-                    </p>
-
-
-                    <div>
-                        <input name="id" type="hidden" value="{{ project.id }}">
-                        <input name="delete" type="hidden">
-                        <input placeholder="Название" class="project_name field" name="title" type="text"
-                               value="{{ project.name }}">
-                        <input placeholder="Ссылка" class="project_url field" name="title" type="text"
-                               value="{{ project.url }}">
-
-                    </div>
-
-
-                    <textarea {{ is_profile|yesno:",readonly" }} placeholder="Описание"
-                                                                 name="description"
-                                                                 onclick="edit_project({{ project.id }})"
-                                                                 class="description">{{ project.description }}</textarea>
-                </form>
-            </div>
-        {% endfor %}
+{#        {% for project in projects %}#}
+{#            <div class="col-md-9">#}
+{#                <form id="project_{{ project.id }}" method="post" action="/project/update">#}
+{##}
+{#                    <a onclick="del_project({{ project.id }})" class="field close">#}
+{#                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>#}
+{#                    </a>#}
+{##}
+{##}
+{#                    <h3 class="value"><a href="{{ project.url }}">{{ project.name }}</a></h3>#}
+{##}
+{##}
+{#                    <p class="date value">{{ project.date_started.year }}</p>#}
+{##}
+{##}
+{#                    <br><br>#}
+{#                    <p class="team">#}
+{#                        Команда:#}
+{##}
+{#                        {% for user in project.team %}#}
+{#                            <a href="/profile/{{ user.id }}">{{ user.first_name }}#}
+{#                                {{ user.last_name }}{% if loop.last %}, {% endif %}</a>#}
+{#                        {% endfor %}#}
+{#                    </p>#}
+{##}
+{##}
+{#                    <div>#}
+{#                        <input name="id" type="hidden" value="{{ project.id }}">#}
+{#                        <input name="delete" type="hidden">#}
+{#                        <input placeholder="Название" class="project_name field" name="title" type="text"#}
+{#                               value="{{ project.name }}">#}
+{#                        <input placeholder="Ссылка" class="project_url field" name="title" type="text"#}
+{#                               value="{{ project.url }}">#}
+{##}
+{#                    </div>#}
+{##}
+{##}
+{#                    <textarea {{ is_profile|yesno:",readonly" }} placeholder="Описание"#}
+{#                                                                 name="description"#}
+{#                                                                 onclick="edit_project({{ project.id }})"#}
+{#                                                                 class="description">{{ project.description }}</textarea>#}
+{#                </form>#}
+{#            </div>#}
+{#        {% endfor %}#}
 
     </div>
 </div>
