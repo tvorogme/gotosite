@@ -1,1 +1,1040 @@
-[{"model": "main.region", "pk": 1, "fields": {"name": "\u041d\u0438\u0436\u0435\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u043e\u0431\u043b."}}, {"model": "main.organization", "pk": 1, "fields": {"name": "Gtot", "prescription": "dfadfa", "full_description": "adasd", "image": "", "creation_date": "2002-12-12", "url": "", "email": "", "created_at": "2017-06-16T09:51:09.433Z", "updated_at": "2017-06-16T09:51:09.661Z", "employees": [7, 8]}}, {"model": "main.organization", "pk": 2, "fields": {"name": "GOGOGO", "prescription": "asdf", "full_description": "asd", "image": "", "creation_date": "2002-12-12", "url": "", "email": "asd@asd.asd", "created_at": "2017-06-16T10:15:53.039Z", "updated_at": "2017-06-16T10:15:53.199Z", "employees": []}}, {"model": "contenttypes.contenttype", "pk": 1, "fields": {"app_label": "main", "model": "project"}}, {"model": "contenttypes.contenttype", "pk": 2, "fields": {"app_label": "main", "model": "event"}}, {"model": "contenttypes.contenttype", "pk": 3, "fields": {"app_label": "main", "model": "region"}}, {"model": "contenttypes.contenttype", "pk": 4, "fields": {"app_label": "main", "model": "person"}}, {"model": "contenttypes.contenttype", "pk": 5, "fields": {"app_label": "main", "model": "tag"}}, {"model": "contenttypes.contenttype", "pk": 6, "fields": {"app_label": "main", "model": "type"}}, {"model": "contenttypes.contenttype", "pk": 7, "fields": {"app_label": "main", "model": "organization"}}, {"model": "contenttypes.contenttype", "pk": 8, "fields": {"app_label": "main", "model": "subject"}}, {"model": "contenttypes.contenttype", "pk": 9, "fields": {"app_label": "admin", "model": "logentry"}}, {"model": "contenttypes.contenttype", "pk": 10, "fields": {"app_label": "auth", "model": "permission"}}, {"model": "contenttypes.contenttype", "pk": 11, "fields": {"app_label": "auth", "model": "group"}}, {"model": "contenttypes.contenttype", "pk": 12, "fields": {"app_label": "auth", "model": "user"}}, {"model": "contenttypes.contenttype", "pk": 13, "fields": {"app_label": "contenttypes", "model": "contenttype"}}, {"model": "contenttypes.contenttype", "pk": 14, "fields": {"app_label": "sessions", "model": "session"}}, {"model": "sessions.session", "pk": "b59v5csjll0ng7thli5ibwcrkd0s1mr1", "fields": {"session_data": "ZmU3YzU2ZTRiMDJiNmM2OWJiZDI0OWI3NmUyNTUzMmQ4NjhjYWQ1Mzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjI4IiwiX2F1dGhfdXNlcl9oYXNoIjoiNmE4NjMzMzM3MDVmZTU0YzE1OGU1YTVjNzAzMGJlNzhlYmFjNTAxMiJ9", "expire_date": "2017-06-30T10:16:41.510Z"}}, {"model": "sessions.session", "pk": "d5wvt5b55lhg8ncs1ymavbi6uw3azzt6", "fields": {"session_data": "YjRiOTM1ZDQ2ZDQxM2I2MjI1YTM4MGExZGYyZTIzNjNhNTZjZjg4Nzp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwNjJjYzlhMzJhODQ3ZDY1MDdjMGExZTk3N2IwY2QyYWMyOWJmNmE3In0=", "expire_date": "2017-06-29T13:28:40.612Z"}}, {"model": "auth.permission", "pk": 1, "fields": {"name": "Can add project", "content_type": 1, "codename": "add_project"}}, {"model": "auth.permission", "pk": 2, "fields": {"name": "Can change project", "content_type": 1, "codename": "change_project"}}, {"model": "auth.permission", "pk": 3, "fields": {"name": "Can delete project", "content_type": 1, "codename": "delete_project"}}, {"model": "auth.permission", "pk": 4, "fields": {"name": "Can add event", "content_type": 2, "codename": "add_event"}}, {"model": "auth.permission", "pk": 5, "fields": {"name": "Can change event", "content_type": 2, "codename": "change_event"}}, {"model": "auth.permission", "pk": 6, "fields": {"name": "Can delete event", "content_type": 2, "codename": "delete_event"}}, {"model": "auth.permission", "pk": 7, "fields": {"name": "Can add region", "content_type": 3, "codename": "add_region"}}, {"model": "auth.permission", "pk": 8, "fields": {"name": "Can change region", "content_type": 3, "codename": "change_region"}}, {"model": "auth.permission", "pk": 9, "fields": {"name": "Can delete region", "content_type": 3, "codename": "delete_region"}}, {"model": "auth.permission", "pk": 10, "fields": {"name": "Can add person", "content_type": 4, "codename": "add_person"}}, {"model": "auth.permission", "pk": 11, "fields": {"name": "Can change person", "content_type": 4, "codename": "change_person"}}, {"model": "auth.permission", "pk": 12, "fields": {"name": "Can delete person", "content_type": 4, "codename": "delete_person"}}, {"model": "auth.permission", "pk": 13, "fields": {"name": "Can add tag", "content_type": 5, "codename": "add_tag"}}, {"model": "auth.permission", "pk": 14, "fields": {"name": "Can change tag", "content_type": 5, "codename": "change_tag"}}, {"model": "auth.permission", "pk": 15, "fields": {"name": "Can delete tag", "content_type": 5, "codename": "delete_tag"}}, {"model": "auth.permission", "pk": 16, "fields": {"name": "Can add type", "content_type": 6, "codename": "add_type"}}, {"model": "auth.permission", "pk": 17, "fields": {"name": "Can change type", "content_type": 6, "codename": "change_type"}}, {"model": "auth.permission", "pk": 18, "fields": {"name": "Can delete type", "content_type": 6, "codename": "delete_type"}}, {"model": "auth.permission", "pk": 19, "fields": {"name": "Can add organization", "content_type": 7, "codename": "add_organization"}}, {"model": "auth.permission", "pk": 20, "fields": {"name": "Can change organization", "content_type": 7, "codename": "change_organization"}}, {"model": "auth.permission", "pk": 21, "fields": {"name": "Can delete organization", "content_type": 7, "codename": "delete_organization"}}, {"model": "auth.permission", "pk": 22, "fields": {"name": "Can add subject", "content_type": 8, "codename": "add_subject"}}, {"model": "auth.permission", "pk": 23, "fields": {"name": "Can change subject", "content_type": 8, "codename": "change_subject"}}, {"model": "auth.permission", "pk": 24, "fields": {"name": "Can delete subject", "content_type": 8, "codename": "delete_subject"}}, {"model": "auth.permission", "pk": 25, "fields": {"name": "Can add log entry", "content_type": 9, "codename": "add_logentry"}}, {"model": "auth.permission", "pk": 26, "fields": {"name": "Can change log entry", "content_type": 9, "codename": "change_logentry"}}, {"model": "auth.permission", "pk": 27, "fields": {"name": "Can delete log entry", "content_type": 9, "codename": "delete_logentry"}}, {"model": "auth.permission", "pk": 28, "fields": {"name": "Can add permission", "content_type": 10, "codename": "add_permission"}}, {"model": "auth.permission", "pk": 29, "fields": {"name": "Can change permission", "content_type": 10, "codename": "change_permission"}}, {"model": "auth.permission", "pk": 30, "fields": {"name": "Can delete permission", "content_type": 10, "codename": "delete_permission"}}, {"model": "auth.permission", "pk": 31, "fields": {"name": "Can add group", "content_type": 11, "codename": "add_group"}}, {"model": "auth.permission", "pk": 32, "fields": {"name": "Can change group", "content_type": 11, "codename": "change_group"}}, {"model": "auth.permission", "pk": 33, "fields": {"name": "Can delete group", "content_type": 11, "codename": "delete_group"}}, {"model": "auth.permission", "pk": 34, "fields": {"name": "Can add user", "content_type": 12, "codename": "add_user"}}, {"model": "auth.permission", "pk": 35, "fields": {"name": "Can change user", "content_type": 12, "codename": "change_user"}}, {"model": "auth.permission", "pk": 36, "fields": {"name": "Can delete user", "content_type": 12, "codename": "delete_user"}}, {"model": "auth.permission", "pk": 37, "fields": {"name": "Can add content type", "content_type": 13, "codename": "add_contenttype"}}, {"model": "auth.permission", "pk": 38, "fields": {"name": "Can change content type", "content_type": 13, "codename": "change_contenttype"}}, {"model": "auth.permission", "pk": 39, "fields": {"name": "Can delete content type", "content_type": 13, "codename": "delete_contenttype"}}, {"model": "auth.permission", "pk": 40, "fields": {"name": "Can add session", "content_type": 14, "codename": "add_session"}}, {"model": "auth.permission", "pk": 41, "fields": {"name": "Can change session", "content_type": 14, "codename": "change_session"}}, {"model": "auth.permission", "pk": 42, "fields": {"name": "Can delete session", "content_type": 14, "codename": "delete_session"}}, {"model": "auth.user", "pk": 28, "fields": {"password": "pbkdf2_sha256$30000$RQXxfrlPRfMu$w4PIzDe3inYeB+UIsnYHki8hmVFNC1CUMcKe7gV31qc=", "last_login": "2017-06-16T10:16:41.461Z", "is_superuser": true, "username": "admin", "first_name": "", "last_name": "", "email": "admin.admin@admin.admin", "is_staff": true, "is_active": true, "date_joined": "2017-06-16T08:17:06.297Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 29, "fields": {"password": "pbkdf2_sha256$30000$l18VTAknrTUS$DGn470f4Xn2lEs1ijh++Y3Fsu/DRja8hFVNcw1Bi1l0=", "last_login": "2017-06-16T08:18:04.352Z", "is_superuser": false, "username": "maxim.gorishniy@gmail.com", "first_name": "", "last_name": "", "email": "maxim.gorishniy@gmail.com", "is_staff": false, "is_active": true, "date_joined": "2017-06-16T08:18:04.038Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 30, "fields": {"password": "pbkdf2_sha256$30000$RzXcE3hD3Nwr$u8Lo4cbvqe+wjXPHkcbchaK/bRuN5d3lP/w76sTkx7s=", "last_login": "2017-06-16T08:19:07.181Z", "is_superuser": false, "username": "maxima.gorishniy@gmail.com", "first_name": "", "last_name": "", "email": "maxima.gorishniy@gmail.com", "is_staff": false, "is_active": true, "date_joined": "2017-06-16T08:19:06.604Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 31, "fields": {"password": "pbkdf2_sha256$30000$N8a5jtx1NQpZ$mLEpmK0VPTnxL1hIKoPaYSjSBUkioOkPrD1fob2Yny0=", "last_login": "2017-06-16T10:06:27.379Z", "is_superuser": false, "username": "aaa.as.a@asd.as", "first_name": "", "last_name": "", "email": "aaa.as.a@asd.as", "is_staff": false, "is_active": true, "date_joined": "2017-06-16T10:04:35.838Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 32, "fields": {"password": "pbkdf2_sha256$30000$N3BDrc3cul4g$/k4vJ7223fEqSgZyvvHS/MTe2n1f8Wk8WcKl+/sTUes=", "last_login": "2017-06-16T10:06:56.157Z", "is_superuser": false, "username": "aa@gnmai.com", "first_name": "", "last_name": "", "email": "aa@gnmai.com", "is_staff": false, "is_active": true, "date_joined": "2017-06-16T10:06:55.612Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 33, "fields": {"password": "pbkdf2_sha256$30000$JnipwoDAOlvV$pllfLiItJrH7zDYkASIoZXEnXaBVayF3WP7pwcdJ6xw=", "last_login": "2017-06-16T10:07:44.362Z", "is_superuser": false, "username": "aaaa@gnmai.com", "first_name": "", "last_name": "", "email": "aaaa@gnmai.com", "is_staff": false, "is_active": true, "date_joined": "2017-06-16T10:07:43.785Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 34, "fields": {"password": "pbkdf2_sha256$30000$WayJSgseczxX$7p0g2+jaqWERmJ+ZA4uGGohaFQAW5RTMgF3WyLoRL7M=", "last_login": "2017-06-16T10:07:50.796Z", "is_superuser": false, "username": "aasaa@gnmai.com", "first_name": "", "last_name": "", "email": "aasaa@gnmai.com", "is_staff": false, "is_active": true, "date_joined": "2017-06-16T10:07:50.253Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 35, "fields": {"password": "pbkdf2_sha256$30000$OdBYlw7aXoZ8$kepRkIqTqQBCeVf4Z8ODrf+UNd7pefcoQZWJGZz0kFg=", "last_login": "2017-06-16T10:11:52.064Z", "is_superuser": false, "username": "m.m@k.k", "first_name": "", "last_name": "", "email": "m.m@k.k", "is_staff": false, "is_active": true, "date_joined": "2017-06-16T10:11:51.655Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 36, "fields": {"password": "pbkdf2_sha256$30000$wdQSj2WE7Ruh$sY7NmeKKaDyV7s6yATTcCA3HxdQ+JPMf6Gb1yAIN+ZQ=", "last_login": "2017-06-16T10:12:16.134Z", "is_superuser": false, "username": "mom.chec@klo.klo", "first_name": "", "last_name": "", "email": "mom.chec@klo.klo", "is_staff": false, "is_active": true, "date_joined": "2017-06-16T10:12:15.613Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 37, "fields": {"password": "pbkdf2_sha256$30000$IVVChcSt8IXR$pD3W0yE+8E77j7ax1j/o4blTsvoH4GxREDTPlCEcTSM=", "last_login": "2017-06-16T10:13:02.539Z", "is_superuser": false, "username": "asd.asdad@asd.asda", "first_name": "", "last_name": "", "email": "asd.asdad@asd.asda", "is_staff": false, "is_active": true, "date_joined": "2017-06-16T10:13:01.879Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 38, "fields": {"password": "pbkdf2_sha256$30000$QBmVrj0ATgtv$PO10JcsSK8+u9L81QvUVpDKPoD95kbSrvvVZiETqMrg=", "last_login": "2017-06-16T10:14:14.263Z", "is_superuser": false, "username": "adffdfd.adfda@af.asd", "first_name": "", "last_name": "", "email": "adffdfd.adfda@af.asd", "is_staff": false, "is_active": true, "date_joined": "2017-06-16T10:14:13.710Z", "groups": [], "user_permissions": []}}, {"model": "admin.logentry", "pk": 35, "fields": {"action_time": "2017-06-16T09:24:15.191Z", "user": 28, "content_type": 4, "object_id": "8", "object_repr": "adsf sdf", "action_flag": 1, "change_message": "[{\"added\": {}}]"}}, {"model": "admin.logentry", "pk": 36, "fields": {"action_time": "2017-06-16T09:24:49.987Z", "user": 28, "content_type": 4, "object_id": "9", "object_repr": "asd asd", "action_flag": 1, "change_message": "[{\"added\": {}}]"}}, {"model": "admin.logentry", "pk": 37, "fields": {"action_time": "2017-06-16T09:24:50.208Z", "user": 28, "content_type": 4, "object_id": "10", "object_repr": "asd asd", "action_flag": 1, "change_message": "[{\"added\": {}}]"}}, {"model": "main.person", "pk": 7, "fields": {"user": 30, "first_name": "Max", "middle_name": "Pavlov", "last_name": "Gor", "image": "", "email": "maxima.gorishniy@gmail.com", "phone_number": "1234", "parent_phone_number": "1234", "contacts": "1234", "region": 1, "address": "1234", "birthday": "2002-03-13", "gender": "M", "education": "asd", "knowledge": "asd", "created_at": "2017-06-16T08:19:06.959Z", "updated_at": "2017-06-16T08:19:07.016Z"}}, {"model": "main.person", "pk": 8, "fields": {"user": 30, "first_name": "adsf", "middle_name": "", "last_name": "sdf", "image": "", "email": "asdsadcx.asd@sad.asd", "phone_number": "", "parent_phone_number": "", "contacts": "", "region": null, "address": "", "birthday": null, "gender": "M", "education": "", "knowledge": "", "created_at": "2017-06-16T09:24:15.190Z", "updated_at": "2017-06-16T09:24:15.190Z"}}, {"model": "main.person", "pk": 9, "fields": {"user": 30, "first_name": "asd", "middle_name": "", "last_name": "asd", "image": "", "email": "aaa@sad.mob", "phone_number": "", "parent_phone_number": "", "contacts": "", "region": null, "address": "", "birthday": null, "gender": "M", "education": "", "knowledge": "", "created_at": "2017-06-16T09:24:49.986Z", "updated_at": "2017-06-16T09:24:49.986Z"}}, {"model": "main.person", "pk": 10, "fields": {"user": 30, "first_name": "asd", "middle_name": "", "last_name": "asd", "image": "", "email": "aaa@sad.mob", "phone_number": "", "parent_phone_number": "", "contacts": "", "region": null, "address": "", "birthday": null, "gender": "M", "education": "", "knowledge": "", "created_at": "2017-06-16T09:24:50.202Z", "updated_at": "2017-06-16T09:24:50.202Z"}}, {"model": "main.person", "pk": 11, "fields": {"user": 31, "first_name": "asd", "middle_name": "", "last_name": "asd", "image": "", "email": "aaa.as.a@asd.as", "phone_number": "", "parent_phone_number": "", "contacts": "", "region": null, "address": "", "birthday": null, "gender": "M", "education": "", "knowledge": "", "created_at": "2017-06-16T10:04:36.116Z", "updated_at": "2017-06-16T10:04:36.184Z"}}, {"model": "main.person", "pk": 12, "fields": {"user": 32, "first_name": "asd", "middle_name": "", "last_name": "asd", "image": "", "email": "aa@gnmai.com", "phone_number": "", "parent_phone_number": "", "contacts": "", "region": null, "address": "", "birthday": null, "gender": "M", "education": "", "knowledge": "", "created_at": "2017-06-16T10:06:55.906Z", "updated_at": "2017-06-16T10:06:55.967Z"}}, {"model": "main.person", "pk": 13, "fields": {"user": 33, "first_name": "asd", "middle_name": "", "last_name": "asd", "image": "", "email": "aaaa@gnmai.com", "phone_number": "", "parent_phone_number": "", "contacts": "", "region": null, "address": "", "birthday": null, "gender": "M", "education": "", "knowledge": "", "created_at": "2017-06-16T10:07:44.054Z", "updated_at": "2017-06-16T10:07:44.114Z"}}, {"model": "main.person", "pk": 14, "fields": {"user": 34, "first_name": "asd", "middle_name": "", "last_name": "asd", "image": "", "email": "aasaa@gnmai.com", "phone_number": "", "parent_phone_number": "", "contacts": "", "region": null, "address": "", "birthday": null, "gender": "M", "education": "", "knowledge": "", "created_at": "2017-06-16T10:07:50.552Z", "updated_at": "2017-06-16T10:07:50.615Z"}}, {"model": "main.person", "pk": 15, "fields": {"user": 36, "first_name": "max", "middle_name": "", "last_name": "asdad", "image": "", "email": "mom.chec@klo.klo", "phone_number": "", "parent_phone_number": "", "contacts": "", "region": null, "address": "", "birthday": null, "gender": "M", "education": "", "knowledge": "", "created_at": "2017-06-16T10:12:15.881Z", "updated_at": "2017-06-16T10:12:15.944Z"}}, {"model": "main.person", "pk": 16, "fields": {"user": 37, "first_name": "mmms", "middle_name": "", "last_name": "sadadasd", "image": "", "email": "asd.asdad@asd.asda", "phone_number": "", "parent_phone_number": "", "contacts": "", "region": null, "address": "", "birthday": null, "gender": "M", "education": "", "knowledge": "", "created_at": "2017-06-16T10:13:02.203Z", "updated_at": "2017-06-16T10:13:02.365Z"}}, {"model": "main.person", "pk": 17, "fields": {"user": 38, "first_name": "masmmas", "middle_name": "", "last_name": "dsdfadafs", "image": "", "email": "adffdfd.adfda@af.asd", "phone_number": "", "parent_phone_number": "", "contacts": "", "region": null, "address": "", "birthday": null, "gender": "M", "education": "", "knowledge": "", "created_at": "2017-06-16T10:14:14.029Z", "updated_at": "2017-06-16T10:14:14.089Z"}}]
+[
+  {
+    "model": "main.region",
+    "pk": 1,
+    "fields": {
+      "name": "\u041d\u0438\u0436\u0435\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u043e\u0431\u043b."
+    }
+  },
+  {
+    "model": "main.organization",
+    "pk": 1,
+    "fields": {
+      "name": "Gtot",
+      "prescription": "dfadfa",
+      "full_description": "adasd",
+      "image": "",
+      "creation_date": "2002-12-12",
+      "url": "",
+      "email": "",
+      "created_at": "2017-06-16T09:51:09.433Z",
+      "updated_at": "2017-06-16T09:51:09.661Z",
+      "employees": [
+        7,
+        8
+      ]
+    }
+  },
+  {
+    "model": "main.organization",
+    "pk": 2,
+    "fields": {
+      "name": "GOGOGO",
+      "prescription": "asdf",
+      "full_description": "asd",
+      "image": "",
+      "creation_date": "2002-12-12",
+      "url": "",
+      "email": "asd@asd.asd",
+      "created_at": "2017-06-16T10:15:53.039Z",
+      "updated_at": "2017-06-16T10:15:53.199Z",
+      "employees": []
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "main",
+      "model": "project"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "main",
+      "model": "event"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "main",
+      "model": "region"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "main",
+      "model": "person"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "main",
+      "model": "tag"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "main",
+      "model": "type"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "main",
+      "model": "organization"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "main",
+      "model": "subject"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+      "app_label": "auth",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "b59v5csjll0ng7thli5ibwcrkd0s1mr1",
+    "fields": {
+      "session_data": "ZmU3YzU2ZTRiMDJiNmM2OWJiZDI0OWI3NmUyNTUzMmQ4NjhjYWQ1Mzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjI4IiwiX2F1dGhfdXNlcl9oYXNoIjoiNmE4NjMzMzM3MDVmZTU0YzE1OGU1YTVjNzAzMGJlNzhlYmFjNTAxMiJ9",
+      "expire_date": "2017-06-30T10:16:41.510Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "d5wvt5b55lhg8ncs1ymavbi6uw3azzt6",
+    "fields": {
+      "session_data": "YjRiOTM1ZDQ2ZDQxM2I2MjI1YTM4MGExZGYyZTIzNjNhNTZjZjg4Nzp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwNjJjYzlhMzJhODQ3ZDY1MDdjMGExZTk3N2IwY2QyYWMyOWJmNmE3In0=",
+      "expire_date": "2017-06-29T13:28:40.612Z"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add project",
+      "content_type": 1,
+      "codename": "add_project"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change project",
+      "content_type": 1,
+      "codename": "change_project"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete project",
+      "content_type": 1,
+      "codename": "delete_project"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can add event",
+      "content_type": 2,
+      "codename": "add_event"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can change event",
+      "content_type": 2,
+      "codename": "change_event"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can delete event",
+      "content_type": 2,
+      "codename": "delete_event"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can add region",
+      "content_type": 3,
+      "codename": "add_region"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can change region",
+      "content_type": 3,
+      "codename": "change_region"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can delete region",
+      "content_type": 3,
+      "codename": "delete_region"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can add person",
+      "content_type": 4,
+      "codename": "add_person"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can change person",
+      "content_type": 4,
+      "codename": "change_person"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can delete person",
+      "content_type": 4,
+      "codename": "delete_person"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add tag",
+      "content_type": 5,
+      "codename": "add_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change tag",
+      "content_type": 5,
+      "codename": "change_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete tag",
+      "content_type": 5,
+      "codename": "delete_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can add type",
+      "content_type": 6,
+      "codename": "add_type"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can change type",
+      "content_type": 6,
+      "codename": "change_type"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can delete type",
+      "content_type": 6,
+      "codename": "delete_type"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can add organization",
+      "content_type": 7,
+      "codename": "add_organization"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can change organization",
+      "content_type": 7,
+      "codename": "change_organization"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can delete organization",
+      "content_type": 7,
+      "codename": "delete_organization"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can add subject",
+      "content_type": 8,
+      "codename": "add_subject"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can change subject",
+      "content_type": 8,
+      "codename": "change_subject"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can delete subject",
+      "content_type": 8,
+      "codename": "delete_subject"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 9,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 9,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 9,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 10,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 10,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 10,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 11,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 11,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 11,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 12,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 12,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 12,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 13,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 13,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 13,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 14,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 14,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 14,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 28,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$RQXxfrlPRfMu$w4PIzDe3inYeB+UIsnYHki8hmVFNC1CUMcKe7gV31qc=",
+      "last_login": "2017-06-16T10:16:41.461Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin.admin@admin.admin",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2017-06-16T08:17:06.297Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 29,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$l18VTAknrTUS$DGn470f4Xn2lEs1ijh++Y3Fsu/DRja8hFVNcw1Bi1l0=",
+      "last_login": "2017-06-16T08:18:04.352Z",
+      "is_superuser": false,
+      "username": "maxim.gorishniy@gmail.com",
+      "first_name": "",
+      "last_name": "",
+      "email": "maxim.gorishniy@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-06-16T08:18:04.038Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 30,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$RzXcE3hD3Nwr$u8Lo4cbvqe+wjXPHkcbchaK/bRuN5d3lP/w76sTkx7s=",
+      "last_login": "2017-06-16T08:19:07.181Z",
+      "is_superuser": false,
+      "username": "maxima.gorishniy@gmail.com",
+      "first_name": "",
+      "last_name": "",
+      "email": "maxima.gorishniy@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-06-16T08:19:06.604Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 31,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$N8a5jtx1NQpZ$mLEpmK0VPTnxL1hIKoPaYSjSBUkioOkPrD1fob2Yny0=",
+      "last_login": "2017-06-16T10:06:27.379Z",
+      "is_superuser": false,
+      "username": "aaa.as.a@asd.as",
+      "first_name": "",
+      "last_name": "",
+      "email": "aaa.as.a@asd.as",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-06-16T10:04:35.838Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 32,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$N3BDrc3cul4g$/k4vJ7223fEqSgZyvvHS/MTe2n1f8Wk8WcKl+/sTUes=",
+      "last_login": "2017-06-16T10:06:56.157Z",
+      "is_superuser": false,
+      "username": "aa@gnmai.com",
+      "first_name": "",
+      "last_name": "",
+      "email": "aa@gnmai.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-06-16T10:06:55.612Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 33,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$JnipwoDAOlvV$pllfLiItJrH7zDYkASIoZXEnXaBVayF3WP7pwcdJ6xw=",
+      "last_login": "2017-06-16T10:07:44.362Z",
+      "is_superuser": false,
+      "username": "aaaa@gnmai.com",
+      "first_name": "",
+      "last_name": "",
+      "email": "aaaa@gnmai.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-06-16T10:07:43.785Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 34,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$WayJSgseczxX$7p0g2+jaqWERmJ+ZA4uGGohaFQAW5RTMgF3WyLoRL7M=",
+      "last_login": "2017-06-16T10:07:50.796Z",
+      "is_superuser": false,
+      "username": "aasaa@gnmai.com",
+      "first_name": "",
+      "last_name": "",
+      "email": "aasaa@gnmai.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-06-16T10:07:50.253Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 35,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$OdBYlw7aXoZ8$kepRkIqTqQBCeVf4Z8ODrf+UNd7pefcoQZWJGZz0kFg=",
+      "last_login": "2017-06-16T10:11:52.064Z",
+      "is_superuser": false,
+      "username": "m.m@k.k",
+      "first_name": "",
+      "last_name": "",
+      "email": "m.m@k.k",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-06-16T10:11:51.655Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 36,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$wdQSj2WE7Ruh$sY7NmeKKaDyV7s6yATTcCA3HxdQ+JPMf6Gb1yAIN+ZQ=",
+      "last_login": "2017-06-16T10:12:16.134Z",
+      "is_superuser": false,
+      "username": "mom.chec@klo.klo",
+      "first_name": "",
+      "last_name": "",
+      "email": "mom.chec@klo.klo",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-06-16T10:12:15.613Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 37,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$IVVChcSt8IXR$pD3W0yE+8E77j7ax1j/o4blTsvoH4GxREDTPlCEcTSM=",
+      "last_login": "2017-06-16T10:13:02.539Z",
+      "is_superuser": false,
+      "username": "asd.asdad@asd.asda",
+      "first_name": "",
+      "last_name": "",
+      "email": "asd.asdad@asd.asda",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-06-16T10:13:01.879Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 38,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$QBmVrj0ATgtv$PO10JcsSK8+u9L81QvUVpDKPoD95kbSrvvVZiETqMrg=",
+      "last_login": "2017-06-16T10:14:14.263Z",
+      "is_superuser": false,
+      "username": "adffdfd.adfda@af.asd",
+      "first_name": "",
+      "last_name": "",
+      "email": "adffdfd.adfda@af.asd",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-06-16T10:14:13.710Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+      "action_time": "2017-06-16T09:24:15.191Z",
+      "user": 28,
+      "content_type": 4,
+      "object_id": "8",
+      "object_repr": "adsf sdf",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+      "action_time": "2017-06-16T09:24:49.987Z",
+      "user": 28,
+      "content_type": 4,
+      "object_id": "9",
+      "object_repr": "asd asd",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+      "action_time": "2017-06-16T09:24:50.208Z",
+      "user": 28,
+      "content_type": 4,
+      "object_id": "10",
+      "object_repr": "asd asd",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "main.person",
+    "pk": 7,
+    "fields": {
+      "user": 30,
+      "first_name": "Max",
+      "middle_name": "Pavlov",
+      "last_name": "Gor",
+      "image": "",
+      "email": "maxima.gorishniy@gmail.com",
+      "phone_number": "1234",
+      "parent_phone_number": "1234",
+      "contacts": "1234",
+      "region": 1,
+      "address": "1234",
+      "birthday": "2002-03-13",
+      "gender": "M",
+      "education": "asd",
+      "knowledge": "asd",
+      "created_at": "2017-06-16T08:19:06.959Z",
+      "updated_at": "2017-06-16T08:19:07.016Z"
+    }
+  },
+  {
+    "model": "main.person",
+    "pk": 8,
+    "fields": {
+      "user": 30,
+      "first_name": "adsf",
+      "middle_name": "",
+      "last_name": "sdf",
+      "image": "",
+      "email": "asdsadcx.asd@sad.asd",
+      "phone_number": "",
+      "parent_phone_number": "",
+      "contacts": "",
+      "region": null,
+      "address": "",
+      "birthday": null,
+      "gender": "M",
+      "education": "",
+      "knowledge": "",
+      "created_at": "2017-06-16T09:24:15.190Z",
+      "updated_at": "2017-06-16T09:24:15.190Z"
+    }
+  },
+  {
+    "model": "main.person",
+    "pk": 9,
+    "fields": {
+      "user": 30,
+      "first_name": "asd",
+      "middle_name": "",
+      "last_name": "asd",
+      "image": "",
+      "email": "aaa@sad.mob",
+      "phone_number": "",
+      "parent_phone_number": "",
+      "contacts": "",
+      "region": null,
+      "address": "",
+      "birthday": null,
+      "gender": "M",
+      "education": "",
+      "knowledge": "",
+      "created_at": "2017-06-16T09:24:49.986Z",
+      "updated_at": "2017-06-16T09:24:49.986Z"
+    }
+  },
+  {
+    "model": "main.person",
+    "pk": 10,
+    "fields": {
+      "user": 30,
+      "first_name": "asd",
+      "middle_name": "",
+      "last_name": "asd",
+      "image": "",
+      "email": "aaa@sad.mob",
+      "phone_number": "",
+      "parent_phone_number": "",
+      "contacts": "",
+      "region": null,
+      "address": "",
+      "birthday": null,
+      "gender": "M",
+      "education": "",
+      "knowledge": "",
+      "created_at": "2017-06-16T09:24:50.202Z",
+      "updated_at": "2017-06-16T09:24:50.202Z"
+    }
+  },
+  {
+    "model": "main.person",
+    "pk": 11,
+    "fields": {
+      "user": 31,
+      "first_name": "asd",
+      "middle_name": "",
+      "last_name": "asd",
+      "image": "",
+      "email": "aaa.as.a@asd.as",
+      "phone_number": "",
+      "parent_phone_number": "",
+      "contacts": "",
+      "region": null,
+      "address": "",
+      "birthday": null,
+      "gender": "M",
+      "education": "",
+      "knowledge": "",
+      "created_at": "2017-06-16T10:04:36.116Z",
+      "updated_at": "2017-06-16T10:04:36.184Z"
+    }
+  },
+  {
+    "model": "main.person",
+    "pk": 12,
+    "fields": {
+      "user": 32,
+      "first_name": "asd",
+      "middle_name": "",
+      "last_name": "asd",
+      "image": "",
+      "email": "aa@gnmai.com",
+      "phone_number": "",
+      "parent_phone_number": "",
+      "contacts": "",
+      "region": null,
+      "address": "",
+      "birthday": null,
+      "gender": "M",
+      "education": "",
+      "knowledge": "",
+      "created_at": "2017-06-16T10:06:55.906Z",
+      "updated_at": "2017-06-16T10:06:55.967Z"
+    }
+  },
+  {
+    "model": "main.person",
+    "pk": 13,
+    "fields": {
+      "user": 33,
+      "first_name": "asd",
+      "middle_name": "",
+      "last_name": "asd",
+      "image": "",
+      "email": "aaaa@gnmai.com",
+      "phone_number": "",
+      "parent_phone_number": "",
+      "contacts": "",
+      "region": null,
+      "address": "",
+      "birthday": null,
+      "gender": "M",
+      "education": "",
+      "knowledge": "",
+      "created_at": "2017-06-16T10:07:44.054Z",
+      "updated_at": "2017-06-16T10:07:44.114Z"
+    }
+  },
+  {
+    "model": "main.person",
+    "pk": 14,
+    "fields": {
+      "user": 34,
+      "first_name": "asd",
+      "middle_name": "",
+      "last_name": "asd",
+      "image": "",
+      "email": "aasaa@gnmai.com",
+      "phone_number": "",
+      "parent_phone_number": "",
+      "contacts": "",
+      "region": null,
+      "address": "",
+      "birthday": null,
+      "gender": "M",
+      "education": "",
+      "knowledge": "",
+      "created_at": "2017-06-16T10:07:50.552Z",
+      "updated_at": "2017-06-16T10:07:50.615Z"
+    }
+  },
+  {
+    "model": "main.person",
+    "pk": 15,
+    "fields": {
+      "user": 36,
+      "first_name": "max",
+      "middle_name": "",
+      "last_name": "asdad",
+      "image": "",
+      "email": "mom.chec@klo.klo",
+      "phone_number": "",
+      "parent_phone_number": "",
+      "contacts": "",
+      "region": null,
+      "address": "",
+      "birthday": null,
+      "gender": "M",
+      "education": "",
+      "knowledge": "",
+      "created_at": "2017-06-16T10:12:15.881Z",
+      "updated_at": "2017-06-16T10:12:15.944Z"
+    }
+  },
+  {
+    "model": "main.person",
+    "pk": 16,
+    "fields": {
+      "user": 37,
+      "first_name": "mmms",
+      "middle_name": "",
+      "last_name": "sadadasd",
+      "image": "",
+      "email": "asd.asdad@asd.asda",
+      "phone_number": "",
+      "parent_phone_number": "",
+      "contacts": "",
+      "region": null,
+      "address": "",
+      "birthday": null,
+      "gender": "M",
+      "education": "",
+      "knowledge": "",
+      "created_at": "2017-06-16T10:13:02.203Z",
+      "updated_at": "2017-06-16T10:13:02.365Z"
+    }
+  },
+  {
+    "model": "main.person",
+    "pk": 17,
+    "fields": {
+      "user": 38,
+      "first_name": "masmmas",
+      "middle_name": "",
+      "last_name": "dsdfadafs",
+      "image": "",
+      "email": "adffdfd.adfda@af.asd",
+      "phone_number": "",
+      "parent_phone_number": "",
+      "contacts": "",
+      "region": null,
+      "address": "",
+      "birthday": null,
+      "gender": "M",
+      "education": "",
+      "knowledge": "",
+      "created_at": "2017-06-16T10:14:14.029Z",
+      "updated_at": "2017-06-16T10:14:14.089Z"
+    }
+  }
+]

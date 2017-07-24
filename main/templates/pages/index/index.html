@@ -4,11 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hi!</title>
+    <title>Школа программирования и робототехники GoTo</title>
 </head>
 <body onresize="location.reload();">
 <!-- Большая не нужная библиотека -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- Favicon -->
+<link href={% static "/img/favicon.ico" %} rel="shortcut icon"
+      type="image/vnd.microsoft.icon"/>
 
 <!--Шрифты-->
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
@@ -85,7 +89,7 @@
         Образовательный проект в сфере высоких технологий
     </div>
 
-    <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src="static/img/down_arrow.png"
+    <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src={% static "/img/down_arrow.png" %}
          style="display: none;">
 </div>
 
@@ -317,7 +321,7 @@
                                 <span class="input__label-content input__label-content--akira">Email</span>
                             </label>
                         </span>
-                    <img id="subscribe_submit" src="/static/img/helpers/second_tick.png">
+                    <img id="subscribe_submit" src={% static "/img/helpers/second_tick.png" %}>
                 </div>
 
                 <div id="what_we_want">
