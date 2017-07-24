@@ -1,7 +1,7 @@
 from django.test import TestCase
 
+from main.event_calendar.views import get_needed_skills
 from .models import Skill
-from .views import get_needed_skills
 
 
 class NeededSkillsTest(TestCase):

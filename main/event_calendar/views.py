@@ -10,20 +10,11 @@ from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from django.views import View
 
-from main.apps import SOCIALS
-from .forms import RegisterEventForm, RegisterProjectForm
-from .forms import RegisterPersonForm, RegisterOrganizationForm
-from .models import Event, Project, Skill
-from .models import Person
+from main.forms import RegisterEventForm, RegisterProjectForm
+from main.forms import RegisterPersonForm, RegisterOrganizationForm
+from main.models import Event, Project, Skill
+from main.models import Person
 
-
-##########################
-#
-#
-# Old authors funcs, don't know what they actually do
-#
-#
-##########################
 
 def profile(request):
     person_data_list = Person.objects.get(pk=1)
@@ -97,7 +88,6 @@ def project_profile(request, project_id):
 
 class CreateProject(View):
     def post(self, request):
-        post = request.POST
         e = RegisterEventForm(request.POST)
         e.save()
         return HttpResponseRedirect('where_ever_should_be_redirect_to')
@@ -113,8 +103,7 @@ def event_profile(request, event_id):
 
 class RegisterOrganization(View):
     def post(self, request):
-        post = request.POST
-        form = RegisterOrganizationForm(post)
+        form = RegisterOrganizationForm(request.POST)
         if form.is_valid():
             org = form.save()
             org.save()
@@ -167,22 +156,3 @@ class EditPerson(View):
         parent_phone = post['parent_phone']
         region = post['region']
         birthday = post['birthday']
-
-##########################
-#
-#
-# Simple rendering pages
-#
-#
-##########################
-
-def index(request):
-    '''Render index page with socials and user'''
-    context = {"socials": SOCIALS, "user": request.user}
-    return render(request, 'pages/index/index.html', context)
-
-
-def about_us(request):
-    '''Render about_us page with socials and user'''
-    context = {"socials": SOCIALS, "user": request.user}
-    return render(request, 'pages/about_us/about_us.html', context)
