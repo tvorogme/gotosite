@@ -1,5 +1,6 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 
 class Region(models.Model):
@@ -12,126 +13,93 @@ class Region(models.Model):
 class Skill(models.Model):
     name = models.CharField(max_length=200)
 
+    class Meta:
+        verbose_name = "навык"
+        verbose_name_plural = "навыки"
+
     def __str__(self):
         return self.name
 
 
-class Person(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+class UserManager(BaseUserManager):
+    def _create_user(self, email, password, **extra_fields):
+        if not email:
+            raise ValueError('The Email must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save()
+        return user
+
+    def create_superuser(self, email, password, **extra_fields):
+        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_staff', True)
+
+        return self._create_user(email, password, **extra_fields)
+
+
+class User(AbstractBaseUser, PermissionsMixin):
+    '''Create own user with email only'''
+
+    email = models.EmailField(unique=True, null=True)
+
+    #
+    # ФИО
+    #
 
     first_name = models.CharField(max_length=40)
     middle_name = models.CharField(max_length=40, blank=True, null=True)
     last_name = models.CharField(max_length=40)
 
+    # Avatar
     image = models.ImageField(upload_to='person_images/', default=None, blank=True, null=True)
-    email = models.EmailField()
+
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     parent_phone_number = models.CharField(max_length=20, blank=True, null=True)
-    contacts = models.CharField(max_length=40, blank=True, null=True)
+
     region = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True, blank=True)
     address = models.CharField(max_length=100, blank=True, null=True)
+
     birthday = models.DateField('birthday', blank=True, null=True)
+
     GENDER = (('M', 'Мужской'),
               ('F', 'Женский'),
               ('N', 'Не выбрано'))
     gender = models.CharField(choices=GENDER, default='N', max_length=2)
+
     education = models.TextField(blank=True, null=True)
+
     knowledge = models.TextField(blank=True, null=True)
     skills = models.ManyToManyField(Skill, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.first_name + ' ' + self.last_name
+    #
+    # Some django specific fields
+    #
+    USERNAME_FIELD = 'email'
+    objects = UserManager()
 
+    is_staff = models.BooleanField(
+        _('staff status'),
+        default=False,
+        help_text=_('Designates whether the user can log into this site.'),
+    )
 
-class Organization(models.Model):
-    name = models.CharField(max_length=200)
-    prescription = models.TextField(default='')
-    full_description = models.TextField(default='')
-    image = models.ImageField(default=None, blank=True, null=True)
+    class Meta:
+        db_table = 'users'
 
-    employees = models.ManyToManyField(Person, blank=True)
-    creation_date = models.DateField(auto_now=False, auto_now_add=False)
+        verbose_name = "пользователь"
+        verbose_name_plural = "пользователи"
 
-    url = models.URLField(max_length=200, default=None, blank=True, null=True)
-    email = models.EmailField(max_length=200, default=None, blank=True, null=True)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Type(models.Model):
-    name = models.CharField(max_length=200)
+        managed = True
 
     def __str__(self):
-        return self.name
+        return "{} {} {}".format(self.last_name, self.first_name, self.middle_name)
 
+    def get_full_name(self):
+        return "{} {} {}".format(self.last_name, self.first_name, self.middle_name)
 
-class Tag(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
-
-
-class Subject(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
-
-
-class Project(models.Model):
-    name = models.CharField(max_length=200)
-    experts = models.ManyToManyField(Person, related_name='projects_expert', blank=True)
-    participants = models.ManyToManyField(Person, related_name='projects_participant', blank=True)
-
-    image = models.ImageField(default=None, blank=True)
-    prescription = models.TextField(default='')
-    full_description = models.TextField(default='')
-
-    event = models.ForeignKey('Event', on_delete=models.SET_NULL, null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Event(models.Model):
-    name = models.CharField(max_length=200)
-    author = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True, blank=True)
-    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True, blank=True)
-    experts = models.ManyToManyField(Person, related_name='events_expert', blank=True)
-    participants = models.ManyToManyField(Person, related_name='events_participant', blank=True)
-    min_age = models.IntegerField(default=0)
-    max_age = models.IntegerField(default=100)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    region = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True, blank=True)
-    address = models.CharField(max_length=200)
-    date = models.DateField(null=True, blank=True)
-    time = models.TimeField(null=True, blank=True)
-
-    image = models.ImageField(default=None, blank=True, null=True)
-    prescription = models.TextField(default='', blank=True)
-    full_description = models.TextField(default='', blank=True)
-    cost = models.IntegerField(default=0, blank=True, null=True)
-    url = models.URLField(max_length=200, default=None, blank=True, null=True)
-    type = models.ForeignKey(Type, on_delete=models.SET_NULL, null=True, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
-    subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, blank=True)
-    verified = models.BooleanField(default=False, blank=True)
-
-    def __str__(self):
-        return self.name
-
-    def __repr__(self):
-        return '<Event {}>'.format(self.name)
+    def get_short_name(self):
+        return "{} {}".format(self.first_name, self.last_name)

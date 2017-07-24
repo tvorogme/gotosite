@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,7 +11,7 @@
     <!--Шрифты-->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
 
-    <link href="/css/profile.css" rel="stylesheet">
+    <link href="{% static "css/profile.css" %}" rel="stylesheet">
 
     <!--Красивые значки-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -42,27 +43,42 @@
     <div class="whitespace"></div>
     <div class="header">
         <div class="col-md-3"><img class="profile-img"
-                                   src="https://goto.msk.ru/media/k2/items/cache/274936c4b649c88ffad7944bfc7a744a_L.jpg">
+                                   src="{% if user.image %}
+                                            {{ user.image.url }}
+                                        {% else %}
+                                            https://goto.msk.ru/media/k2/items/cache/274936c4b649c88ffad7944bfc7a744a_L.jpg
+                                        {% endif %}
+                                       ">
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
-                                     type="text" {{ "readonly='readonly'" if request.path != '/profile' }} id="name"
-                                     value="{{ user.last_name if user.last_name != None }} {{ user.first_name if user.last_name != None }} {{ user.surname if user.surname != None }}">
+                                     type="text" {{ is_profile|yesno:",readonly" }} id="name"
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}{{ user.first_name }}{% endif %} {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
 
 
-            <p class="label"><input placeholder="E-mail" class="after_name"
-                                    type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
-                                    id="email"
-                                    value="{{ user.email }}">
+            <p class="label">Email: <input placeholder="E-mail" class="after_name"
+                                           type="text" {{ is_profile|yesno:",readonly" }}
+                                           id="email"
+                                           value="{{ user.email }}">
             </p>
 
 
 
 
             {% if request.path != '/profile' and user.phone_number != None or request.path == '/profile' %}
-                <p class="label"><input placeholder="Телефон" class="after_name"
-                                        type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
-                                        id="phone"
-                                        value="{{ user.phone_number if user.phone_number != None }}">
+                <p class="label">Телефон: <input placeholder="Телефон" class="after_name"
+                                                 type="text" {{ is_profile|yesno:",readonly" }}
+                                                 id="phone"
+                                                 value="{% if  user.phone_number != None %} {{ user.phone_number }} {% endif %}">
+                </p>
+            {% endif %}
+
+
+
+            {% if request.path != '/profile' and user.parent_phone_number != None or request.path == '/profile' %}
+                <p class="label">Телефон родителей: <input placeholder="Телефон родителей" class=" after_name"
+                                                           type="text" {{ is_profile|yesno:",readonly" }}
+                                                           id="parent_phone" parent_phone_number
+                                                           value="{% if  user.parent_phone_number != None %} {{ user.parent_phone_number }} {% endif %}">
                 </p>
             {% endif %}
 
@@ -71,10 +87,10 @@
 
             {% if request.path != '/profile' and user.city != None or request.path == '/profile' %}
 
-                <p class="label"><input placeholder="Место проживания" class="after_name"
-                                        type="text" {{ "readonly='readonly'" if request.path != '/profile' }}
-                                        id="city"
-                                        value="{{ user.city if user.city != None }}"></p>
+                <p class="label"> Город проживания: <input placeholder="Город проживания" class="after_name"
+                                                           type="text" {{ is_profile|yesno:",readonly" }}
+                                                           id="city"
+                                                           value="{% if  user.region != None %} {{ user.region }} {% endif %}"></p>
 
             {% endif %}
 
@@ -83,47 +99,55 @@
 
             {% if request.path != '/profile' and user.birthday != None or request.path == '/profile' %}
 
-                <p class="label"><input placeholder="День рождения" class="after_name"
-                                        type="date" {{ "readonly='readonly'" if request.path != '/profile' }}
-                                        id="birthday"
-                                        value="{{ user.birthday if user.birthday != None }}"></p>
+                <p class="label"> День рождения: <input placeholder="День рождения" class="after_name"
+                                                        type="date" {{ is_profile|yesno:",readonly" }}
+                                                        id="birthday"
+                                                        value="{% if  user.birthday != None %} {{ user.birthday }} {% endif %}"></p>
             {% endif %}
 
 
-            {#        #FIXME: Displaing correctly only when editing profile#}
-
-            <br>
-            <div class="col-md-2">
-                <i class="fa fa-vk fa-lg" aria-hidden="true"></i>
-            </div>
-
-            <div class="col-md-2">
-                <i class="fa fa-github fa-lg" aria-hidden="true"></i>
-            </div>
-
-            <div class="col-md-2">
-                <i class="fa fa-gitlab fa-lg" aria-hidden="true"></i>
-            </div>
         </div>
 
+        {#        #FIXME: Displaing correctly only when editing profile#}
+        <div id="socials">
+            <div class="row">
+                <div class="col-md-2">
+                    <i class="fa fa-vk fa-lg" aria-hidden="true"></i>
+                </div>
 
+                <div class="col-md-2">
+                    <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i>
+                </div>
+
+                <div class="col-md-2">
+                    <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+                </div>
+
+                <div class="col-md-2">
+                    <i class="fa fa-bitbucket fa-lg" aria-hidden="true"></i>
+                </div>
+
+                <div class="col-md-2">
+                    <i class="fa fa-gitlab fa-lg" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="whitespace"></div>
     <div class="whitespace"></div>
 
     <div class="block-wrapper">
         <div class="col-md-3">
-            <h2>Навыки</h2>
+            <h2>Скиллы</h2>
         </div>
 
         <div class="col-md-9">
             <div class="skills-wrapper">
 
-                {% for skill in user.skills %}
+                {% for skill in user.skills.all %}
                     <div class="col-3">
-                        <input skill_id="{{ skill.id }}" placeholder="Навыки" id="skill_{{ skill.id }}"
-                               class="after_name skill"
-                               value="{{ skill.skill_name }}" type="text">
+                        <input skill_id="{{ skill.id }}" placeholder="Скилл" id="skill_{{ skill.id }}" class="after_name skill"
+                               value="{{ skill.name }}" type="text">
                     </div>
                 {% endfor %}
 
@@ -184,7 +208,7 @@
 
                         {% for user in project.team %}
                             <a href="/profile/{{ user.id }}">{{ user.first_name }}
-                                {{ user.last_name }}{{ "," if not loop.last }}</a>
+                                {{ user.last_name }}{% if loop.last %}, {% endif %}</a>
                         {% endfor %}
                     </p>
 
@@ -200,10 +224,10 @@
                     </div>
 
 
-                    <textarea {{ "readonly='readonly'" if request.path != '/profile' }} placeholder="Описание"
-                                                                                        name="description"
-                                                                                        onclick="edit_project({{ project.id }})"
-                                                                                        class="description">{{ project.description }}</textarea>
+                    <textarea {{ is_profile|yesno:",readonly" }} placeholder="Описание"
+                                                                 name="description"
+                                                                 onclick="edit_project({{ project.id }})"
+                                                                 class="description">{{ project.description }}</textarea>
                 </form>
             </div>
         {% endfor %}
@@ -211,12 +235,12 @@
     </div>
 </div>
 
-{%- if request.path == '/profile' %}
+{% if is_profile %}
     <!-- Работа с формами -->
-    <script src="/js/profile/forms.js"></script>
+    <script src={% static "/js/profile/forms.js" %}></script>
 
     <!-- Автодополнение скиллов, препов и кураторов -->
-    <script src="/js/profile/autocomplite.js"></script>
+    <script src={% static "/js/profile/autocomplite.js" %}></script>
 {% endif %}
 
 
