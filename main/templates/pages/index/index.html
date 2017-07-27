@@ -1,19 +1,24 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hi!</title>
+    <title>Школа программирования и робототехники GoTo</title>
 </head>
 <body onresize="location.reload();">
 <!-- Большая не нужная библиотека -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
+<!-- Favicon -->
+<link href={% static "/img/favicon.ico" %} rel="shortcut icon"
+      type="image/vnd.microsoft.icon"/>
+
 <!--Шрифты-->
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
 
 <!--Основные стили -->
-<link rel="stylesheet" href="/css/index_new.css">
+<link rel="stylesheet" href={% static "/css/index_new.css" %}>
 
 <!--Reset all browsers-->
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
@@ -28,8 +33,8 @@
         crossorigin="anonymous"></script>
 
 <!--Библиотеки-->
-<script src="/js/menu/modernizr.custom.js"></script>
-<script src="/js/mo.min.js"></script>
+<script src={% static "/js/menu/modernizr.custom.js" %}></script>
+<script src={% static "/js/mo.min.js" %}></script>
 
 <!--Бутстрап-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -54,11 +59,11 @@
 
 <!-- социальная штука -->
 <div id='ss_menu' style="transform: rotate(90deg)">
-    <div class="hor-fix"><a href="{{ socials['facebook'] }}"><i class="fa fa-facebook-official"></i></a>
+    <div class="hor-fix"><a href="{{ socials.facebook }}"><i class="fa fa-facebook-official"></i></a>
     </div>
-    <div class="hor-fix"><a href="{{ socials['telegram'] }}"><i class="fa fa-telegram" aria-hidden="true"></i></a></div>
-    <div class="hor-fix"><a href="{{ socials['vk'] }}"><i class="fa fa-vk"></i></a></div>
-    <div class="hor-fix"><a href="{{ socials['instagram'] }}"><i class="fa fa-instagram"></i></a></div>
+    <div class="hor-fix"><a href="{{ socials.telegram }}"><i class="fa fa-telegram" aria-hidden="true"></i></a></div>
+    <div class="hor-fix"><a href="{{ socials.vk }}"><i class="fa fa-vk"></i></a></div>
+    <div class="hor-fix"><a href="{{ socials.instagram }}"><i class="fa fa-instagram"></i></a></div>
     <div class='menu hor-fix'>
         <div class='share' id='ss_toggle' data-rot='90'>
             <div class='circle'></div>
@@ -84,7 +89,7 @@
         Образовательный проект в сфере высоких технологий
     </div>
 
-    <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src="static/img/down_arrow.png"
+    <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src={% static "/img/down_arrow.png" %}
          style="display: none;">
 </div>
 
@@ -125,7 +130,7 @@
                             <a onclick="awesome()">
                                 <svg width="64" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64"
                                      viewBox="0 0 64 64"
-                                     xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
+                                     enable-background="new 0 0 64 64">
                                     <g>
                                         <path
                                                 d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"/>
@@ -298,7 +303,7 @@
 
 <!-- ХОЧУ -->
 <div class="button-big-picture">
-    <a class="back-hochu"><img src="static/img/arrow_black.png"></a>
+    <a class="back-hochu"><img src={% static "/img/arrow_black.png" %}></a>
     <canvas id="shariki" class="shariki"></canvas>
     <table class="table-shar">
         <tr>
@@ -316,7 +321,7 @@
                                 <span class="input__label-content input__label-content--akira">Email</span>
                             </label>
                         </span>
-                    <img id="subscribe_submit" src="/static/img/helpers/second_tick.png">
+                    <img id="subscribe_submit" src={% static "/img/helpers/second_tick.png" %}>
                 </div>
 
                 <div id="what_we_want">
@@ -364,119 +369,119 @@
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/abitur.jpg"></a>
+                                                src={% static "/img/partners/abitur.jpg" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/amperka.png"></a>
+                                                src={% static "/img/partners/amperka.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/blastim.png"></a>
+                                                src={% static "/img/partners/blastim.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/cat.jpg"></a>
+                                                src={% static "/img/partners/cat.jpg" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/codeforces.png"></a>
+                                                src={% static "/img/partners/codeforces.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/cossa.png"></a>
+                                                src={% static "/img/partners/cossa.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/golograph.png"></a>
+                                                src={% static "/img/partners/golograph.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/hse.jpg"></a>
+                                                src={% static "/img/partners/hse.jpg" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/innopols.png"></a>
+                                                src={% static "/img/partners/innopols.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/intel.png"></a>
+                                                src={% static "/img/partners/intel.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/krok.gif"></a>
+                                                src={% static "/img/partners/krok.gif" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/mfti.png"></a>
+                                                src={% static "/img/partners/mfti.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/newtonew.png"></a>
+                                                src={% static "/img/partners/newtonew.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/nts.png"></a>
+                                                src={% static "/img/partners/nts.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/popmech.png"></a>
+                                                src={% static "/img/partners/popmech.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/rambler.png"></a>
+                                                src={% static "/img/partners/rambler.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
                                 <div class="partner col-md-2 little-partner">
                                     <table>
                                         <td valign="middle"><a href="https://mipt.ru/"><img
-                                                src="static/img/partners/rvk.png"></a>
+                                                src={% static "/img/partners/rvk.png" %}></a>
                                         </td>
                                     </table>
                                 </div>
@@ -564,26 +569,26 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
 
 <!--Переключение слайдов-->
-<script src="/js/index_new.js"></script>
+<script src={% static "/js/index_new.js" %}></script>
 
 <!--Кнопка хочу-->
-<script src="/js/hochu/hochu.js"></script>
+<script src={% static "/js/hochu/hochu.js" %}></script>
 
 <!--Тетрис-->
-<script src="/js/tetris/tetris.js"></script>
+<script src={% static "/js/tetris/tetris.js" %}></script>
 
 <!--Библиотеки-->
-<script src="/js/animated/EasePack.min.js"></script>
-<script src="/js/animated/rAF.js"></script>
+<script src={% static "/js/animated/EasePack.min.js" %}></script>
+<script src={% static "/js/animated/rAF.js" %}></script>
 
 <!--Задний фон первого слайда-->
-<script src="/js/animated/beatuful-header.js"></script>
+<script src={% static "/js/animated/beatuful-header.js" %}></script>
 
 <!--Анимация логотипа-->
-<script src="/js/logo/logo_animation.js"></script>
+<script src={% static "/js/logo/logo_animation.js" %}></script>
 
 <!--Волна футера-->
-<script src="/js/wave.js"></script>
+<script src={% static "/js/wave.js" %}></script>
 
 <!--Слайдер-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
@@ -592,8 +597,8 @@
 
 
 <!--Навигация-->
-<script src="/js/navigation/modernizr.min.js"></script>
-<script src="/js/navigation/dots.js"></script>
+<script src={% static "/js/navigation/modernizr.min.js" %}></script>
+<script src={% static "/js/navigation/dots.js" %}></script>
 
 <script>
     $('.slick').slick({
@@ -602,7 +607,6 @@
         autoplay: true,
         autoplaySpeed: 5000
     });
-
     [].slice.call(document.querySelectorAll('.dotstyle > ul')).forEach(function (nav) {
         new DotNav(nav, {
             callback: function (idx) {

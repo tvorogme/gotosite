@@ -161,28 +161,28 @@ body {
 }
 
 .programm-back {
-    background-image: url(../static/img/napravleniya/programm.jpg);
+    background-image: url(../img/napravleniya/programm.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
 }
 
 .robot-back {
-    background-image: url(../static/img/napravleniya/robo.jpg);
+    background-image: url(../img/napravleniya/robo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
 }
 
 .bio-back {
-    background-image: url(../static/img/napravleniya/bio.jpg);
+    background-image: url(../img/napravleniya/bio.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
 }
 
 .ad-back {
-    background-image: url(../static/img/napravleniya/ad.jpg);
+    background-image: url(../img/napravleniya/ad.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
@@ -865,7 +865,7 @@ body {
     width: 40px !important;
     height: 58px !important;
     cursor: pointer !important;
-    background: url(../static/img/buttons.png) center center no-repeat !important;
+    background: url(../img/buttons.png) center center no-repeat !important;
     overflow: hidden !important;
     background-position: -12px -31px !important;
     z-index: 100 !important;
@@ -876,7 +876,7 @@ body {
     width: 40px !important;
     height: 58px !important;
     cursor: pointer !important;
-    background: url(../static/img/buttons.png) center center no-repeat !important;
+    background: url(../img/buttons.png) center center no-repeat !important;
     overflow: hidden !important;
     background-position: -70px -31px !important;
     z-index: 100;
