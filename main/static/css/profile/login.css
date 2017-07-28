@@ -1,0 +1,49 @@
+#login_placeholder {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+#close_login_placeholder {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#login_placeholder_table {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: 1001;
+}
+
+#login_placeholder_socials {
+    max-width: 300px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+#login_placeholder_socials i:hover,
+#login_placeholder_email,
+#login_placeholder_email_login{
+    cursor: pointer;
+}
+
+#login_placeholder h2 {
+    font-size: 50px;
+    margin-bottom: 40px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#login_placeholder p {
+    text-align: center;
+}
+
+#login_placeholder svg{
+    fill: white;
+    position: absolute;
+    top: -4px;
+}

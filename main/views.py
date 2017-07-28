@@ -1,4 +1,5 @@
 from django.contrib.auth import logout
+from django.contrib.staticfiles.views import serve
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views import View
@@ -6,6 +7,12 @@ from django.views import View
 from main.apps import SOCIALS
 from .models import User
 
+
+###########
+#
+# SIMPLE PAGES
+#
+###########
 
 def index(request):
     '''Render index page with socials and user'''
@@ -28,6 +35,11 @@ def about_us(request):
 
     return render(request, 'pages/about_us/about_us.html', context)
 
+#############
+#
+# PROFILE PAGES
+#
+#############
 
 class ProfileView(View):
     def get(self, request, _id=None):
@@ -46,3 +58,10 @@ class ProfileView(View):
 def logout_wrapper(request):
     logout(request)
     return redirect("/")
+
+
+def login_wrapper(request):
+    return render(request, 'pages/profile/login.html')
+
+
+get_favicon = lambda r: serve(r, 'static/img/favicon.ico')
