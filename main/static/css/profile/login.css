@@ -52,6 +52,7 @@
 
 #login_placeholder_register input[type="text"],
 #login_placeholder_register input[type="email"],
+#login_placeholder_register input[type="submit"],
 #login_placeholder_register input[type="password"]{
     border: none;
     background: none;
