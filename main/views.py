@@ -1,4 +1,4 @@
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login
 from django.contrib.staticfiles.views import serve
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -35,6 +35,7 @@ def about_us(request):
 
     return render(request, 'pages/about_us/about_us.html', context)
 
+
 #############
 #
 # PROFILE PAGES
@@ -61,7 +62,8 @@ def logout_wrapper(request):
 
 
 def login_wrapper(request):
-    return render(request, 'pages/profile/login.html')
-
+    user = authenticate(username=request.POST['username'], password=request.POST['password'])
+    login(request, user)
+    return "Logged In"
 
 get_favicon = lambda r: serve(r, 'static/img/favicon.ico')

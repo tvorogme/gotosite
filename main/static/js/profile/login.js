@@ -11,7 +11,6 @@ function toggle_login_placeholder() {
 }
 
 function display_login_placeholder(n) {
-
     if (n === 2) {
         $("#login_placeholder_first_page").css('display', 'none');
         $("#login_placeholder_third_page").css('display', 'none');
@@ -26,3 +25,9 @@ function display_login_placeholder(n) {
         $("#login_placeholder_third_page").css('display', 'block');
     }
 }
+
+$("#login_placeholder_login_button").click(function () {
+    var email = $("#login_placeholder_username").val();
+    var password = $("#login_placeholder_password").val();
+
+});

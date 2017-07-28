@@ -37,7 +37,8 @@
     display: none;
 }
 
-#login_placeholder_register input{
+#login_placeholder_register input,
+#login_placeholder_login_button{
     width: 300px;
     margin-left: 150px;
     margin-right: 150px;
@@ -56,7 +57,7 @@
     background: none;
 }
 
-#login_placeholder_register input[type="submit"]{
+#login_placeholder_login_button{
     font-size: 30px;
     background: none;
     border: none;
@@ -85,4 +86,8 @@
 
 #login_placeholder_forgot_back a:hover{
     text-decoration: none;
+}
+
+#login_placeholder_login_button:hover{
+    cursor: pointer;
 }

@@ -64,15 +64,15 @@
                     <div id="login_placeholder_third_page">
                         <h2>Вход</h2>
 
-                        <form id="login_placeholder_register">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Пароль">
-                            <input type="submit" value="Войти">
+                        <form action="/login" method="post" id="login_placeholder_register">
+                            <input id="login_placeholder_username" name="username" type="email" placeholder="Email">
+                            <input id="login_placeholder_password" name="password" type="password" placeholder="Пароль">
+                            <p id="login_placeholder_login_button">Войти</p>
                         </form>
 
-                        <p id="login_placeholder_forgot_back"><a>Забыли пароль?</a> / <a onclick="display_login_placeholder(1)">Назад</a></p>
+                        <p id="login_placeholder_forgot_back"><a>Забыли пароль?</a> / <a
+                                onclick="display_login_placeholder(1)">Назад</a></p>
                     </div>
-
                 </div>
             </td>
         </tr>

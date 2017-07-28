@@ -11,8 +11,9 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <!-- Favicon -->
-<link href={% static "/img/favicon.ico" %} rel="shortcut icon"
-      type="image/vnd.microsoft.icon"/>
+<link href={% static "/img/favicon.ico" %} rel="shortcut icon
+"
+type="image/vnd.microsoft.icon"/>
 
 <!--Шрифты-->
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
@@ -56,21 +57,25 @@
 
 {% include 'helpers/menu.html' %}
 
-
-<!-- социальная штука -->
-<div id='ss_menu' style="transform: rotate(90deg)">
-    <div class="hor-fix"><a href="{{ socials.facebook }}"><i class="fa fa-facebook-official"></i></a>
-    </div>
-    <div class="hor-fix"><a href="{{ socials.telegram }}"><i class="fa fa-telegram" aria-hidden="true"></i></a></div>
-    <div class="hor-fix"><a href="{{ socials.vk }}"><i class="fa fa-vk"></i></a></div>
-    <div class="hor-fix"><a href="{{ socials.instagram }}"><i class="fa fa-instagram"></i></a></div>
-    <div class='menu hor-fix'>
-        <div class='share' id='ss_toggle' data-rot='90'>
-            <div class='circle'></div>
-            <div class='bar'></div>
+{% if request.user.is_authenticated %}
+    {% include 'helpers/avatar.html' %}
+{% else %}
+    <!-- социальная штука -->
+    <div id='ss_menu' style="transform: rotate(90deg)">
+        <div class="hor-fix"><a href="{{ socials.facebook }}"><i class="fa fa-facebook-official"></i></a>
+        </div>
+        <div class="hor-fix"><a href="{{ socials.telegram }}"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+        </div>
+        <div class="hor-fix"><a href="{{ socials.vk }}"><i class="fa fa-vk"></i></a></div>
+        <div class="hor-fix"><a href="{{ socials.instagram }}"><i class="fa fa-instagram"></i></a></div>
+        <div class='menu hor-fix'>
+            <div class='share' id='ss_toggle' data-rot='90'>
+                <div class='circle'></div>
+                <div class='bar'></div>
+            </div>
         </div>
     </div>
-</div>
+{% endif %}
 
 <!-- LoGo and MORE! -->
 <div class="first-slide">
@@ -90,7 +95,7 @@
     </div>
 
     <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src={% static "/img/down_arrow.png" %}
-         style="display: none;">
+            style="display: none;">
 </div>
 
 <!--Тетрис-->

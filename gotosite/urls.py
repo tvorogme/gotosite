@@ -20,7 +20,6 @@ urlpatterns = [
     url(r'^profile/(?P<id>[0-9]+)', ProfileView.as_view(), name='Profile'),
     url(r'^logout/', logout_wrapper),
     url(r'^login/', login_wrapper),
-
     url(r'^favicon.ico', get_favicon)
 ]
 

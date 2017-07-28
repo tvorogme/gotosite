@@ -1,0 +1,24 @@
+{% block avatar %}
+    {% load static %}
+
+    <link rel="stylesheet" href={% static "/css/helpers/avatar.css" %}>
+
+    <div id="avatar_circle">
+        <?xml version="1.0"?>
+        <svg viewBox="0 0 120 120" width="50px" height="50px" version="1.1"
+             xmlns="http://www.w3.org/2000/svg">
+            <circle id="avatar_circle" cx="60" cy="60" r="50"/>
+            <text x="37" y="71" font-family="Ubuntu" stroke="none" fill="white" style="font-size: 40px"
+                  font-size="35">
+                {{ user.first_name.0 }}{{ user.last_name.0 }}
+            </text>
+        </svg>
+
+        <script>
+            $(document).ready(function () {
+                document.getElementById("avatar_circle").setAttribute("fill", ['rgb(81, 13, 129)', 'rgb(67, 180, 152)', 'rgb(255, 140, 102)', 'rgb(238, 229, 58)'][Math.floor(Math.random() * 4)]);
+            })
+
+        </script>
+    </div>
+{% endblock %}
