@@ -14,9 +14,15 @@ function display_login_placeholder(n) {
 
     if (n === 2) {
         $("#login_placeholder_first_page").css('display', 'none');
+        $("#login_placeholder_third_page").css('display', 'none');
         $("#login_placeholder_second_page").css('display', 'block');
     } else if (n === 1) {
         $("#login_placeholder_first_page").css('display', 'block');
         $("#login_placeholder_second_page").css('display', 'none');
+        $("#login_placeholder_third_page").css('display', 'none');
+    } else if (n === 3) {
+        $("#login_placeholder_first_page").css('display', 'none');
+        $("#login_placeholder_second_page").css('display', 'none');
+        $("#login_placeholder_third_page").css('display', 'block');
     }
 }

@@ -32,7 +32,8 @@
     cursor: pointer;
 }
 
-#login_placeholder_second_page{
+#login_placeholder_second_page,
+#login_placeholder_third_page{
     display: none;
 }
 
@@ -76,4 +77,12 @@
     fill: white;
     position: absolute;
     top: -4px;
+}
+
+#login_placeholder_forgot_back a{
+    color: white;
+}
+
+#login_placeholder_forgot_back a:hover{
+    text-decoration: none;
 }

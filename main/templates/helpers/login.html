@@ -41,8 +41,10 @@
                             </div>
                         </div>
 
-                        <p onclick="display_login_placeholder(2);" id="login_placeholder_email">Регистрация через Email</p>
-                        <p id="login_placeholder_email_login">Я зарегестрировался через Email</p>
+                        <p onclick="display_login_placeholder(2);" id="login_placeholder_email">Регистрация через
+                            Email</p>
+                        <p onclick="display_login_placeholder(3);" id="login_placeholder_email_login">Я
+                            зарегестрировался через Email</p>
                     </div>
 
                     <div id="login_placeholder_second_page">
@@ -55,7 +57,20 @@
                             <input type="submit" value="Зарегестрироваться">
                         </form>
 
-                        <p onclick="display_login_placeholder(1);" id="login_placeholder_already_register">Я уже зарегестрирован</p>
+                        <p onclick="display_login_placeholder(1);" id="login_placeholder_already_register">Я уже
+                            зарегестрирован</p>
+                    </div>
+
+                    <div id="login_placeholder_third_page">
+                        <h2>Вход</h2>
+
+                        <form id="login_placeholder_register">
+                            <input type="email" placeholder="Email">
+                            <input type="password" placeholder="Пароль">
+                            <input type="submit" value="Войти">
+                        </form>
+
+                        <p id="login_placeholder_forgot_back"><a>Забыли пароль?</a> / <a onclick="display_login_placeholder(1)">Назад</a></p>
                     </div>
 
                 </div>
