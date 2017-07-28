@@ -20,28 +20,44 @@
                         </svg>
                     </a>
 
-                    <h2>Вход / Регистрация</h2>
+                    <div id="login_placeholder_first_page">
+                        <h2>Вход / Регистрация</h2>
 
-                    <div id="login_placeholder_socials" class="row">
-                        <div class="col-md-3">
-                            <i class="fa fa-vk fa-3x" aria-hidden="true"></i>
+                        <div id="login_placeholder_socials" class="row">
+                            <div class="col-md-3">
+                                <i class="fa fa-vk fa-3x" aria-hidden="true"></i>
+                            </div>
+
+                            <div class="col-md-3">
+                                <i class="fa fa-github fa-3x" aria-hidden="true"></i>
+                            </div>
+
+                            <div class="col-md-3">
+                                <i class="fa fa-gitlab fa-3x" aria-hidden="true"></i>
+                            </div>
+
+                            <div class="col-md-3">
+                                <i class="fa fa-facebook fa-3x" aria-hidden="true"></i>
+                            </div>
                         </div>
 
-                        <div class="col-md-3">
-                            <i class="fa fa-github fa-3x" aria-hidden="true"></i>
-                        </div>
-
-                        <div class="col-md-3">
-                            <i class="fa fa-gitlab fa-3x" aria-hidden="true"></i>
-                        </div>
-
-                        <div class="col-md-3">
-                            <i class="fa fa-facebook fa-3x" aria-hidden="true"></i>
-                        </div>
+                        <p onclick="display_login_placeholder(2);" id="login_placeholder_email">Регистрация через Email</p>
+                        <p id="login_placeholder_email_login">Я зарегестрировался через Email</p>
                     </div>
 
-                    <p id="login_placeholder_email">Регистрация через Email</p>
-                    <p id="login_placeholder_email_login">Я зарегестрировался через Email</p>
+                    <div id="login_placeholder_second_page">
+                        <h2>Регистрация</h2>
+
+                        <form id="login_placeholder_register">
+                            <input type="text" placeholder="Имя Фамилия">
+                            <input type="email" placeholder="Email">
+                            <input type="password" placeholder="Пароль">
+                            <input type="submit" value="Зарегестрироваться">
+                        </form>
+
+                        <p onclick="display_login_placeholder(1);" id="login_placeholder_already_register">Я уже зарегестрирован</p>
+                    </div>
+
                 </div>
             </td>
         </tr>

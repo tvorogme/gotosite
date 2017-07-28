@@ -27,8 +27,38 @@
 
 #login_placeholder_socials i:hover,
 #login_placeholder_email,
-#login_placeholder_email_login{
+#login_placeholder_email_login,
+#login_placeholder_already_register{
     cursor: pointer;
+}
+
+#login_placeholder_second_page{
+    display: none;
+}
+
+#login_placeholder_register input{
+    width: 300px;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+#login_placeholder_register input[type="password"]{
+    margin-bottom: 40px;
+}
+
+#login_placeholder_register input[type="text"],
+#login_placeholder_register input[type="email"],
+#login_placeholder_register input[type="password"]{
+    border: none;
+    background: none;
+}
+
+#login_placeholder_register input[type="submit"]{
+    font-size: 30px;
+    background: none;
+    border: none;
 }
 
 #login_placeholder h2 {
