@@ -29,5 +29,18 @@ function display_login_placeholder(n) {
 $("#login_placeholder_login_button").click(function () {
     var email = $("#login_placeholder_username").val();
     var password = $("#login_placeholder_password").val();
+    var crf = $("#login_placeholder_crf").val();
 
+    $.post("login/", {
+        username: email,
+        password: password,
+        csrfmiddlewaretoken: crf
+    }).done(function (data) {
+        console.log(data);
+        if (data === "ok") {
+            location.reload();
+        } else {
+            $("#login_placeholder_error").html("Неверная почта или пароль.")
+        }
+    });
 });

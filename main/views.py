@@ -1,8 +1,10 @@
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.staticfiles.views import serve
+from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views import View
+import json
 
 from main.apps import SOCIALS
 from .models import User
@@ -63,7 +65,11 @@ def logout_wrapper(request):
 
 def login_wrapper(request):
     user = authenticate(username=request.POST['username'], password=request.POST['password'])
-    login(request, user)
-    return "Logged In"
+    if user is not None:
+        login(request, user)
+        return HttpResponse(json.dumps("ok"), content_type="application/json")
+    else:
+        return HttpResponse('bad')
+
 
 get_favicon = lambda r: serve(r, 'static/img/favicon.ico')
