@@ -36,11 +36,42 @@ $("#login_placeholder_login_button").click(function () {
         password: password,
         csrfmiddlewaretoken: crf
     }).done(function (data) {
-        console.log(data);
         if (data === "ok") {
             location.reload();
         } else {
             $("#login_placeholder_error").html("Неверная почта или пароль.")
+        }
+    });
+});
+
+
+$("#login_placeholder_register_register_button").click(function () {
+
+    var names = $("#login_placeholder_register_names").val();
+    var email = $("#login_placeholder_register_email").val();
+    var password = $("#login_placeholder_password").val();
+    var crf = $("#login_placeholder_crf").val();
+
+    var first_name = names.split(" ")[0];
+    var last_name = names.split(" ")[1];
+
+    $.post("register/", {
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        password: password,
+        csrfmiddlewaretoken: crf
+    }).done(function (data) {
+        console.log(data);
+        if (data === "ok") {
+            location.reload();
+        } else {
+            for (var i = 0; i < data.length; i++) {
+                var now_value = $("#login_placeholder_register_error").html();
+                var new_value = now_value + "<br>" + data[i];
+
+                $("#login_placeholder_register_error").html(new_value);
+            }
         }
     });
 });

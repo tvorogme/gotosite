@@ -50,11 +50,12 @@
                     <div id="login_placeholder_second_page">
                         <h2>Регистрация</h2>
 
+                        <p id="login_placeholder_register_error"></p>
                         <form id="login_placeholder_register">
-                            <input type="text" placeholder="Имя Фамилия">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Пароль">
-                            <input type="submit" value="Зарегестрироваться">
+                            <input id="login_placeholder_register_names" type="text" placeholder="Имя Фамилия">
+                            <input id="login_placeholder_register_email" type="email" placeholder="Email">
+                            <input id="login_placeholder_register_password" type="password" placeholder="Пароль">
+                            <p id="login_placeholder_register_register_button">Зарегестрироваться</p>
                         </form>
 
                         <p onclick="display_login_placeholder(1);" id="login_placeholder_already_register">Я уже
@@ -66,7 +67,8 @@
                         <p id="login_placeholder_error"></p>
 
                         <form action="/login" method="post" id="login_placeholder_register">
-                            <input id="login_placeholder_crf" name="csrfmiddlewaretoken" type="hidden" value="{{ csrf_token }}">
+                            <input id="login_placeholder_crf" name="csrfmiddlewaretoken" type="hidden"
+                                   value="{{ csrf_token }}">
                             <input id="login_placeholder_username" name="username" type="email" placeholder="Email">
                             <input id="login_placeholder_password" name="password" type="password" placeholder="Пароль">
                             <p id="login_placeholder_login_button">Войти</p>

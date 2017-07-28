@@ -28,17 +28,18 @@
 #login_placeholder_socials i:hover,
 #login_placeholder_email,
 #login_placeholder_email_login,
-#login_placeholder_already_register{
+#login_placeholder_already_register {
     cursor: pointer;
 }
 
 #login_placeholder_second_page,
-#login_placeholder_third_page{
+#login_placeholder_third_page {
     display: none;
 }
 
 #login_placeholder_register input,
-#login_placeholder_login_button{
+#login_placeholder_login_button,
+#login_placeholder_register_register_button {
     width: 300px;
     margin-left: 150px;
     margin-right: 150px;
@@ -46,19 +47,20 @@
     font-size: 20px;
 }
 
-#login_placeholder_register input[type="password"]{
+#login_placeholder_register input[type="password"] {
     margin-bottom: 40px;
 }
 
 #login_placeholder_register input[type="text"],
 #login_placeholder_register input[type="email"],
 #login_placeholder_register input[type="submit"],
-#login_placeholder_register input[type="password"]{
+#login_placeholder_register input[type="password"] {
     border: none;
     background: none;
 }
 
-#login_placeholder_login_button{
+#login_placeholder_login_button,
+#login_placeholder_register_register_button {
     font-size: 30px;
     background: none;
     border: none;
@@ -75,20 +77,21 @@
     text-align: center;
 }
 
-#login_placeholder svg{
+#login_placeholder svg {
     fill: white;
     position: absolute;
     top: -4px;
 }
 
-#login_placeholder_forgot_back a{
+#login_placeholder_forgot_back a {
     color: white;
 }
 
-#login_placeholder_forgot_back a:hover{
+#login_placeholder_forgot_back a:hover {
     text-decoration: none;
 }
 
-#login_placeholder_login_button:hover{
+#login_placeholder_login_button:hover,
+#login_placeholder_register_register_button {
     cursor: pointer;
 }
