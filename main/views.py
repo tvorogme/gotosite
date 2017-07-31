@@ -114,23 +114,23 @@ def register(request):
             # add error to array
             all_errors.append("{}:{}".format(clear_form_name, error_text))
 
-        # debug
-        print(all_errors, form.is_valid())
+    # debug
+    print(all_errors, form.is_valid())
 
-        if form.is_valid():
-            # create user
-            form.save()
+    if form.is_valid():
+        # create user
+        form.save()
 
-            # get password and username
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password')
+        # get password and username
+        username = form.cleaned_data.get('username')
+        raw_password = form.cleaned_data.get('password')
 
-            # login user
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
+        # login user
+        user = authenticate(username=username, password=raw_password)
+        login(request, user)
 
-            # explain that all is good
-            return HttpResponse(json.dumps("ok"), content_type="application/json")
+        # explain that all is good
+        return HttpResponse(json.dumps("ok"), content_type="application/json")
 
-        else:
-            return HttpResponse(json.dumps(all_errors), content_type="application/json")
+    else:
+        return HttpResponse(json.dumps(all_errors), content_type="application/json")
