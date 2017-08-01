@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth import get_user_model
 from django.contrib.auth import logout, authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -111,22 +112,24 @@ def register(request):
             # get plane text
             error_text = form[field].errors.as_text()
 
-            # add error to array
-            all_errors.append("{}:{}".format(clear_form_name, error_text))
+            # Don't know why, but django prepend ' *' to error message
+            error_text = error_text[2:]
 
-    # debug
-    print(all_errors, form.is_valid())
+            # add error to array
+            all_errors.append("{} {}".format(clear_form_name, error_text))
 
     if form.is_valid():
-        # create user
-        form.save()
 
-        # get password and username
-        username = form.cleaned_data.get('username')
+        # Get all values
+        username = form.cleaned_data.get('email')
         raw_password = form.cleaned_data.get('password')
+        first_name = form.cleaned_data.get('first_name')
+        last_name = form.cleaned_data.get('last_name')
 
-        # login user
-        user = authenticate(username=username, password=raw_password)
+        # Create user
+        user = get_user_model().objects.create_user(username, raw_password, first_name=first_name, last_name=last_name)
+
+        # Login user
         login(request, user)
 
         # explain that all is good

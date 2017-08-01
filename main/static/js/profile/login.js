@@ -39,7 +39,7 @@ $("#login_placeholder_login_button").click(function () {
         if (data === "ok") {
             location.reload();
         } else {
-            $("#login_placeholder_error").html("Неверная почта или пароль.")
+            $("#login_placeholder_error").empty().html("Неверная почта или пароль.")
         }
     });
 });
@@ -49,7 +49,7 @@ $("#login_placeholder_register_register_button").click(function () {
 
     var names = $("#login_placeholder_register_names").val();
     var email = $("#login_placeholder_register_email").val();
-    var password = $("#login_placeholder_password").val();
+    var password = $("#login_placeholder_register_password").val();
     var crf = $("#login_placeholder_crf").val();
 
     var first_name = names.split(" ")[0];
@@ -66,11 +66,13 @@ $("#login_placeholder_register_register_button").click(function () {
         if (data === "ok") {
             location.reload();
         } else {
+            var error_cur = $("#login_placeholder_register_error");
+            error_cur.empty();
             for (var i = 0; i < data.length; i++) {
-                var now_value = $("#login_placeholder_register_error").html();
+                var now_value = error_cur.html();
                 var new_value = now_value + "<br>" + data[i];
 
-                $("#login_placeholder_register_error").html(new_value);
+                error_cur.html(new_value);
             }
         }
     });
