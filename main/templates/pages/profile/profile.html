@@ -1,7 +1,13 @@
+{% load account %}
+{% load socialaccount %}
+{% get_social_accounts user as socials %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     {% load static %}
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -52,95 +58,124 @@
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ is_profile|yesno:",readonly" }} id="name"
-                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}{{ user.first_name }}{% endif %} {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %}
+                                             {% if  user.first_name != None %}{{ user.first_name }}{% endif %}
+                                             {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
 
 
-            <p class="label">Email: <input placeholder="E-mail" class="after_name"
-                                           type="text" {{ is_profile|yesno:",readonly" }}
-                                           id="email"
-                                           value="{{ user.email }}">
+            <p class="label"><input placeholder="E-mail" class="after_name"
+                                    type="text" {{ is_profile|yesno:",readonly" }}
+                                    id="email"
+                                    value="{{ user.email }}">
             </p>
-
-
-
-
-            {% if request.path != '/profile' and user.phone_number != None or is_profile %}
-                <p class="label">Телефон: <input placeholder="Телефон" class="after_name"
-                                                 type="text" {{ is_profile|yesno:",readonly" }}
-                                                 id="phone"
-                                                 value="{% if  user.phone_number != None %} {{ user.phone_number }} {% endif %}">
-                </p>
-            {% endif %}
-
-
-
-            {% if request.path != '/profile' and user.parent_phone_number != None or is_profile %}
-                <p class="label">Телефон родителей: <input placeholder="Телефон родителей" class=" after_name"
-                                                           type="text" {{ is_profile|yesno:",readonly" }}
-                                                           id="parent_phone" parent_phone_number
-                                                           value="{% if  user.parent_phone_number != None %} {{ user.parent_phone_number }} {% endif %}">
-                </p>
-            {% endif %}
-
-
 
 
             {% if request.path != '/profile' and user.city != None or is_profile %}
 
-                <p class="label"> Город проживания: <input placeholder="Город проживания" class="after_name"
-                                                           type="text" {{ is_profile|yesno:",readonly" }}
-                                                           id="city"
-                                                           value="{% if  user.region != None %} {{ user.region }} {% endif %}">
+                <p class="label"><input placeholder="Город проживания" class="after_name"
+                                        type="text" {{ is_profile|yesno:",readonly" }}
+                                        id="city"
+                                        value="{% if  user.region != None %} {{ user.region }} {% endif %}">
                 </p>
 
             {% endif %}
-
-
 
 
             {% if request.path != '/profile' and user.birthday != None or is_profile %}
 
-                <p class="label"> День рождения: <input placeholder="День рождения" class="after_name"
-                                                        type="date" {{ is_profile|yesno:",readonly" }}
-                                                        id="birthday"
-                                                        value="{% if  user.birthday != None %} {{ user.birthday }} {% endif %}">
+                <p class="label"><input placeholder="День рождения" class="after_name"
+                                        type="date" {{ is_profile|yesno:",readonly" }}
+                                        id="birthday"
+                                        value="{% if  user.birthday != None %} {{ user.birthday }} {% endif %}">
                 </p>
             {% endif %}
-
-
         </div>
-{##}
-        {#        #FIXME: Displaing correctly only when editing profile#}
-{#        <div id="socials">#}
-{#            <div class="row">#}
-{#                <div class="col-md-2">#}
-{#                    <i class="fa fa-vk fa-lg" aria-hidden="true"></i>#}
-{#                </div>#}
-{##}
-{#                <div class="col-md-2">#}
-{#                    <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i>#}
-{#                </div>#}
-{##}
-{#                <div class="col-md-2">#}
-{#                    <i class="fa fa-github fa-lg" aria-hidden="true"></i>#}
-{#                </div>#}
-{##}
-{#                <div class="col-md-2">#}
-{#                    <i class="fa fa-bitbucket fa-lg" aria-hidden="true"></i>#}
-{#                </div>#}
-{##}
-{#                <div class="col-md-2">#}
-{#                    <i class="fa fa-gitlab fa-lg" aria-hidden="true"></i>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
     </div>
+
     <div class="whitespace"></div>
     <div class="whitespace"></div>
 
     <div class="block-wrapper">
         <div class="col-md-3">
-            <h2>Скиллы</h2>
+            <h2>Контакты</h2>
+        </div>
+
+        <div class="col-md-9">
+            <div class="social-wrapper">
+                <p class="social-name">VK:</p>
+                {% if socials.vk %}
+                    <p class="social-url">{{ socials.vk.0 }}
+                        <a href="">tvorogme</a></p>
+                {% else %}
+                    <p class="social-add">
+                        <a href="{% provider_login_url "vk" process="connect" next="/profile" %}">Добавить</a>
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="social-wrapper">
+                <p class="social-name">GitHub:</p>
+                {% if socials.github %}
+                    <p class="social-url">{{ socials.github.0 }}
+                        <a href="">tvorogme</a></p>
+                {% else %}
+                    <p class="social-add">
+                        <a href="{% provider_login_url "github" process="connect" next="/profile" %}">Добавить</a>
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="social-wrapper">
+                <p class="social-name">GitLab:</p>
+                {% if socials.gitlab %}
+                    <p class="social-url">{{ socials.gitlab.0 }}
+                        <a href="">tvorogme</a></p>
+                {% else %}
+                    <p class="social-add"><a href="{% provider_login_url "gitlab" process="connect" next="/profile" %}">Добавить</a>
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="social-wrapper">
+                <p class="social-name">Facebook:</p>
+                {% if socials.facebook %}
+                    <p class="social-url">{{ socials.facebook.0 }}
+                        <a href="">tvorogme</a></p>
+                {% else %}
+                    <p class="social-add"><a>Добавить</a>
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="social-wrapper">
+                <p class="social-name">Телефон:</p>
+                {% if accounts.vk %}
+                    <p class="social-url">{{ accounts.vk.0 }}
+                        <a href="">tvorogme</a></p>
+                {% else %}
+                    <p class="social-add"><a>Добавить</a></p>
+                {% endif %}
+            </div>
+
+            <div class="social-wrapper">
+                <p class="social-name">Телефон родителей:</p>
+
+                {% if accounts.vk %}
+                    <p class="social-url">{{ accounts.vk.0 }}
+                        <a href="">tvorogme</a></p>
+                {% else %}
+                    <p class="social-add"><a>Добавить</a></p>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="whitespace"></div>
+
+    <div class="block-wrapper">
+        <div class="col-md-3">
+            <h2>Навыки</h2>
         </div>
 
         <div class="col-md-9">
@@ -148,7 +183,7 @@
 
                 {% for skill in user.skills.all %}
                     <div class="col-3">
-                        <input skill_id="{{ skill.id }}" placeholder="Скилл" id="skill_{{ skill.id }}"
+                        <input skill_id="{{ skill.id }}" placeholder="Навык" id="skill_{{ skill.id }}"
                                class="after_name skill"
                                value="{{ skill.name }}" type="text">
                     </div>
@@ -167,11 +202,12 @@
         </div>
     </div>
 
+
     <div class="whitespace"></div>
 
     <div class="block-wrapper">
         <div class="col-md-3">
-            <h2>Опыт</h2>
+            <h2>Достижения</h2>
         </div>
 
         <div class="col-md-9">
@@ -181,61 +217,77 @@
                 pages.</p>
         </div>
 
+        <div class="col-md-9 not-first">
+            <h3><a href="http://goto.msk.ru/">GoTo</a></h3>
+            <p class="date">2015 - present</p>
+            <p class="description">IT educational project promoting industry connectedness. Creating interactive landing
+                pages.</p>
+        </div>
+
+        <div class="col-md-9 not-first">
+            <h3><a href="http://goto.msk.ru/">GoTo</a></h3>
+            <p class="date">2015 - present</p>
+            <p class="description">IT educational project promoting industry connectedness. Creating interactive landing
+                pages.</p>
+        </div>
+
     </div>
+
 
     <div class="whitespace"></div>
 
-    <div class="block-wrapper">
-        <div class="col-md-3">
-            <h2>Проекты</h2>
-        </div>
-
-{#        {% for project in projects %}#}
-{#            <div class="col-md-9">#}
-{#                <form id="project_{{ project.id }}" method="post" action="/project/update">#}
-{##}
-{#                    <a onclick="del_project({{ project.id }})" class="field close">#}
-{#                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>#}
-{#                    </a>#}
-{##}
-{##}
-{#                    <h3 class="value"><a href="{{ project.url }}">{{ project.name }}</a></h3>#}
-{##}
-{##}
-{#                    <p class="date value">{{ project.date_started.year }}</p>#}
-{##}
-{##}
-{#                    <br><br>#}
-{#                    <p class="team">#}
-{#                        Команда:#}
-{##}
-{#                        {% for user in project.team %}#}
-{#                            <a href="/profile/{{ user.id }}">{{ user.first_name }}#}
-{#                                {{ user.last_name }}{% if loop.last %}, {% endif %}</a>#}
-{#                        {% endfor %}#}
-{#                    </p>#}
-{##}
-{##}
-{#                    <div>#}
-{#                        <input name="id" type="hidden" value="{{ project.id }}">#}
-{#                        <input name="delete" type="hidden">#}
-{#                        <input placeholder="Название" class="project_name field" name="title" type="text"#}
-{#                               value="{{ project.name }}">#}
-{#                        <input placeholder="Ссылка" class="project_url field" name="title" type="text"#}
-{#                               value="{{ project.url }}">#}
-{##}
-{#                    </div>#}
-{##}
-{##}
-{#                    <textarea {{ is_profile|yesno:",readonly" }} placeholder="Описание"#}
-{#                                                                 name="description"#}
-{#                                                                 onclick="edit_project({{ project.id }})"#}
-{#                                                                 class="description">{{ project.description }}</textarea>#}
-{#                </form>#}
-{#            </div>#}
-{#        {% endfor %}#}
-
-    </div>
+    {#    <div class="block-wrapper">#}
+    {#        <div class="col-md-3">#}
+    {#            <h2>Проекты</h2>#}
+    {#        </div>#}
+    {##}
+    {#        {% for project in projects %}#}
+    {#            <div class="col-md-9">#}
+    {#                <form id="project_{{ project.id }}" method="post" action="/project/update">#}
+    {##}
+    {#                    <a onclick="del_project({{ project.id }})" class="field close">#}
+    {#                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>#}
+    {#                    </a>#}
+    {##}
+    {##}
+    {#                    <h3 class="value"><a href="{{ project.url }}">{{ project.name }}</a></h3>#}
+    {##}
+    {##}
+    {#                    <p class="date value">{{ project.date_started.year }}</p>#}
+    {##}
+    {##}
+    {#                    <br><br>#}
+    {#                    <p class="team">#}
+    {#                        Команда:#}
+    {##}
+    {#                        {% for user in project.team %}#}
+    {#                            <a href="/profile/{{ user.id }}">{{ user.first_name }}#}
+    {#                                {{ user.last_name }}{% if loop.last %}, {% endif %}</a>#}
+    {#                        {% endfor %}#}
+    {#                    </p>#}
+    {##}
+    {##}
+    {#                    <div>#}
+    {#                        <input name="id" type="hidden" value="{{ project.id }}">#}
+    {#                        <input name="delete" type="hidden">#}
+    {#                        <input placeholder="Название" class="project_name field" name="title" type="text"#}
+    {#                               value="{{ project.name }}">#}
+    {#                        <input placeholder="Ссылка" class="project_url field" name="title" type="text"#}
+    {#                               value="{{ project.url }}">#}
+    {##}
+    {#                    </div>#}
+    {##}
+    {##}
+    {#                    <textarea {{ is_profile|yesno:",readonly" }} placeholder="Описание"#}
+    {#                                                                 name="description"#}
+    {#                                                                 onclick="edit_project({{ project.id }})"#}
+    {#                                                                 class="description">{{ project.description }}</textarea>#}
+    {#                </form>#}
+    {#            </div>#}
+    {#        {% endfor %}#}
+    {##}
+    {#    </div>#}
+    <p>{{ socials }}</p>
 </div>
 
 {% if is_profile %}

@@ -95,3 +95,11 @@
 #login_placeholder_register_register_button {
     cursor: pointer;
 }
+
+#login_placeholder_socials a {
+    color: white;
+}
+
+#login_placeholder_socials a:hover {
+    color: #4bb199;
+}

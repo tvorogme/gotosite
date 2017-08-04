@@ -284,3 +284,26 @@ a {
 .profile-img {
     width: 150px;
 }
+
+.social-name {
+    width: 40%;
+    float: left;
+}
+
+.social-wrapper {
+    margin-bottom: 10px;
+}
+
+.social-name {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.social-add {
+    opacity: 0.1;
+}
+
+.social-add:hover{
+    cursor: pointer;
+    opacity: 1;
+}
