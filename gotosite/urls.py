@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 
@@ -21,6 +21,9 @@ urlpatterns = [
     url(r'^logout/', logout_wrapper),
     url(r'^login/', login_wrapper),
     url(r'^register/', register),
+
+    # Social backend
+    url(r'^accounts/', include('allauth.urls'))
 ]
 
 if settings.DEBUG:

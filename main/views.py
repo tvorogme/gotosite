@@ -77,7 +77,7 @@ def logout_wrapper(request):
 
 def login_wrapper(request):
     # try catch user with password and email
-    user = authenticate(username=request.POST['username'], password=request.POST['password'])
+    user = authenticate(username=request.POST['email'], password=request.POST['password'])
 
     # if we found him
     if user is not None:
@@ -129,7 +129,6 @@ def register(request):
         # Create user
         user = get_user_model().objects.create_user(username, raw_password, first_name=first_name, last_name=last_name)
 
-        # Login user
         login(request, user)
 
         # explain that all is good

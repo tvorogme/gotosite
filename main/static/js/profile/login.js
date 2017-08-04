@@ -27,13 +27,13 @@ function display_login_placeholder(n) {
 }
 
 $("#login_placeholder_login_button").click(function () {
-    var email = $("#login_placeholder_username").val();
-    var password = $("#login_placeholder_password").val();
+    var email_value = $("#login_placeholder_username").val();
+    var password_value = $("#login_placeholder_password").val();
     var crf = $("#login_placeholder_crf").val();
 
     $.post("login/", {
-        username: email,
-        password: password,
+        email: email_value,
+        password: password_value,
         csrfmiddlewaretoken: crf
     }).done(function (data) {
         if (data === "ok") {

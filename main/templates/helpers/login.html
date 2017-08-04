@@ -1,6 +1,7 @@
 {# Для того, чтобы отобразить логин форму используйте: #}
 {# toggle_login_placeholder() #}
 {# Для правильной работы на странице должен быть подгружен fontawesome и бутстрап #}
+{% load socialaccount %}
 
 {% block login %}
     {% load static %}
@@ -29,7 +30,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <i class="fa fa-github fa-3x" aria-hidden="true"></i>
+                                <a href="{% provider_login_url "github" next="/profile" %}"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
                             </div>
 
                             <div class="col-md-3">
