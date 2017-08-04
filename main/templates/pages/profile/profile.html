@@ -58,9 +58,7 @@
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ is_profile|yesno:",readonly" }} id="name"
-                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %}
-                                             {% if  user.first_name != None %}{{ user.first_name }}{% endif %}
-                                             {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}{{ user.first_name }}{% endif %} {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
 
 
             <p class="label"><input placeholder="E-mail" class="after_name"
@@ -104,8 +102,8 @@
             <div class="social-wrapper">
                 <p class="social-name">VK:</p>
                 {% if socials.vk %}
-                    <p class="social-url">{{ socials.vk.0 }}
-                        <a href="">tvorogme</a></p>
+                    <p class="social-url">
+                        <a href="https://vk.com/id{{ socials.vk.0.extra_data.uid }}">{{ socials.vk.0.extra_data.screen_name }}</a></p>
                 {% else %}
                     <p class="social-add">
                         <a href="{% provider_login_url "vk" process="connect" next="/profile" %}">Добавить</a>
@@ -116,8 +114,8 @@
             <div class="social-wrapper">
                 <p class="social-name">GitHub:</p>
                 {% if socials.github %}
-                    <p class="social-url">{{ socials.github.0 }}
-                        <a href="">tvorogme</a></p>
+                    <p class="social-url">
+                        <a href="https://github.com/{{ socials.github.0.extra_data.login }}">{{ socials.github.0.extra_data.login }}</a></p>
                 {% else %}
                     <p class="social-add">
                         <a href="{% provider_login_url "github" process="connect" next="/profile" %}">Добавить</a>
@@ -128,8 +126,8 @@
             <div class="social-wrapper">
                 <p class="social-name">GitLab:</p>
                 {% if socials.gitlab %}
-                    <p class="social-url">{{ socials.gitlab.0 }}
-                        <a href="">tvorogme</a></p>
+                    <p class="social-url">
+                        <a href="https://gitlab.com/{{ socials.gitlab.0.extra_data.username }}">{{ socials.gitlab.0.extra_data.username }}</a></p>
                 {% else %}
                     <p class="social-add"><a href="{% provider_login_url "gitlab" process="connect" next="/profile" %}">Добавить</a>
                     </p>
@@ -139,8 +137,8 @@
             <div class="social-wrapper">
                 <p class="social-name">Facebook:</p>
                 {% if socials.facebook %}
-                    <p class="social-url">{{ socials.facebook.0 }}
-                        <a href="">tvorogme</a></p>
+                    <p class="social-url">
+                        <a href="">{{ socials.facebook.0.extra_data }}</a></p>
                 {% else %}
                     <p class="social-add"><a>Добавить</a>
                     </p>
@@ -287,7 +285,6 @@
     {#        {% endfor %}#}
     {##}
     {#    </div>#}
-    <p>{{ socials }}</p>
 </div>
 
 {% if is_profile %}
