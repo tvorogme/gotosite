@@ -56,7 +56,7 @@ var current_input_field_number = 0;
 
 function add_input_field() {
     var html = function (_id) {
-        return '<div id="skill_wrapper" class="col-3"><input class="after_name skill" id="new_skill_' + _id + '" placeholder="Скилл" type="text"></div>'
+        return '<div id="skill_wrapper" class="col-3"><input class="after_name skill" id="new_skill_' + _id + '" placeholder="Навык" type="text"></div>'
     };
 
     current_input_field_number += 1;
