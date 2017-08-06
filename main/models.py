@@ -3,13 +3,6 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 
-class Region(models.Model):
-    name = models.TextField()
-
-    def __str__(self):
-        return self.name
-
-
 class Skill(models.Model):
     name = models.CharField(max_length=200)
 
@@ -41,8 +34,6 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     '''Create own user with email only'''
 
-    email = models.EmailField(unique=True, null=True)
-
     #
     # ФИО
     #
@@ -51,29 +42,27 @@ class User(AbstractBaseUser, PermissionsMixin):
     middle_name = models.CharField(max_length=40, blank=True, null=True)
     last_name = models.CharField(max_length=40)
 
-    # Avatar
-    image = models.ImageField(upload_to='person_images/', default=None, blank=True, null=True)
+    #
+    # Base information
+    #
+
+    email = models.EmailField(unique=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    birthday = models.DateField('birthday', blank=True, null=True)
+
+    #
+    # Contacts
+    #
 
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     parent_phone_number = models.CharField(max_length=20, blank=True, null=True)
 
-    region = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True, blank=True)
-    address = models.CharField(max_length=100, blank=True, null=True)
-
-    birthday = models.DateField('birthday', blank=True, null=True)
-
-    GENDER = (('M', 'Мужской'),
-              ('F', 'Женский'),
-              ('N', 'Не выбрано'))
-    gender = models.CharField(choices=GENDER, default='N', max_length=2)
-
-    education = models.TextField(blank=True, null=True)
-
-    knowledge = models.TextField(blank=True, null=True)
     skills = models.ManyToManyField(Skill, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+
+    # Avatar
+    image = models.ImageField(upload_to='person_images/', default=None, blank=True, null=True)
 
     #
     # Some django specific fields

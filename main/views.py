@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 
 from main.apps import SOCIALS
-from .forms import RegisterForm
+from .forms import RegisterForm, validate_user_field
 from .lang.ru_RU import forms_translate
 from .models import User
 
@@ -50,6 +50,9 @@ def about_us(request):
 def profile_page(request, _id=None):
     # get current user
     user = request.user
+
+    if user.is_anonymous():
+        return redirect('/')
 
     # if he trying get his profile
     if _id == user.id:
@@ -95,7 +98,7 @@ def register(request):
 
     # Set all values to form
     for val_name in ['first_name', 'last_name', 'email', 'password']:
-        answers[val_name] = request.POST[val_name]
+        answers[val_name] = request.POST[val_name] if val_name in request.POST else None
 
     # Create form
     form = RegisterForm(data=answers)
@@ -128,6 +131,9 @@ def register(request):
         # Create user
         user = get_user_model().objects.create_user(username, raw_password, first_name=first_name, last_name=last_name)
 
+        # https://stackoverflow.com/questions/6034763/django-attributeerror-user-object-has-no-attribute-backend-but-it-does
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
+
         login(request, user)
 
         # explain that all is good
@@ -156,12 +162,39 @@ def update_profile(request):
     if 'provider' in request.POST:
         remove_social(request)
 
-    for val_name in [
-        'first_name', 'last_name', 'surname',  # full name fields
-        'email', 'city', 'birthday',  # base information fields
-        'skills',  # skills fields
-    ]:
-        if val_name in request.POST:
-            print(request.POST[val_name])
+    person = User.objects.filter(pk=request.user.id)[0]
 
-    return HttpResponse(json.dumps("ok"), content_type="application/json")
+    errors = {}
+
+    for val_name in [
+        'first_name', 'last_name', 'middle_name',  # full name fields
+        'email', 'city', 'birthday', 'phone_number', 'parent_phone_number'  # base information fields
+    ]:
+
+        if val_name in request.POST:
+            val = request.POST[val_name]
+
+            # if we changed value
+            if len(val) > 0 and val != getattr(person, val_name):
+
+                # get errors
+                field_errors = validate_user_field(val_name, val)
+
+                if len(field_errors) > 0:
+                    errors[val_name] = field_errors
+                    continue
+
+                # update person
+                setattr(person, val_name, val)
+
+            # fixme: get default fields from User model
+            # If value can be blanked
+            elif len(val) == 0 and val not in ['first_name', 'last_name', 'middle_name', 'email']:
+                val = None
+
+                # Blank it!
+                setattr(person, val_name, val)
+
+    # save updates
+    person.save()
+    return HttpResponse(json.dumps(errors), content_type="application/json")

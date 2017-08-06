@@ -76,7 +76,7 @@
                 <p class="label"><input placeholder="Город проживания" class="after_name"
                                         type="text" {{ is_profile|yesno:",readonly" }}
                                         id="city"
-                                        value="{% if  user.region != None %} {{ user.region }} {% endif %}">
+                                        value="{% if  user.city != None %} {{ user.city }} {% endif %}">
                 </p>
 
             {% endif %}

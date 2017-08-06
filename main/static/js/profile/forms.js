@@ -19,6 +19,9 @@ function save() {
     var email = $('#email').val();
     var birthday = $('#birthday').val();
     var city = $('#city').val();
+    var phone = $('#phone').val();
+    var parent_phone = $('#parent-phone').val();
+
 
 
     // Skills
@@ -34,11 +37,18 @@ function save() {
     var request_data = {
         'first_name': first_name,
         'last_name': second_name,
-        'surname': surname,
+        'middle_name': surname,
+
         'email': email,
         'birthday': birthday,
         'city': city,
-        'skills': ", ".join(all_skills)
+
+        'phone_number': phone,
+        'parent_phone_number': parent_phone,
+
+        'skills': all_skills.join(", "),
+
+        "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()
     };
 
     $.ajax({
@@ -48,13 +58,12 @@ function save() {
         dataType: 'json'
     });
 
-    window.location.reload();
+    // window.location.reload();
 }
 
 var project_edit = -1;
 
 function edit_project(project_id) {
-
     if (project_edit !== project_id) {
         $("#project_" + project_id + " .field").toggle();
         $("#project_" + project_id + " .value").toggle();
