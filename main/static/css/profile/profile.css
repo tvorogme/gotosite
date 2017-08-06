@@ -321,3 +321,37 @@ a {
 .remove-social:hover {
     cursor: pointer;
 }
+
+#phone,
+#parent-phone {
+    width: 130px;
+    font-weight: 300;
+}
+
+#phone::-webkit-input-placeholder,
+#parent-phone::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #080808;
+    opacity: 0.1;
+    font-weight: 500;
+}
+
+#phone::-moz-placeholder,
+#parent-phone::-moz-placeholder { /* Firefox 19+ */
+    color: #080808;
+    opacity: 0.1;
+    font-weight: 500;
+}
+
+#phone:-ms-input-placeholder,
+#parent-phone:-ms-input-placeholder { /* IE 10+ */
+    color: #080808;
+    opacity: 0.1;
+    font-weight: 500;
+}
+
+#phone:-moz-placeholder,
+#parent-phone:-moz-placeholder { /* Firefox 18- */
+    color: #080808;
+    opacity: 0.1;
+    font-weight: 500;
+}

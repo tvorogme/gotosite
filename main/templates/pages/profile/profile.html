@@ -61,9 +61,7 @@
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ is_profile|yesno:",readonly" }} id="name"
-                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %}
-                                             {% if  user.first_name != None %}{{ user.first_name }}{% endif %}
-                                             {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}{{ user.first_name }}{% endif %} {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
 
 
             <p class="label"><input placeholder="E-mail" class="after_name"
@@ -198,7 +196,7 @@
 
             <div class="social-wrapper">
                 <p class="social-name">Телефон родителей:</p>
-                <input type="text" id="phone" placeholder="Добавить">
+                <input type="text" id="parent-phone" placeholder="Добавить">
             </div>
         </div>
     </div>
