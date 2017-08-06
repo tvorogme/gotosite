@@ -41,6 +41,9 @@
 </head>
 <body>
 
+<input id="profile_page_csrf_token" name="csrfmiddlewaretoken" type="hidden"
+       value="{{ csrf_token }}">
+
 {% include 'helpers/menu.html' %}
 
 <div id="profile_container">
@@ -52,13 +55,15 @@
                                    src="{% if user.image %}
                                             {{ user.image.url }}
                                         {% else %}
-                                            https://goto.msk.ru/media/k2/items/cache/274936c4b649c88ffad7944bfc7a744a_L.jpg
+                                            https://avatars1.githubusercontent.com/u/19264196?v=4&s=460
                                         {% endif %}
                                        ">
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ is_profile|yesno:",readonly" }} id="name"
-                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}{{ user.first_name }}{% endif %} {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %}
+                                             {% if  user.first_name != None %}{{ user.first_name }}{% endif %}
+                                             {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
 
 
             <p class="label"><input placeholder="E-mail" class="after_name"
@@ -103,7 +108,19 @@
                 <p class="social-name">VK:</p>
                 {% if socials.vk %}
                     <p class="social-url">
-                        <a href="https://vk.com/id{{ socials.vk.0.extra_data.uid }}">{{ socials.vk.0.extra_data.screen_name }}</a></p>
+                        <a
+                                href="https://vk.com/id{{ socials.vk.0.extra_data.uid }}">{{ socials.vk.0.extra_data.screen_name }}</a>
+                        <a class="remove-social" onclick="del_social('vk')">
+                            <svg width="8" version="1.1" xmlns="http://www.w3.org/2000/svg" height="8"
+                                 viewBox="0 0 64 64"
+                                 enable-background="new 0 0 64 64">
+                                <g>
+                                    <path d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"></path>
+                                </g>
+                            </svg>
+                        </a>
+                    </p>
+
                 {% else %}
                     <p class="social-add">
                         <a href="{% provider_login_url "vk" process="connect" next="/profile" %}">Добавить</a>
@@ -115,7 +132,17 @@
                 <p class="social-name">GitHub:</p>
                 {% if socials.github %}
                     <p class="social-url">
-                        <a href="https://github.com/{{ socials.github.0.extra_data.login }}">{{ socials.github.0.extra_data.login }}</a></p>
+                        <a href="https://github.com/{{ socials.github.0.extra_data.login }}">{{ socials.github.0.extra_data.login }}</a>
+                        <a class="remove-social" onclick="del_social('github')">
+                            <svg width="8" version="1.1" xmlns="http://www.w3.org/2000/svg" height="8"
+                                 viewBox="0 0 64 64"
+                                 enable-background="new 0 0 64 64">
+                                <g>
+                                    <path d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"></path>
+                                </g>
+                            </svg>
+                        </a>
+                    </p>
                 {% else %}
                     <p class="social-add">
                         <a href="{% provider_login_url "github" process="connect" next="/profile" %}">Добавить</a>
@@ -127,7 +154,17 @@
                 <p class="social-name">GitLab:</p>
                 {% if socials.gitlab %}
                     <p class="social-url">
-                        <a href="https://gitlab.com/{{ socials.gitlab.0.extra_data.username }}">{{ socials.gitlab.0.extra_data.username }}</a></p>
+                        <a href="https://gitlab.com/{{ socials.gitlab.0.extra_data.username }}">{{ socials.gitlab.0.extra_data.username }}</a>
+                        <a class="remove-social" onclick="del_social('gitlab')">
+                            <svg width="8" version="1.1" xmlns="http://www.w3.org/2000/svg" height="8"
+                                 viewBox="0 0 64 64"
+                                 enable-background="new 0 0 64 64">
+                                <g>
+                                    <path d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"></path>
+                                </g>
+                            </svg>
+                        </a>
+                    </p>
                 {% else %}
                     <p class="social-add"><a href="{% provider_login_url "gitlab" process="connect" next="/profile" %}">Добавить</a>
                     </p>
@@ -138,7 +175,16 @@
                 <p class="social-name">Facebook:</p>
                 {% if socials.facebook %}
                     <p class="social-url">
-                        <a href="">{{ socials.facebook.0.extra_data }}</a></p>
+                        <a href="">{{ socials.facebook.0.extra_data }}</a>
+                        <a class="remove-social" onclick="del_social('facebook')">
+                            <svg width="8" version="1.1" xmlns="http://www.w3.org/2000/svg" height="8"
+                                 viewBox="0 0 64 64"
+                                 enable-background="new 0 0 64 64">
+                                <g>
+                                    <path d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"></path>
+                                </g>
+                            </svg>
+                        </a></p>
                 {% else %}
                     <p class="social-add"><a>Добавить</a>
                     </p>
@@ -147,24 +193,12 @@
 
             <div class="social-wrapper">
                 <p class="social-name">Телефон:</p>
-                {% if accounts.vk %}
-                    <p class="social-url">{{ accounts.vk.0 }}
-                        <a href="">tvorogme</a></p>
-                {% else %}
-                    <p class="social-add"><a>Добавить</a></p>
-                {% endif %}
+                <input type="text" id="phone" placeholder="Добавить">
             </div>
 
             <div class="social-wrapper">
                 <p class="social-name">Телефон родителей:</p>
-
-                {% if accounts.vk %}
-                    <p class="social-url">{{ accounts.vk.0 }}
-                        <a href="">tvorogme</a></p>
-                {% else %}
-                    <p class="social-add"><a>Добавить</a></p>
-                {% endif %}
-
+                <input type="text" id="phone" placeholder="Добавить">
             </div>
         </div>
     </div>

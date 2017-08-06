@@ -13,14 +13,17 @@ urlpatterns = [
     url(r'^$', index, name='index'),
 
     # About
-    url(r'^about_us/', about_us, name='about_us'),
+    url(r'^about_us/$', about_us, name='about_us'),
 
     # Profile
-    url(r'^profile/', ProfileView.as_view(), name='SelfProfile'),
-    url(r'^profile/(?P<id>[0-9]+)', ProfileView.as_view(), name='Profile'),
-    url(r'^logout/', logout_wrapper),
-    url(r'^login/', login_wrapper),
-    url(r'^register/', register),
+    url(r'^profile/$', profile_page, name='SelfProfile'),
+    url(r'^profile/(?P<_id>[0-9]+)/$', profile_page, name='Profile'),
+    url(r'^profile/edit/$', update_profile),
+
+    # Login system
+    url(r'^logout/$', logout_wrapper),
+    url(r'^login/$', login_wrapper),
+    url(r'^register/$', register),
 
     # Social backend
     url(r'^accounts/', include('allauth.urls'))
@@ -29,7 +32,7 @@ urlpatterns = [
 if settings.DEBUG:
     from django.views.static import serve
 
-    urlpatterns.append(url(r'^favicon.ico', lambda r: serve(r, 'static/img/favicon.ico')))
+    urlpatterns.append(url(r'^favicon.ico', lambda r: serve(r, 'favicon.ico')))
 
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)

@@ -68,7 +68,8 @@ input[type="date"] {
 
 .label {
     font-weight: 500;
-    font-size: 13px;
+    font-size: 18px;
+    margin-top: 7px;
 }
 
 #name {
@@ -301,9 +302,22 @@ a {
 
 .social-add {
     opacity: 0.1;
+    font-weight: 400;
 }
 
-.social-add:hover{
+.social-add:hover {
     cursor: pointer;
     opacity: 1;
+}
+
+.remove-social {
+    display: none;
+}
+
+.social-url:hover .remove-social {
+    display: inline-block;
+}
+
+.remove-social:hover {
+    cursor: pointer;
 }

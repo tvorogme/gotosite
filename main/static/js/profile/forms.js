@@ -17,8 +17,6 @@ function save() {
     var second_name = name_value[0];
     var surname = name_value[2];
     var email = $('#email').val();
-    var phone_number = $('#phone').val();
-    var parent_phone_number = $('#parent_phone').val();
     var birthday = $('#birthday').val();
     var city = $('#city').val();
 
@@ -38,8 +36,6 @@ function save() {
         'last_name': second_name,
         'surname': surname,
         'email': email,
-        'phone_number': phone_number,
-        'parent_phone_number': parent_phone_number,
         'birthday': birthday,
         'city': city,
         'skills': ", ".join(all_skills)
@@ -56,6 +52,7 @@ function save() {
 }
 
 var project_edit = -1;
+
 function edit_project(project_id) {
 
     if (project_edit !== project_id) {
@@ -78,3 +75,16 @@ $(document).ready(function () {
     });
 
 });
+
+function del_social(social) {
+    $.ajax({
+        type: "POST",
+        url: "/profile/edit/",
+        data: {
+            provider: social,
+            csrfmiddlewaretoken: $("#profile_page_csrf_token").val()
+        },
+        dataType: 'json'
+    });
+    window.location.reload()
+}
