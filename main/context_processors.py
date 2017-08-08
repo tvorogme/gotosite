@@ -13,6 +13,6 @@ def menu_list(request):
 def validation_error_to_boolean(f, val):
     try:
         f(val)
-        return True
-    except ValidationError:
         return False
+    except ValidationError:
+        return True

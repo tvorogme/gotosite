@@ -164,7 +164,7 @@ def update_profile(request):
 
     person = User.objects.filter(pk=request.user.id)[0]
 
-    errors = {}
+    errors = []
 
     for val_name in [
         'first_name', 'last_name', 'middle_name',  # full name fields
@@ -176,20 +176,18 @@ def update_profile(request):
 
             # if we changed value
             if len(val) > 0 and val != getattr(person, val_name):
-
                 # get errors
                 field_errors = validate_user_field(val_name, val)
 
                 if len(field_errors) > 0:
-                    errors[val_name] = field_errors
+                    errors.append(field_errors)
                     continue
 
                 # update person
                 setattr(person, val_name, val)
 
-            # fixme: get default fields from User model
             # If value can be blanked
-            elif len(val) == 0 and val not in ['first_name', 'last_name', 'middle_name', 'email']:
+            elif len(val) == 0 and val not in User().get_not_blanked_fields_names():
                 val = None
 
                 # Blank it!

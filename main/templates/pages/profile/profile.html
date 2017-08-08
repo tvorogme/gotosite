@@ -76,7 +76,7 @@
                 <p class="label"><input placeholder="Город проживания" class="after_name"
                                         type="text" {{ is_profile|yesno:",readonly" }}
                                         id="city"
-                                        value="{% if  user.city != None %} {{ user.city }} {% endif %}">
+                                        value="{% if  user.city != None %}{{ user.city }}{% endif %}">
                 </p>
 
             {% endif %}
@@ -85,9 +85,8 @@
             {% if request.path != '/profile' and user.birthday != None or is_profile %}
 
                 <p class="label"><input placeholder="День рождения" class="after_name"
-                                        type="date" {{ is_profile|yesno:",readonly" }}
-                                        id="birthday"
-                                        value="{% if  user.birthday != None %} {{ user.birthday }} {% endif %}">
+                                        type="date" {{ is_profile|yesno:",readonly" }} value="{% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
+                                        id="birthday">
                 </p>
             {% endif %}
         </div>

@@ -25,16 +25,24 @@ class RegisterForm(ModelForm):
 
 
 validators_dictionary = {
-    "first_name": {'validators': [MinLengthValidator(1), MaxLengthValidator(40)], 'messages': ["test1", 'test2']},
-    "last_name": {'validators': [MinLengthValidator(1), MaxLengthValidator(40)], 'messages': ["test1", 'test2']},
-    "middle_name": {'validators': [MinLengthValidator(1), MaxLengthValidator(40)], 'messages': ["test1", 'test2']},
+    "first_name": {'validators': [MinLengthValidator(1), MaxLengthValidator(40)],
+                   'messages': ["Минимальная длина имени - 1 символ", 'Максимальная длина имени - 40 символов']},
+    "last_name": {'validators': [MinLengthValidator(1), MaxLengthValidator(40)],
+                  'messages': ["Минимальная длина фамилии - 1 символ", 'Максимальная длина фамилии - 40 символов']},
+    "middle_name": {'validators': [MinLengthValidator(1), MaxLengthValidator(40)],
+                    'messages': ["Минимальная длина отчества - 1 символ", 'Максимальная длина отчества - 40 символов']},
 
-    "city": {'validators': [MinLengthValidator(1), MaxLengthValidator(40)], 'messages': ["test1", 'test2']},
-    "birthday": {'validators': [], 'messages': ["lol", 'kek']},
-    "email": {'validators': [EmailValidator()], 'messages': ["lol", 'kek']},
+    "city": {'validators': [MinLengthValidator(1), MaxLengthValidator(40)],
+             'messages': ["Минимальная длина названия города - 1 символ",
+                          'Максимальная длина названия города - 40 символов']},
 
-    "phone_number": {'validators': [RegexValidator("^\+{1}[7]{1}[0-9]{10}$")], 'messages': ["test1"]},
-    "parent_phone_number": {'validators': [RegexValidator("^\+{1}[7]{1}[0-9]{10}$")], 'messages': ["test1"]},
+    "birthday": {'validators': [], 'messages': []},
+    "email": {'validators': [EmailValidator()], 'messages': ["Введите корректный email"]},
+
+    "phone_number": {'validators': [RegexValidator("^\+{1}[7]{1}[0-9]{10}$")],
+                     'messages': ["Введите номер телефона в корректном фомате (+79269990211"]},
+    "parent_phone_number": {'validators': [RegexValidator("^\+{1}[7]{1}[0-9]{10}$")],
+                            'messages': ["Введите номер телефона в корректном фомате (+79269990211"]},
 
     "skills": {'validators': [], 'messages': []}
 }

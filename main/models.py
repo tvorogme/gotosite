@@ -92,3 +92,15 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return "{} {}".format(self.first_name, self.last_name)
+
+    def get_not_blanked_fields_names(self):
+        fields = []
+
+        for field in self._meta.get_fields():
+            if not isinstance(field, models.ManyToOneRel) and not field.blank:
+                fields.append(field)
+
+        return [field.name for field in fields]
+
+    def get_all_fields_names(self):
+        return [field.name for field in self._meta.get_fields()]

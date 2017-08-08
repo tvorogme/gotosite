@@ -23,7 +23,6 @@ function save() {
     var parent_phone = $('#parent-phone').val();
 
 
-
     // Skills
 
     var all_skills = [];
@@ -56,9 +55,12 @@ function save() {
         url: '/profile/edit/',
         data: request_data,
         dataType: 'json'
+    }).done(function (data) {
+        if (console && console.log) {
+            console.log(data)
+        }
     });
 
-    // window.location.reload();
 }
 
 var project_edit = -1;
