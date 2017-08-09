@@ -26,7 +26,10 @@ urlpatterns = [
     url(r'^register/$', register),
 
     # Social backend
-    url(r'^accounts/', include('allauth.urls'))
+    url(r'^accounts/', include('allauth.urls')),
+
+    # API
+    url(r'^get_needed_skills/', get_needed_skills)
 ]
 
 if settings.DEBUG:

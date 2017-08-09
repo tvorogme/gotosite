@@ -44,7 +44,7 @@ validators_dictionary = {
     "parent_phone_number": {'validators': [RegexValidator("^\+{1}[7]{1}[0-9]{10}$")],
                             'messages': ["Введите номер телефона в корректном фомате (+79269990211"]},
 
-    "skills": {'validators': [], 'messages': []}
+    "skills": {'validators': [MaxLengthValidator(40)], 'messages': ["Максимальная длина навыка - 40 символов"]}
 }
 
 
@@ -68,13 +68,14 @@ def validate_user_field(field_name: str, field_value) -> list:
     # get validators for field
     field_validators = validators_dictionary[field_name]
 
+    if len(field_validators['validators']) != len(field_validators['messages']):
+        raise NotImplementedError("Validators and validators messages not equal by lenght in %s" % field_name)
+
     # zip messages and fields
     ziped_validators = zip(field_validators['validators'], field_validators['messages'])
 
     for validator, validator_message in ziped_validators:
         error = validation_error_to_boolean(validator, field_value) * validator_message
-
-        if len(error) > 0:
-            errors.append(error)
+        errors.append(error)
 
     return errors

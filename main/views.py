@@ -10,7 +10,7 @@ from django.shortcuts import render
 from main.apps import SOCIALS
 from .forms import RegisterForm, validate_user_field
 from .lang.ru_RU import forms_translate
-from .models import User
+from .models import User, Skill
 
 
 ###########
@@ -146,25 +146,57 @@ def register(request):
 def remove_social(request):
     '''Remove social account of user'''
 
-    # Get provider string
-    provider = request.POST['provider']
+    if 'provider' in request.POST:
+        # Get provider string
+        provider = request.POST['provider']
 
-    # if provider is valid
-    if provider in ['vk', 'facebook', 'gitlab', 'github']:
-        # remove account
-        account = SocialAccount.objects.filter(user_id=request.user.id, provider=provider)
-        account.delete()
+        # if provider is valid
+        if provider in ['vk', 'facebook', 'gitlab', 'github']:
+            # remove account
+            account = SocialAccount.objects.filter(user_id=request.user.id, provider=provider)
+            account.delete()
+            return "Ok"
+    return
+
+
+def update_skills(request, person):
+    if 'skills' in request.POST:
+        # here we store Skill objects
+        answer = []
+
+        # get all skills
+        skills = list(filter(lambda x: len(x) > 0, request.POST['skills'].split(",")[1::2]))
+
+        # get errors
+        skills_errors = validate_user_field('skills', skills)
+
+        print(skills, skills_errors)
+
+        for skill, skill_error in zip(skills, skills_errors):
+            print(skill, skill_error)
+            if len(skill_error) == 0:
+                db_skill = Skill.objects.filter(name=skill)
+                print(db_skill)
+
+        return skills_errors
+
+    return
 
 
 def update_profile(request):
     '''Edit profile information'''
 
-    if 'provider' in request.POST:
-        remove_social(request)
-
+    # Get person
     person = User.objects.filter(pk=request.user.id)[0]
 
-    errors = []
+    # remove socials if needed
+    remove_social(request)
+
+    # update skills id needed
+    update_skills(request, person)
+
+    # here we will store errors
+    errors = {}
 
     for val_name in [
         'first_name', 'last_name', 'middle_name',  # full name fields
@@ -180,7 +212,7 @@ def update_profile(request):
                 field_errors = validate_user_field(val_name, val)
 
                 if len(field_errors) > 0:
-                    errors.append(field_errors)
+                    errors[val_name] = field_errors
                     continue
 
                 # update person
@@ -196,3 +228,21 @@ def update_profile(request):
     # save updates
     person.save()
     return HttpResponse(json.dumps(errors), content_type="application/json")
+
+
+#
+# API
+#
+
+def get_needed_skills(request):
+    if 'skill' in request.GET:
+        # Get skill from user
+        skill_from_user = request.GET['skill']
+
+        # Search similar in db
+        needed_skills = Skill.objects.filter(
+            name__icontains=skill_from_user).only('name')[:10]
+
+        # Dump to json
+        return HttpResponse(json.dumps([skill.name for skill in needed_skills]), content_type="application/json")
+    return
