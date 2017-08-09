@@ -61,6 +61,7 @@ function save() {
         }
     });
 
+    window.location.reload()
 }
 
 var project_edit = -1;

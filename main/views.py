@@ -167,20 +167,27 @@ def update_skills(request, person):
         # get all skills
         skills = list(filter(lambda x: len(x) > 0, request.POST['skills'].split(",")[1::2]))
 
-        # get errors
-        skills_errors = validate_user_field('skills', skills)
+        if len(skills) < 30:
+            # get errors
+            skills_errors = validate_user_field('skills', skills)
 
-        print(skills, skills_errors)
+            for skill, skill_error in zip(skills, skills_errors):
+                if len(skill_error) == 0:
+                    db_skill = Skill.objects.filter(name=skill)
+                    if len(db_skill) > 0:
+                        answer.append(db_skill[0])
 
-        for skill, skill_error in zip(skills, skills_errors):
-            print(skill, skill_error)
-            if len(skill_error) == 0:
-                db_skill = Skill.objects.filter(name=skill)
-                print(db_skill)
+                    else:
+                        tmp_skill = Skill(name=skill)
+                        tmp_skill.save()
 
-        return skills_errors
+                        answer.append(tmp_skill)
 
-    return
+            person.skills = answer
+
+            return skills_errors
+
+    return []
 
 
 def update_profile(request):
@@ -192,11 +199,14 @@ def update_profile(request):
     # remove socials if needed
     remove_social(request)
 
-    # update skills id needed
-    update_skills(request, person)
-
     # here we will store errors
     errors = {}
+
+    # update skills id needed1
+    skills_errors = update_skills(request, person)
+
+    if len(skills_errors) > 0:
+        errors['skills'] = update_skills(request, person)
 
     for val_name in [
         'first_name', 'last_name', 'middle_name',  # full name fields
@@ -211,7 +221,7 @@ def update_profile(request):
                 # get errors
                 field_errors = validate_user_field(val_name, val)
 
-                if len(field_errors) > 0:
+                if sum(map(len, field_errors)) > 0:
                     errors[val_name] = field_errors
                     continue
 
