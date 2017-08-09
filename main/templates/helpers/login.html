@@ -23,40 +23,41 @@
 
                     <div id="login_placeholder_first_page">
                         <h2>Вход / Регистрация</h2>
-
                         <div id="login_placeholder_socials" class="row">
-                            <div class="col-md-3">
-                                 <a href="{% provider_login_url "vk" next="/profile" %}"><i class="fa fa-vk fa-3x" aria-hidden="true"></i></a>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2">
+                                <a onclick="display_login_placeholder(3);"><i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i></a>
                             </div>
 
-                            <div class="col-md-3">
-                                <a href="{% provider_login_url "github" next="/profile" %}"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
+                            <div class="col-md-2">
+                                <a href="{% provider_login_url "vk" next="/profile" %}"><i class="fa fa-vk fa-3x"
+                                                                                           aria-hidden="true"></i></a>
                             </div>
 
-                            <div class="col-md-3">
-                                <a href="{% provider_login_url "gitlab" next="/profile" %}"><i class="fa fa-gitlab fa-3x" aria-hidden="true"></i></a>
+                            <div class="col-md-2">
+                                <a href="{% provider_login_url "github" next="/profile" %}"><i
+                                        class="fa fa-github fa-3x" aria-hidden="true"></i></a>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-2">
+                                <a href="{% provider_login_url "gitlab" next="/profile" %}"><i
+                                        class="fa fa-gitlab fa-3x" aria-hidden="true"></i></a>
+                            </div>
+
+                            <div class="col-md-2">
                                 <i class="fa fa-facebook fa-3x" aria-hidden="true"></i>
                             </div>
                         </div>
-
-                        <p onclick="display_login_placeholder(2);" id="login_placeholder_email">Регистрация через
-                            Email</p>
-                        <p onclick="display_login_placeholder(3);" id="login_placeholder_email_login">Я
-                            зарегестрировался через Email</p>
                     </div>
 
                     <div id="login_placeholder_second_page">
-                        <h2>Регистрация</h2>
 
                         <p id="login_placeholder_register_error"></p>
                         <form id="login_placeholder_register">
                             <input id="login_placeholder_register_names" type="text" placeholder="Имя Фамилия">
                             <input id="login_placeholder_register_email" type="email" placeholder="Email">
                             <input id="login_placeholder_register_password" type="password" placeholder="Пароль">
-                            <p id="login_placeholder_register_register_button">Зарегестрироваться</p>
+                            <p id="login_placeholder_register_register_button">Зарегистрироваться</p>
                         </form>
 
                         <p onclick="display_login_placeholder(1);" id="login_placeholder_already_register">Я уже
@@ -64,7 +65,7 @@
                     </div>
 
                     <div id="login_placeholder_third_page">
-                        <h2>Вход</h2>
+                        <h2>Вход / Регистрация</h2>
                         <p id="login_placeholder_error"></p>
 
                         <form action="/login" method="post" id="login_placeholder_register">

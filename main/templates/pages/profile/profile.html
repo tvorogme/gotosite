@@ -190,12 +190,12 @@
 
             <div class="social-wrapper">
                 <p class="social-name">Телефон:</p>
-                <input type="text" id="phone" placeholder="Добавить">
+                <input type="text" {{ is_profile|yesno:",readonly" }} id="phone" placeholder="Добавить" value="{% if  user.phone_number != None %}{{ user.phone_number }}{% endif %}">
             </div>
 
             <div class="social-wrapper">
                 <p class="social-name">Телефон родителей:</p>
-                <input type="text" id="parent-phone" placeholder="Добавить">
+                <input type="text" {{ is_profile|yesno:",readonly" }} id="parent-phone" placeholder="Добавить"  value="{% if  user.parent_phone_number != None %}{{ user.parent_phone_number }}{% endif %}">
             </div>
         </div>
     </div>
@@ -214,7 +214,7 @@
                     <div class="col-3">
                         <input skill_id="{{ skill.id }}" placeholder="Навык" id="skill_{{ skill.id }}"
                                class="after_name skill"
-                               value="{{ skill.name }}" type="text">
+                               value="{{ skill.name }}" type="text" {{ is_profile|yesno:",readonly" }}>
                     </div>
                 {% endfor %}
 
