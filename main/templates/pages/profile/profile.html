@@ -261,16 +261,16 @@
                 </select>
 
                 <div id="srednee_obrazovanie">
-                    <input class="add_education_field" placeholder="Школа">
-                    <input class="add_education_field" placeholder="Специализация">
+                    <input class="add_education_field" id="add_education_school_name"  placeholder="Школа">
+                    <input class="add_education_field" id="add_education_school_specialization" placeholder="Специализация">
                     <p class="add_education_field_out_date">Год выпуска: <input id="education_field_school_out_year" class="add_education_field"
                                                                                 type="number" min="1942" max="2070" value="2017"></p>
                 </div>
                 <div id="vishee_obrazovanie">
-                    <input class="add_education_field" placeholder="Вуз">
-                    <input class="add_education_field" placeholder="Факультет">
+                    <input class="add_education_field" id="add_education_vuz_name" placeholder="Вуз">
+                    <input class="add_education_field" id="add_education_fac_name" placeholder="Факультет">
 
-                    <select>
+                    <select id="add_education_vuz_type_pribivanie">
                         <option selected="selected">Абитуриент</option>
 
                         <option>Студент (специалитет)</option>
@@ -291,11 +291,11 @@
 
                     </select>
 
-                    <p class="add_education_field_out_date">Год выпуска: <input type="number" min="1942" max="2070" value="2017" placeholder="Дата выпуска">
+                    <p class="add_education_field_out_date">Год выпуска: <input id="add_education_vuz_year_out" type="number" min="1942" max="2070" value="2017" placeholder="Дата выпуска">
                     </p>
                 </div>
 
-                <p id="add_education_button">Добавить</p>
+                <p onclick="save_education()" id="add_education_button">Добавить</p>
             </div>
         </div>
 

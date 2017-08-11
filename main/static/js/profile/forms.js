@@ -122,8 +122,30 @@ function show_education_fields(aval) {
     }
 }
 
-function add_education(){
+function add_education() {
     $("#add_education_button_add").toggle();
     $(".add_education").toggle();
     $("#add_education_field_city").focus();
+}
+
+function save_education() {
+    var city = $("#add_education_field_city").val();
+    var education_type = $("#get_education_type").val();
+
+    if (education_type === "1") {
+        var school_name = $("#add_education_school_name").val();
+        var specialization = $("#add_education_school_specialization").val();
+        var out_year = $("#education_field_school_out_year").val();
+
+        console.log(city, education_type, school_name, specialization, out_year);
+    }
+
+    else if (education_type === "2") {
+        var vuz_name = $("#add_education_vuz_name").val();
+        var fac_name = $("#add_education_fac_name").val();
+        var who_am_i = $("#add_education_vuz_type_pribivanie").text();
+        var out_year = $("#add_education_vuz_year_out").val();
+
+        console.log(city, education_type, vuz_name, fac_name, who_am_i, out_year);
+    }
 }
