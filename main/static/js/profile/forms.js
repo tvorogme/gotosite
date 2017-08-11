@@ -121,3 +121,9 @@ function show_education_fields(aval) {
         $("#vishee_obrazovanie").css("display", "block")
     }
 }
+
+function add_education(){
+    $("#add_education_button_add").toggle();
+    $(".add_education").toggle();
+    $("#add_education_field_city").focus();
+}

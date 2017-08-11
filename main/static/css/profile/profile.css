@@ -172,12 +172,12 @@ h3 {
     padding-bottom: 20px;
 }
 
-#add {
+.add {
     font-weight: 400;
     opacity: 0.1;
 }
 
-#add:hover {
+.add:hover {
     opacity: 1;
     cursor: pointer;
 }
@@ -329,6 +329,7 @@ a {
 }
 
 #phone::-webkit-input-placeholder,
+.skill::-webkit-input-placeholder,
 .add_education_field::-webkit-input-placeholder,
 #parent-phone::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #080808;
@@ -337,6 +338,7 @@ a {
 }
 
 #phone::-moz-placeholder,
+.skill::-moz-placeholder,
 .add_education_field::-moz-placeholder,
 #parent-phone::-moz-placeholder { /* Firefox 19+ */
     color: #080808;
@@ -345,6 +347,7 @@ a {
 }
 
 #phone:-ms-input-placeholder,
+.skill:-ms-input-placeholder,
 .add_education_field:-ms-input-placeholder,
 #parent-phone:-ms-input-placeholder { /* IE 10+ */
     color: #080808;
@@ -353,6 +356,7 @@ a {
 }
 
 #phone:-moz-placeholder,
+.skill:-moz-placeholder,
 .add_education_field:-moz-placeholder,
 #parent-phone:-moz-placeholder { /* Firefox 18- */
     color: #080808;
@@ -397,4 +401,12 @@ a {
 
 #vishee_obrazovanie {
     display: none;
+}
+
+.add_education {
+    display: none;
+}
+
+#education_field_school_out_year {
+    margin-left: 3px;
 }

@@ -61,9 +61,7 @@
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ is_profile|yesno:",readonly" }} id="name"
-                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %}
-                                             {% if  user.first_name != None %}{{ user.first_name }}{% endif %}
-                                             {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}{{ user.first_name }}{% endif %} {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
 
 
             <p class="label"><input placeholder="E-mail" class="after_name"
@@ -227,7 +225,7 @@
 
                 {% if is_profile %}
                     <div id="add_wrapper" class="col-3">
-                        <p onclick="add_input_field()" id="add">Добавить</p>
+                        <p onclick="add_input_field()" class="add">Добавить</p>
                     </div>
                 {% endif %}
 
@@ -244,53 +242,61 @@
             <h2>Образование</h2>
         </div>
 
-        <div class="col-md-9 add_education">
-            <p><input class="add_education_field" placeholder="Город"></p>
-
-            <select id="get_education_type" onchange="show_education_fields(this.options[this.selectedIndex].value)">
-                <option selected="selected" value="1">Cреднее и дополнительное
-                    образование
-                </option>
-                <option value="2">Высшее
-                    образование
-                </option>
-            </select>
-
-            <div id="srednee_obrazovanie">
-                <input class="add_education_field" placeholder="Школа">
-                <input class="add_education_field" placeholder="Специализация">
-                <p class="add_education_field_out_date">Дата выпуска: <input class="add_education_field" type="date"></p>
+        <div class="col-md-9">
+            <div id="add_education_button_add" class="col-3">
+                <p onclick="add_education()" class="add">Добавить</p>
             </div>
-            <div id="vishee_obrazovanie">
-                <input class="add_education_field" placeholder="Вуз">
-                <input class="add_education_field" placeholder="Факультет">
 
-                <select>
-                    <option selected="selected">Абитуриент</option>
+            <div class="add_education">
+                <p><input class="add_education_field" id="add_education_field_city" placeholder="Город"></p>
 
-                    <option>Студент (специалитет)</option>
-                    <option>Студент (бакалавр)</option>
-                    <option>Студент (магистр)</option>
-
-                    <option>Выпускник (специалитет)</option>
-                    <option>Выпускник (бакалавр)</option>
-                    <option>Выпускник (магистр)</option>
-
-                    <option>Аспирант</option>
-                    <option>Кандидат наук</option>
-                    <option>Доктор наук</option>
-                    <option>Интерн</option>
-                    <option>Асистент-стажёр</option>
-                    <option>Докторант</option>
-                    <option>Адъютант</option>
-
+                <select id="get_education_type"
+                        onchange="show_education_fields(this.options[this.selectedIndex].value)">
+                    <option selected="selected" value="1">Cреднее и дополнительное
+                        образование
+                    </option>
+                    <option value="2">Высшее
+                        образование
+                    </option>
                 </select>
 
-                <p class="add_education_field_out_date">Дата выпуска: <input type="date" placeholder="Дата выпуска"></p>
+                <div id="srednee_obrazovanie">
+                    <input class="add_education_field" placeholder="Школа">
+                    <input class="add_education_field" placeholder="Специализация">
+                    <p class="add_education_field_out_date">Год выпуска: <input id="education_field_school_out_year" class="add_education_field"
+                                                                                type="number" min="1942" max="2070" value="2017"></p>
+                </div>
+                <div id="vishee_obrazovanie">
+                    <input class="add_education_field" placeholder="Вуз">
+                    <input class="add_education_field" placeholder="Факультет">
+
+                    <select>
+                        <option selected="selected">Абитуриент</option>
+
+                        <option>Студент (специалитет)</option>
+                        <option>Студент (бакалавр)</option>
+                        <option>Студент (магистр)</option>
+
+                        <option>Выпускник (специалитет)</option>
+                        <option>Выпускник (бакалавр)</option>
+                        <option>Выпускник (магистр)</option>
+
+                        <option>Аспирант</option>
+                        <option>Кандидат наук</option>
+                        <option>Доктор наук</option>
+                        <option>Интерн</option>
+                        <option>Асистент-стажёр</option>
+                        <option>Докторант</option>
+                        <option>Адъютант</option>
+
+                    </select>
+
+                    <p class="add_education_field_out_date">Год выпуска: <input type="number" min="1942" max="2070" value="2017" placeholder="Дата выпуска">
+                    </p>
+                </div>
+
+                <p id="add_education_button">Добавить</p>
             </div>
-
-            <p id="add_education_button">Добавить</p>
-
         </div>
 
 
