@@ -329,6 +329,7 @@ a {
 }
 
 #phone::-webkit-input-placeholder,
+.add_education_field::-webkit-input-placeholder,
 #parent-phone::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #080808;
     opacity: 0.1;
@@ -336,6 +337,7 @@ a {
 }
 
 #phone::-moz-placeholder,
+.add_education_field::-moz-placeholder,
 #parent-phone::-moz-placeholder { /* Firefox 19+ */
     color: #080808;
     opacity: 0.1;
@@ -343,6 +345,7 @@ a {
 }
 
 #phone:-ms-input-placeholder,
+.add_education_field:-ms-input-placeholder,
 #parent-phone:-ms-input-placeholder { /* IE 10+ */
     color: #080808;
     opacity: 0.1;
@@ -350,8 +353,48 @@ a {
 }
 
 #phone:-moz-placeholder,
+.add_education_field:-moz-placeholder,
 #parent-phone:-moz-placeholder { /* Firefox 18- */
     color: #080808;
     opacity: 0.1;
     font-weight: 500;
+}
+
+.add_education input {
+    margin-bottom: 10px;
+    border: none;
+    color: #080808;
+    font-weight: 300;
+}
+
+.add_education select {
+    margin-bottom: 10px;
+    border: none;
+    background: none;
+    padding: 0;
+    color: #080808;
+    opacity: 0.1;
+    font-weight: 500;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: content-box;
+}
+
+.add_education_field_out_date {
+    color: #080808;
+    opacity: 0.1;
+    font-weight: 500;
+}
+
+#add_education_button {
+    font-weight: 500;
+}
+
+#add_education_button:hover {
+    cursor: pointer;
+}
+
+#vishee_obrazovanie {
+    display: none;
 }

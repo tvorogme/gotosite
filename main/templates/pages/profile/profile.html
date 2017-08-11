@@ -61,7 +61,9 @@
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ is_profile|yesno:",readonly" }} id="name"
-                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}{{ user.first_name }}{% endif %} {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %}
+                                             {% if  user.first_name != None %}{{ user.first_name }}{% endif %}
+                                             {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
 
 
             <p class="label"><input placeholder="E-mail" class="after_name"
@@ -85,7 +87,8 @@
             {% if request.path != '/profile' and user.birthday != None or is_profile %}
 
                 <p class="label"><input placeholder="День рождения" class="after_name"
-                                        type="date" {{ is_profile|yesno:",readonly" }} value="{% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
+                                        type="date" {{ is_profile|yesno:",readonly" }} value="
+                        {% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
                                         id="birthday">
                 </p>
             {% endif %}
@@ -190,12 +193,14 @@
 
             <div class="social-wrapper">
                 <p class="social-name">Телефон:</p>
-                <input type="text" {{ is_profile|yesno:",readonly" }} id="phone" placeholder="Добавить" value="{% if  user.phone_number != None %}{{ user.phone_number }}{% endif %}">
+                <input type="text" {{ is_profile|yesno:",readonly" }} id="phone" placeholder="Добавить"
+                       value="{% if  user.phone_number != None %}{{ user.phone_number }}{% endif %}">
             </div>
 
             <div class="social-wrapper">
                 <p class="social-name">Телефон родителей:</p>
-                <input type="text" {{ is_profile|yesno:",readonly" }} id="parent-phone" placeholder="Добавить"  value="{% if  user.parent_phone_number != None %}{{ user.parent_phone_number }}{% endif %}">
+                <input type="text" {{ is_profile|yesno:",readonly" }} id="parent-phone" placeholder="Добавить"
+                       value="{% if  user.parent_phone_number != None %}{{ user.parent_phone_number }}{% endif %}">
             </div>
         </div>
     </div>
@@ -236,86 +241,122 @@
 
     <div class="block-wrapper">
         <div class="col-md-3">
-            <h2>Достижения</h2>
+            <h2>Образование</h2>
         </div>
 
-        <div class="col-md-9">
-            <h3><a href="http://goto.msk.ru/">GoTo</a></h3>
-            <p class="date">2015 - present</p>
-            <p class="description">IT educational project promoting industry connectedness. Creating interactive landing
-                pages.</p>
+        <div class="col-md-9 add_education">
+            <p><input class="add_education_field" placeholder="Город"></p>
+
+            <select id="get_education_type" onchange="show_education_fields(this.options[this.selectedIndex].value)">
+                <option selected="selected" value="1">Cреднее и дополнительное
+                    образование
+                </option>
+                <option value="2">Высшее
+                    образование
+                </option>
+            </select>
+
+            <div id="srednee_obrazovanie">
+                <input class="add_education_field" placeholder="Школа">
+                <input class="add_education_field" placeholder="Специализация">
+                <p class="add_education_field_out_date">Дата выпуска: <input class="add_education_field" type="date"></p>
+            </div>
+            <div id="vishee_obrazovanie">
+                <input class="add_education_field" placeholder="Вуз">
+                <input class="add_education_field" placeholder="Факультет">
+
+                <select>
+                    <option selected="selected">Абитуриент</option>
+
+                    <option>Студент (специалитет)</option>
+                    <option>Студент (бакалавр)</option>
+                    <option>Студент (магистр)</option>
+
+                    <option>Выпускник (специалитет)</option>
+                    <option>Выпускник (бакалавр)</option>
+                    <option>Выпускник (магистр)</option>
+
+                    <option>Аспирант</option>
+                    <option>Кандидат наук</option>
+                    <option>Доктор наук</option>
+                    <option>Интерн</option>
+                    <option>Асистент-стажёр</option>
+                    <option>Докторант</option>
+                    <option>Адъютант</option>
+
+                </select>
+
+                <p class="add_education_field_out_date">Дата выпуска: <input type="date" placeholder="Дата выпуска"></p>
+            </div>
+
+            <p id="add_education_button">Добавить</p>
+
         </div>
 
-        <div class="col-md-9 not-first">
-            <h3><a href="http://goto.msk.ru/">GoTo</a></h3>
-            <p class="date">2015 - present</p>
-            <p class="description">IT educational project promoting industry connectedness. Creating interactive landing
-                pages.</p>
-        </div>
 
-        <div class="col-md-9 not-first">
-            <h3><a href="http://goto.msk.ru/">GoTo</a></h3>
-            <p class="date">2015 - present</p>
-            <p class="description">IT educational project promoting industry connectedness. Creating interactive landing
-                pages.</p>
-        </div>
+        {#        <div class="col-md-9 not-first">#}
+        {#            <h3><a href="http://goto.msk.ru/">GoTo</a></h3>#}
+        {#            <p class="date">2015 - present</p>#}
+        {#            <p class="description">IT educational project promoting industry connectedness. Creating interactive landing#}
+        {#                pages.</p>#}
+        {#        </div>#}
 
     </div>
 
 
     <div class="whitespace"></div>
 
-    {#    <div class="block-wrapper">#}
-    {#        <div class="col-md-3">#}
-    {#            <h2>Проекты</h2>#}
-    {#        </div>#}
-    {##}
-    {#        {% for project in projects %}#}
-    {#            <div class="col-md-9">#}
-    {#                <form id="project_{{ project.id }}" method="post" action="/project/update">#}
-    {##}
-    {#                    <a onclick="del_project({{ project.id }})" class="field close">#}
-    {#                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>#}
-    {#                    </a>#}
-    {##}
-    {##}
-    {#                    <h3 class="value"><a href="{{ project.url }}">{{ project.name }}</a></h3>#}
-    {##}
-    {##}
-    {#                    <p class="date value">{{ project.date_started.year }}</p>#}
-    {##}
-    {##}
-    {#                    <br><br>#}
-    {#                    <p class="team">#}
-    {#                        Команда:#}
-    {##}
-    {#                        {% for user in project.team %}#}
-    {#                            <a href="/profile/{{ user.id }}">{{ user.first_name }}#}
-    {#                                {{ user.last_name }}{% if loop.last %}, {% endif %}</a>#}
-    {#                        {% endfor %}#}
-    {#                    </p>#}
-    {##}
-    {##}
-    {#                    <div>#}
-    {#                        <input name="id" type="hidden" value="{{ project.id }}">#}
-    {#                        <input name="delete" type="hidden">#}
-    {#                        <input placeholder="Название" class="project_name field" name="title" type="text"#}
-    {#                               value="{{ project.name }}">#}
-    {#                        <input placeholder="Ссылка" class="project_url field" name="title" type="text"#}
-    {#                               value="{{ project.url }}">#}
-    {##}
-    {#                    </div>#}
-    {##}
-    {##}
-    {#                    <textarea {{ is_profile|yesno:",readonly" }} placeholder="Описание"#}
-    {#                                                                 name="description"#}
-    {#                                                                 onclick="edit_project({{ project.id }})"#}
-    {#                                                                 class="description">{{ project.description }}</textarea>#}
-    {#                </form>#}
-    {#            </div>#}
-    {#        {% endfor %}#}
-    {##}
-    {#    </div>#}
+    <div class="block-wrapper">
+        <div class="col-md-3">
+            <h2>Проекты</h2>
+        </div>
+
+        {% for project in projects %}
+            <div class="col-md-9">
+                <form id="project_{{ project.id }}" method="post" action="/project/update">
+
+                    <a onclick="del_project({{ project.id }})" class="field close">
+                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                    </a>
+
+
+                    <h3 class="value"><a href="{{ project.url }}">{{ project.name }}</a></h3>
+
+
+                    <p class="date value">{{ project.date_started.year }}</p>
+
+
+                    <br><br>
+                    <p class="team">
+                        Команда:
+
+                        {% for user in project.team %}
+                            <a href="/profile/{{ user.id }}">{{ user.first_name }}
+                                {{ user.last_name }}{% if loop.last %}, {% endif %}</a>
+                        {% endfor %}
+                    </p>
+
+
+                    <div>
+                        <input name="id" type="hidden" value="{{ project.id }}">
+                        <input name="delete" type="hidden">
+                        <input placeholder="Название" class="project_name field" name="title" type="text"
+                               value="{{ project.name }}">
+                        <input placeholder="Ссылка" class="project_url field" name="title" type="text"
+                               value="{{ project.url }}">
+
+                    </div>
+
+
+                    <textarea {{ is_profile|yesno:",readonly" }} placeholder="Описание"
+                                                                 name="description"
+                                                                 onclick="edit_project({{ project.id }})"
+                                                                 class="description">{{ project.description }}</textarea>
+                </form>
+            </div>
+        {% endfor %}
+
+    </div>
 </div>
 
 {% if is_profile %}

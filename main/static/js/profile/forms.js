@@ -100,3 +100,24 @@ function del_social(social) {
     });
     window.location.reload()
 }
+
+$(document).ready(function () {
+    $("select").click(function () {
+        $(this).css("opacity", "1").css("font-weight", "300")
+    });
+
+    $(".add_education_field_out_date").click(function () {
+        $(this).css("opacity", "1").css("font-weight", "300")
+    });
+});
+
+function show_education_fields(aval) {
+    if (aval === "1") {
+        $("#vishee_obrazovanie").css("display", "none");
+        $("#srednee_obrazovanie").css("display", "block")
+    }
+    else {
+        $("#srednee_obrazovanie").css("display", "none");
+        $("#vishee_obrazovanie").css("display", "block")
+    }
+}
