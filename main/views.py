@@ -10,7 +10,7 @@ from django.shortcuts import render
 from main.apps import SOCIALS
 from .forms import RegisterForm, validate_user_field
 from .lang.ru_RU import forms_translate
-from .models import User, Skill
+from .models import User, Skill, Education
 
 
 ###########
@@ -190,6 +190,18 @@ def update_skills(request, person):
     return []
 
 
+def add_education(request, person):
+    # FIXME add errors check
+    if 'education' in request.POST:
+        parsed_values = json.loads(request.POST['education'])
+
+        tmp_education = Education(**parsed_values)
+        tmp_education.save()
+
+        person.educations.add(tmp_education)
+    return []
+
+
 def update_profile(request):
     '''Edit profile information'''
 
@@ -202,11 +214,17 @@ def update_profile(request):
     # here we will store errors
     errors = {}
 
-    # update skills id needed1
+    # update skills if needed
     skills_errors = update_skills(request, person)
 
     if len(skills_errors) > 0:
         errors['skills'] = update_skills(request, person)
+
+    # add education if needed
+    education_errors = add_education(request, person)
+
+    if len(education_errors) > 0:
+        errors['education'] = education_errors
 
     for val_name in [
         'first_name', 'last_name', 'middle_name',  # full name fields

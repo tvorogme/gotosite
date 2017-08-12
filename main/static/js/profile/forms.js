@@ -129,23 +129,50 @@ function add_education() {
 }
 
 function save_education() {
+
     var city = $("#add_education_field_city").val();
     var education_type = $("#get_education_type").val();
+
+    var request_data = {
+        'education': {
+            'city': city,
+            'education_type': parseInt(education_type)
+        },
+        "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()
+    };
 
     if (education_type === "1") {
         var school_name = $("#add_education_school_name").val();
         var specialization = $("#add_education_school_specialization").val();
-        var out_year = $("#education_field_school_out_year").val();
+        var school_out_year = $("#education_field_school_out_year").val();
 
-        console.log(city, education_type, school_name, specialization, out_year);
+        request_data['education']['name'] = school_name;
+        request_data['education']['specialization'] = specialization;
+        request_data['education']['out_year'] = parseInt(school_out_year);
     }
 
     else if (education_type === "2") {
         var vuz_name = $("#add_education_vuz_name").val();
         var fac_name = $("#add_education_fac_name").val();
         var who_am_i = $("#add_education_vuz_type_pribivanie").text();
-        var out_year = $("#add_education_vuz_year_out").val();
+        var vuz_out_year = $("#add_education_vuz_year_out").val();
 
-        console.log(city, education_type, vuz_name, fac_name, who_am_i, out_year);
+        request_data['education']['name'] = vuz_name;
+        request_data['education']['faculty'] = fac_name;
+        request_data['education']['role'] = who_am_i;
+        request_data['education']['out_year'] = parseInt(vuz_out_year);
     }
+
+    request_data['education'] = JSON.stringify(request_data['education']);
+
+    $.ajax({
+        type: "POST",
+        url: '/profile/edit/',
+        data: request_data,
+        dataType: 'json'
+    }).done(function (data) {
+        if (console && console.log) {
+            console.log(data)
+        }
+    });
 }

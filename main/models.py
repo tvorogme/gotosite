@@ -14,6 +14,33 @@ class Skill(models.Model):
         return self.name
 
 
+class Education(models.Model):
+    city = models.CharField(max_length=50)
+    education_type = models.BooleanField(default=True)  # School?
+
+    name = models.CharField(max_length=50)
+    out_year = models.IntegerField()
+
+    #
+    #  School specific
+    #
+
+    specialization = models.CharField(max_length=50, blank=True, null=True)
+
+    #
+    # University specific
+    #
+
+    faculty = models.CharField(max_length=50, blank=True, null=True)
+    role = models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_fields_names(self):
+        return [item.name for item in self._meta.get_fields()]
+
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password, **extra_fields):
         if not email:
@@ -58,6 +85,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     parent_phone_number = models.CharField(max_length=20, blank=True, null=True)
 
     skills = models.ManyToManyField(Skill, blank=True)
+    educations = models.ManyToManyField(Education, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 

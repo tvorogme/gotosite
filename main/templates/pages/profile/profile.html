@@ -85,8 +85,7 @@
             {% if request.path != '/profile' and user.birthday != None or is_profile %}
 
                 <p class="label"><input placeholder="День рождения" class="after_name"
-                                        type="date" {{ is_profile|yesno:",readonly" }} value="
-                        {% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
+                                        type="date" {{ is_profile|yesno:",readonly" }} value="{% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
                                         id="birthday">
                 </p>
             {% endif %}
@@ -243,6 +242,7 @@
         </div>
 
         <div class="col-md-9">
+
             <div id="add_education_button_add" class="col-3">
                 <p onclick="add_education()" class="add">Добавить</p>
             </div>
@@ -255,7 +255,7 @@
                     <option selected="selected" value="1">Cреднее и дополнительное
                         образование
                     </option>
-                    <option value="2">Высшее
+                    <option value="0">Высшее
                         образование
                     </option>
                 </select>
