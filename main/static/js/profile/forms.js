@@ -61,7 +61,7 @@ function save() {
         }
     });
 
-    window.location.reload()
+    window.location.reload();
 }
 
 var project_edit = -1;
@@ -98,7 +98,7 @@ function del_social(social) {
         },
         dataType: 'json'
     });
-    window.location.reload()
+    window.location.reload();
 }
 
 $(document).ready(function () {
@@ -175,4 +175,16 @@ function save_education() {
             console.log(data)
         }
     });
+
+    window.location.reload();
+}
+
+function remove_education(_id) {
+    $.ajax({
+        type: "POST",
+        url: '/profile/remove_education/',
+        data: {"education_id": _id, "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()},
+        dataType: 'json'
+    });
+    window.location.reload();
 }

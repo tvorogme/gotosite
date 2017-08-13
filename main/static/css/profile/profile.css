@@ -199,7 +199,7 @@ h4 {
 }
 
 .not-first {
-    padding-top: 25px;
+    margin-top: 25px;
 }
 
 .whitespace {
@@ -424,6 +424,22 @@ a {
     font-weight: 300;
 }
 
-.education_block{
+.education_block {
     overflow: hidden;
+    position: relative;
+}
+
+.remove-educational {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.education_block:hover .remove-educational {
+    display: inline-block;
+}
+
+.remove-educational:hover{
+    cursor: pointer;
 }

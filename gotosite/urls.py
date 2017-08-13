@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^profile/$', profile_page, name='SelfProfile'),
     url(r'^profile/(?P<_id>[0-9]+)/$', profile_page, name='Profile'),
     url(r'^profile/edit/$', update_profile),
+    url(r'^profile/remove_education/$', remove_education),
 
     # Login system
     url(r'^logout/$', logout_wrapper),

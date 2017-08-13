@@ -154,9 +154,12 @@ def remove_social(request):
         if provider in ['vk', 'facebook', 'gitlab', 'github']:
             # remove account
             account = SocialAccount.objects.filter(user_id=request.user.id, provider=provider)
-            account.delete()
-            return "Ok"
-    return
+
+            if account:
+                account.delete()
+                # fixme: add output status code
+                return HttpResponse("ok")
+    return HttpResponse("bad")
 
 
 def update_skills(request, person):
@@ -191,7 +194,7 @@ def update_skills(request, person):
 
 
 def add_education(request, person):
-    # FIXME add errors check
+    # fixme: add errors check
     if 'education' in request.POST:
         parsed_values = json.loads(request.POST['education'])
 
@@ -200,6 +203,19 @@ def add_education(request, person):
 
         person.educations.add(tmp_education)
     return []
+
+
+def remove_education(request):
+    # fixme: add output status code
+    if 'education_id' in request.POST:
+        educations = request.user.educations
+        toremove_id = int(request.POST['education_id'])
+
+        for education in educations.all():
+            if education.id == toremove_id:
+                educations.remove(education)
+                return HttpResponse("ok")
+    return HttpResponse("bad")
 
 
 def update_profile(request):
