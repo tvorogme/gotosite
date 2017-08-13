@@ -410,3 +410,20 @@ a {
 #education_field_school_out_year {
     margin-left: 3px;
 }
+
+#add_education_button:hover {
+    color: rgb(67, 180, 152);
+}
+
+.education_block p {
+    line-height: 20px;
+    padding-top: 0;
+}
+
+.education_block h3 {
+    font-weight: 300;
+}
+
+.education_block{
+    overflow: hidden;
+}

@@ -61,7 +61,9 @@
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ is_profile|yesno:",readonly" }} id="name"
-                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}{{ user.first_name }}{% endif %} {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %}
+                                             {% if  user.first_name != None %}{{ user.first_name }}{% endif %}
+                                             {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
 
 
             <p class="label"><input placeholder="E-mail" class="after_name"
@@ -85,7 +87,8 @@
             {% if request.path != '/profile' and user.birthday != None or is_profile %}
 
                 <p class="label"><input placeholder="День рождения" class="after_name"
-                                        type="date" {{ is_profile|yesno:",readonly" }} value="{% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
+                                        type="date" {{ is_profile|yesno:",readonly" }} value="
+                        {% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
                                         id="birthday">
                 </p>
             {% endif %}
@@ -167,26 +170,26 @@
                     </p>
                 {% endif %}
             </div>
-
-            <div class="social-wrapper">
-                <p class="social-name">Facebook:</p>
-                {% if socials.facebook %}
-                    <p class="social-url">
-                        <a href="">{{ socials.facebook.0.extra_data }}</a>
-                        <a class="remove-social" onclick="del_social('facebook')">
-                            <svg width="8" version="1.1" xmlns="http://www.w3.org/2000/svg" height="8"
-                                 viewBox="0 0 64 64"
-                                 enable-background="new 0 0 64 64">
-                                <g>
-                                    <path d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"></path>
-                                </g>
-                            </svg>
-                        </a></p>
-                {% else %}
-                    <p class="social-add"><a>Добавить</a>
-                    </p>
-                {% endif %}
-            </div>
+            {##}
+            {#            <div class="social-wrapper">#}
+            {#                <p class="social-name">Facebook:</p>#}
+            {#                {% if socials.facebook %}#}
+            {#                    <p class="social-url">#}
+            {#                        <a href="">{{ socials.facebook.0.extra_data }}</a>#}
+            {#                        <a class="remove-social" onclick="del_social('facebook')">#}
+            {#                            <svg width="8" version="1.1" xmlns="http://www.w3.org/2000/svg" height="8"#}
+            {#                                 viewBox="0 0 64 64"#}
+            {#                                 enable-background="new 0 0 64 64">#}
+            {#                                <g>#}
+            {#                                    <path d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"></path>#}
+            {#                                </g>#}
+            {#                            </svg>#}
+            {#                        </a></p>#}
+            {#                {% else %}#}
+            {#                    <p class="social-add"><a>Добавить</a>#}
+            {#                    </p>#}
+            {#                {% endif %}#}
+            {#            </div>#}
 
             <div class="social-wrapper">
                 <p class="social-name">Телефон:</p>
@@ -243,11 +246,31 @@
 
         <div class="col-md-9">
 
-            <div id="add_education_button_add" class="col-3">
+            {% for education in user.educations.all %}
+                {% if education.education_type %}
+                    <div class="education_block {% if not forloop.first %}not-first{% endif %}">
+                        <h3>{{ education.name }}</h3>
+                        <p class="description">{{ education.city }}, {{ education.out_year }}<br>{{ education.specialization }}
+                        </p>
+                    </div>
+                {% else %}
+                    <div>
+                        <h3><a href="http://goto.msk.ru/">GoTo</a></h3>
+                        <p class="date">2015 - present</p>
+                        <p class="description">IT educational project promoting industry connectedness. Creating
+                            interactive
+                            landing
+                            pages.</p>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+
+            <div id="add_education_button_add" class="col-3 {% if user.educations.all.0 %}not-first{% endif %}">
                 <p onclick="add_education()" class="add">Добавить</p>
             </div>
 
-            <div class="add_education">
+            <div class="add_education {% if user.educations.all.0 %}not-first{% endif %}">
                 <p><input class="add_education_field" id="add_education_field_city" placeholder="Город"></p>
 
                 <select id="get_education_type"
@@ -261,10 +284,13 @@
                 </select>
 
                 <div id="srednee_obrazovanie">
-                    <input class="add_education_field" id="add_education_school_name"  placeholder="Школа">
-                    <input class="add_education_field" id="add_education_school_specialization" placeholder="Специализация">
-                    <p class="add_education_field_out_date">Год выпуска: <input id="education_field_school_out_year" class="add_education_field"
-                                                                                type="number" min="1942" max="2070" value="2017"></p>
+                    <input class="add_education_field" id="add_education_school_name" placeholder="Школа">
+                    <input class="add_education_field" id="add_education_school_specialization"
+                           placeholder="Специализация">
+                    <p class="add_education_field_out_date">Год выпуска: <input id="education_field_school_out_year"
+                                                                                class="add_education_field"
+                                                                                type="number" min="1942" max="2070"
+                                                                                value="2017"></p>
                 </div>
                 <div id="vishee_obrazovanie">
                     <input class="add_education_field" id="add_education_vuz_name" placeholder="Вуз">
@@ -291,7 +317,9 @@
 
                     </select>
 
-                    <p class="add_education_field_out_date">Год выпуска: <input id="add_education_vuz_year_out" type="number" min="1942" max="2070" value="2017" placeholder="Дата выпуска">
+                    <p class="add_education_field_out_date">Год выпуска: <input id="add_education_vuz_year_out"
+                                                                                type="number" min="1942" max="2070"
+                                                                                value="2017" placeholder="Дата выпуска">
                     </p>
                 </div>
 
@@ -300,15 +328,22 @@
         </div>
 
 
-        {#        <div class="col-md-9 not-first">#}
-        {#            <h3><a href="http://goto.msk.ru/">GoTo</a></h3>#}
-        {#            <p class="date">2015 - present</p>#}
-        {#            <p class="description">IT educational project promoting industry connectedness. Creating interactive landing#}
-        {#                pages.</p>#}
-        {#        </div>#}
-
     </div>
 
+    <div class="whitespace"></div>
+
+    <div class="block-wrapper">
+        <div class="col-md-3">
+            <h2>Достижения</h2>
+        </div>
+
+
+        <div class="col-md-9">
+            <div class="col-3">
+                <p class="add">Добавить</p>
+            </div>
+        </div>
+    </div>
 
     <div class="whitespace"></div>
 
@@ -317,8 +352,13 @@
             <h2>Проекты</h2>
         </div>
 
-        {% for project in projects %}
-            <div class="col-md-9">
+
+        <div class="col-md-9">
+            <div class="col-3">
+                <p class="add">Добавить</p>
+            </div>
+
+            {% for project in projects %}
                 <form id="project_{{ project.id }}" method="post" action="/project/update">
 
                     <a onclick="del_project({{ project.id }})" class="field close">
@@ -359,9 +399,25 @@
                                                                  onclick="edit_project({{ project.id }})"
                                                                  class="description">{{ project.description }}</textarea>
                 </form>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
 
+
+    </div>
+
+    <div class="whitespace"></div>
+
+    <div class="block-wrapper">
+        <div class="col-md-3">
+            <h2>Опыт</h2>
+        </div>
+
+
+        <div class="col-md-9">
+            <div class="col-3">
+                <p class="add">Добавить</p>
+            </div>
+        </div>
     </div>
 </div>
 
