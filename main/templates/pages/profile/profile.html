@@ -1,5 +1,6 @@
 {% load account %}
 {% load socialaccount %}
+{% load profile_extras %}
 {% get_social_accounts user as socials %}
 
 <!DOCTYPE html>
@@ -250,18 +251,26 @@
                 {% if education.education_type %}
                     <div class="education_block {% if not forloop.first %}not-first{% endif %}">
                         <h3>{{ education.name }}</h3>
-                        <p class="description">{{ education.city }}, {{ education.out_year }}<br>{{ education.specialization }}
+                        <p class="description">{{ education.city }}, {{ education.out_year }}
+                            {% if education.specialization %}
+                                <br>{{ education.specialization }}
+                            {% endif %}
                         </p>
                     </div>
                 {% else %}
-                    <div>
-                        <h3><a href="http://goto.msk.ru/">GoTo</a></h3>
-                        <p class="date">2015 - present</p>
-                        <p class="description">IT educational project promoting industry connectedness. Creating
-                            interactive
-                            landing
-                            pages.</p>
+                    <div class="education_block {% if not forloop.first %}not-first{% endif %}">
+                        <h3>{{ education.name }}</h3>
+                        <p class="description">{{ education.city }}, {{ education.out_year }}<br>{{ education.faculty }}, {{ education.role|get_whole_unoversity_role }}
+                        </p>
                     </div>
+                    {#                    <div>#}
+                    {#                        <h3><a href="http://goto.msk.ru/">GoTo</a></h3>#}
+                    {#                        <p class="date">2015 - present</p>#}
+                    {#                        <p class="description">IT educational project promoting industry connectedness. Creating#}
+                    {#                            interactive#}
+                    {#                            landing#}
+                    {#                            pages.</p>#}
+                    {#                    </div>#}
                 {% endif %}
 
             {% endfor %}
@@ -297,23 +306,23 @@
                     <input class="add_education_field" id="add_education_fac_name" placeholder="Факультет">
 
                     <select id="add_education_vuz_type_pribivanie">
-                        <option selected="selected">Абитуриент</option>
+                        <option value="0" selected="selected">Абитуриент</option>
 
-                        <option>Студент (специалитет)</option>
-                        <option>Студент (бакалавр)</option>
-                        <option>Студент (магистр)</option>
+                        <option value="1">Студент (специалитет)</option>
+                        <option value="2">Студент (бакалавр)</option>
+                        <option value="3">Студент (магистр)</option>
 
-                        <option>Выпускник (специалитет)</option>
-                        <option>Выпускник (бакалавр)</option>
-                        <option>Выпускник (магистр)</option>
+                        <option value="4">Выпускник (специалитет)</option>
+                        <option value="5">Выпускник (бакалавр)</option>
+                        <option value="6">Выпускник (магистр)</option>
 
-                        <option>Аспирант</option>
-                        <option>Кандидат наук</option>
-                        <option>Доктор наук</option>
-                        <option>Интерн</option>
-                        <option>Асистент-стажёр</option>
-                        <option>Докторант</option>
-                        <option>Адъютант</option>
+                        <option value="7">Аспирант</option>
+                        <option value="8">Кандидат наук</option>
+                        <option value="9">Доктор наук</option>
+                        <option value="10">Интерн</option>
+                        <option value="11">Асистент-стажёр</option>
+                        <option value="12">Докторант</option>
+                        <option value="13">Адъютант</option>
 
                     </select>
 

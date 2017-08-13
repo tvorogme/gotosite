@@ -2,6 +2,26 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Permis
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+UNIVERSITY_ROLES = (
+    ('0', 'Абитуриент'),
+
+    ('1', 'Студент (специалитет)'),
+    ('2', 'Студент (бакалавр)'),
+    ('3', 'Студент (магистр)'),
+
+    ('4', 'Выпускник (специалитет)'),
+    ('5', 'Выпускник (бакалавр)'),
+    ('6', 'Выпускник (магистр)'),
+
+    ('7', 'Аспирант'),
+    ('8', 'Кандидат наук'),
+    ('9', 'Доктор наук'),
+    ('10', 'Интерн'),
+    ('11', 'Асистент-стажёр'),
+    ('12', 'Докторант'),
+    ('13', 'Адъютант'),
+)
+
 
 class Skill(models.Model):
     name = models.CharField(max_length=200)
@@ -32,7 +52,8 @@ class Education(models.Model):
     #
 
     faculty = models.CharField(max_length=50, blank=True, null=True)
-    role = models.CharField(max_length=50, blank=True, null=True)
+
+    role = models.CharField(max_length=50, blank=True, null=True, choices=UNIVERSITY_ROLES)
 
     def __str__(self):
         return self.name

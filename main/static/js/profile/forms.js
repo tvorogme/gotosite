@@ -151,10 +151,10 @@ function save_education() {
         request_data['education']['out_year'] = parseInt(school_out_year);
     }
 
-    else if (education_type === "2") {
+    else if (education_type === "0") {
         var vuz_name = $("#add_education_vuz_name").val();
         var fac_name = $("#add_education_fac_name").val();
-        var who_am_i = $("#add_education_vuz_type_pribivanie").text();
+        var who_am_i = $("#add_education_vuz_type_pribivanie").val();
         var vuz_out_year = $("#add_education_vuz_year_out").val();
 
         request_data['education']['name'] = vuz_name;
