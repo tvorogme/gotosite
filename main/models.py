@@ -62,6 +62,13 @@ class Education(models.Model):
         return [item.name for item in self._meta.get_fields()]
 
 
+class Achievement(models.Model):
+    title = models.CharField(max_length=50)
+    link = models.CharField(max_length=50)
+    year = models.IntegerField()
+    description = models.TextField()
+
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password, **extra_fields):
         if not email:
@@ -107,6 +114,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     skills = models.ManyToManyField(Skill, blank=True)
     educations = models.ManyToManyField(Education, blank=True)
+    achievements = models.ManyToManyField(Achievement, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 

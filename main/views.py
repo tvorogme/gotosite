@@ -10,7 +10,7 @@ from django.shortcuts import render
 from main.apps import SOCIALS
 from .forms import RegisterForm, validate_user_field
 from .lang.ru_RU import forms_translate
-from .models import User, Skill, Education
+from .models import User, Skill, Education, Achievement
 
 
 ###########
@@ -290,3 +290,33 @@ def get_needed_skills(request):
         # Dump to json
         return HttpResponse(json.dumps([skill.name for skill in needed_skills]), content_type="application/json")
     return
+
+
+def add_achievement(request):
+    values = {}
+
+    for val in ['title', 'year', 'link', 'description']:
+        if val not in request.POST:
+            return HttpResponse()
+        else:
+            values[val] = request.POST[val]
+
+    tmp_achievement = Achievement(**values)
+    tmp_achievement.save()
+
+    request.user.achievements.add(tmp_achievement)
+    return HttpResponse()
+
+
+def remove_achievement(request):
+    # fixme: add output status code
+
+    if 'achievement_id' in request.POST:
+        achievements = request.user.achievements
+        toremove_id = int(request.POST['achievement_id'])
+
+        for achievement in achievements.all():
+            if achievement.id == toremove_id:
+                achievements.remove(achievement)
+                return HttpResponse("ok")
+    return HttpResponse("bad")

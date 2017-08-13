@@ -188,3 +188,41 @@ function remove_education(_id) {
     });
     window.location.reload();
 }
+
+function add_achievement() {
+    $("#add_achievement").css('display', 'block');
+    $("#add_achievement_button").css('display', 'none')
+}
+
+function add_achievement_final_step() {
+    var title = $("#add_achievement_title").val();
+    var year = $("#add_achievement_date").val();
+    var link = $("#add_achievement_url").val();
+    var description = $("#add_achievement_description").val();
+
+    var request_data = {
+        'title': title,
+        'year': year,
+        'link': link,
+        'description': description,
+        "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: '/profile/add_achievement/',
+        data: request_data,
+        dataType: 'json'
+    });
+    window.location.reload();
+}
+
+function remove_achievement(_id) {
+    $.ajax({
+        type: "POST",
+        url: '/profile/remove_achievement/',
+        data: {"achievement_id": _id, "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()},
+        dataType: 'json'
+    });
+    window.location.reload();
+}

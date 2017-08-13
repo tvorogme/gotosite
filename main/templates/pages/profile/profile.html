@@ -62,7 +62,9 @@
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ is_profile|yesno:",readonly" }} id="name"
-                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}{{ user.first_name }}{% endif %} {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %}
+                                             {% if  user.first_name != None %}{{ user.first_name }}{% endif %}
+                                             {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
 
 
             <p class="label"><input placeholder="E-mail" class="after_name"
@@ -86,7 +88,8 @@
             {% if request.path != '/profile' and user.birthday != None or is_profile %}
 
                 <p class="label"><input placeholder="День рождения" class="after_name"
-                                        type="date" {{ is_profile|yesno:",readonly" }} value="{% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
+                                        type="date" {{ is_profile|yesno:",readonly" }} value="
+                        {% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
                                         id="birthday">
                 </p>
             {% endif %}
@@ -247,7 +250,7 @@
             {% for education in user.educations.all %}
                 {% if education.education_type %}
                     <div class="education_block {% if not forloop.first %}not-first{% endif %}">
-                    <a class="remove-educational" onclick="remove_education({{ education.id }})">
+                        <a class="remove-educational" onclick="remove_education({{ education.id }})">
                             <svg width="15" version="1.1" xmlns="http://www.w3.org/2000/svg" height="15"
                                  viewBox="0 0 64 64"
                                  enable-background="new 0 0 64 64">
@@ -280,14 +283,7 @@
                         <p class="description">{{ education.city }}, {{ education.out_year }}<br>{{ education.faculty }}, {{ education.role|get_whole_unoversity_role }}
                         </p>
                     </div>
-                    {#                    <div>#}
-                    {#                        <h3><a href="http://goto.msk.ru/">GoTo</a></h3>#}
-                    {#                        <p class="date">2015 - present</p>#}
-                    {#                        <p class="description">IT educational project promoting industry connectedness. Creating#}
-                    {#                            interactive#}
-                    {#                            landing#}
-                    {#                            pages.</p>#}
-                    {#                    </div>#}
+
                 {% endif %}
 
             {% endfor %}
@@ -365,8 +361,36 @@
 
 
         <div class="col-md-9">
-            <div class="col-3">
-                <p class="add">Добавить</p>
+            {% for achievement in user.achievements.all %}
+                <div class="achievement {% if not forloop.first %}not-first{% endif %}">
+                    <a class="remove-achievement" onclick="remove_achievement({{ achievement.id }})">
+                        <svg width="15" version="1.1" xmlns="http://www.w3.org/2000/svg" height="15"
+                             viewBox="0 0 64 64"
+                             enable-background="new 0 0 64 64">
+                            <g>
+                                <path d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"></path>
+                            </g>
+                        </svg>
+                    </a>
+
+                    <h3><a href="{{ achievement.link }}">{{ achievement.title }}</a></h3>
+                    <p class="date">{{ achievement.year }}</p>
+                    <p class="description">{{ achievement.description }}</p>
+                </div>
+            {% endfor %}
+
+            <div id="add_achievement" class="{% if user.achievements.all.0 %}not-first{% endif %}">
+                <h3><input id="add_achievement_title" placeholder="Загаловок"></h3>
+                <p class="date"><input id="add_achievement_date" type="number" min="1942" max="2070"
+                                       value="2017"></p>
+                <input id="add_achievement_url" placeholder="Ссылка">
+                <textarea id="add_achievement_description" placeholder="Описание"></textarea>
+
+                <p onclick="add_achievement_final_step()" id="add_achievement_final_button">Добавить</p>
+            </div>
+
+            <div class="col-3 {% if user.achievements.all.0 %}not-first{% endif %}" id="add_achievement_button">
+                <p class="add" onclick="add_achievement()">Добавить</p>
             </div>
         </div>
     </div>

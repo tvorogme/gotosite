@@ -20,6 +20,8 @@ urlpatterns = [
     url(r'^profile/(?P<_id>[0-9]+)/$', profile_page, name='Profile'),
     url(r'^profile/edit/$', update_profile),
     url(r'^profile/remove_education/$', remove_education),
+    url(r'^profile/add_achievement/$', add_achievement),
+    url(r'^profile/remove_achievement/$', remove_achievement),
 
     # Login system
     url(r'^logout/$', logout_wrapper),
