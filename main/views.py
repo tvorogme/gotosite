@@ -308,7 +308,34 @@ def get_needed_skills(request):
 
         # Dump to json
         return HttpResponse(json.dumps([skill.name for skill in needed_skills]), content_type="application/json")
-    return
+    return HttpResponse()
+
+
+def get_needed_cities(request):
+    if 'city' in request.GET:
+        city_from_user = request.GET['city']
+
+        # Search similar in db
+        needed_cities = City.objects.filter(
+            name__icontains=city_from_user).only('name')[:10]
+
+        # Dump to json
+        return HttpResponse(json.dumps([city.name for city in needed_cities]), content_type="application/json")
+    return HttpResponse()
+
+
+def get_needed_schools_names(request):
+    if 'education_name' in request.GET and 'education_type' in request.GET:
+        education_name_from_user = request.GET['education_name']
+        education_type_from_user = bool(request.GET['education_type'])
+
+        # Search similar in db
+        needed_cities = Education.objects.filter(
+            name__icontains=education_name_from_user, education_type=education_type_from_user).only('name')[:10]
+
+        # Dump to json
+        return HttpResponse(json.dumps([city.name for city in needed_cities]), content_type="application/json")
+    return HttpResponse()
 
 
 def add_achievement(request):

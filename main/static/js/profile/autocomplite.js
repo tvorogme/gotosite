@@ -15,7 +15,7 @@ function update_autocomplete(needed) {
                 }
             }).autocomplete({
                 source: function (request, response) {
-                    $.getJSON("/get_needed_skills", {
+                    $.getJSON("/api/get_needed_skills", {
                         skill: request.term
                     }, response);
                 },
@@ -36,7 +36,7 @@ function update_autocomplete(needed) {
             }
         }).autocomplete({
             source: function (request, response) {
-                $.getJSON("/get_needed_skills", {
+                $.getJSON("/api/get_needed_skills", {
                     skill: request.term
                 }, response);
             },
@@ -51,6 +51,57 @@ function update_autocomplete(needed) {
     }
 
 }
+
+function add_autocomplite_city(field) {
+    field.on("keydown", function (event) {
+        if (event.keyCode === $.ui.keyCode.TAB &&
+            $(this).autocomplete("instance").menu.active) {
+            event.preventDefault();
+        }
+    }).autocomplete({
+        source: function (request, response) {
+            $.getJSON("/api/get_needed_cities", {
+                city: request.term
+            }, response);
+        },
+        focus: function () {
+            return false;
+        },
+        select: function (event, ui) {
+            this.value = ui.item.value;
+            return false;
+        }
+    });
+}
+
+add_autocomplite_city($('#city'));
+add_autocomplite_city($('#add_education_field_city'));
+
+function add_autocomplite_education_name(field, type) {
+    field.on("keydown", function (event) {
+        if (event.keyCode === $.ui.keyCode.TAB &&
+            $(this).autocomplete("instance").menu.active) {
+            event.preventDefault();
+        }
+    }).autocomplete({
+        source: function (request, response) {
+            $.getJSON("/api/get_needed_schools_names", {
+                education_name: request.term,
+                education_type: type
+            }, response);
+        },
+        focus: function () {
+            return false;
+        },
+        select: function (event, ui) {
+            this.value = ui.item.value;
+            return false;
+        }
+    });
+}
+
+add_autocomplite_education_name($('#add_education_school_name'), 1);
+add_autocomplite_education_name($('#add_education_vuz_name'), 0);
 
 var current_input_field_number = 0;
 
