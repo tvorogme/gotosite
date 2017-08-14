@@ -23,6 +23,16 @@ UNIVERSITY_ROLES = (
 )
 
 
+class City(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    def __len__(self):
+        return len(self.name)
+
+
 class Skill(models.Model):
     name = models.CharField(max_length=200)
 
@@ -35,7 +45,7 @@ class Skill(models.Model):
 
 
 class Education(models.Model):
-    city = models.CharField(max_length=50)
+    city = models.ForeignKey(City)
     education_type = models.BooleanField(default=True)  # School?
 
     name = models.CharField(max_length=50)
@@ -102,7 +112,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     #
 
     email = models.EmailField(unique=True, null=True)
-    city = models.CharField(max_length=100, blank=True, null=True)
+    city = models.ForeignKey(City, null=True, blank=True)
     birthday = models.DateField('birthday', blank=True, null=True)
 
     #

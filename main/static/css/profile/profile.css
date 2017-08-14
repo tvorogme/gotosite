@@ -158,10 +158,8 @@ h3 {
 .description {
     width: 400px;
     float: left;
-    padding-top: 14px;
-
+    line-height: 20px;
     font-size: 14px;
-    line-height: 16px;
     border: none;
     font-weight: 300;
 }
@@ -430,7 +428,7 @@ a {
 }
 
 .remove-educational,
-.remove-achievement{
+.remove-achievement {
     position: absolute;
     top: 0;
     right: 0;
@@ -442,7 +440,7 @@ a {
 }
 
 .remove-educational:hover,
-.remove-achievement:hover{
+.remove-achievement:hover {
     cursor: pointer;
 }
 
@@ -484,7 +482,7 @@ a {
     border: none;
 }
 
-.achievement{
+.achievement {
     overflow: hidden;
     position: relative;
 }
@@ -493,6 +491,6 @@ a {
     display: inline-block;
 }
 
-.achievement h3{
+.achievement h3 {
     font-weight: 300;
 }

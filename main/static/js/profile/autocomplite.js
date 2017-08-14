@@ -65,6 +65,7 @@ function add_input_field() {
     update_autocomplete("#new_skill_" + current_input_field_number);
 
     $("#new_skill_" + current_input_field_number).focus();
+    $("#save_ico").css('display', 'block');
 }
 
 $(update_autocomplete());

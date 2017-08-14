@@ -10,7 +10,7 @@ from django.shortcuts import render
 from main.apps import SOCIALS
 from .forms import RegisterForm, validate_user_field
 from .lang.ru_RU import forms_translate
-from .models import User, Skill, Education, Achievement
+from .models import User, Skill, Education, Achievement, City
 
 
 ###########
@@ -198,6 +198,16 @@ def add_education(request, person):
     if 'education' in request.POST:
         parsed_values = json.loads(request.POST['education'])
 
+        tmp_city = City.objects.filter(name=parsed_values['city'])
+
+        if len(tmp_city) > 0:
+            city = tmp_city[0]
+        else:
+            city = City(name=parsed_values['city'])
+            city.save()
+
+        parsed_values['city'] = city
+
         tmp_education = Education(**parsed_values)
         tmp_education.save()
 
@@ -249,6 +259,15 @@ def update_profile(request):
 
         if val_name in request.POST:
             val = request.POST[val_name]
+
+            if val_name == 'city':
+                tmp_city = City.objects.filter(name=val)
+
+                if len(tmp_city) > 0:
+                    val = tmp_city[0]
+                else:
+                    val = City(name=val)
+                    val.save()
 
             # if we changed value
             if len(val) > 0 and val != getattr(person, val_name):

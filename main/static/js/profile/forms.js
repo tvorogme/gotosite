@@ -75,15 +75,11 @@ function edit_project(project_id) {
 }
 
 $(document).ready(function () {
-    var displaied = false;
 
     autosize(document.getElementsByClassName("description"));
 
     $('input, textarea').click(function () {
-        if (!displaied) {
-            $("#save_ico").toggle();
-            displaied = true;
-        }
+        $("#save_ico").css('display', 'block');
     });
 
 });
