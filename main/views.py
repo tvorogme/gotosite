@@ -64,8 +64,8 @@ def profile_page(request, _id=None):
         # go home
         return redirect('%s/profile' % domain)
 
-    if not user.email_verified:
-        return HttpResponse("Ссылка была выслана на %s" % user.email)
+    # if not user.email_verified:
+    #     return HttpResponse("Ссылка была выслана на %s" % user.email)
 
     # true if we watching not ower profile
     is_profile = False if _id else True
