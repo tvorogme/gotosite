@@ -5,7 +5,7 @@ from django.contrib import admin
 
 from main.views import *
 
-domain = 'https://goto.msk.ru/new/'
+domain = 'http://localhost:8000/new/'
 
 urlpatterns = [
     # Admin
