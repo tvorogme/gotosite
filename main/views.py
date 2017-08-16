@@ -65,7 +65,7 @@ def profile_page(request, _id=None):
         return redirect('%s/profile' % domain)
 
     if not user.email_verified:
-        return HttpResponse("Ссылка была выслана")
+        return HttpResponse("Ссылка была выслана на %s" % user.email)
 
     # true if we watching not ower profile
     is_profile = False if _id else True
@@ -121,7 +121,7 @@ def login_wrapper(request):
 
                 send_mail(
                     'Регистрация в бета тесте new.goto.msk.ru',
-                    'Привет, похоже, что твой хэш - это %s' % activation_key,
+                    '<a href="https://goto.msk.ru/new/activate/?key=%s">подтвердить почту</a>' % activation_key,
                     'school@goto.msk.ru',
                     [email],
                     fail_silently=False,
