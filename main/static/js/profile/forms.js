@@ -52,7 +52,7 @@ function save() {
 
     $.ajax({
         type: "POST",
-        url: '/profile/edit/',
+        url: '../profile/edit/',
         data: request_data,
         dataType: 'json'
     }).done(function (data) {
@@ -87,7 +87,7 @@ $(document).ready(function () {
 function del_social(social) {
     $.ajax({
         type: "POST",
-        url: "/profile/edit/",
+        url: "../profile/edit/",
         data: {
             provider: social,
             csrfmiddlewaretoken: $("#profile_page_csrf_token").val()
@@ -163,7 +163,7 @@ function save_education() {
 
     $.ajax({
         type: "POST",
-        url: '/profile/edit/',
+        url: '../profile/edit/',
         data: request_data,
         dataType: 'json'
     }).done(function (data) {
@@ -178,7 +178,7 @@ function save_education() {
 function remove_education(_id) {
     $.ajax({
         type: "POST",
-        url: '/profile/remove_education/',
+        url: '../profile/remove_education/',
         data: {"education_id": _id, "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()},
         dataType: 'json'
     });
@@ -206,7 +206,7 @@ function add_achievement_final_step() {
 
     $.ajax({
         type: "POST",
-        url: '/profile/add_achievement/',
+        url: '../profile/add_achievement/',
         data: request_data,
         dataType: 'json'
     });
@@ -216,7 +216,7 @@ function add_achievement_final_step() {
 function remove_achievement(_id) {
     $.ajax({
         type: "POST",
-        url: '/profile/remove_achievement/',
+        url: '../profile/remove_achievement/',
         data: {"achievement_id": _id, "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()},
         dataType: 'json'
     });

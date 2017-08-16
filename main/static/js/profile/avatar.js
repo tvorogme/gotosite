@@ -19,7 +19,7 @@ $(function () {
         formData.append('avatar', img.src);
 
 
-        var url = "/api/update_avatar/";
+        var url = "../api/update_avatar/";
         $.ajax({
             url: url,
             data: formData,

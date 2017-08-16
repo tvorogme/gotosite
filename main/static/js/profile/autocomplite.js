@@ -15,7 +15,7 @@ function update_autocomplete(needed) {
                 }
             }).autocomplete({
                 source: function (request, response) {
-                    $.getJSON("/api/get_needed_skills", {
+                    $.getJSON("../api/get_needed_skills", {
                         skill: request.term
                     }, response);
                 },
@@ -36,7 +36,7 @@ function update_autocomplete(needed) {
             }
         }).autocomplete({
             source: function (request, response) {
-                $.getJSON("/api/get_needed_skills", {
+                $.getJSON("../api/get_needed_skills", {
                     skill: request.term
                 }, response);
             },
@@ -60,7 +60,7 @@ function add_autocomplite_city(field) {
         }
     }).autocomplete({
         source: function (request, response) {
-            $.getJSON("/api/get_needed_cities", {
+            $.getJSON("../api/get_needed_cities", {
                 city: request.term
             }, response);
         },
@@ -85,7 +85,7 @@ function add_autocomplite_education_name(field, type) {
         }
     }).autocomplete({
         source: function (request, response) {
-            $.getJSON("/api/get_needed_schools_names", {
+            $.getJSON("../api/get_needed_schools_names", {
                 education_name: request.term,
                 education_type: type
             }, response);

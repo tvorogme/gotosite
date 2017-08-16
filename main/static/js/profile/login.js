@@ -37,11 +37,10 @@ $("#login_tick").click(function () {
         csrfmiddlewaretoken: crf
     }).done(function (data) {
         if (data === "ok") {
-            window.location = '/profile';
+            window.location = '../profile';
         } else if (data === "bad") {
             $("#login_placeholder_error").empty().html("Неверная почта или пароль");
         } else if (data === "email") {
-            alert("Lol kek email cheburek");
             $("#login_placeholder_error").empty().html("Письмо с ссылкой на активацию профиля было выслано");
         }
     });
