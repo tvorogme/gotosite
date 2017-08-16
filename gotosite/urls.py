@@ -5,42 +5,42 @@ from django.contrib import admin
 
 from main.views import *
 
-domain = 'new/'
-
 urlpatterns = [
-    # Admin
-    url(r'^%sadmin/' % domain, admin.site.urls),
+    url(r'^new/', include([
+        # Admin
+        url(r'^admin/', admin.site.urls),
 
-    # Index
-    url(r'^%s$' % domain, index, name='index'),
+        # Index
+        url(r'^$', index, name='index'),
 
-    # About
-    # url(r'^about_us/$', about_us, name='about_us'),
+        # About
+        # url(r'^about_us/$', about_us, name='about_us'),
 
-    # Profile
-    url(r'^%sprofile/$' % domain, profile_page, name='SelfProfile'),
-    url(r'^%sprofile/(?P<_id>[0-9]+)/$' % domain, profile_page, name='Profile'),
-    url(r'^%sprofile/edit/$' % domain, update_profile),
-    url(r'^%sprofile/remove_education/$' % domain, remove_education),
-    url(r'^%sprofile/add_achievement/$' % domain, add_achievement),
-    url(r'^%sprofile/remove_achievement/$' % domain, remove_achievement),
+        # Profile
+        url(r'^profile/$', profile_page, name='SelfProfile'),
+        url(r'^profile/(?P<_id>[0-9]+)/$', profile_page, name='Profile'),
+        url(r'^profile/edit/$', update_profile),
+        url(r'^profile/remove_education/$', remove_education),
+        url(r'^profile/add_achievement/$', add_achievement),
+        url(r'^profile/remove_achievement/$', remove_achievement),
 
-    # Login system
-    url(r'^%slogout/$' % domain, logout_wrapper),
-    url(r'^%slogin/$' % domain, login_wrapper),
-    url(r'^%sactivate/' % domain, activation),
+        # Login system
+        url(r'^logout/$', logout_wrapper),
+        url(r'^login/$', login_wrapper),
+        url(r'^activate/', activation),
 
-    # Signup render
-    url(r'^%ssignup/$' % domain, signup_page),
+        # Signup render
+        url(r'^signup/$', signup_page),
 
-    # Social backend
-    url(r'^%saccounts/' % domain, include('allauth.urls')),
+        # Social backend
+        url(r'^accounts/', include('allauth.urls')),
 
-    # API
-    url(r'^%sapi/get_needed_skills/' % domain, get_needed_skills),
-    url(r'^%sapi/get_needed_cities/' % domain, get_needed_cities),
-    url(r'^%sapi/get_needed_schools_names/' % domain, get_needed_schools_names),
-    url(r'^%sapi/update_avatar/' % domain, update_avatar)
+        # API
+        url(r'^api/get_needed_skills/', get_needed_skills),
+        url(r'^api/get_needed_cities/', get_needed_cities),
+        url(r'^api/get_needed_schools_names/', get_needed_schools_names),
+        url(r'^api/update_avatar/', update_avatar)
+    ]))
 ]
 
 if settings.DEBUG:
