@@ -13,7 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>{{ user.first_name }} {{ user.last_name }}</title>
+    <!-- Favicon -->
+    <link href={% static "/img/favicon.ico" %} rel="shortcut icon
+    "
+    type="image/vnd.microsoft.icon"/>
+
+    <title>{{ user.first_name }} {{ user.last_name }} GoTo Profile</title>
 
     <!--Шрифты-->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
@@ -39,31 +44,53 @@
     <!-- Автоматическая высота для textarea -->
     <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropit/0.5.1/jquery.cropit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pica/3.0.6/pica.min.js"></script>
 </head>
 <body>
-
 <input id="profile_page_csrf_token" name="csrfmiddlewaretoken" type="hidden"
        value="{{ csrf_token }}">
 
 {% include 'helpers/menu.html' %}
+
+<div class="image-editor">
+    <table>
+        <tr>
+            <td>
+                <div class="cropit_wrapper">
+                    <input type="file" class="cropit-image-input">
+                    <div class="cropit-preview"></div>
+                    <br>
+                    <input type="range" class="cropit-image-zoom-input">
+                    <br>
+                    <button class="export">Сохранить</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
 
 <div id="profile_container">
     <i id="save_ico" onclick="save()" class="fa fa-floppy-o fa-2x" aria-hidden="true"></i>
 
     <div class="whitespace"></div>
     <div class="header">
-        <div class="profile-img-wraper"><img class="profile-img"
+        <div class="profile-img-wraper"><img onclick="change_avatar()" class="profile-img"
                                              src="{% if user.image %}
                                             {{ user.image.url }}
                                         {% else %}
-                                            https://avatars1.githubusercontent.com/u/19264196?v=4&s=460
+                                            https://www.forextester.ru/templates/pic/Testimonials/noavatar-m.jpg
                                         {% endif %}
                                        ">
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ is_profile|yesno:",readonly" }} id="name"
-                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}{{ user.first_name }}{% endif %} {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
-
+                {% if user.first_name != None or user.last_name != None or user.middle_name != None %}
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %}{% if  user.first_name != None %} {{ user.first_name }}{% endif %}{% if  user.middle_name != None %} {{ user.middle_name }}{% endif %}"
+                {% endif %}
+        >
 
             <p class="label"><input placeholder="E-mail" class="after_name"
                                     type="text" {{ is_profile|yesno:",readonly" }}
@@ -86,7 +113,8 @@
             {% if request.path != '/profile' and user.birthday != None or is_profile %}
 
                 <p class="label"><input placeholder="День рождения" class="after_name"
-                                        type="date" {{ is_profile|yesno:",readonly" }} value="{% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
+                                        type="date" {{ is_profile|yesno:",readonly" }}
+                                        value="{% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
                                         id="birthday">
                 </p>
             {% endif %}
@@ -392,63 +420,63 @@
         </div>
     </div>
 
-{#    <div class="block-wrapper">#}
-{#        <div class="col-md-3">#}
-{#            <h2>Проекты</h2>#}
-{#        </div>#}
-{##}
-{##}
-{#        <div class="col-md-9">#}
-{#            <div class="col-3">#}
-{#                <p class="add">Добавить</p>#}
-{#            </div>#}
-{##}
-{#            {% for project in projects %}#}
-{#                <form id="project_{{ project.id }}" method="post" action="/project/update">#}
-{##}
-{#                    <a onclick="del_project({{ project.id }})" class="field close">#}
-{#                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>#}
-{#                    </a>#}
-{##}
-{##}
-{#                    <h3 class="value"><a href="{{ project.url }}">{{ project.name }}</a></h3>#}
-{##}
-{##}
-{#                    <p class="date value">{{ project.date_started.year }}</p>#}
-{##}
-{##}
-{#                    <br><br>#}
-{#                    <p class="team">#}
-{#                        Команда:#}
-{##}
-{#                        {% for user in project.team %}#}
-{#                            <a href="/profile/{{ user.id }}">{{ user.first_name }}#}
-{#                                {{ user.last_name }}{% if loop.last %}, {% endif %}</a>#}
-{#                        {% endfor %}#}
-{#                    </p>#}
-{##}
-{##}
-{#                    <div>#}
-{#                        <input name="id" type="hidden" value="{{ project.id }}">#}
-{#                        <input name="delete" type="hidden">#}
-{#                        <input placeholder="Название" class="project_name field" name="title" type="text"#}
-{#                               value="{{ project.name }}">#}
-{#                        <input placeholder="Ссылка" class="project_url field" name="title" type="text"#}
-{#                               value="{{ project.url }}">#}
-{##}
-{#                    </div>#}
-{##}
-{##}
-{#                    <textarea {{ is_profile|yesno:",readonly" }} placeholder="Описание"#}
-{#                                                                 name="description"#}
-{#                                                                 onclick="edit_project({{ project.id }})"#}
-{#                                                                 class="description">{{ project.description }}</textarea>#}
-{#                </form>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{##}
-{##}
-{#    </div>#}
+    {#    <div class="block-wrapper">#}
+    {#        <div class="col-md-3">#}
+    {#            <h2>Проекты</h2>#}
+    {#        </div>#}
+    {##}
+    {##}
+    {#        <div class="col-md-9">#}
+    {#            <div class="col-3">#}
+    {#                <p class="add">Добавить</p>#}
+    {#            </div>#}
+    {##}
+    {#            {% for project in projects %}#}
+    {#                <form id="project_{{ project.id }}" method="post" action="/project/update">#}
+    {##}
+    {#                    <a onclick="del_project({{ project.id }})" class="field close">#}
+    {#                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>#}
+    {#                    </a>#}
+    {##}
+    {##}
+    {#                    <h3 class="value"><a href="{{ project.url }}">{{ project.name }}</a></h3>#}
+    {##}
+    {##}
+    {#                    <p class="date value">{{ project.date_started.year }}</p>#}
+    {##}
+    {##}
+    {#                    <br><br>#}
+    {#                    <p class="team">#}
+    {#                        Команда:#}
+    {##}
+    {#                        {% for user in project.team %}#}
+    {#                            <a href="/profile/{{ user.id }}">{{ user.first_name }}#}
+    {#                                {{ user.last_name }}{% if loop.last %}, {% endif %}</a>#}
+    {#                        {% endfor %}#}
+    {#                    </p>#}
+    {##}
+    {##}
+    {#                    <div>#}
+    {#                        <input name="id" type="hidden" value="{{ project.id }}">#}
+    {#                        <input name="delete" type="hidden">#}
+    {#                        <input placeholder="Название" class="project_name field" name="title" type="text"#}
+    {#                               value="{{ project.name }}">#}
+    {#                        <input placeholder="Ссылка" class="project_url field" name="title" type="text"#}
+    {#                               value="{{ project.url }}">#}
+    {##}
+    {#                    </div>#}
+    {##}
+    {##}
+    {#                    <textarea {{ is_profile|yesno:",readonly" }} placeholder="Описание"#}
+    {#                                                                 name="description"#}
+    {#                                                                 onclick="edit_project({{ project.id }})"#}
+    {#                                                                 class="description">{{ project.description }}</textarea>#}
+    {#                </form>#}
+    {#            {% endfor %}#}
+    {#        </div>#}
+    {##}
+    {##}
+    {#    </div>#}
 
     <div class="whitespace"></div>
 
@@ -469,6 +497,9 @@
 {% if is_profile %}
     <!-- Работа с формами -->
     <script src={% static "/js/profile/forms.js" %}></script>
+
+    <!-- 4 утра -->
+    <script src={% static "/js/profile/avatar.js" %}></script>
 
     <!-- Автодополнение скиллов, препов и кураторов -->
     <script src={% static "/js/profile/autocomplite.js" %}></script>

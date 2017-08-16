@@ -162,6 +162,7 @@ h3 {
     font-size: 14px;
     border: none;
     font-weight: 300;
+    margin-top: 3px;
 }
 
 .col-3 {
@@ -500,4 +501,89 @@ a {
     height: 100%;
     margin: 0;
     max-width: 150px;
+}
+
+.cropit-preview {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-top: 7px;
+    width: 250px;
+    height: 250px;
+}
+
+.cropit-preview-image-container {
+    cursor: move;
+}
+
+.image-size-label {
+    margin-top: 10px;
+}
+
+input {
+    display: block;
+}
+
+.export {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cropit-image-input {
+    display: none;
+}
+
+.profile-img:hover {
+    cursor: pointer;
+}
+
+.image-editor {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+}
+
+.cropit_wrapper {
+    display: block;
+    margin: 0 auto;
+    width: 250px;
+}
+
+.image-editor table {
+    width: 100vw;
+    height: 100vh;
+}
+
+.image-editor td {
+    vertical-align: middle;
+}
+
+.image-editor tr {
+    height: 100vh;
+}
+
+.cropit-image-zoom-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: #eee;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    outline: none;
+    display: block;
+    margin: 0 auto;
+}
+
+.export{
+    border: 0;
+    background: none;
+    color: white;
+    display: block;
+    margin: 0 auto;
 }

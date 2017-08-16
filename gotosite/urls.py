@@ -37,7 +37,8 @@ urlpatterns = [
     # API
     url(r'^api/get_needed_skills/', get_needed_skills),
     url(r'^api/get_needed_cities/', get_needed_cities),
-    url(r'^api/get_needed_schools_names/', get_needed_schools_names)
+    url(r'^api/get_needed_schools_names/', get_needed_schools_names),
+    url(r'^api/update_avatar/', update_avatar)
 ]
 
 if settings.DEBUG:

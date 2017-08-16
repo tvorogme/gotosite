@@ -8,9 +8,17 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from django.utils import timezone
 
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+
+from .forms import UploadFileForm
 from main.apps import SOCIALS
 from .forms import validate_user_field
 from .models import *
+
+import base64
+
+from django.core.files.base import ContentFile
 
 
 ###########
@@ -406,6 +414,19 @@ def add_achievement(request):
     tmp_achievement.save()
 
     request.user.achievements.add(tmp_achievement)
+    return HttpResponse()
+
+
+def update_avatar(request):
+    if request.method == 'POST' and not request.user.is_anonymous():
+        data = request.POST['avatar']
+        format, imgstr = data.split(';base64,')
+        ext = format.split('/')[-1]
+
+        data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
+        request.user.image = data
+        request.user.save()
+
     return HttpResponse()
 
 

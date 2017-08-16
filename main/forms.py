@@ -24,6 +24,11 @@ class RegisterForm(ModelForm):
         fields = ('first_name', 'last_name', 'email', 'password',)
 
 
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file = forms.FileField()
+
+
 validators_dictionary = {
     "first_name": {'validators': [MinLengthValidator(1), MaxLengthValidator(40)],
                    'messages': ["Минимальная длина имени - 1 символ", 'Максимальная длина имени - 40 символов']},
