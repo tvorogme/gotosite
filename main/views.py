@@ -21,6 +21,7 @@ import base64
 from django.core.files.base import ContentFile
 
 
+domain = 'new/'
 ###########
 #
 # SIMPLE PAGES
@@ -36,7 +37,7 @@ def index(request):
     }
 
     # return render(request, 'pages/index/index.html', context)
-    return redirect('/signup')
+    return redirect('%s/signup' % domain)
 
 
 def about_us(request):
@@ -61,12 +62,12 @@ def profile_page(request, _id=None):
     user = request.user
 
     if user.is_anonymous():
-        return redirect('/login')
+        return redirect('%s/login' % domain)
 
     # if he trying get his profile
     if _id == user.id:
         # go home
-        return redirect('/profile')
+        return redirect('%s/profile' % domain)
 
     if not user.email_verified:
         return HttpResponse("Ссылка была выслана")
@@ -86,14 +87,14 @@ def signup_page(request):
     if request.user.is_anonymous():
         return render(request, 'pages/profile/signup.html')
     else:
-        return redirect('/profile')
+        return redirect('%s/profile' % domain)
 
 
 def logout_wrapper(request):
     # just logout
     # no comments
     logout(request)
-    return redirect("/")
+    return redirect("%s/" % domain)
 
 
 def login_wrapper(request):
@@ -135,7 +136,7 @@ def login_wrapper(request):
 
         # explain that's all bad
         return HttpResponse(json.dumps("bad"), content_type="application/json")
-    return redirect('/')
+    return redirect('%s/' % domain)
 
 
 def activation(request):
@@ -152,7 +153,7 @@ def activation(request):
 
                 profile.user.backend = 'django.contrib.auth.backends.ModelBackend'
                 login(request, profile.user)
-    return redirect('/profile')
+    return redirect('%s/profile' % domain)
 
 
 #
