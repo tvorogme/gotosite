@@ -18,15 +18,15 @@
 
             {% if request.path != '/profile' %}
                 {% if request.user.is_authenticated %}
-                    <li><a href="/profile">Профиль</a></li>
-                    <li><a href="/logout">Выйти</a></li>
+                    <li><a href="../profile">Профиль</a></li>
+                    <li><a href="../logout">Выйти</a></li>
                 {% else %}
                     <li><a onclick="toggle_login_placeholder()">Войти</a></li>
                 {% endif %}
 
             {% else %}
 
-                <li><a href="/logout">Выйти</a></li>
+                <li><a href="../logout">Выйти</a></li>
 
             {% endif %}
 
@@ -38,6 +38,6 @@
     {% endif %}
 
     <!--Меню-->
-    <script src={% static "/js/menu/classie.js" %}></script>
-    <script src={% static "/js/menu/borderMenu.js" %}></script>
+    <script src="{% static "/js/menu/classie.js" %}"></script>
+    <script src="{% static "/js/menu/borderMenu.js" %}"></script>
 {% endblock %}
