@@ -21,7 +21,7 @@ import base64
 from django.core.files.base import ContentFile
 
 
-domain = 'new/'
+domain = ''
 ###########
 #
 # SIMPLE PAGES
