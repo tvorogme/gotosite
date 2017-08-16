@@ -64,7 +64,6 @@ $("#login_placeholder_register_register_button").click(function () {
         password: password,
         csrfmiddlewaretoken: crf
     }).done(function (data) {
-        console.log(data);
         if (data === "ok") {
             location.reload();
         } else {

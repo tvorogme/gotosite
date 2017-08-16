@@ -45,7 +45,6 @@ urlpatterns = [
 
 if settings.DEBUG:
     from django.views.static import serve
-
     urlpatterns.append(url(r'^favicon.ico', lambda r: serve(r, 'favicon.ico')))
 
 if settings.DEBUG:
