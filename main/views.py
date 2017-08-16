@@ -1,27 +1,22 @@
+import base64
 import json
 
 from allauth.socialaccount.models import SocialAccount
 from django.contrib.auth import logout, authenticate, login
+from django.core.files.base import ContentFile
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.utils import timezone
 
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-
-from .forms import UploadFileForm
 from main.apps import SOCIALS
 from .forms import validate_user_field
 from .models import *
 
-import base64
-
-from django.core.files.base import ContentFile
-
-
 domain = '/new'
+
+
 ###########
 #
 # SIMPLE PAGES
@@ -154,57 +149,6 @@ def activation(request):
                 profile.user.backend = 'django.contrib.auth.backends.ModelBackend'
                 login(request, profile.user)
     return redirect('%s/profile' % domain)
-
-
-#
-# def register(request):
-#     answers = {}
-#
-#     # Set all values to form
-#     for val_name in ['first_name', 'last_name', 'email', 'password']:
-#         answers[val_name] = request.POST[val_name] if val_name in request.POST else None
-#
-#     # Create form
-#     form = RegisterForm(data=answers)
-#
-#     # here we will store all errors
-#     all_errors = []
-#
-#     for field in form.fields:
-#         if len(form[field].errors) > 0:
-#             # translate field name
-#             clear_form_name = forms_translate['RegisterForm'][field]
-#
-#             # get plane text
-#             error_text = form[field].errors.as_text()
-#
-#             # Don't know why, but django prepend ' *' to error message
-#             error_text = error_text[2:]
-#
-#             # add error to array
-#             all_errors.append("{} {}".format(clear_form_name, error_text))
-#
-#     if form.is_valid():
-#
-#         # Get all values
-#         username = form.cleaned_data.get('email')
-#         raw_password = form.cleaned_data.get('password')
-#         first_name = form.cleaned_data.get('first_name')
-#         last_name = form.cleaned_data.get('last_name')
-#
-#         # Create user
-#         user = get_user_model().objects.create_user(username, raw_password, first_name=first_name, last_name=last_name)
-#
-#         # https://stackoverflow.com/questions/6034763/django-attributeerror-user-object-has-no-attribute-backend-but-it-does
-#         user.backend = 'django.contrib.auth.backends.ModelBackend'
-#
-#         login(request, user)
-#
-#         # explain that all is good
-#         return HttpResponse(json.dumps("ok"), content_type="application/json")
-#
-#     else:
-#         return HttpResponse(json.dumps(all_errors), content_type="application/json")
 
 
 def remove_social(request):

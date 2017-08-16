@@ -32,8 +32,17 @@
         }
 
         button {
-            borders: 0;
+            border: 0;
             background: none;
+            font-size: 25px;
+            font-weight: 300;
+        }
+
+        li {
+            list-style: none;
+            font-size: 14px;
+        }
+
         }
     </style>
     <table>
@@ -47,6 +56,7 @@
                     {% endif %}
                     <button type="submit">{% trans "Подтвердить" %} &raquo;</button>
                 </form>
+                <a href="/new/logout">Выйти</a>
             </td>
         </tr>
     </table>
