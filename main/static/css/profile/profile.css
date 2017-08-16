@@ -494,3 +494,10 @@ a {
 .achievement h3 {
     font-weight: 300;
 }
+
+.profile-img-wraper {
+    float: left;
+    height: 100%;
+    margin: 0;
+    max-width: 150px;
+}

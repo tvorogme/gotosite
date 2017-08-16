@@ -26,20 +26,23 @@ function display_login_placeholder(n) {
     }
 }
 
-$("#login_placeholder_login_button").click(function () {
+$("#login_tick").click(function () {
     var email_value = $("#login_placeholder_username").val();
     var password_value = $("#login_placeholder_password").val();
     var crf = $("#login_placeholder_crf").val();
 
-    $.post("login/", {
+    $.post("/login/", {
         email: email_value,
         password: password_value,
         csrfmiddlewaretoken: crf
     }).done(function (data) {
         if (data === "ok") {
-            location.reload();
-        } else {
-            $("#login_placeholder_error").empty().html("Неверная почта или пароль.")
+            window.location = '/profile';
+        } else if (data === "bad") {
+            $("#login_placeholder_error").empty().html("Неверная почта или пароль");
+        } else if (data === "email") {
+            alert("Lol kek email cheburek");
+            $("#login_placeholder_error").empty().html("Письмо с ссылкой на активацию профиля было выслано");
         }
     });
 });
@@ -55,7 +58,7 @@ $("#login_placeholder_register_register_button").click(function () {
     var first_name = names.split(" ")[0];
     var last_name = names.split(" ")[1];
 
-    $.post("register/", {
+    $.post("/register/", {
         first_name: first_name,
         last_name: last_name,
         email: email,

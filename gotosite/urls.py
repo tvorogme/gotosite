@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^$', index, name='index'),
 
     # About
-    url(r'^about_us/$', about_us, name='about_us'),
+    # url(r'^about_us/$', about_us, name='about_us'),
 
     # Profile
     url(r'^profile/$', profile_page, name='SelfProfile'),
@@ -26,7 +26,10 @@ urlpatterns = [
     # Login system
     url(r'^logout/$', logout_wrapper),
     url(r'^login/$', login_wrapper),
-    url(r'^register/$', register),
+    url(r'^activate/', activation),
+
+    # Signup render
+    url(r'^signup/$', signup_page),
 
     # Social backend
     url(r'^accounts/', include('allauth.urls')),

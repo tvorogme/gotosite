@@ -1,16 +1,16 @@
 import json
 
 from allauth.socialaccount.models import SocialAccount
-from django.contrib.auth import get_user_model
 from django.contrib.auth import logout, authenticate, login
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
+from django.utils import timezone
 
 from main.apps import SOCIALS
-from .forms import RegisterForm, validate_user_field
-from .lang.ru_RU import forms_translate
-from .models import User, Skill, Education, Achievement, City
+from .forms import validate_user_field
+from .models import *
 
 
 ###########
@@ -27,7 +27,8 @@ def index(request):
         "user": request.user
     }
 
-    return render(request, 'pages/index/index.html', context)
+    # return render(request, 'pages/index/index.html', context)
+    return redirect('/signup')
 
 
 def about_us(request):
@@ -52,12 +53,15 @@ def profile_page(request, _id=None):
     user = request.user
 
     if user.is_anonymous():
-        return redirect('/')
+        return redirect('/login')
 
     # if he trying get his profile
     if _id == user.id:
         # go home
         return redirect('/profile')
+
+    if not user.email_verified:
+        return HttpResponse("Ссылка была выслана")
 
     # true if we watching not ower profile
     is_profile = False if _id else True
@@ -70,6 +74,13 @@ def profile_page(request, _id=None):
                                                           'is_profile': is_profile})
 
 
+def signup_page(request):
+    if request.user.is_anonymous():
+        return render(request, 'pages/profile/signup.html')
+    else:
+        return redirect('/profile')
+
+
 def logout_wrapper(request):
     # just logout
     # no comments
@@ -78,69 +89,113 @@ def logout_wrapper(request):
 
 
 def login_wrapper(request):
-    # try catch user with password and email
-    user = authenticate(username=request.POST['email'], password=request.POST['password'])
+    if 'email' in request.POST and 'password' in request.POST:
+        email = request.POST['email']
+        password = request.POST['password']
 
-    # if we found him
-    if user is not None:
-        # match request with user
-        login(request, user)
+        # try catch user with password and email
+        user = authenticate(username=email, password=password)
 
-        # explain that's all good
-        return HttpResponse(json.dumps("ok"), content_type="application/json")
-    else:
+        # if we found him
+        if user is not None:
+            # match request with user
+            login(request, user)
+
+            # explain that's all good
+            return HttpResponse(json.dumps("ok"), content_type="application/json")
+        else:
+            tmp_user = User.objects.filter(email=email)
+
+            if len(tmp_user) == 0:
+                user = User(email=email)
+                user.set_password(password)
+                user.save()
+
+                tmp_user = TempUser(user=user)
+                activation_key = tmp_user.gen_activation_key(email)
+                tmp_user.save()
+
+                send_mail(
+                    'Регистрация в бета тесте new.goto.msk.ru',
+                    'Привет, похоже, что твой хэш - это %s' % activation_key,
+                    'school@goto.msk.ru',
+                    [email],
+                    fail_silently=False,
+                )
+
+                return HttpResponse(json.dumps("email"), content_type="application/json")
+
         # explain that's all bad
         return HttpResponse(json.dumps("bad"), content_type="application/json")
+    return redirect('/')
 
 
-def register(request):
-    answers = {}
+def activation(request):
+    profile = TempUser.objects.filter(activation_key=request.GET['key'])
 
-    # Set all values to form
-    for val_name in ['first_name', 'last_name', 'email', 'password']:
-        answers[val_name] = request.POST[val_name] if val_name in request.POST else None
+    if len(profile) > 0:
+        profile = profile[0]
+        if not profile.user.email_verified:
+            if timezone.now() > profile.key_expires:
+                return HttpResponse('Key expires')
+            else:  # Activation successful
+                profile.user.email_verified = True
+                profile.user.save()
 
-    # Create form
-    form = RegisterForm(data=answers)
+                profile.user.backend = 'django.contrib.auth.backends.ModelBackend'
+                login(request, profile.user)
+    return redirect('/profile')
 
-    # here we will store all errors
-    all_errors = []
 
-    for field in form.fields:
-        if len(form[field].errors) > 0:
-            # translate field name
-            clear_form_name = forms_translate['RegisterForm'][field]
-
-            # get plane text
-            error_text = form[field].errors.as_text()
-
-            # Don't know why, but django prepend ' *' to error message
-            error_text = error_text[2:]
-
-            # add error to array
-            all_errors.append("{} {}".format(clear_form_name, error_text))
-
-    if form.is_valid():
-
-        # Get all values
-        username = form.cleaned_data.get('email')
-        raw_password = form.cleaned_data.get('password')
-        first_name = form.cleaned_data.get('first_name')
-        last_name = form.cleaned_data.get('last_name')
-
-        # Create user
-        user = get_user_model().objects.create_user(username, raw_password, first_name=first_name, last_name=last_name)
-
-        # https://stackoverflow.com/questions/6034763/django-attributeerror-user-object-has-no-attribute-backend-but-it-does
-        user.backend = 'django.contrib.auth.backends.ModelBackend'
-
-        login(request, user)
-
-        # explain that all is good
-        return HttpResponse(json.dumps("ok"), content_type="application/json")
-
-    else:
-        return HttpResponse(json.dumps(all_errors), content_type="application/json")
+#
+# def register(request):
+#     answers = {}
+#
+#     # Set all values to form
+#     for val_name in ['first_name', 'last_name', 'email', 'password']:
+#         answers[val_name] = request.POST[val_name] if val_name in request.POST else None
+#
+#     # Create form
+#     form = RegisterForm(data=answers)
+#
+#     # here we will store all errors
+#     all_errors = []
+#
+#     for field in form.fields:
+#         if len(form[field].errors) > 0:
+#             # translate field name
+#             clear_form_name = forms_translate['RegisterForm'][field]
+#
+#             # get plane text
+#             error_text = form[field].errors.as_text()
+#
+#             # Don't know why, but django prepend ' *' to error message
+#             error_text = error_text[2:]
+#
+#             # add error to array
+#             all_errors.append("{} {}".format(clear_form_name, error_text))
+#
+#     if form.is_valid():
+#
+#         # Get all values
+#         username = form.cleaned_data.get('email')
+#         raw_password = form.cleaned_data.get('password')
+#         first_name = form.cleaned_data.get('first_name')
+#         last_name = form.cleaned_data.get('last_name')
+#
+#         # Create user
+#         user = get_user_model().objects.create_user(username, raw_password, first_name=first_name, last_name=last_name)
+#
+#         # https://stackoverflow.com/questions/6034763/django-attributeerror-user-object-has-no-attribute-backend-but-it-does
+#         user.backend = 'django.contrib.auth.backends.ModelBackend'
+#
+#         login(request, user)
+#
+#         # explain that all is good
+#         return HttpResponse(json.dumps("ok"), content_type="application/json")
+#
+#     else:
+#         return HttpResponse(json.dumps(all_errors), content_type="application/json")
 
 
 def remove_social(request):

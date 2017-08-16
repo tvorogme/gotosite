@@ -1,3 +1,8 @@
+import random
+from datetime import datetime
+from datetime import timedelta
+from hashlib import sha1
+
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -93,7 +98,7 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_staff', True)
 
-        return self.create_user(email, password, **extra_fields)
+        return self.create_user(email, password, email_verified=True, **extra_fields)
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -103,15 +108,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     # ФИО
     #
 
-    first_name = models.CharField(max_length=40)
+    first_name = models.CharField(max_length=40, blank=True, null=True)
     middle_name = models.CharField(max_length=40, blank=True, null=True)
-    last_name = models.CharField(max_length=40)
+    last_name = models.CharField(max_length=40, blank=True, null=True)
 
     #
     # Base information
     #
 
-    email = models.EmailField(unique=True, null=True)
+    email = models.EmailField(unique=True)
     city = models.ForeignKey(City, null=True, blank=True)
     birthday = models.DateField('birthday', blank=True, null=True)
 
@@ -130,6 +135,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # Avatar
     image = models.ImageField(upload_to='person_images/', default=None, blank=True, null=True)
+
+    # GoTo Coins
+    gotocoins = models.IntegerField(default=0)
+
+    email_verified = models.BooleanField(default=False)
 
     #
     # Some django specific fields
@@ -155,10 +165,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         return "{} {} {}".format(self.last_name, self.first_name, self.middle_name)
 
     def get_full_name(self):
-        return "{} {} {}".format(self.last_name, self.first_name, self.middle_name)
+        if len(self.first_name) > 0 or len(self.last_name) > 0 or len(self.middle_name) > 0:
+            return "{} {} {}".format(self.last_name, self.first_name, self.middle_name)
+        else:
+            return "{}".format(self.email)
 
     def get_short_name(self):
-        return "{} {}".format(self.first_name, self.last_name)
+        if len(self.first_name) > 0 or len(self.last_name) > 0:
+            return "{} {}".format(self.first_name, self.last_name)
+        else:
+            return "{}".format(self.email)
 
     def get_not_blanked_fields_names(self):
         fields = []
@@ -171,3 +187,16 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_all_fields_names(self):
         return [field.name for field in self._meta.get_fields()]
+
+
+class TempUser(models.Model):
+    user = models.OneToOneField(User, related_name='profile')
+    activation_key = models.CharField(max_length=128)
+    key_expires = models.DateTimeField()
+
+    def gen_activation_key(self, username):
+        salt = sha1(str(random.random()).encode('utf-8')).hexdigest()[:5]
+        activation_key = sha1(str(salt + username).encode('utf-8')).hexdigest()
+        self.activation_key = activation_key
+        self.key_expires = datetime.now() + timedelta(days=1)
+        return activation_key

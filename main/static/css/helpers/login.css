@@ -38,11 +38,8 @@
 }
 
 #login_placeholder_register input,
-#login_placeholder_login_button,
 #login_placeholder_register_register_button {
     width: 300px;
-    margin-left: 150px;
-    margin-right: 150px;
     margin-bottom: 20px;
     font-size: 20px;
 }
@@ -59,7 +56,6 @@
     background: none;
 }
 
-#login_placeholder_login_button,
 #login_placeholder_register_register_button {
     font-size: 30px;
     background: none;
@@ -77,11 +73,11 @@
     text-align: center;
 }
 
-#login_placeholder svg {
-    fill: white;
-    position: absolute;
-    top: -4px;
-}
+/*#login_placeholder svg {*/
+    /*fill: white;*/
+    /*position: absolute;*/
+    /*top: -4px;*/
+/*}*/
 
 #login_placeholder_forgot_back a {
     color: white;
@@ -89,9 +85,9 @@
 
 #login_placeholder_forgot_back a:hover {
     text-decoration: none;
+    color: #4bb199;
 }
 
-#login_placeholder_login_button:hover,
 #login_placeholder_register_register_button {
     cursor: pointer;
 }
@@ -102,4 +98,16 @@
 
 #login_placeholder_socials a:hover {
     color: #4bb199;
+}
+
+#tick_submit_wrapper{
+    height: 70px;
+}
+
+#login_tick:hover {
+    cursor: pointer;
+}
+
+#login_tick:hover .cls-1{
+    stroke: rgb(67, 180, 152) !important;
 }
