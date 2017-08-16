@@ -149,7 +149,7 @@
 
                 {% else %}
                     <p class="social-add">
-                        <a href="{% provider_login_url "vk" process="connect" next="/profile" %}">Добавить</a>
+                        <a href="{% provider_login_url "vk" process="connect" next="/new/profile" %}">Добавить</a>
                     </p>
                 {% endif %}
             </div>
@@ -171,7 +171,7 @@
                     </p>
                 {% else %}
                     <p class="social-add">
-                        <a href="{% provider_login_url "github" process="connect" next="/profile" %}">Добавить</a>
+                        <a href="{% provider_login_url "github" process="connect" next="/new/profile" %}">Добавить</a>
                     </p>
                 {% endif %}
             </div>
@@ -192,7 +192,7 @@
                         </a>
                     </p>
                 {% else %}
-                    <p class="social-add"><a href="{% provider_login_url "gitlab" process="connect" next="/profile" %}">Добавить</a>
+                    <p class="social-add"><a href="{% provider_login_url "gitlab" process="connect" next="/new/profile" %}">Добавить</a>
                     </p>
                 {% endif %}
             </div>

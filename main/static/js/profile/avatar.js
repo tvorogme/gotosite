@@ -9,10 +9,11 @@ $(function () {
 
     $('.export').click(function () {
         // Get cropping information
-        var imgSrc = $editor.cropit('imageSrc');
+        var imgData = $editor.cropit('export');
+        console.log(imgData);
 
         var img = new Image();
-        img.src = imgSrc;
+        img.src = imgData;
 
         var formData = new FormData();
         formData.append('csrfmiddlewaretoken', $("#profile_page_csrf_token").val());
