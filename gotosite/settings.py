@@ -24,7 +24,7 @@ SECRET_KEY = 'u4ycjix$7b)u*(2_nl$hc5f*cka)n_3cw+hu(q+3-by$kn@801'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['goto.msk.ru']
 
 # Application definition
 
