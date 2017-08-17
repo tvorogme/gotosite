@@ -127,6 +127,8 @@ def login_wrapper(request):
                     fail_silently=False,
                 )
 
+                login(request, tmp_user)
+
                 return HttpResponse(json.dumps("email"), content_type="application/json")
 
         # explain that's all bad
