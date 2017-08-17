@@ -41,7 +41,8 @@ $("#login_tick").click(function () {
         } else if (data === "bad") {
             $("#login_placeholder_error").empty().html("Неверная почта или пароль");
         } else if (data === "email") {
-            $("#login_placeholder_error").empty().html("Письмо с ссылкой на активацию профиля было выслано");
+            window.location = '../profile';
+            // $("#login_placeholder_error").empty().html("Письмо с ссылкой на активацию профиля было выслано");
         }
     });
 });
