@@ -88,8 +88,7 @@
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ is_profile|yesno:",readonly" }} id="name"
                 {% if user.first_name != None or user.last_name != None or user.middle_name != None %}
-                                     value="
-                                             {% if  user.last_name != None %}{{ user.last_name }}{% endif %}{% if  user.first_name != None %} {{ user.first_name }}{% endif %}{% if  user.middle_name != None %} {{ user.middle_name }}{% endif %}"
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %}{% if  user.first_name != None %} {{ user.first_name }}{% endif %}{% if  user.middle_name != None %} {{ user.middle_name }}{% endif %}"
                 {% endif %}
         >
 
@@ -115,8 +114,7 @@
 
                 <p class="label"><input placeholder="День рождения" class="after_name"
                                         type="date" {{ is_profile|yesno:",readonly" }}
-                                        value="
-                                                {% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
+                                        value="{% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
                                         id="birthday">
                 </p>
             {% endif %}
