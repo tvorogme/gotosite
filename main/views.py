@@ -46,6 +46,10 @@ def about_us(request):
     return render(request, 'pages/about_us/about_us.html', context)
 
 
+def shop(request):
+    return render(request, 'pages/bank/shop.html')
+
+
 #############
 #
 # PROFILE PAGES
