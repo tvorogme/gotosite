@@ -33,7 +33,7 @@
             text-align: center;
         }
 
-        a {
+        .buy {
             cursor: pointer;
             position: absolute;
             right: 0;
@@ -93,7 +93,7 @@
                     </div>
                     <h1>{{ good.title }}</h1>
                     <p class="desc">{{ good.description }}<br></p>
-                    <p>Цена: {{ good.price }}ĜŦ <a>купить</a></p>
+                    <p>Цена: {{ good.price }}ĜŦ <a class="buy">купить</a></p>
                 </div>
             </div>
         {% endfor %}
