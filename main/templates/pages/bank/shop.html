@@ -48,7 +48,7 @@
             max-height: 100px;
         }
 
-        p{
+        .desc{
             height: 100px;
         }
     </style>
@@ -63,8 +63,8 @@
             <div class="col-md-3">
                 <img src="{{ good.image.url }}">
                 <h1>{{ good.title }}</h1>
-                <p>{{ good.description }}<br></p>
-                Цена: {{ good.price }}ĜŦ <a>купить</a>
+                <p class="desc">{{ good.description }}<br></p>
+                <p>Цена: {{ good.price }}ĜŦ <a>купить</a></p>
             </div>
         {% endfor %}
     </div>
