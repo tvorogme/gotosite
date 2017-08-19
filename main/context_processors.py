@@ -3,7 +3,7 @@ from django.core.validators import ValidationError
 
 def menu_list(request):
     return {'menu_list': [
-        ['/bank/shop/', 'Магазин'],
+        ['/new/bank/shop/', 'Магазин'],
         # ['/camp', 'Лагерь'],
         # ['/hackathon', 'Хакатон'],
         # ['/lectoriy', 'Лекторий'],
