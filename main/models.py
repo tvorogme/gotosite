@@ -200,3 +200,18 @@ class TempUser(models.Model):
         self.activation_key = activation_key
         self.key_expires = datetime.now() + timedelta(days=1)
         return activation_key
+
+
+class Good(models.Model):
+    title = models.CharField(max_length=128)
+    description = models.TextField()
+    price = models.IntegerField()
+    image = models.ImageField(upload_to='good_images/')
+
+    class Meta:
+        db_table = 'goods'
+
+        verbose_name = "товар"
+        verbose_name_plural = "товары"
+
+        managed = True

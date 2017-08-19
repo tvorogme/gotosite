@@ -22,12 +22,42 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+
+
+    <style>
+        body {
+            color: #080808 !important;
+        }
+
+        .col-md-3 {
+            text-align: center;
+        }
+
+        a {
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+        }
+
+        p {
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 {% include 'helpers/menu.html' %}
-<div class="row">
-    <div class="col-md-3">
-        <h1>Супер покупка</h1>
+<div class="container">
+    <div class="whitespace"></div>
+    <div class="row">
+        {% for good in goods %}
+            <div class="col-md-3">
+                <img href="{{ good.image.url }}">
+                <h1>{{ good.title }}</h1>
+                <p>{{ good.description }}<br><br>
+                    Цена: {{ good.price }}ĜŦ <a>купить</a></p>
+
+            </div>
+        {% endfor %}
     </div>
 </div>
 </body>

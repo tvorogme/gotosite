@@ -47,7 +47,10 @@ def about_us(request):
 
 
 def shop(request):
-    return render(request, 'pages/bank/shop.html')
+    context = {
+        "goods": Good.objects.all(),
+    }
+    return render(request, 'pages/bank/shop.html',context)
 
 
 #############
