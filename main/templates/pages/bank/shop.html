@@ -57,8 +57,13 @@
             line-height: 30px;
         }
 
-        .img-wrapper{
+        .img-wrapper {
             height: 100px;
+        }
+
+        table{
+            width: 100%;
+            height: 100%;
         }
     </style>
 
@@ -70,7 +75,16 @@
     <div class="row">
         {% for good in goods %}
             <div class="col-md-3">
-                <div class="img-wrapper"><img src="{{ good.image.url }}"></div>
+                <div class="img-wrapper">
+                    <table>
+                        <tr>
+                            <td valign="middle">
+                                <img src="{{ good.image.url }}">
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
                 <h1>{{ good.title }}</h1>
                 <p class="desc">{{ good.description }}<br></p>
                 <p>Цена: {{ good.price }}ĜŦ <a>купить</a></p>
