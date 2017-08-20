@@ -417,4 +417,4 @@ def buy_good(request):
                     'to_complite': 4 - len(str(good.price)),
                     'date': datetime.now()
                 })
-    return HttpResponse("bad")
+    return HttpResponse("Вы не можете купить этот товар")
