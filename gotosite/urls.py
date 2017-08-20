@@ -42,7 +42,8 @@ urlpatterns = [
         url(r'^api/update_avatar/', update_avatar),
 
         # Bank
-        url(r'^bank/shop/', shop)
+        url(r'^bank/shop/', shop),
+        url(r'^bank/buy/', buy_good)
     ]))
 ]
 

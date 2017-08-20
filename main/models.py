@@ -37,6 +37,10 @@ class City(models.Model):
     def __len__(self):
         return len(self.name)
 
+    class Meta:
+        verbose_name = "город"
+        verbose_name_plural = "города"
+
 
 class Skill(models.Model):
     name = models.CharField(max_length=200)
@@ -76,12 +80,20 @@ class Education(models.Model):
     def get_fields_names(self):
         return [item.name for item in self._meta.get_fields()]
 
+    class Meta:
+        verbose_name = "образование"
+        verbose_name_plural = "образование"
+
 
 class Achievement(models.Model):
     title = models.CharField(max_length=50)
     link = models.CharField(max_length=50)
     year = models.IntegerField()
     description = models.TextField()
+
+    class Meta:
+        verbose_name = "достижение"
+        verbose_name_plural = "достижения"
 
 
 class UserManager(BaseUserManager):
@@ -208,10 +220,7 @@ class Good(models.Model):
     price = models.IntegerField()
     image = models.ImageField(upload_to='good_images/')
 
-    def get_full_name(self):
-        return "{}".format(self.title)
-
-    def get_short_name(self):
+    def __str__(self):
         return "{}".format(self.title)
 
     class Meta:
@@ -224,14 +233,12 @@ class Good(models.Model):
 
 
 class Transaction(models.Model):
-    user = models.OneToOneField(User)
-    good = models.OneToOneField(Good)
+    id = models.AutoField(primary_key=True)
+    user = models.OneToOneField(User, unique=False)
+    good = models.OneToOneField(Good, unique=False)
 
-    def get_full_name(self):
+    def __str__(self):
         return "{} купил {}".format(self.user, self.good)
-
-    def get_short_name(self):
-        return "{}".format(self.user)
 
     class Meta:
         db_table = 'transactions'

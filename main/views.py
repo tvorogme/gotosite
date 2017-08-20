@@ -50,7 +50,7 @@ def shop(request):
     context = {
         "goods": Good.objects.all(),
     }
-    return render(request, 'pages/bank/shop.html',context)
+    return render(request, 'pages/bank/shop.html', context)
 
 
 #############
@@ -399,12 +399,11 @@ def remove_achievement(request):
 
 
 def buy_good(request):
-    if not request.user.is_anonymous() and 'good_id' in request.POST:
-        good = Good.objects.filter(id=int(request.POST['good_id']))
+    if not request.user.is_anonymous() and 'good_id' in request.GET:
+        good = Good.objects.filter(id=int(request.GET['good_id']))
 
         if len(good) > 0:
             good = good[0]
-
             if request.user.gotocoins >= good.price:
                 tmp_transaction = Transaction(user=request.user, good=good)
                 tmp_transaction.save()
@@ -412,5 +411,10 @@ def buy_good(request):
                 request.user.gotocoins -= good.price
                 request.user.save()
 
-                return HttpResponse("ok")
+                return render(request, 'pages/bank/check.html', {
+                    'good': good,
+                    'transaction_id': Transaction.objects.count(),
+                    'to_complite': 4 - len(str(good.price)),
+                    'date': datetime.now()
+                })
     return HttpResponse("bad")
