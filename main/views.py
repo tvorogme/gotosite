@@ -396,3 +396,21 @@ def remove_achievement(request):
                 achievements.remove(achievement)
                 return HttpResponse("ok")
     return HttpResponse("bad")
+
+
+def buy_good(request):
+    if not request.user.is_anonymous() and 'good_id' in request.POST:
+        good = Good.objects.filter(id=int(request.POST['good_id']))
+
+        if len(good) > 0:
+            good = good[0]
+
+            if request.user.gotocoins >= good.price:
+                tmp_transaction = Transaction(user=request.user, good=good)
+                tmp_transaction.save()
+
+                request.user.gotocoins -= good.price
+                request.user.save()
+
+                return HttpResponse("ok")
+    return HttpResponse("bad")

@@ -208,10 +208,35 @@ class Good(models.Model):
     price = models.IntegerField()
     image = models.ImageField(upload_to='good_images/')
 
+    def get_full_name(self):
+        return "{}".format(self.title)
+
+    def get_short_name(self):
+        return "{}".format(self.title)
+
     class Meta:
         db_table = 'goods'
 
         verbose_name = "товар"
         verbose_name_plural = "товары"
+
+        managed = True
+
+
+class Transaction(models.Model):
+    user = models.OneToOneField(User)
+    good = models.OneToOneField(Good)
+
+    def get_full_name(self):
+        return "{} купил {}".format(self.user, self.good)
+
+    def get_short_name(self):
+        return "{}".format(self.user)
+
+    class Meta:
+        db_table = 'transactions'
+
+        verbose_name = "покупка"
+        verbose_name_plural = "покупки"
 
         managed = True
