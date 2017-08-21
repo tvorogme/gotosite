@@ -215,7 +215,7 @@ class TempUser(models.Model):
 
 
 class Good(models.Model):
-    title = models.CharField(max_length=128)
+    title = models.CharField(max_length=128, unique=True)
     description = models.TextField()
     price = models.IntegerField()
     image = models.ImageField(upload_to='good_images/')
@@ -233,9 +233,8 @@ class Good(models.Model):
 
 
 class Transaction(models.Model):
-    id = models.AutoField(primary_key=True)
-    user = models.OneToOneField(User, unique=False)
-    good = models.OneToOneField(Good, unique=False)
+    user = models.ForeignKey(User, unique=False, blank=True, null=True)
+    good = models.ForeignKey(Good, unique=False, blank=True, null=True)
 
     def __str__(self):
         return "{} купил {}".format(self.user, self.good)

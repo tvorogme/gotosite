@@ -1,6 +1,7 @@
 function change_avatar() {
     $('.image-editor').css('display', 'block');
     $('.cropit-image-input').click();
+    document.body.onfocus = roar;
 }
 
 $(function () {
@@ -34,3 +35,10 @@ $(function () {
             });
     });
 });
+
+function roar() {
+    if ($(".cropit-image-input").val() === '') {
+        $('.image-editor').css('display', 'none');
+    }
+    document.body.onfocus = null;
+}
