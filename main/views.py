@@ -1,5 +1,6 @@
 import base64
 import json
+import os
 
 from allauth.socialaccount.models import SocialAccount
 from django.contrib.auth import logout, authenticate, login
@@ -359,16 +360,43 @@ def add_achievement(request):
     values = {}
 
     for val in ['title', 'year', 'link', 'description']:
-        if val not in request.POST:
-            return HttpResponse()
-        else:
+        if val in request.POST and len(request.POST[val]) > 0:
             values[val] = request.POST[val]
+        else:
+            return HttpResponse()
 
     tmp_achievement = Achievement(**values)
     tmp_achievement.save()
 
     request.user.achievements.add(tmp_achievement)
+    request.user.save()
     return HttpResponse()
+
+
+def add_project(request):
+    values = {}
+    for val in ['title', 'git_link', 'description']:
+        if val in request.POST and len(request.POST[val]) > 0:
+            values[val] = request.POST[val]
+        else:
+            return redirect('/new/profile/?message=Use all fields')
+
+    if 'pdf' in request.FILES:
+        file = request.FILES['pdf']
+
+        fileName, fileExtension = os.path.splitext(file.name)
+
+        if fileExtension == '.pdf':
+            tmp_project = Project(**values, pdf=file)
+            tmp_project.save()
+
+            request.user.projects.add(tmp_project)
+            request.user.save()
+        else:
+            return redirect('/new/profile/?message=Use pdf please')
+    else:
+        return redirect('/new/profile/?message=Add presentation please')
+    return redirect('/new/profile/')
 
 
 def update_avatar(request):
@@ -394,6 +422,20 @@ def remove_achievement(request):
         for achievement in achievements.all():
             if achievement.id == toremove_id:
                 achievements.remove(achievement)
+                return HttpResponse("ok")
+    return HttpResponse("bad")
+
+
+def remove_project(request):
+    # fixme: add output status code
+
+    if 'project_id' in request.POST:
+        projects = request.user.projects
+        toremove_id = int(request.POST['project_id'])
+
+        for project in projects.all():
+            if project.id == toremove_id:
+                projects.remove(project)
                 return HttpResponse("ok")
     return HttpResponse("bad")
 

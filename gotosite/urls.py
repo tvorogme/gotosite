@@ -22,7 +22,9 @@ urlpatterns = [
         url(r'^profile/edit/$', update_profile),
         url(r'^profile/remove_education/$', remove_education),
         url(r'^profile/add_achievement/$', add_achievement),
+        url(r'^profile/add_project/$', add_project),
         url(r'^profile/remove_achievement/$', remove_achievement),
+        url(r'^profile/remove_project/$', remove_project),
 
         # Login system
         url(r'^logout/$', logout_wrapper),

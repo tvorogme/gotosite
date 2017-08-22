@@ -190,6 +190,11 @@ function add_achievement() {
     $("#add_achievement_button").css('display', 'none')
 }
 
+function add_project() {
+    $("#add_project").css('display', 'block');
+    $("#add_projects_button").css('display', 'none')
+}
+
 function add_achievement_final_step() {
     var title = $("#add_achievement_title").val();
     var year = $("#add_achievement_date").val();
@@ -218,6 +223,38 @@ function remove_achievement(_id) {
         type: "POST",
         url: '../profile/remove_achievement/',
         data: {"achievement_id": _id, "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()},
+        dataType: 'json'
+    });
+    window.location.reload();
+}
+
+
+function remove_project(_id) {
+    $.ajax({
+        type: "POST",
+        url: '../profile/remove_project/',
+        data: {"project_id": _id, "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()},
+        dataType: 'json'
+    });
+    window.location.reload();
+}
+
+function add_project_final_step() {
+    var title = $("#add_project_title").val();
+    var link = $("#add_project_url").val();
+    var description = $("#add_project_description").val();
+
+    var request_data = {
+        'title': title,
+        'link': link,
+        'description': description,
+        "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: '../profile/add_achievement/',
+        data: request_data,
         dataType: 'json'
     });
     window.location.reload();

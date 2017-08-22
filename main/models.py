@@ -113,6 +113,20 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, email_verified=True, **extra_fields)
 
 
+class Project(models.Model):
+    title = models.CharField(max_length=120)
+    description = models.TextField()
+    git_link = models.CharField(max_length=200)
+    pdf = models.FileField(upload_to='presentations/')
+
+    def __str__(self):
+        return "{}".format(self.title)
+
+    class Meta:
+        verbose_name = "проект"
+        verbose_name_plural = "проекты"
+
+
 class User(AbstractBaseUser, PermissionsMixin):
     '''Create own user with email only'''
 
@@ -142,6 +156,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     skills = models.ManyToManyField(Skill, blank=True)
     educations = models.ManyToManyField(Education, blank=True)
     achievements = models.ManyToManyField(Achievement, blank=True)
+    projects = models.ManyToManyField(Project, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
