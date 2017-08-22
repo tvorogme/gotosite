@@ -429,7 +429,7 @@
         </div>
 
         <div class="col-md-9">
-            {% for project in user.must_be_field.all %}
+            {% for project in projects %}
                 <div class="achievement {% if not forloop.first %}not-first{% endif %}">
                     <a class="remove-achievement" onclick="remove_project({{ project.id }})">
                         <svg width="15" version="1.1" xmlns="http://www.w3.org/2000/svg" height="15"
@@ -446,7 +446,7 @@
                 </div>
             {% endfor %}
 
-            <div id="add_project" class="{% if user.must_be_field.all.0 %}not-first{% endif %}">
+            <div id="add_project" class="{% if projects.0 %}not-first{% endif %}">
                 <form id="add_project_form" enctype="multipart/form-data" action="/new/profile/add_project/" method="post">
                     <input name="csrfmiddlewaretoken" type="hidden"
                            value="{{ csrf_token }}">
@@ -461,7 +461,7 @@
                 </form>
             </div>
 
-            <div class="col-3 {% if user.must_be_field.all.0 %}not-first{% endif %}" id="add_projects_button">
+            <div class="col-3 {% if projects.0 %}not-first{% endif %}" id="add_projects_button">
                 <p class="add" onclick="add_project()">Добавить</p>
             </div>
         </div>

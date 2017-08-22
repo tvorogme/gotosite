@@ -113,7 +113,8 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, email_verified=True, **extra_fields)
 
 
-class Project(models.Model):
+class Projecth(models.Model):
+    user = models.ManyToManyField(User)
     title = models.CharField(max_length=120)
     description = models.TextField()
     git_link = models.CharField(max_length=200)
@@ -153,7 +154,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     skills = models.ManyToManyField(Skill, blank=True)
     educations = models.ManyToManyField(Education, blank=True)
     achievements = models.ManyToManyField(Achievement, blank=True)
-    must_be_field = models.ManyToManyField(Project, blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 

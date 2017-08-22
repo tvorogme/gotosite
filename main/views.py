@@ -81,8 +81,11 @@ def profile_page(request, _id=None):
     # get profile information
     person = User.objects.filter(pk=user.id if is_profile else _id)[0]
 
+    projects = Projecth.objects.filter(user=request.user).all()
+
     # render template with new information =)
     return render(request, 'pages/profile/profile.html', {'user': person,
+                                                          'projects': projects,
                                                           'is_profile': is_profile})
 
 
@@ -388,11 +391,9 @@ def add_project(request):
 
         if fileExtension == '.pdf':
             values['pdf'] = file
-            tmp_project = Project(**values)
+            values['user'] = request.user
+            tmp_project = Projecth(**values)
             tmp_project.save()
-
-            request.user.must_be_field.add(tmp_project)
-            request.user.save()
         else:
             return redirect('/new/profile/?message=Use pdf please')
     else:
