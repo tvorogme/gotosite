@@ -446,7 +446,7 @@
 {#                </div>#}
 {#            {% endfor %}#}
 
-            <div id="add_project" class="{% if user.projects.all.0 %}not-first{% endif %}">
+            <div id="add_project" class="">
                 <form id="add_project_form" enctype="multipart/form-data" action="/new/profile/add_project/" method="post">
                     <input name="csrfmiddlewaretoken" type="hidden"
                            value="{{ csrf_token }}">
@@ -461,7 +461,7 @@
                 </form>
             </div>
 
-            <div class="col-3 {% if user.projects.all.0 %}not-first{% endif %}" id="add_projects_button">
+            <div class="col-3" id="add_projects_button">
                 <p class="add" onclick="add_project()">Добавить</p>
             </div>
         </div>
