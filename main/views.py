@@ -387,7 +387,8 @@ def add_project(request):
         fileName, fileExtension = os.path.splitext(file.name)
 
         if fileExtension == '.pdf':
-            tmp_project = Project(**values, pdf=file)
+            values['pdf'] = file
+            tmp_project = Project(**values)
             tmp_project.save()
 
             request.user.projects.add(tmp_project)
