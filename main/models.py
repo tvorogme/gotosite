@@ -113,18 +113,6 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, email_verified=True, **extra_fields)
 
 
-class Projecth(models.Model):
-    user = models.ManyToManyField(User)
-    title = models.CharField(max_length=120)
-    description = models.TextField()
-    git_link = models.CharField(max_length=200)
-    pdf = models.FileField(upload_to='presentations/')
-
-    class Meta:
-        verbose_name = "проект"
-        verbose_name_plural = "проекты"
-
-
 class User(AbstractBaseUser, PermissionsMixin):
     '''Create own user with email only'''
 
@@ -258,3 +246,15 @@ class Transaction(models.Model):
         verbose_name_plural = "покупки"
 
         managed = True
+
+
+class Projecth(models.Model):
+    user = models.ManyToManyField(User)
+    title = models.CharField(max_length=120)
+    description = models.TextField()
+    git_link = models.CharField(max_length=200)
+    pdf = models.FileField(upload_to='presentations/')
+
+    class Meta:
+        verbose_name = "проект"
+        verbose_name_plural = "проекты"
