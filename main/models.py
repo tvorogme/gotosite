@@ -153,7 +153,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     skills = models.ManyToManyField(Skill, blank=True)
     educations = models.ManyToManyField(Education, blank=True)
     achievements = models.ManyToManyField(Achievement, blank=True)
-    projects = models.ManyToManyField(Project)
+    must_be_field = models.ManyToManyField(Project, blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
