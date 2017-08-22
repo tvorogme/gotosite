@@ -391,7 +391,7 @@ def add_project(request):
             tmp_project = Project(**values)
             tmp_project.save()
 
-            request.user.projects.add(tmp_project)
+            request.user.must_be_field.add(tmp_project)
             request.user.save()
         else:
             return redirect('/new/profile/?message=Use pdf please')
@@ -431,7 +431,7 @@ def remove_project(request):
     # fixme: add output status code
 
     if 'project_id' in request.POST:
-        projects = request.user.projects
+        projects = request.user.must_be_field
         toremove_id = int(request.POST['project_id'])
 
         for project in projects.all():
