@@ -394,7 +394,7 @@ def add_project(request):
             tmp_project = Projecth(**values)
             tmp_project.save()
 
-            tmp_project.user = request.user
+            tmp_project.user = [request.user]
             tmp_project.save()
         else:
             return redirect('/new/profile/?message=Use pdf please')
