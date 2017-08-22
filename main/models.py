@@ -255,6 +255,8 @@ class Projecth(models.Model):
     git_link = models.CharField(max_length=200)
     pdf = models.FileField(upload_to='presentations/')
 
+    def __str__(self):
+        return "{}".format(self.title)
     class Meta:
         verbose_name = "проект"
         verbose_name_plural = "проекты"
