@@ -434,19 +434,14 @@ def remove_project(request):
     # fixme: add output status code
 
     if 'project_id' in request.POST:
-        projects = request.user.must_be_field
-        toremove_id = int(request.POST['project_id'])
-
-        for project in projects.all():
-            if project.id == toremove_id:
-                projects.remove(project)
-                return HttpResponse("ok")
+        projects = Projecth.objects.filter(user=request.user, pk=request.POST['project_id']).all()
+        return HttpResponse("ok")
     return HttpResponse("bad")
 
 
 def buy_good(request):
     if not request.user.is_anonymous() and 'good_id' in request.GET:
-        good = Good.objects.filter(id=int(request.GET['good_id']))
+        good = Good.objects.filter(id=int(request.GET['good_id'])).delete()
 
         if len(good) > 0:
             good = good[0]
