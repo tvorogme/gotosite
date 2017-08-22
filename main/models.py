@@ -125,6 +125,8 @@ class Project(models.Model):
     class Meta:
         verbose_name = "проект"
         verbose_name_plural = "проекты"
+        db_table = 'projects'
+        managed = True
 
 
 class User(AbstractBaseUser, PermissionsMixin):
