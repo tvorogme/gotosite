@@ -249,7 +249,7 @@ class Transaction(models.Model):
 
 
 class Projecth(models.Model):
-    user = models.ManyToManyField(User)
+    user = models.ManyToManyField(User, blank=True)
     title = models.CharField(max_length=120)
     description = models.TextField()
     git_link = models.CharField(max_length=200)
