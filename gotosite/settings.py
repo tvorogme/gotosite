@@ -16,6 +16,7 @@ from .settings_secret import *
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = False
+MAX_UPLOAD_SIZE = 5242880
 
 ALLOWED_HOSTS = ['goto.msk.ru', 'localhost']
 
