@@ -15,7 +15,7 @@ from .settings_secret import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-DEBUG = False
+DEBUG = True
 MAX_UPLOAD_SIZE = 5242880
 
 ALLOWED_HOSTS = ['goto.msk.ru', 'localhost']
@@ -23,7 +23,6 @@ ALLOWED_HOSTS = ['goto.msk.ru', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,8 +36,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.gitlab',
-    'allauth.socialaccount.providers.vk'
+    'allauth.socialaccount.providers.vk',
 
+    'main.apps.MainConfig'
 ]
 
 MIDDLEWARE = [

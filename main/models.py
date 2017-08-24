@@ -248,8 +248,8 @@ class Transaction(models.Model):
         managed = True
 
 
-class Projecth(models.Model):
-    user = models.ManyToManyField(User, blank=True)
+class Project(models.Model):
+    users = models.ManyToManyField(User, blank=True)
     title = models.CharField(max_length=120)
     description = models.TextField()
     git_link = models.CharField(max_length=200)
@@ -260,3 +260,4 @@ class Projecth(models.Model):
     class Meta:
         verbose_name = "проект"
         verbose_name_plural = "проекты"
+        db_table = "user_projects"

@@ -81,7 +81,7 @@ def profile_page(request, _id=None):
     # get profile information
     person = User.objects.filter(pk=user.id if is_profile else _id)[0]
 
-    projects = Projecth.objects.filter(user=request.user).all()
+    projects = Project.objects.filter(users=request.user).all()
 
     # render template with new information =)
     return render(request, 'pages/profile/profile.html', {'user': person,
@@ -391,10 +391,10 @@ def add_project(request):
 
         if fileExtension == '.pdf':
             values['pdf'] = file
-            tmp_project = Projecth(**values)
+            tmp_project = Project(**values)
             tmp_project.save()
 
-            tmp_project.user = [request.user]
+            tmp_project.users = [request.user]
             tmp_project.save()
         else:
             return redirect('/new/profile/?message=Use pdf please')
@@ -434,14 +434,22 @@ def remove_project(request):
     # fixme: add output status code
 
     if 'project_id' in request.POST:
-        projects = Projecth.objects.filter(user=request.user, pk=request.POST['project_id']).all()
-        return HttpResponse("ok")
+        projects = Project.objects.filter(pk=request.POST['project_id']).all()
+
+        if request.user in projects[0].users.all():
+            if len(projects) > 0:
+                if len(projects[0].users.all()) == 1:
+                    projects[0].delete()
+                else:
+                    projects[0].users.remove(request.user)
+                return HttpResponse("ok")
+
     return HttpResponse("bad")
 
 
 def buy_good(request):
     if not request.user.is_anonymous() and 'good_id' in request.GET:
-        good = Good.objects.filter(id=int(request.GET['good_id'])).delete()
+        good = Good.objects.filter(id=int(request.GET['good_id'])).all()
 
         if len(good) > 0:
             good = good[0]

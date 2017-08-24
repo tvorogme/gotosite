@@ -450,12 +450,22 @@
                 <form id="add_project_form" enctype="multipart/form-data" action="/new/profile/add_project/" method="post">
                     <input name="csrfmiddlewaretoken" type="hidden"
                            value="{{ csrf_token }}">
-                    <h3><input id="add_project_title" name="title" placeholder="Заголовок"></h3><br>
-                    <input name="git_link" id="add_project_url" placeholder="Ссылка на код">
-                    <textarea name="description" id="add_project_description" placeholder="Описание"></textarea><br>
-                    <input name="pdf" type="file" id="add_project_file">
-                    <p id="add_project_presentation_alert">Презентация:</p>
+                    <h3><input id="add_project_title" name="title" placeholder="Заголовок"></h3>
                     <br>
+
+                    <input name="git_link" id="add_project_url" placeholder="Ссылка на код">
+                    <textarea name="description" id="add_project_description" placeholder="Описание"></textarea>
+                    <br>
+
+
+                    <input name="pdf" type="file" id="add_project_file">
+                    <p id="add_project_presentation_alert">Презентация</p>
+                    <br>
+
+                    <p id="add_project_team_member">Добавить</p>
+                    <p id="add_project_presentation_alert">Команда</p>
+                    <br>
+
 
                     <p onclick="$('#add_project_form').submit()" id="add_project_final_button">Сохранить проект</p>
                 </form>

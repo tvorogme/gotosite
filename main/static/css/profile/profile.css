@@ -388,6 +388,7 @@ a {
     color: #080808;
     opacity: 0.1;
     font-weight: 500;
+    margin-bottom: 13px;
 }
 
 #add_education_button {
@@ -408,6 +409,11 @@ a {
 
 #education_field_school_out_year {
     margin-left: 3px;
+    float: right;
+}
+
+#add_education_vuz_year_out {
+    float: right;
 }
 
 #add_education_button:hover {
@@ -461,14 +467,18 @@ a {
     margin-bottom: 20px;
 }
 
+#add_project textarea {
+    height: 60px;
+}
+
 #add_achievement_final_button,
-#add_project_final_button{
+#add_project_final_button {
     margin-top: 10px;
     font-weight: 500;
 }
 
 #add_achievement_final_button:hover,
-#add_project_final_button:hover{
+#add_project_final_button:hover {
     color: rgb(67, 180, 152);
     cursor: pointer;
 }
@@ -606,4 +616,22 @@ input {
     color: white;
     display: block;
     margin: 0 auto;
+}
+
+#add_project_team_member {
+    width: 230px;
+    float: right;
+    font-weight: 400;
+    opacity: 0.1;
+}
+
+
+#add_project_team_member:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+#add_project_file_wrapper{
+    width: 230px;
+    float: right;
 }
