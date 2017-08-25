@@ -192,7 +192,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         fields = []
 
         for field in self._meta.get_fields():
-            if not isinstance(field, models.ManyToOneRel) and not isinstance(field, models.ManyToManyField) and not field.blank:
+            if not isinstance(field, models.ManyToOneRel) and not isinstance(field,
+                                                                             models.ManyToManyField) and not isinstance(
+                    field, models.ManyToManyRel) and not isinstance(field, models.ManyToOneRel) and not field.blank:
                 fields.append(field)
 
         return [field.name for field in fields]
@@ -257,6 +259,7 @@ class Project(models.Model):
 
     def __str__(self):
         return "{}".format(self.title)
+
     class Meta:
         verbose_name = "проект"
         verbose_name_plural = "проекты"
