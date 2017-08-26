@@ -476,10 +476,9 @@ def generate_csv(request):
     for user in User.objects.all():
         tmp = [user.get_full_name()]
 
-        for val_name in ['email', 'phone_number', 'parent_phone_number']:
-            tmp.append(bool(len(getattr(user, val_name)) > 0))
+        for val_name in ['email', 'city', 'phone_number', 'parent_phone_number']:
+            tmp.append(bool(getattr(user, val_name) is None))
 
-        tmp.append(bool(user.city is None))
         tmp.append(user.birthday)
         tmp.append(bool(len(user.skills.all()) > 0))
         tmp.append(bool(len(user.educations.all()) > 0))
