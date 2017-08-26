@@ -129,7 +129,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     #
 
     email = models.EmailField(unique=True)
-    city = models.ForeignKey(City,null=True, blank=True)
+    city = models.ForeignKey(City, null=True, blank=True)
     birthday = models.DateField('birthday', blank=True, null=True)
 
     #
@@ -177,24 +177,18 @@ class User(AbstractBaseUser, PermissionsMixin):
         return "{} {} {}".format(self.last_name, self.first_name, self.middle_name)
 
     def get_full_name(self):
-        if len(self.first_name) > 0 or len(self.last_name) > 0 or len(self.middle_name) > 0:
-            return "{} {} {}".format(self.last_name, self.first_name, self.middle_name)
-        else:
-            return "{}".format(self.email)
+        return "{} {} {}".format(self.last_name, self.first_name, self.middle_name)
 
     def get_short_name(self):
-        if len(self.first_name) > 0 or len(self.last_name) > 0:
-            return "{} {}".format(self.first_name, self.last_name)
-        else:
-            return "{}".format(self.email)
-
+        return "{} {}".format(self.first_name, self.last_name)
+    
     def get_not_blanked_fields_names(self):
         fields = []
 
         for field in self._meta.get_fields():
             if not isinstance(field, models.ManyToOneRel) and not isinstance(field,
                                                                              models.ManyToManyField) and not isinstance(
-                    field, models.ManyToManyRel) and not isinstance(field, models.ManyToOneRel) and not field.blank:
+                field, models.ManyToManyRel) and not isinstance(field, models.ManyToOneRel) and not field.blank:
                 fields.append(field)
 
         return [field.name for field in fields]
