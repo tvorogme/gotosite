@@ -490,5 +490,5 @@ def generate_csv(request):
                         columns=['name', 'email', 'birthday', 'phone_number', 'parent_phone_number', 'city', 'skills',
                                  'educations', 'achievements'])
 
-    data.to_csv('../main/static/out.csv')
-    return HttpResponse()
+    data.to_csv('/root/gotosite/main/static/out.csv')
+    return redirect('/new/static/out.csv')
