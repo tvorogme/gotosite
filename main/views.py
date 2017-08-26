@@ -491,4 +491,4 @@ def generate_csv(request):
                                  'educations', 'achievements'])
 
     data.to_csv('out.csv')
-    return serve(request, 'out.csv')
+    return serve(request, '../out.csv')
