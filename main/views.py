@@ -477,7 +477,7 @@ def generate_csv(request):
         tmp = [user.get_full_name()]
 
         for val_name in ['email', 'city', 'phone_number', 'parent_phone_number']:
-            tmp.append(bool(getattr(user, val_name) is None))
+            tmp.append(not bool(getattr(user, val_name) is None))
 
         tmp.append(user.birthday)
         tmp.append(bool(len(user.skills.all()) > 0))
@@ -487,8 +487,9 @@ def generate_csv(request):
         data.append(tmp)
 
     data = pd.DataFrame(data,
-                        columns=['name', 'email', 'birthday', 'phone_number', 'parent_phone_number', 'city', 'skills',
+                        columns=['name', 'email', 'city', 'phone_number', 'parent_phone_number', 'birthday', 'skills',
                                  'educations', 'achievements'])
 
+    # fixme absolute path
     data.to_csv('/root/gotosite/main/static/out.csv')
-    return redirect('/new/static/out.csv')
+    return redirect('/static/out.csv')

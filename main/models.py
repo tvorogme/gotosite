@@ -181,7 +181,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return "{} {}".format(self.first_name, self.last_name)
-    
+
     def get_not_blanked_fields_names(self):
         fields = []
 
