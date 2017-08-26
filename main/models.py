@@ -129,7 +129,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     #
 
     email = models.EmailField(unique=True)
-    city = models.ForeignKey(City, null=True, blank=True)
+    city = models.ForeignKey(City,null=True, blank=True)
     birthday = models.DateField('birthday', blank=True, null=True)
 
     #

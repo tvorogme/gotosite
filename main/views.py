@@ -2,6 +2,7 @@ import base64
 import json
 import os
 
+import pandas as pd
 from allauth.socialaccount.models import SocialAccount
 from django.contrib.auth import logout, authenticate, login
 from django.core.files.base import ContentFile
@@ -10,6 +11,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.utils import timezone
+from django.views.static import serve
 
 from main.apps import SOCIALS
 from .forms import validate_user_field
@@ -467,3 +469,26 @@ def buy_good(request):
                     'date': datetime.now()
                 })
     return HttpResponse("Вы не можете купить этот товар")
+
+
+def generate_csv(request):
+    data = []
+    for user in User.objects.all():
+        tmp = [user.get_full_name()]
+
+        for val_name in ['email', 'birthday', 'phone_number', 'parent_phone_number']:
+            tmp.append(bool(len(getattr(user, val_name)) > 0))
+
+        tmp.append(bool(len(type(user.city))))
+        tmp.append(bool(len(user.skills.all()) > 0))
+        tmp.append(bool(len(user.educations.all()) > 0))
+        tmp.append(bool(len(user.achievements.all()) > 0))
+
+        data.append(tmp)
+
+    data = pd.DataFrame(data,
+                        columns=['name', 'email', 'birthday', 'phone_number', 'parent_phone_number', 'city', 'skills',
+                                 'educations', 'achievements'])
+
+    data.to_csv('out.csv')
+    return serve(request, 'out.csv')
