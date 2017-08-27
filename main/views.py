@@ -426,6 +426,7 @@ def add_project(request):
         return redirect('/new/profile/?message=Add presentation please')
     return redirect('/new/profile/')
 
+
 def update_avatar(request):
     if request.method == 'POST' and not request.user.is_anonymous():
         data = request.POST['avatar']
