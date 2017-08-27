@@ -87,7 +87,6 @@ def profile_page(request, _id=None):
     # Here we take all users for team <option> in profile
     users = []
     for profile in User.objects.all().values('id', 'first_name', 'middle_name', 'last_name'):
-        print(profile['id'], user.id, type(profile['id']), type(user.id), profile['id'] != user.id)
 
         # Add all users except our one
         if profile['id'] != user.id:
@@ -398,7 +397,6 @@ def add_achievement(request):
 
 
 def add_project(request):
-    print(request.post)
     values = {}
     for val in ['title', 'git_link', 'description']:
         if val in request.POST and len(request.POST[val]) > 0:
@@ -408,22 +406,25 @@ def add_project(request):
 
     if 'pdf' in request.FILES:
         file = request.FILES['pdf']
+        project_team = request.POST.getlist('team')
 
         fileName, fileExtension = os.path.splitext(file.name)
-
         if fileExtension == '.pdf':
             values['pdf'] = file
             tmp_project = Project(**values)
             tmp_project.save()
-
-            tmp_project.users = [request.user]
+            team = [request.user]
+            if 'team' in request.POST:
+                for team_user_id in project_team:
+                    team_member = User.objects.filter(pk=int(team_user_id))[0]
+                    team.append(team_member)
+            tmp_project.users = team
             tmp_project.save()
         else:
             return redirect('/new/profile/?message=Use pdf please')
     else:
         return redirect('/new/profile/?message=Add presentation please')
     return redirect('/new/profile/')
-
 
 def update_avatar(request):
     if request.method == 'POST' and not request.user.is_anonymous():

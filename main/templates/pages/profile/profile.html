@@ -460,10 +460,10 @@
                     <br>
 
 
-                    <select class="chosen-select" data-placeholder="Команда" multiple tabindex="3">
+                    <select name="team" title="team" class="chosen-select" data-placeholder="Команда" multiple tabindex="3">
                         <option value=""></option>
                         {% for user in users %}
-                            <option value="{{ user.full_name }}">{{ user.full_name }}</option>
+                            <option value="{{ user.id }}">{{ user.full_name }}</option>
                         {% endfor %}
                     </select>
                     <br>
