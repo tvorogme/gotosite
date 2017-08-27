@@ -87,8 +87,10 @@ def profile_page(request, _id=None):
     # Here we take all users for team <option> in profile
     users = []
     for user in User.objects.all().values('id', 'first_name', 'middle_name', 'last_name'):
-        full_name = "{} {} {}".format(user['first_name'], user['middle_name'], user['last_name'])
-        users.append({'id': user['id'], 'full_name': full_name})
+        if user['first_name'] is not None or user['middle_name'] is not None or user['last_name'] is not None:
+            full_name = "{} {} {}".format(user['first_name'], user['middle_name'], user['last_name'])
+            full_name.replace('None', '')
+            users.append({'id': user['id'], 'full_name': full_name})
 
     # render template with new information =)
     return render(request, 'pages/profile/profile.html', {'user': person,
