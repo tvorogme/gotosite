@@ -11,7 +11,6 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.utils import timezone
-from django.views.static import serve
 
 from main.apps import SOCIALS
 from .forms import validate_user_field
@@ -85,9 +84,16 @@ def profile_page(request, _id=None):
 
     projects = Project.objects.filter(users=request.user).all()
 
+    # Here we take all users for team <option> in profile
+    users = []
+    for user in User.objects.all().values('id', 'first_name', 'middle_name', 'last_name'):
+        full_name = "{} {} {}".format(user['first_name'], user['middle_name'], user['last_name'])
+        users.append({'id': user['id'], 'full_name': full_name})
+
     # render template with new information =)
     return render(request, 'pages/profile/profile.html', {'user': person,
                                                           'projects': projects,
+                                                          'users': users,
                                                           'is_profile': is_profile})
 
 

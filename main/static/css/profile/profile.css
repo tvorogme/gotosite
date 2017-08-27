@@ -625,13 +625,30 @@ input {
     opacity: 0.1;
 }
 
-
-#add_project_team_member:hover{
+#add_project_team_member:hover {
     opacity: 1;
     cursor: pointer;
 }
 
-#add_project_file_wrapper{
+#add_project_file_wrapper {
     width: 230px;
     float: right;
+}
+
+/*Chosen part*/
+.chosen-container {
+    margin-bottom: 20px;
+}
+
+.chosen-container-multi .chosen-choices {
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+}
+
+.chosen-container-multi .chosen-choices li.search-field input[type=text] {
+    color: rgb(107, 107, 107) !important;
+    font-weight: 100 !important;
+    font-size: 16px !important;
+    font-family: Ubuntu, sans-serif !important;
 }
