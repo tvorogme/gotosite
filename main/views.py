@@ -89,7 +89,8 @@ def profile_page(request, _id=None):
     for user in User.objects.all().values('id', 'first_name', 'middle_name', 'last_name'):
         if user['first_name'] is not None or user['middle_name'] is not None or user['last_name'] is not None:
             full_name = "{} {} {}".format(user['first_name'], user['middle_name'], user['last_name'])
-            full_name.replace('None', '')
+            full_name = full_name.replace('None', '').replace('  ', ' ')
+            print(full_name)
             users.append({'id': user['id'], 'full_name': full_name})
 
     # render template with new information =)

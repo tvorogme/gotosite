@@ -193,7 +193,7 @@ function add_achievement() {
 function add_project() {
     $("#add_project").css('display', 'block');
     $("#add_projects_button").css('display', 'none');
-    $(".chosen-select").chosen();
+    $(".chosen-select").chosen({width: "100%"});
 }
 
 function add_achievement_final_step() {
