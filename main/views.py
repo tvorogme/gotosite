@@ -76,7 +76,7 @@ def profile_page(request, _id=None):
     # if not user.email_verified:
     #     return HttpResponse("Ссылка была выслана на %s" % user.email)
 
-    # true if we watching not ower profile
+    # true if we watching not own profile
     is_profile = False if _id else True
 
     # get profile information
@@ -86,12 +86,22 @@ def profile_page(request, _id=None):
 
     # Here we take all users for team <option> in profile
     users = []
-    for user in User.objects.all().values('id', 'first_name', 'middle_name', 'last_name'):
-        if user['first_name'] is not None or user['middle_name'] is not None or user['last_name'] is not None:
-            full_name = "{} {} {}".format(user['first_name'], user['middle_name'], user['last_name'])
-            full_name = full_name.replace('None', '').replace('  ', ' ')
-            print(full_name)
-            users.append({'id': user['id'], 'full_name': full_name})
+    for profile in User.objects.all().values('id', 'first_name', 'middle_name', 'last_name'):
+        print(profile['id'], user.id, type(profile['id']), type(user.id), profile['id'] != user.id)
+
+        # Add all users except our one
+        if profile['id'] != user.id:
+            # One of all fields must be not None
+            if profile['first_name'] is not None or profile['middle_name'] is not None or \
+                            profile['last_name'] is not None:
+                # Generate one string
+                full_name = "{} {} {}".format(profile['first_name'], profile['middle_name'], profile['last_name'])
+
+                # Replace Nones and whitespaces
+                full_name = full_name.replace('None', '').replace('  ', ' ')
+
+                # Save user
+                users.append({'id': profile['id'], 'full_name': full_name})
 
     # render template with new information =)
     return render(request, 'pages/profile/profile.html', {'user': person,
@@ -388,6 +398,7 @@ def add_achievement(request):
 
 
 def add_project(request):
+    print(request.post)
     values = {}
     for val in ['title', 'git_link', 'description']:
         if val in request.POST and len(request.POST[val]) > 0:
