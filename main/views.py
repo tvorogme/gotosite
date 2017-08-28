@@ -512,6 +512,8 @@ def generate_csv(request):
                         columns=['name', 'email', 'city', 'phone_number', 'parent_phone_number', 'birthday', 'skills',
                                  'educations', 'achievements'])
 
+    data.sort(['city', 'phone_number', 'parent_phone_number', 'birthday', 'skills',
+               'educations', 'achievements'])
     # fixme absolute path
     data.to_csv('/root/gotosite/main/static/out.csv')
     return redirect('/static/out.csv')

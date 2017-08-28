@@ -500,15 +500,6 @@ a {
     margin-bottom: 20px;
 }
 
-#add_project_file {
-    font-size: 12px;
-    float: right;
-}
-
-#add_project_presentation_alert {
-    width: 110px;
-}
-
 #add_achievement_date {
     border: none;
 }
@@ -653,6 +644,19 @@ input {
     font-family: Ubuntu, sans-serif !important;
 }
 
-#add_project h3{
+#add_project h3 {
     width: 100%;
+}
+
+#presentation_upload {
+    display: none;
+}
+
+#presentation_upload_label {
+    color: rgb(107, 107, 107);
+    display: block;
+}
+
+#presentation_upload_label:hover{
+    cursor: pointer;
 }

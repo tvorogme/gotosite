@@ -18,7 +18,7 @@
     "
     type="image/vnd.microsoft.icon"/>
 
-    <title>{{ user.first_name }} {{ user.last_name }} GoTo Profile</title>
+    <title>{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %} {{ user.first_name }}{% endif %} GoTo Profile</title>
 
     <!--Шрифты-->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
@@ -460,7 +460,8 @@
                     <br>
 
 
-                    <select name="team" title="team" class="chosen-select" data-placeholder="Команда" multiple tabindex="3">
+                    <select name="team" title="team" class="chosen-select" data-placeholder="Команда" multiple
+                            tabindex="3">
                         <option value=""></option>
                         {% for user in users %}
                             <option value="{{ user.id }}">{{ user.full_name }}</option>
@@ -468,8 +469,8 @@
                     </select>
                     <br>
 
-                    <input name="pdf" type="file" id="add_project_file">
-                    <p id="add_project_presentation_alert">Презентация</p>
+                    <input type="file" name="pdf" id="presentation_upload" class="inputfile">
+                    <label id="presentation_upload_label" for="presentation_upload"><span>Добавить презентацию</span></label>
                     <br>
                     <p onclick="$('#add_project_form').submit()" id="add_project_final_button">Сохранить проект</p>
                 </form>
@@ -506,6 +507,8 @@
 
     <!-- Автодополнение скиллов, препов и кураторов -->
     <script src={% static "/js/profile/autocomplite.js" %}></script>
+
+    <script src={% static "/js/profile/custom-file-input.js" %}></script>
 
     <!-- Добавление команды -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.0/chosen.jquery.min.js"></script>
