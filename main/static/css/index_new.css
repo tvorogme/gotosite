@@ -967,7 +967,6 @@ body {
     padding: 40px 40px;
     text-decoration: none;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #but1:hover {
@@ -980,7 +979,6 @@ body {
     padding: 40px 40px;
     font-size: 27px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #component-2 {
@@ -993,7 +991,6 @@ body {
     padding: 60px 60px;
     font-size: 37px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #but4 {
@@ -1002,7 +999,6 @@ body {
     padding: 30px 30px;
     font-size: 22px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #but5 {
@@ -1011,7 +1007,6 @@ body {
     padding: 40px 40px;
     font-size: 18px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #but6 {
@@ -1020,7 +1015,6 @@ body {
     padding: 40px 40px;
     font-size: 30px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #come_to_us_brother {
@@ -1230,9 +1224,9 @@ a, button {
     height: 30px;
 }
 
-.button-big-picture {
-    letter-spacing: 1px !important;
-}
+/*.button-big-picture {*/
+    /*letter-spacing: 1px !important;*/
+/*}*/
 
 #question-footer input {
     background: rgba(0, 0, 0, 0);
