@@ -1,3 +1,8 @@
+import random
+from datetime import datetime
+from datetime import timedelta
+from hashlib import sha1
+
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -31,6 +36,10 @@ class City(models.Model):
 
     def __len__(self):
         return len(self.name)
+
+    class Meta:
+        verbose_name = "город"
+        verbose_name_plural = "города"
 
 
 class Skill(models.Model):
@@ -71,12 +80,20 @@ class Education(models.Model):
     def get_fields_names(self):
         return [item.name for item in self._meta.get_fields()]
 
+    class Meta:
+        verbose_name = "образование"
+        verbose_name_plural = "образование"
+
 
 class Achievement(models.Model):
     title = models.CharField(max_length=50)
     link = models.CharField(max_length=50)
     year = models.IntegerField()
     description = models.TextField()
+
+    class Meta:
+        verbose_name = "достижение"
+        verbose_name_plural = "достижения"
 
 
 class UserManager(BaseUserManager):
@@ -93,7 +110,7 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_staff', True)
 
-        return self.create_user(email, password, **extra_fields)
+        return self.create_user(email, password, email_verified=True, **extra_fields)
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -103,15 +120,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     # ФИО
     #
 
-    first_name = models.CharField(max_length=40)
+    first_name = models.CharField(max_length=40, blank=True, null=True)
     middle_name = models.CharField(max_length=40, blank=True, null=True)
-    last_name = models.CharField(max_length=40)
+    last_name = models.CharField(max_length=40, blank=True, null=True)
 
     #
     # Base information
     #
 
-    email = models.EmailField(unique=True, null=True)
+    email = models.EmailField(unique=True)
     city = models.ForeignKey(City, null=True, blank=True)
     birthday = models.DateField('birthday', blank=True, null=True)
 
@@ -130,6 +147,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # Avatar
     image = models.ImageField(upload_to='person_images/', default=None, blank=True, null=True)
+
+    # GoTo Coins
+    gotocoins = models.IntegerField(default=0)
+
+    email_verified = models.BooleanField(default=False)
 
     #
     # Some django specific fields
@@ -164,10 +186,75 @@ class User(AbstractBaseUser, PermissionsMixin):
         fields = []
 
         for field in self._meta.get_fields():
-            if not isinstance(field, models.ManyToOneRel) and not isinstance(field, models.ManyToManyRel) and not field.blank:
+            if not isinstance(field, models.ManyToOneRel) and not isinstance(field,
+                                                                             models.ManyToManyField) and not isinstance(
+                field, models.ManyToManyRel) and not isinstance(field, models.ManyToOneRel) and not field.blank:
                 fields.append(field)
 
         return [field.name for field in fields]
 
     def get_all_fields_names(self):
         return [field.name for field in self._meta.get_fields()]
+
+
+class TempUser(models.Model):
+    user = models.OneToOneField(User, related_name='profile')
+    activation_key = models.CharField(max_length=128)
+    key_expires = models.DateTimeField()
+
+    def gen_activation_key(self, username):
+        salt = sha1(str(random.random()).encode('utf-8')).hexdigest()[:5]
+        activation_key = sha1(str(salt + username).encode('utf-8')).hexdigest()
+        self.activation_key = activation_key
+        self.key_expires = datetime.now() + timedelta(days=1)
+        return activation_key
+
+
+class Good(models.Model):
+    title = models.CharField(max_length=128, unique=True)
+    description = models.TextField()
+    price = models.IntegerField()
+    image = models.ImageField(upload_to='good_images/')
+
+    def __str__(self):
+        return "{}".format(self.title)
+
+    class Meta:
+        db_table = 'goods'
+
+        verbose_name = "товар"
+        verbose_name_plural = "товары"
+
+        managed = True
+
+
+class Transaction(models.Model):
+    user = models.ForeignKey(User, unique=False, blank=True, null=True)
+    good = models.ForeignKey(Good, unique=False, blank=True, null=True)
+
+    def __str__(self):
+        return "{} купил {}".format(self.user, self.good)
+
+    class Meta:
+        db_table = 'transactions'
+
+        verbose_name = "покупка"
+        verbose_name_plural = "покупки"
+
+        managed = True
+
+
+class Project(models.Model):
+    users = models.ManyToManyField(User, blank=True)
+    title = models.CharField(max_length=120)
+    description = models.TextField()
+    git_link = models.CharField(max_length=200)
+    pdf = models.FileField(upload_to='presentations/')
+
+    def __str__(self):
+        return "{}".format(self.title)
+
+    class Meta:
+        verbose_name = "проект"
+        verbose_name_plural = "проекты"
+        db_table = "user_projects"

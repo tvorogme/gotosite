@@ -1,16 +1,22 @@
+import base64
 import json
+import os
 
+import pandas as pd
 from allauth.socialaccount.models import SocialAccount
-from django.contrib.auth import get_user_model
 from django.contrib.auth import logout, authenticate, login
+from django.core.files.base import ContentFile
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
+from django.utils import timezone
 
 from main.apps import SOCIALS
-from .forms import RegisterForm, validate_user_field
-from .lang.ru_RU import forms_translate
-from .models import User, Skill, Education, Achievement, City
+from .forms import validate_user_field
+from .models import *
+
+domain = '/new'
 
 
 ###########
@@ -28,6 +34,7 @@ def index(request):
     }
 
     return render(request, 'pages/index/index.html', context)
+    # return redirect('%s/signup' % domain)
 
 
 def about_us(request):
@@ -41,6 +48,13 @@ def about_us(request):
     return render(request, 'pages/about_us/about_us.html', context)
 
 
+def shop(request):
+    context = {
+        "goods": Good.objects.all(),
+    }
+    return render(request, 'pages/bank/shop.html', context)
+
+
 #############
 #
 # PROFILE PAGES
@@ -52,95 +66,123 @@ def profile_page(request, _id=None):
     user = request.user
 
     if user.is_anonymous():
-        return redirect('/')
+        return redirect('%s/login' % domain)
 
     # if he trying get his profile
     if _id == user.id:
         # go home
-        return redirect('/profile')
+        return redirect('%s/profile' % domain)
 
-    # true if we watching not ower profile
+    # if not user.email_verified:
+    #     return HttpResponse("Ссылка была выслана на %s" % user.email)
+
+    # true if we watching not own profile
     is_profile = False if _id else True
 
     # get profile information
     person = User.objects.filter(pk=user.id if is_profile else _id)[0]
 
+    projects = Project.objects.filter(users=request.user).all()
+
+    # Here we take all users for team <option> in profile
+    users = []
+    for profile in User.objects.all().values('id', 'first_name', 'middle_name', 'last_name'):
+
+        # Add all users except our one
+        if profile['id'] != user.id:
+            # One of all fields must be not None
+            if profile['first_name'] is not None or profile['middle_name'] is not None or \
+                            profile['last_name'] is not None:
+                # Generate one string
+                full_name = "{} {} {}".format(profile['first_name'], profile['middle_name'], profile['last_name'])
+
+                # Replace Nones and whitespaces
+                full_name = full_name.replace('None', '').replace('  ', ' ')
+
+                # Save user
+                users.append({'id': profile['id'], 'full_name': full_name})
+
     # render template with new information =)
     return render(request, 'pages/profile/profile.html', {'user': person,
+                                                          'projects': projects,
+                                                          'users': users,
                                                           'is_profile': is_profile})
+
+
+def signup_page(request):
+    if request.user.is_anonymous():
+        return render(request, 'pages/profile/signup.html')
+    else:
+        return redirect('%s/profile' % domain)
 
 
 def logout_wrapper(request):
     # just logout
     # no comments
     logout(request)
-    return redirect("/")
+    return redirect("%s/" % domain)
 
 
 def login_wrapper(request):
-    # try catch user with password and email
-    user = authenticate(username=request.POST['email'], password=request.POST['password'])
+    if 'email' in request.POST and 'password' in request.POST:
+        email = request.POST['email']
+        password = request.POST['password']
 
-    # if we found him
-    if user is not None:
-        # match request with user
-        login(request, user)
+        # try catch user with password and email
+        user = authenticate(username=email, password=password)
 
-        # explain that's all good
-        return HttpResponse(json.dumps("ok"), content_type="application/json")
-    else:
+        # if we found him
+        if user is not None:
+            # match request with user
+            login(request, user)
+
+            # explain that's all good
+            return HttpResponse(json.dumps("ok"), content_type="application/json")
+        else:
+            tmp_user = User.objects.filter(email=email)
+
+            if len(tmp_user) == 0:
+                user = User(email=email)
+                user.set_password(password)
+                user.save()
+
+                tmp_user = TempUser(user=user)
+                activation_key = tmp_user.gen_activation_key(email)
+                tmp_user.save()
+
+                send_mail(
+                    'Регистрация в бета тесте new.goto.msk.ru',
+                    '<a href="https://goto.msk.ru/new/activate/?key=%s">подтвердить почту</a>' % activation_key,
+                    'school@goto.msk.ru',
+                    [email],
+                    fail_silently=False,
+                )
+
+                tmp_user.backend = 'django.contrib.auth.backends.ModelBackend'
+                login(request, tmp_user)
+
+                return HttpResponse(json.dumps("email"), content_type="application/json")
+
         # explain that's all bad
         return HttpResponse(json.dumps("bad"), content_type="application/json")
+    return redirect('%s/' % domain)
 
 
-def register(request):
-    answers = {}
+def activation(request):
+    profile = TempUser.objects.filter(activation_key=request.GET['key'])
 
-    # Set all values to form
-    for val_name in ['first_name', 'last_name', 'email', 'password']:
-        answers[val_name] = request.POST[val_name] if val_name in request.POST else None
+    if len(profile) > 0:
+        profile = profile[0]
+        if not profile.user.email_verified:
+            if timezone.now() > profile.key_expires:
+                return HttpResponse('Key expires')
+            else:  # Activation successful
+                profile.user.email_verified = True
+                profile.user.save()
 
-    # Create form
-    form = RegisterForm(data=answers)
-
-    # here we will store all errors
-    all_errors = []
-
-    for field in form.fields:
-        if len(form[field].errors) > 0:
-            # translate field name
-            clear_form_name = forms_translate['RegisterForm'][field]
-
-            # get plane text
-            error_text = form[field].errors.as_text()
-
-            # Don't know why, but django prepend ' *' to error message
-            error_text = error_text[2:]
-
-            # add error to array
-            all_errors.append("{} {}".format(clear_form_name, error_text))
-
-    if form.is_valid():
-
-        # Get all values
-        username = form.cleaned_data.get('email')
-        raw_password = form.cleaned_data.get('password')
-        first_name = form.cleaned_data.get('first_name')
-        last_name = form.cleaned_data.get('last_name')
-
-        # Create user
-        user = get_user_model().objects.create_user(username, raw_password, first_name=first_name, last_name=last_name)
-
-        # https://stackoverflow.com/questions/6034763/django-attributeerror-user-object-has-no-attribute-backend-but-it-does
-        user.backend = 'django.contrib.auth.backends.ModelBackend'
-
-        login(request, user)
-
-        # explain that all is good
-        return HttpResponse(json.dumps("ok"), content_type="application/json")
-
-    else:
-        return HttpResponse(json.dumps(all_errors), content_type="application/json")
+                profile.user.backend = 'django.contrib.auth.backends.ModelBackend'
+                login(request, profile.user)
+    return redirect('%s/profile' % domain)
 
 
 def remove_social(request):
@@ -342,15 +384,60 @@ def add_achievement(request):
     values = {}
 
     for val in ['title', 'year', 'link', 'description']:
-        if val not in request.POST:
-            return HttpResponse()
-        else:
+        if val in request.POST and len(request.POST[val]) > 0:
             values[val] = request.POST[val]
+        else:
+            return HttpResponse()
 
     tmp_achievement = Achievement(**values)
     tmp_achievement.save()
 
     request.user.achievements.add(tmp_achievement)
+    request.user.save()
+    return HttpResponse()
+
+
+def add_project(request):
+    values = {}
+    for val in ['title', 'git_link', 'description']:
+        if val in request.POST and len(request.POST[val]) > 0:
+            values[val] = request.POST[val]
+        else:
+            return redirect('/new/profile/?message=Use all fields')
+
+    if 'pdf' in request.FILES:
+        file = request.FILES['pdf']
+        project_team = request.POST.getlist('team')
+
+        fileName, fileExtension = os.path.splitext(file.name)
+        if fileExtension == '.pdf':
+            values['pdf'] = file
+            tmp_project = Project(**values)
+            tmp_project.save()
+            team = [request.user]
+            if 'team' in request.POST:
+                for team_user_id in project_team:
+                    team_member = User.objects.filter(pk=int(team_user_id))[0]
+                    team.append(team_member)
+            tmp_project.users = team
+            tmp_project.save()
+        else:
+            return redirect('/new/profile/?message=Use pdf please')
+    else:
+        return redirect('/new/profile/?message=Add presentation please')
+    return redirect('/new/profile/')
+
+
+def update_avatar(request):
+    if request.method == 'POST' and not request.user.is_anonymous():
+        data = request.POST['avatar']
+        format, imgstr = data.split(';base64,')
+        ext = format.split('/')[-1]
+
+        data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
+        request.user.image = data
+        request.user.save()
+
     return HttpResponse()
 
 
@@ -366,3 +453,68 @@ def remove_achievement(request):
                 achievements.remove(achievement)
                 return HttpResponse("ok")
     return HttpResponse("bad")
+
+
+def remove_project(request):
+    # fixme: add output status code
+
+    if 'project_id' in request.POST:
+        projects = Project.objects.filter(pk=request.POST['project_id']).all()
+
+        if request.user in projects[0].users.all():
+            if len(projects) > 0:
+                if len(projects[0].users.all()) == 1:
+                    projects[0].delete()
+                else:
+                    projects[0].users.remove(request.user)
+                return HttpResponse("ok")
+
+    return HttpResponse("bad")
+
+
+def buy_good(request):
+    if not request.user.is_anonymous() and 'good_id' in request.GET:
+        good = Good.objects.filter(id=int(request.GET['good_id'])).all()
+
+        if len(good) > 0:
+            good = good[0]
+            if request.user.gotocoins >= good.price:
+                tmp_transaction = Transaction(user=request.user, good=good)
+                tmp_transaction.save()
+
+                request.user.gotocoins -= good.price
+                request.user.save()
+
+                return render(request, 'pages/bank/check.html', {
+                    'good': good,
+                    'transaction_id': Transaction.objects.count(),
+                    'to_complite': 4 - len(str(good.price)),
+                    'date': datetime.now()
+                })
+    return HttpResponse("Вы не можете купить этот товар")
+
+
+def generate_csv(request):
+    data = []
+    for user in User.objects.all():
+        tmp = [user.get_full_name()]
+
+        for val_name in ['email', 'city', 'phone_number', 'parent_phone_number']:
+            tmp.append(not bool(getattr(user, val_name) is None))
+
+        tmp.append(user.birthday)
+        tmp.append(bool(len(user.skills.all()) > 0))
+        tmp.append(bool(len(user.educations.all()) > 0))
+        tmp.append(bool(len(user.achievements.all()) > 0))
+
+        data.append(tmp)
+
+    data = pd.DataFrame(data,
+                        columns=['name', 'email', 'city', 'phone_number', 'parent_phone_number', 'birthday', 'skills',
+                                 'educations', 'achievements'])
+
+    data.sort(['city', 'phone_number', 'parent_phone_number', 'birthday', 'skills',
+               'educations', 'achievements'])
+    # fixme absolute path
+    data.to_csv('/root/gotosite/main/static/out.csv')
+    return redirect('/static/out.csv')
