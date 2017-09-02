@@ -33,8 +33,8 @@ def index(request):
         "user": request.user
     }
 
-    # return render(request, 'pages/index/index.html', context)
-    return redirect('%s/signup' % domain)
+    return render(request, 'pages/index/index.html', context)
+    # return redirect('%s/signup' % domain)
 
 
 def about_us(request):
@@ -158,6 +158,7 @@ def login_wrapper(request):
                     fail_silently=False,
                 )
 
+                tmp_user.backend = 'django.contrib.auth.backends.ModelBackend'
                 login(request, tmp_user)
 
                 return HttpResponse(json.dumps("email"), content_type="application/json")

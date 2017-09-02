@@ -14,7 +14,7 @@ urlpatterns = [
         url(r'^$', index, name='index'),
 
         # About
-        # url(r'^about_us/$', about_us, name='about_us'),
+        url(r'^about_us/$', about_us, name='about_us'),
 
         # Profile
         url(r'^profile/$', profile_page, name='SelfProfile'),

@@ -1,14 +1,17 @@
 from django.core.validators import ValidationError
 
+prefix = "/new"
+
 
 def menu_list(request):
     return {'menu_list': [
-        ['/new/bank/shop/', 'Магазин'],
-        # ['/camp', 'Лагерь'],
-        # ['/hackathon', 'Хакатон'],
-        # ['/lectoriy', 'Лекторий'],
-        # ['/coworking', 'Коворкинг'],
-        # ['/about_us', 'О нас']
+        # ['/new/bank/shop/', 'Магазин'],
+        ['%s/' % prefix, 'Главная'],
+        ['%s/camp/' % prefix, 'Лагерь'],
+        ['%s/hackathon/' % prefix, 'Хакатон'],
+        ['%s/lectoriy/' % prefix, 'Лекторий'],
+        ['%s/coworking/' % prefix, 'Коворкинг'],
+        ['%s/about_us/' % prefix, 'О нас']
     ]}
 
 

@@ -31,7 +31,7 @@ $("#login_tick").click(function () {
     var password_value = $("#login_placeholder_password").val();
     var crf = $("#login_placeholder_crf").val();
 
-    $.post("../login/", {
+    $.post("/new/login/", {
         email: email_value,
         password: password_value,
         csrfmiddlewaretoken: crf
@@ -58,7 +58,7 @@ $("#login_placeholder_register_register_button").click(function () {
     var first_name = names.split(" ")[0];
     var last_name = names.split(" ")[1];
 
-    $.post("../register/", {
+    $.post("/new/register/", {
         first_name: first_name,
         last_name: last_name,
         email: email,
