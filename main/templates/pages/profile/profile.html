@@ -13,7 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>{{ user.first_name }} {{ user.last_name }}</title>
+    <!-- Favicon -->
+    <link href={% static "/img/favicon.ico" %} rel="shortcut icon
+    "
+    type="image/vnd.microsoft.icon"/>
+
+    <title>{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %} {{ user.first_name }}{% endif %} GoTo Profile</title>
 
     <!--Шрифты-->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
@@ -35,35 +40,58 @@
     <!-- Стиль UI -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+    <!-- Добавление команды -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.7.0/chosen.min.css">
 
     <!-- Автоматическая высота для textarea -->
     <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropit/0.5.1/jquery.cropit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pica/3.0.6/pica.min.js"></script>
 </head>
 <body>
-
 <input id="profile_page_csrf_token" name="csrfmiddlewaretoken" type="hidden"
        value="{{ csrf_token }}">
 
 {% include 'helpers/menu.html' %}
+
+<div class="image-editor">
+    <table>
+        <tr>
+            <td>
+                <div class="cropit_wrapper">
+                    <input type="file" class="cropit-image-input">
+                    <div class="cropit-preview"></div>
+                    <br>
+                    <input type="range" class="cropit-image-zoom-input">
+                    <br>
+                    <button class="export">Сохранить</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
 
 <div id="profile_container">
     <i id="save_ico" onclick="save()" class="fa fa-floppy-o fa-2x" aria-hidden="true"></i>
 
     <div class="whitespace"></div>
     <div class="header">
-        <div class="col-md-3"><img class="profile-img"
-                                   src="{% if user.image %}
+        <div class="profile-img-wraper"><img onclick="change_avatar()" class="profile-img"
+                                             src="{% if user.image %}
                                             {{ user.image.url }}
                                         {% else %}
-                                            https://avatars1.githubusercontent.com/u/19264196?v=4&s=460
+                                            https://www.forextester.ru/templates/pic/Testimonials/noavatar-m.jpg
                                         {% endif %}
                                        ">
         </div>
         <div class="col-md-9"><input placeholder="Фамилия Имя Отчество"
                                      type="text" {{ is_profile|yesno:",readonly" }} id="name"
-                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}{{ user.first_name }}{% endif %} {% if  user.middle_name != None %}{{ user.middle_name }}{% endif %}">
-
+                {% if user.first_name != None or user.last_name != None or user.middle_name != None %}
+                                     value="{% if  user.last_name != None %}{{ user.last_name }}{% endif %}{% if  user.first_name != None %} {{ user.first_name }}{% endif %}{% if  user.middle_name != None %} {{ user.middle_name }}{% endif %}"
+                {% endif %}
+        >
 
             <p class="label"><input placeholder="E-mail" class="after_name"
                                     type="text" {{ is_profile|yesno:",readonly" }}
@@ -86,7 +114,8 @@
             {% if request.path != '/profile' and user.birthday != None or is_profile %}
 
                 <p class="label"><input placeholder="День рождения" class="after_name"
-                                        type="date" {{ is_profile|yesno:",readonly" }} value="{% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
+                                        type="date" {{ is_profile|yesno:",readonly" }}
+                                        value="{% if  user.birthday != None %}{{ user.birthday|date:"Y-m-d" }}{% endif %}"
                                         id="birthday">
                 </p>
             {% endif %}
@@ -121,7 +150,7 @@
 
                 {% else %}
                     <p class="social-add">
-                        <a href="{% provider_login_url "vk" process="connect" next="/profile" %}">Добавить</a>
+                        <a href="{% provider_login_url "vk" process="connect" next="/new/profile" %}">Добавить</a>
                     </p>
                 {% endif %}
             </div>
@@ -143,7 +172,7 @@
                     </p>
                 {% else %}
                     <p class="social-add">
-                        <a href="{% provider_login_url "github" process="connect" next="/profile" %}">Добавить</a>
+                        <a href="{% provider_login_url "github" process="connect" next="/new/profile" %}">Добавить</a>
                     </p>
                 {% endif %}
             </div>
@@ -164,7 +193,8 @@
                         </a>
                     </p>
                 {% else %}
-                    <p class="social-add"><a href="{% provider_login_url "gitlab" process="connect" next="/profile" %}">Добавить</a>
+                    <p class="social-add"><a
+                            href="{% provider_login_url "gitlab" process="connect" next="/new/profile" %}">Добавить</a>
                     </p>
                 {% endif %}
             </div>
@@ -342,7 +372,7 @@
                     </p>
                 </div>
 
-                <p onclick="save_education()" id="add_education_button">Добавить</p>
+                <p onclick="save_education()" id="add_education_button">Сохранить образование</p>
             </div>
         </div>
 
@@ -377,13 +407,13 @@
             {% endfor %}
 
             <div id="add_achievement" class="{% if user.achievements.all.0 %}not-first{% endif %}">
-                <h3><input id="add_achievement_title" placeholder="Загаловок"></h3>
+                <h3><input id="add_achievement_title" placeholder="Заголовок"></h3>
                 <p class="date"><input id="add_achievement_date" type="number" min="1942" max="2070"
                                        value="2017"></p>
                 <input id="add_achievement_url" placeholder="Ссылка">
                 <textarea id="add_achievement_description" placeholder="Описание"></textarea>
 
-                <p onclick="add_achievement_final_step()" id="add_achievement_final_button">Добавить</p>
+                <p onclick="add_achievement_final_step()" id="add_achievement_final_button">Сохранить достижение</p>
             </div>
 
             <div class="col-3 {% if user.achievements.all.0 %}not-first{% endif %}" id="add_achievement_button">
@@ -399,70 +429,70 @@
             <h2>Проекты</h2>
         </div>
 
-
         <div class="col-md-9">
-            <div class="col-3">
-                <p class="add">Добавить</p>
-            </div>
-
             {% for project in projects %}
-                <form id="project_{{ project.id }}" method="post" action="/project/update">
-
-                    <a onclick="del_project({{ project.id }})" class="field close">
-                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                <div class="achievement {% if not forloop.first %}not-first{% endif %}">
+                    <a class="remove-achievement" onclick="remove_project({{ project.id }})">
+                        <svg width="15" version="1.1" xmlns="http://www.w3.org/2000/svg" height="15"
+                             viewBox="0 0 64 64"
+                             enable-background="new 0 0 64 64">
+                            <g>
+                                <path d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"></path>
+                            </g>
+                        </svg>
                     </a>
 
-
-                    <h3 class="value"><a href="{{ project.url }}">{{ project.name }}</a></h3>
-
-
-                    <p class="date value">{{ project.date_started.year }}</p>
-
-
-                    <br><br>
-                    <p class="team">
-                        Команда:
-
-                        {% for user in project.team %}
-                            <a href="/profile/{{ user.id }}">{{ user.first_name }}
-                                {{ user.last_name }}{% if loop.last %}, {% endif %}</a>
-                        {% endfor %}
-                    </p>
-
-
-                    <div>
-                        <input name="id" type="hidden" value="{{ project.id }}">
-                        <input name="delete" type="hidden">
-                        <input placeholder="Название" class="project_name field" name="title" type="text"
-                               value="{{ project.name }}">
-                        <input placeholder="Ссылка" class="project_url field" name="title" type="text"
-                               value="{{ project.url }}">
-
-                    </div>
-
-
-                    <textarea {{ is_profile|yesno:",readonly" }} placeholder="Описание"
-                                                                 name="description"
-                                                                 onclick="edit_project({{ project.id }})"
-                                                                 class="description">{{ project.description }}</textarea>
-                </form>
+                    <h3><a href="{{ project.git_link }}">{{ project.title }}</a></h3>
+                    <p class="description">{{ project.description }}</p>
+                </div>
             {% endfor %}
+
+            <div id="add_project" class="{% if projects.0 %}not-first{% endif %}">
+                <form id="add_project_form" enctype="multipart/form-data" action="/new/profile/add_project/"
+                      method="post">
+                    <input name="csrfmiddlewaretoken" type="hidden"
+                           value="{{ csrf_token }}">
+                    <h3><input id="add_project_title" name="title" placeholder="Название"></h3>
+                    <br>
+
+                    <input name="git_link" id="add_project_url" placeholder="Ссылка на код">
+                    <textarea name="description" id="add_project_description" placeholder="Описание"></textarea>
+                    <br>
+
+
+                    <select name="team" title="team" class="chosen-select" data-placeholder="Команда" multiple
+                            tabindex="3">
+                        <option value=""></option>
+                        {% for user in users %}
+                            <option value="{{ user.id }}">{{ user.full_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <input type="file" name="pdf" id="presentation_upload" class="inputfile">
+                    <label id="presentation_upload_label" for="presentation_upload"><span>Добавить презентацию</span></label>
+                    <br>
+                    <p onclick="$('#add_project_form').submit()" id="add_project_final_button">Сохранить проект</p>
+                </form>
+            </div>
+
+            <div class="col-3 {% if projects.0 %}not-first{% endif %}" id="add_projects_button">
+                <p class="add" onclick="add_project()">Добавить</p>
+            </div>
         </div>
-
-
     </div>
 
     <div class="whitespace"></div>
 
     <div class="block-wrapper">
         <div class="col-md-3">
-            <h2>Опыт</h2>
+            <h2>Счёт</h2>
         </div>
 
 
         <div class="col-md-9">
             <div class="col-3">
-                <p class="add">Добавить</p>
+                <p>{{ user.gotocoins }}ĜŦ</p>
             </div>
         </div>
     </div>
@@ -472,10 +502,26 @@
     <!-- Работа с формами -->
     <script src={% static "/js/profile/forms.js" %}></script>
 
+    <!-- 4 утра -->
+    <script src={% static "/js/profile/avatar.js" %}></script>
+
     <!-- Автодополнение скиллов, препов и кураторов -->
     <script src={% static "/js/profile/autocomplite.js" %}></script>
+
+    <script src={% static "/js/profile/custom-file-input.js" %}></script>
+
+    <!-- Добавление команды -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.0/chosen.jquery.min.js"></script>
 {% endif %}
 
+<a id='help_me' href="https://t.me/tvorogme">Сообщить о проблеме</a>
+<style>
+    #help_me {
+        position: fixed;
+        bottom: 5px;
+        right: 5px;
+    }
+</style>
 
 </body>
 </html>

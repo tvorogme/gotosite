@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GoTo Coins Shop</title>
+    {% load static %}
+
+    <!-- Favicon -->
+    <link href={% static "/img/favicon.ico" %} rel="shortcut icon
+    "
+    type="image/vnd.microsoft.icon"/>
+
+    <!-- Большая не нужная библиотека -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!--Шрифты-->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
+
+    <!--Бутстрап-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+
+    <style>
+        body {
+            color: #080808 !important;
+        }
+
+        .col-md-3 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .buy {
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+        }
+
+        p {
+            text-align: left;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .desc {
+            height: 100px;
+        }
+
+        h1 {
+            font-size: 23px !important;
+            line-height: 30px;
+            height: 48px;
+        }
+
+        .img-wrapper {
+            height: 100px;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+        }
+
+        .whitespace {
+            height: 50px;
+        }
+    </style>
+
+</head>
+<body>
+{% include 'helpers/menu.html' %}
+<div class="container">
+    <div class="whitespace"></div>
+    <div class="row">
+        {% for good in goods %}
+            <div class="col-md-3">
+                <div class="shop-item">
+                    <div class="img-wrapper">
+                        <table>
+                            <tr>
+                                <td valign="middle">
+                                    <img src="{{ good.image.url }}">
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <h1>{{ good.title }}</h1>
+                    <p class="desc">{{ good.description }}<br></p>
+                    <p>Цена: {{ good.price }}ĜŦ <a href="/new/bank/buy/?good_id={{ good.id }}" class="buy">купить</a></p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

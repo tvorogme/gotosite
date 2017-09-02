@@ -11,25 +11,20 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+# from .settings_secret import *
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+SECRET_KEY = 'usldaklsdkasdkamskldamlslqwi09-801-93-ijqijwkqwnfQ!##$!'
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u4ycjix$7b)u*(2_nl$hc5f*cka)n_3cw+hu(q+3-by$kn@801'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+MAX_UPLOAD_SIZE = 5242880
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['goto.msk.ru', 'localhost']
 
 # Application definition
 
 INSTALLED_APPS = [
-    'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,8 +38,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.gitlab',
-    'allauth.socialaccount.providers.vk'
+    'allauth.socialaccount.providers.vk',
 
+    'main.apps.MainConfig'
 ]
 
 MIDDLEWARE = [
@@ -127,7 +123,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = '/django_media/'
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -143,3 +139,6 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 SITE_ID = 1
+STATIC_ROOT = '/root/gotosite/main/static'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

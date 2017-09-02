@@ -139,4 +139,9 @@ fabric.properties
 .idea/
 
 # Test db
-test.sqlite
+db.sqlite3
+
+# Media
+media/
+
+gotosite/settings_secret.py

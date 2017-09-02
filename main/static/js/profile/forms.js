@@ -52,7 +52,7 @@ function save() {
 
     $.ajax({
         type: "POST",
-        url: '/profile/edit/',
+        url: '../profile/edit/',
         data: request_data,
         dataType: 'json'
     }).done(function (data) {
@@ -87,7 +87,7 @@ $(document).ready(function () {
 function del_social(social) {
     $.ajax({
         type: "POST",
-        url: "/profile/edit/",
+        url: "../profile/edit/",
         data: {
             provider: social,
             csrfmiddlewaretoken: $("#profile_page_csrf_token").val()
@@ -163,7 +163,7 @@ function save_education() {
 
     $.ajax({
         type: "POST",
-        url: '/profile/edit/',
+        url: '../profile/edit/',
         data: request_data,
         dataType: 'json'
     }).done(function (data) {
@@ -178,7 +178,7 @@ function save_education() {
 function remove_education(_id) {
     $.ajax({
         type: "POST",
-        url: '/profile/remove_education/',
+        url: '../profile/remove_education/',
         data: {"education_id": _id, "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()},
         dataType: 'json'
     });
@@ -188,6 +188,12 @@ function remove_education(_id) {
 function add_achievement() {
     $("#add_achievement").css('display', 'block');
     $("#add_achievement_button").css('display', 'none')
+}
+
+function add_project() {
+    $("#add_project").css('display', 'block');
+    $("#add_projects_button").css('display', 'none');
+    $(".chosen-select").chosen({width: "calc(100% - 15px)", search_contains: true});
 }
 
 function add_achievement_final_step() {
@@ -206,7 +212,7 @@ function add_achievement_final_step() {
 
     $.ajax({
         type: "POST",
-        url: '/profile/add_achievement/',
+        url: '../profile/add_achievement/',
         data: request_data,
         dataType: 'json'
     });
@@ -216,9 +222,76 @@ function add_achievement_final_step() {
 function remove_achievement(_id) {
     $.ajax({
         type: "POST",
-        url: '/profile/remove_achievement/',
+        url: '../profile/remove_achievement/',
         data: {"achievement_id": _id, "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()},
         dataType: 'json'
     });
     window.location.reload();
 }
+
+
+function remove_project(_id) {
+    $.ajax({
+        type: "POST",
+        url: '../profile/remove_project/',
+        data: {"project_id": _id, "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()},
+        dataType: 'json'
+    });
+    window.location.reload();
+}
+
+function add_project_final_step() {
+    var title = $("#add_project_title").val();
+    var link = $("#add_project_url").val();
+    var description = $("#add_project_description").val();
+
+    var request_data = {
+        'title': title,
+        'link': link,
+        'description': description,
+        "csrfmiddlewaretoken": $("#profile_page_csrf_token").val()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: '../profile/add_achievement/',
+        data: request_data,
+        dataType: 'json'
+    });
+    window.location.reload();
+}
+
+/*
+	By Osvaldas Valutis, www.osvaldas.info
+	Available for use under the MIT License
+*/
+
+'use strict';
+
+;( function ( document, window, index )
+{
+	var inputs = document.querySelectorAll( '.inputfile' );
+	Array.prototype.forEach.call( inputs, function( input )
+	{
+		var label	 = input.nextElementSibling,
+			labelVal = label.innerHTML;
+
+		input.addEventListener( 'change', function( e )
+		{
+			var fileName = '';
+			if( this.files && this.files.length > 1 )
+				fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+			else
+				fileName = e.target.value.split( '\\' ).pop();
+
+			if( fileName )
+				label.querySelector( 'span' ).innerHTML = fileName;
+			else
+				label.innerHTML = labelVal;
+		});
+
+		// Firefox bug fix
+		input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+		input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+	});
+}( document, window, 0 ));
