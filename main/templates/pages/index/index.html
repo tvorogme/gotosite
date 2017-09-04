@@ -86,16 +86,17 @@ type="image/vnd.microsoft.icon"/>
             <td valign="middle">
                 {% include 'helpers/logo.html' %}
             </td>
-        <tr>
+        </tr>
         </tbody>
     </table>
+
+    <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src={% static "/img/down_arrow.png" %}
+            style="display: none;">
 
     <div class="text">
         Образовательный проект в сфере высоких технологий
     </div>
 
-    <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src={% static "/img/down_arrow.png" %}
-            style="display: none;">
 </div>
 
 <!--Тетрис-->

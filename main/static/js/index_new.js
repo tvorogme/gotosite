@@ -379,7 +379,7 @@ setTimeout(function () {
         get_slide(1);
         next_down();
     }
-}, 3000);
+}, 1600);
 
 $('#question-footer-question ').click(function () {
     $(this).animate({
