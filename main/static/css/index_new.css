@@ -1406,8 +1406,8 @@ textarea:focus {
 }
 
 #subscribe_submit {
-    height: 77px;
-    margin-top: 28px;
+    height: 50px;
+    margin-top: 41.5px;
     padding: 0;
     position: absolute;
     left: -18px;

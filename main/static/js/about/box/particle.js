@@ -12,11 +12,11 @@ function Particle(x, y, r, fixed, styles) {
     this.isOffScreen = function () {
         var pos = this.body.position;
         return (pos.y > height + 100);
-    }
+    };
 
     this.removeFromWorld = function () {
         World.remove(world, this.body);
-    }
+    };
 
     this.show = function (p_five_obj) {
         var pos = this.body.position;
@@ -33,7 +33,7 @@ function Particle(x, y, r, fixed, styles) {
 
         if (styles["text"]) {
             p_five_obj.textAlign(p_five_obj.CENTER, p_five_obj.CENTER);
-            p_five_obj.textSize(20);
+            p_five_obj.textSize(this.r * 0.2);
             p_five_obj.text(styles["text"], 0, 0, this.r * 2, this.r * 2);
         }
         p_five_obj.pop();
