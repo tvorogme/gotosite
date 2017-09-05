@@ -161,7 +161,7 @@ function rad() {
 
                 TweenLite.to(cool_clas, 2, {
                     r4: 90,
-                    x5: $('#but5').position().left + 85, // подробности о проекте
+                    x5: $('#but5').position().left + 94, // преподавать
                     y5: $('#but5').position().top + 50,
                     ease: Power4.easeOut,
                     onCompleteParams: rad4()
@@ -170,7 +170,7 @@ function rad() {
 
             TweenLite.to(cool_clas, 2, {
                 r3: 120,
-                x4: $('#but4').position().left + 99, // преподавать
+                x4: $('#but4').position().left + 93, // подписаться
                 y4: $('#but4').position().top + 43,
                 ease: Power4.easeOut,
                 onCompleteParams: rad3()
@@ -179,7 +179,7 @@ function rad() {
 
         TweenLite.to(cool_clas, 2, {
             r2: 100,
-            x3: $('#but3').position().left + 138, //принять участие
+            x3: $('#but3').position().left + 138, // принять участие
             y3: $('#but3').position().top + 110,
             ease: Power4.easeOut,
             onCompleteParams: rad2()
@@ -201,7 +201,7 @@ $("#component-2").click(function () {
     $(".back-hochu").toggle();
     step = 1;
     TweenLite.to(cool_clas, 2, {
-        x1: $('#but1').position().left + 90, // подписаться
+        x1: $('#but1').position().left + 75, // подробности о проекте
         y1: $('#but1').position().top + 50,
         ease: Power4.easeOut,
         onCompleteParams: rad()
