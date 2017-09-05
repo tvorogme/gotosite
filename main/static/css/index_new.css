@@ -1021,15 +1021,16 @@ body {
     display: none;
 }
 
-#what_we_want{
+#what_we_want {
     display: none;
     color: #080808;
 }
 
-#what_we_want a:hover{
+#what_we_want a:hover {
     color: rgb(255, 140, 102);
     text-decoration: none;
 }
+
 .input {
     position: relative;
     z-index: 1;
@@ -1249,6 +1250,13 @@ a, button {
     border: none;
     padding: 10px;
     border-bottom: 1px solid white;
+    width: 80%;
+    min-width: 400px;
+}
+
+#question-footer-email {
+    width: 80%;
+    min-width: 400px;
 }
 
 #pseudo-helper-kostil {
