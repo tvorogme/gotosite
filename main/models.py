@@ -258,3 +258,19 @@ class Project(models.Model):
         verbose_name = "проект"
         verbose_name_plural = "проекты"
         db_table = "user_projects"
+
+
+class Event(models.Model):
+    title = models.CharField(max_length=120, unique=True)
+    link = models.CharField(max_length=120, blank=True, null=True, unique=True)
+    description = models.TextField(blank=True, null=True)
+    image = models.FileField(upload_to='events/', blank=True, null=True)
+    our_event = models.BooleanField(default=False)
+    participants = models.ManyToManyField(User, blank=True)
+
+    def __str__(self):
+        return "{}".format(self.title)
+
+    class Meta:
+        verbose_name = "мероприятия"
+        verbose_name_plural = "мероприятие"
