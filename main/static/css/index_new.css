@@ -967,7 +967,6 @@ body {
     padding: 40px 40px;
     text-decoration: none;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #but1:hover {
@@ -980,7 +979,6 @@ body {
     padding: 40px 40px;
     font-size: 27px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #component-2 {
@@ -993,7 +991,6 @@ body {
     padding: 60px 60px;
     font-size: 37px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #but4 {
@@ -1002,7 +999,6 @@ body {
     padding: 30px 30px;
     font-size: 22px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #but5 {
@@ -1011,7 +1007,6 @@ body {
     padding: 40px 40px;
     font-size: 18px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #but6 {
@@ -1020,22 +1015,22 @@ body {
     padding: 40px 40px;
     font-size: 30px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 #come_to_us_brother {
     display: none;
 }
 
-#what_we_want{
+#what_we_want {
     display: none;
     color: #080808;
 }
 
-#what_we_want a:hover{
+#what_we_want a:hover {
     color: rgb(255, 140, 102);
     text-decoration: none;
 }
+
 .input {
     position: relative;
     z-index: 1;
@@ -1230,10 +1225,6 @@ a, button {
     height: 30px;
 }
 
-.button-big-picture {
-    letter-spacing: 1px !important;
-}
-
 #question-footer input {
     background: rgba(0, 0, 0, 0);
     font-size: 25px;
@@ -1259,6 +1250,13 @@ a, button {
     border: none;
     padding: 10px;
     border-bottom: 1px solid white;
+    width: 80%;
+    min-width: 400px;
+}
+
+#question-footer-email {
+    width: 80%;
+    min-width: 400px;
 }
 
 #pseudo-helper-kostil {
@@ -1304,7 +1302,7 @@ textarea:focus {
 #in_helper {
     position: absolute;
     left: calc(50% - 21px);
-    bottom: 50px;
+    top: calc(100vh - 50px);
     cursor: pointer;
     z-index: 100;
     height: 23px;
@@ -1408,8 +1406,8 @@ textarea:focus {
 }
 
 #subscribe_submit {
-    height: 77px;
-    margin-top: 28px;
+    height: 50px;
+    margin-top: 41.5px;
     padding: 0;
     position: absolute;
     left: -18px;

@@ -221,7 +221,7 @@ function packup() {
             .filter(function (d) {
                 return !d.children;
             }))
-        .enter().append("g");
+        .enter().append("g").attr("class", "my_bubble_wrapper");
 
     els.append("circle")
         .attr("r", function (d) {
@@ -255,7 +255,9 @@ function packup() {
             return "rgb(255, 140, 102)"
         }
     }).on("click", function (d) {
-        toggle_popup(d.id);
+        if (d.url.indexOf("https") !== -1) {
+            toggle_popup(d.id);
+        }
     });
 
     els.append("text").text(function (d) {

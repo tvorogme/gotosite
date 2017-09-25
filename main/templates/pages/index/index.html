@@ -86,16 +86,17 @@ type="image/vnd.microsoft.icon"/>
             <td valign="middle">
                 {% include 'helpers/logo.html' %}
             </td>
-        <tr>
+        </tr>
         </tbody>
     </table>
+
+    <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src={% static "/img/down_arrow.png" %}
+            style="display: none;">
 
     <div class="text">
         Образовательный проект в сфере высоких технологий
     </div>
 
-    <img onclick="get_slide(slide + 1);next_down();" id="in_helper" src={% static "/img/down_arrow.png" %}
-            style="display: none;">
 </div>
 
 <!--Тетрис-->
@@ -500,11 +501,11 @@ type="image/vnd.microsoft.icon"/>
 
     </div>
 
-    <a onclick="come_to_us_brother()" id="but1">Подписаться</a>
-    <a onclick="partners_grid()" id="but2">Партнёры</a>
+    <a onclick="partners_grid()" id="but1">Партнёры</a>
+    <a id="but2">О проекте</a>
     <a onclick="take_part()" id="but3">Принять <br> участие</a>
-    <a onclick="what_we_want()" id="but4">Преподавать</a>
-    <a id="but5">О проекте</a>
+    <a onclick="come_to_us_brother()" id="but4">Подписаться</a>
+    <a onclick="what_we_want()" id="but5">Преподавать</a>
     <a id="but6">Новости</a>
 </div>
 
@@ -586,8 +587,8 @@ type="image/vnd.microsoft.icon"/>
 <script src={% static "/js/animated/EasePack.min.js" %}></script>
 <script src={% static "/js/animated/rAF.js" %}></script>
 
-<!--Задний фон первого слайда-->
-<script src={% static "/js/animated/beatuful-header.js" %}></script>
+{#<!--Задний фон первого слайда-->#}
+{#<script src={% static "/js/animated/beatuful-header.js" %}></script>#}
 
 <!--Анимация логотипа-->
 <script src={% static "/js/logo/logo_animation.js" %}></script>
