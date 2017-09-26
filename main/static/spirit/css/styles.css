@@ -11,8 +11,30 @@ body {
     font-weight: 300;
 }
 
+a:hover {
+    cursor: pointer;
+    text-decoration: none !important;
+    color: inherit;
+}
+
+h1 a {
+    color: white;
+}
+
 .green {
     background: #49B398;
+}
+
+#pic1 {
+    background: url(/static/spirit/img/20170926-photo_2017-09-26_23-36-53.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#pic2 {
+    background: url(/static/spirit/img/photo_2017-09-26_23-23-02.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .orange {

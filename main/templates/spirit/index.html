@@ -9,11 +9,14 @@
           content="GoTo - серия образовательных программ в области IT, робототехники и анализа данных">
     <link href={% static "/spirit/css/styles.css" %} rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href={% static "/img/favicon.ico" %} type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--Красивые значки-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Большая не нужная библиотека -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     <!--Бутстрап-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -21,6 +24,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -519,7 +523,7 @@
         <h4><a onclick="toggle_login_placeholder()">Вход</a></h4>
     </div>
     <div id="about-us" class="footer-block">
-        <h4><a href="about_us.html">О нас</a></h4>
+        <h4><a href="about_us">О нас</a></h4>
     </div>
     <div class="footer-block">
         <div>

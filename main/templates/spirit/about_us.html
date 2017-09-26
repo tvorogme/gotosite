@@ -1,14 +1,14 @@
 <!doctype html>
 <html>
-
+{% load static %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О нас</title>
     <meta name="description" content="Образовательные программы GoTo помогают молодежи со всей России воплощать в жизнь самые смелые идеи, получать знания у практикующих специалистов и предпринимателей, находить единомышленников и необходимые ресурсы, обрести мотивацию к дальнейшему саморазвитию. Участник каждой школы, лагеря, интенсива или хакатона.">
-    <link href="css/styles.css" rel="stylesheet">
+    <link href={% static "/spirit/css/styles.css" %} rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href={% static "/img/favicon.ico" %} type="image/x-icon">
 </head>
 
 <body>
@@ -31,8 +31,8 @@
                     </div>
 
                 </div>
-                <div class="pic"><img class="pic" src="img/20170926-photo_2017-09-26_23-36-53.jpg"></div>
-                <div class="pic"><img class="pic" src="img/photo_2017-09-26_23-23-02.jpg"></div>
+                <div class="pic" id="pic1"></div>
+                <div class="pic" id="pic2"></div>
                 <div class="chess-block orange">
                     <div>
                         <article>
@@ -198,7 +198,7 @@
 
     <footer class="footer">
         <div id="about-us" class="footer-block">
-            <h4><a href="index.html">Главная</a></h4>
+            <h4><a href="/">Главная</a></h4>
         </div>
         <div class="footer-block">
             <div>

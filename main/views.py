@@ -143,21 +143,21 @@ def login_wrapper(request):
                 user = User(email=email)
                 user.set_password(password)
                 user.save()
+                #
+                # tmp_user = TempUser(user=user)
+                # activation_key = tmp_user.gen_activation_key(email)
+                # tmp_user.save()
+                #
+                # send_mail(
+                #     'Регистрация в бета тесте new.goto.msk.ru',
+                #     '<a href="https://goto.msk.ru/new/activate/?key=%s">подтвердить почту</a>' % activation_key,
+                #     'school@goto.msk.ru',
+                #     [email],
+                #     fail_silently=False,
+                # )
 
-                tmp_user = TempUser(user=user)
-                activation_key = tmp_user.gen_activation_key(email)
-                tmp_user.save()
-
-                send_mail(
-                    'Регистрация в бета тесте new.goto.msk.ru',
-                    '<a href="https://goto.msk.ru/new/activate/?key=%s">подтвердить почту</a>' % activation_key,
-                    'school@goto.msk.ru',
-                    [email],
-                    fail_silently=False,
-                )
-
-                tmp_user.backend = 'django.contrib.auth.backends.ModelBackend'
-                login(request, tmp_user)
+                user.backend = 'django.contrib.auth.backends.ModelBackend'
+                login(request, user)
 
                 return HttpResponse(json.dumps("email"), content_type="application/json")
 
