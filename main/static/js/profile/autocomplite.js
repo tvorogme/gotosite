@@ -74,8 +74,8 @@ function add_autocomplite_city(field) {
     });
 }
 
-add_autocomplite_city($('#city'));
-add_autocomplite_city($('#add_education_field_city'));
+// add_autocomplite_city($('#city'));
+// add_autocomplite_city($('#add_education_field_city'));
 
 function add_autocomplite_education_name(field, type) {
     field.on("keydown", function (event) {
@@ -100,12 +100,14 @@ function add_autocomplite_education_name(field, type) {
     });
 }
 
-add_autocomplite_education_name($('#add_education_school_name'), 1);
-add_autocomplite_education_name($('#add_education_vuz_name'), 0);
+// add_autocomplite_education_name($('#add_education_school_name'), 1);
+// add_autocomplite_education_name($('#add_education_vuz_name'), 0);
 
 var current_input_field_number = 0;
 
 function add_input_field() {
+    $("#save_ico").css('display', 'block');
+
     var html = function (_id) {
         return '<div id="skill_wrapper" class="col-3"><input class="after_name skill" id="new_skill_' + _id + '" placeholder="Навык" type="text"></div>'
     };
@@ -115,8 +117,9 @@ function add_input_field() {
     $("#add_wrapper").before(html(current_input_field_number));
     update_autocomplete("#new_skill_" + current_input_field_number);
 
-    $("#new_skill_" + current_input_field_number).focus();
-    $("#save_ico").css('display', 'block');
+    setTimeout(function () {
+        $("#new_skill_" + current_input_field_number).focus();
+    }, 300);
 }
 
 $(update_autocomplete());

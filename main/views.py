@@ -15,8 +15,9 @@ from django.utils import timezone
 from main.apps import SOCIALS
 from .forms import validate_user_field
 from .models import *
+from .context_processors import prefix
 
-domain = '/new'
+domain = prefix
 
 
 ###########

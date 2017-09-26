@@ -40,6 +40,7 @@ function next_up() {
 function set_position() {
 
 }
+
 function get_slide(n) {
     if (lock == false) {
         if (n == 0) {
@@ -245,6 +246,7 @@ function get_slide(n) {
         return 0;
     }
 }
+
 var elem = window;
 if (elem.addEventListener) {
     if ('onwheel' in document) {
@@ -372,6 +374,8 @@ function awesome() {
 
 $(document).resize(function () {
     set_position();
+    webshims.setOptions('forms-ext', {types: 'date'});
+    webshims.polyfill('forms forms-ext');
 });
 
 setTimeout(function () {

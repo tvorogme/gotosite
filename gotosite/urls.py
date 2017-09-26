@@ -6,7 +6,7 @@ from django.contrib import admin
 from main.views import *
 
 urlpatterns = [
-    url(r'^new/', include([
+    # url(r'^/', include([
         # Admin
         url(r'^admin/', admin.site.urls),
 
@@ -47,7 +47,7 @@ urlpatterns = [
         # Bank
         url(r'^bank/shop/', shop),
         url(r'^bank/buy/', buy_good)
-    ]))
+    # ]))
 ]
 
 if settings.DEBUG:

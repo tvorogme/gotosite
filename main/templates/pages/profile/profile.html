@@ -18,7 +18,8 @@
     "
     type="image/vnd.microsoft.icon"/>
 
-    <title>{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %} {{ user.first_name }}{% endif %} GoTo Profile</title>
+    <title>{% if  user.last_name != None %}{{ user.last_name }}{% endif %} {% if  user.first_name != None %}
+        {{ user.first_name }}{% endif %} GoTo Profile</title>
 
     <!--Шрифты-->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
@@ -470,7 +471,8 @@
                     <br>
 
                     <input type="file" name="pdf" id="presentation_upload" class="inputfile">
-                    <label id="presentation_upload_label" for="presentation_upload"><span>Добавить презентацию</span></label>
+                    <label id="presentation_upload_label"
+                           for="presentation_upload"><span>Добавить презентацию</span></label>
                     <br>
                     <p onclick="$('#add_project_form').submit()" id="add_project_final_button">Сохранить проект</p>
                 </form>
@@ -512,9 +514,12 @@
 
     <!-- Добавление команды -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.0/chosen.jquery.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
 {% endif %}
 
-<a id='help_me' href="https://t.me/tvorogme">Сообщить о проблеме</a>
+<a id='help_me' href="mailto:school@goto.msk.ru">Сообщить о проблеме</a>
 <style>
     #help_me {
         position: fixed;

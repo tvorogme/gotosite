@@ -61,7 +61,9 @@ function save() {
         }
     });
 
-    window.location.reload();
+    setTimeout(function () {
+        location.reload(true);
+    }, 300);
 }
 
 var project_edit = -1;
