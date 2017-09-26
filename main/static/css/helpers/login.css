@@ -16,6 +16,8 @@
     height: 100vh;
     display: none;
     z-index: 1001;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 #login_placeholder_socials {
@@ -74,9 +76,9 @@
 }
 
 /*#login_placeholder svg {*/
-    /*fill: white;*/
-    /*position: absolute;*/
-    /*top: -4px;*/
+/*fill: white;*/
+/*position: absolute;*/
+/*top: -4px;*/
 /*}*/
 
 #login_placeholder_forgot_back a {
@@ -86,6 +88,11 @@
 #login_placeholder_forgot_back a:hover {
     text-decoration: none;
     color: #4bb199;
+    cursor: pointer;
+}
+
+#login_placeholder_forgot_back{
+    color: white;
 }
 
 #login_placeholder_register_register_button {
@@ -100,7 +107,7 @@
     color: #4bb199;
 }
 
-#tick_submit_wrapper{
+#tick_submit_wrapper {
     height: 70px;
 }
 
@@ -108,6 +115,6 @@
     cursor: pointer;
 }
 
-#login_tick:hover .cls-1{
+#login_tick:hover .cls-1 {
     stroke: rgb(67, 180, 152) !important;
 }

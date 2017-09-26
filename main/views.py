@@ -15,9 +15,6 @@ from django.utils import timezone
 from main.apps import SOCIALS
 from .forms import validate_user_field
 from .models import *
-from .context_processors import prefix
-
-domain = prefix
 
 
 ###########
@@ -34,7 +31,7 @@ def index(request):
         "user": request.user
     }
 
-    return render(request, 'pages/index/index.html', context)
+    return render(request, 'spirit/index.html', context)
     # return redirect('%s/signup' % domain)
 
 
@@ -46,7 +43,7 @@ def about_us(request):
         "user": request.user
     }
 
-    return render(request, 'pages/about_us/about_us.html', context)
+    return render(request, 'spirit/about_us.html', context)
 
 
 def shop(request):
@@ -67,12 +64,12 @@ def profile_page(request, _id=None):
     user = request.user
 
     if user.is_anonymous():
-        return redirect('%s/login' % domain)
+        return redirect('/login')
 
     # if he trying get his profile
     if _id == user.id:
         # go home
-        return redirect('%s/profile' % domain)
+        return redirect('/profile')
 
     # if not user.email_verified:
     #     return HttpResponse("Ссылка была выслана на %s" % user.email)
@@ -114,14 +111,14 @@ def signup_page(request):
     if request.user.is_anonymous():
         return render(request, 'pages/profile/signup.html')
     else:
-        return redirect('%s/profile' % domain)
+        return redirect('/profile')
 
 
 def logout_wrapper(request):
     # just logout
     # no comments
     logout(request)
-    return redirect("%s/" % domain)
+    return redirect("/")
 
 
 def login_wrapper(request):
@@ -166,7 +163,7 @@ def login_wrapper(request):
 
         # explain that's all bad
         return HttpResponse(json.dumps("bad"), content_type="application/json")
-    return redirect('%s/' % domain)
+    return redirect('/')
 
 
 def activation(request):
@@ -183,7 +180,7 @@ def activation(request):
 
                 profile.user.backend = 'django.contrib.auth.backends.ModelBackend'
                 login(request, profile.user)
-    return redirect('%s/profile' % domain)
+    return redirect('/profile')
 
 
 def remove_social(request):

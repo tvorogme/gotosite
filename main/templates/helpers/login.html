@@ -8,7 +8,7 @@
     <!--Стили логинштуки-->
     <link rel="stylesheet" type="text/css" href="{% static "/css/helpers/login.css" %}"/>
 
-    <table id="login_placeholder_table">
+    <table id="login_placeholder_table" onclick="toggle_login_placeholder()">
         <tr>
             <td valign="middle">
                 <div id="login_placeholder">
@@ -24,7 +24,7 @@
                     <div id="login_placeholder_first_page">
                         <div id="login_placeholder_socials" class="row">
                             <div class="col-xs-3">
-                                <a onclick="display_login_placeholder(3);"><i class="fa fa-envelope-o fa-3x"
+                                <a onclick="display_login_placeholder(3);toggle_login_placeholder();"><i class="fa fa-envelope-o fa-3x"
                                                                               aria-hidden="true"></i></a>
                             </div>
 
@@ -109,7 +109,7 @@
                         </div>
 
                         <p id="login_placeholder_forgot_back"><a>Забыли пароль?</a> / <a
-                                onclick="display_login_placeholder(1)">Назад</a></p>
+                                onclick="display_login_placeholder(1);toggle_login_placeholder();">Назад</a></p>
                     </div>
                 </div>
             </td>
