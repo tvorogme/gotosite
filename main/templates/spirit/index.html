@@ -520,9 +520,11 @@
 <!-- Футер -->
 <footer class="footer">
     <div id="about-us" class="footer-block">
-        <h4><a onclick="toggle_login_placeholder()">Вход</a></h4>
-    </div>
-    <div id="about-us" class="footer-block">
+        {% if request.user.is_authenticated %}
+            <h4><a href="/profile">Профиль</a></h4>
+        {% else %}
+            <h4><a onclick="toggle_login_placeholder()">Вход</a></h4>
+        {% endif %}
         <h4><a href="about_us">О нас</a></h4>
     </div>
     <div class="footer-block">

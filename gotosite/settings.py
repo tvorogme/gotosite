@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
 MAX_UPLOAD_SIZE = 5242880
 
-ALLOWED_HOSTS = ['goto.msk.ru', 'localhost']
+ALLOWED_HOSTS = ['goto.msk.ru', 'localhost', '127.0.0.1']
 
 # Application definition
 
