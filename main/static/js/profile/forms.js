@@ -52,7 +52,7 @@ function save() {
 
     $.ajax({
         type: "POST",
-        url: '../profile/edit/',
+        url: '/test/profile/edit/',
         data: request_data,
         dataType: 'json'
     }).done(function (data) {

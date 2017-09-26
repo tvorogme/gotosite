@@ -31,18 +31,18 @@ $("#login_tick").click(function () {
     var password_value = $("#login_placeholder_password").val();
     var crf = $("#login_placeholder_crf").val();
 
-    $.post("/login/", {
+    $.post("/test/login/", {
         email: email_value,
         password: password_value,
         csrfmiddlewaretoken: crf
     }).done(function (data) {
         if (data === "ok") {
-            window.location = '/profile';
+            window.location = '/test/profile';
         } else if (data === "bad") {
             $("#login_placeholder_error").empty().html("Неверная почта или пароль");
             toggle_login_placeholder()
         } else if (data === "email") {
-            window.location = '/profile';
+            window.location = '/test/profile';
             // $("#login_placeholder_error").empty().html("Письмо с ссылкой на активацию профиля было выслано");
         }
     });
@@ -59,7 +59,7 @@ $("#login_placeholder_register_register_button").click(function () {
     var first_name = names.split(" ")[0];
     var last_name = names.split(" ")[1];
 
-    $.post("/register/", {
+    $.post("/test/register/", {
         first_name: first_name,
         last_name: last_name,
         email: email,
