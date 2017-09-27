@@ -6,12 +6,12 @@ prefix = "/"
 def menu_list(request):
     return {'menu_list': [
         # ['/new/bank/shop/', 'Магазин'],
-        ['/' , 'Главная'],
+        ['https://goto.msk.ru/test/' , 'Главная'],
         # ['%s/camp/' % prefix, 'Лагерь'],
         # ['%s/hackathon/' % prefix, 'Хакатон'],
         # ['%s/lectoriy/' % prefix, 'Лекторий'],
         # ['%s/coworking/' % prefix, 'Коворкинг'],
-        ['/about_us/', 'О нас']
+        ['https://goto.msk.ru/test/about_us/', 'О нас']
     ]}
 
 
