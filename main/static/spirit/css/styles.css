@@ -467,7 +467,7 @@ input {
     .footer-block {
         flex-direction: row;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         text-align: center;
         text-decoration: none;
         font-weight: 300;
@@ -476,8 +476,8 @@ input {
         flex: 1;
     }
 
-    .footer-block + .footer-block {
-        justify-content: center;
+     .footer-block div {
+        margin: 20px;
     }
 
     .footer-block h4 {
@@ -756,6 +756,9 @@ input {
         justify-content: center;
         align-items: center;
     }
+     .footer-block div {
+        margin: 20px;
+    }
 
     .footer-block a {
         color: #484848;
@@ -959,29 +962,35 @@ input {
         padding: 10px;
     }
 
-    .footer {
-        height: 550px;
+.footer {
         background: #FFF;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
         justify-content: flex-start;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         margin: 0px;
     }
-
     .footer-block {
+        min-height: 20vh;
+        background: #FFF;
         text-decoration: none;
         text-align: center;
         font-weight: 300;
         color: #484848;
-        height: 60px;
     }
-
     .footer-block a {
         color: #484848;
         font-weight: 300;
     }
-
     .footer-block h4 {
         color: #484848;
         font-weight: 300;
