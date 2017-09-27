@@ -13,7 +13,6 @@ body {
 
 * {
     font-family: 'Ubuntu', sans-serif !important;
-    font-weight: 300;
 }
 
 a:hover {
@@ -317,10 +316,13 @@ input {
     outline: none;
 }
 
-.arrow {;
+.arrow {
     outline: none;
     border: 0px;
     background: #FFF;
+    border-bottom: 2px solid #000;
+    margin: 0px;
+    margin-left: -5px;
 }
 
 .arrow:hover {
@@ -336,6 +338,12 @@ input {
 /*DesKtop*/
 
 @media screen and (min-width: 1160px) {
+    .chess div {
+        width: 50%;
+        height: 420px;
+        padding: auto;
+    }
+
     .main-block-container {
         min-height: 325px;
     }
@@ -576,12 +584,6 @@ input {
         line-height: 1.5;
         align-items: center;
         font-size: 18px;
-    }
-
-    .chess div {
-        width: 50%;
-        height: 500px;
-        padding: auto;
     }
 
     .chess-block {
@@ -907,6 +909,16 @@ input {
         margin: 10px;
     }
 
+    .slide-text {
+        margin-top: 50px;
+        max-width: 80%;
+    }
+
+    .arrow {
+        width: 30px;
+        height: 29px;
+    }
+
     #cources {
         z-index: 0;
     }
@@ -1074,10 +1086,5 @@ input {
 
     .chess-block div {
         padding: 0px;
-    }
-
-    .arrow {
-        width: 30px;
-        height: 30px;
     }
 }
