@@ -29,6 +29,11 @@ h1 a:hover {
     background: #49B398;
 }
 
+.green-font {
+    color: #000;
+    background: #49B398;
+}
+
 #pic1 {
     background: url(/static/spirit/img/20170926-photo_2017-09-26_23-36-53.jpg);
     background-position: center;
@@ -64,6 +69,10 @@ a {
 .first-slide {
     margin: auto;
     margin-bottom: 0px;
+}
+
+.slide {
+    background: #FFF;
 }
 
 .header {
@@ -244,7 +253,6 @@ a {
     justify-content: center;
     flex-flow: row wrap;
     align-items: center;
-    margin-top: 50px;
 }
 
 .chess article {
@@ -537,7 +545,6 @@ input {
     .slide {
         min-height: 50vh;
         max-width: 100%;
-        background: #FFF;
         display: flex;
         flex-direction: column;
         align-content: stretch;
@@ -756,7 +763,7 @@ input {
         justify-content: center;
         align-items: center;
     }
-.footer-block div {
+    .footer-block div {
         margin-left: 20px;
         margin-right: 20px;
     }
@@ -798,7 +805,6 @@ input {
     .slide {
         min-height: 50vh;
         width: 100%;
-        background: #FFF;
         display: flex;
         flex-direction: column;
         align-content: stretch;
@@ -950,8 +956,13 @@ input {
         box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
     }
 
+    .first-slide {
+        margin-top: 50px;
+    }
+
     .animated-line {
         width: 90%;
+        height: 300px;
         align-items: baseline;
         order: 0;
         margin-top: 50px;
@@ -963,7 +974,7 @@ input {
         padding: 10px;
     }
 
-.footer {
+    .footer {
         background: #FFF;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
@@ -979,7 +990,9 @@ input {
         -ms-flex-align: center;
         align-items: center;
         margin: 0px;
+        box-sizing: border-box;
     }
+
     .footer-block {
         min-height: 20vh;
         background: #FFF;
@@ -987,6 +1000,7 @@ input {
         text-align: center;
         font-weight: 300;
         color: #484848;
+        box-sizing: border-box;
     }
     .footer-block a {
         color: #484848;
@@ -1022,15 +1036,15 @@ input {
         padding: 50px;
     }
     #socials svg {
-        width: 50px;
-        height: 50px;
+        width: 25px;
+        height: 25px;
         padding: 30px;
+        box-sizing:border-box;
     }
 
     .slide {
         min-height: 100vh;
         max-width: 100%;
-        background: #FFF;
         display: flex;
         flex-direction: column;
         align-content: stretch;
@@ -1045,10 +1059,10 @@ input {
     }
 
     .partners > div {
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
         fill: #C4C4C4;
-        margin: 20px;
+        margin-bottom: 50px;
     }
 
     .directions {
@@ -1064,15 +1078,16 @@ input {
     }
 
     .subscribe {
-        width: 90%;
-    }
-
-    .subscribe>div {
         width: 100%;
         text-align: center;
     }
-
+    .subscribe>div {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
     #mail {
+        width: 40%;
         font-size: 20px;
     }
 
@@ -1099,6 +1114,7 @@ input {
         padding-top: 95px;
         width: 280px;
         margin: 10px;
+        box-sizing: border-box;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
     }
     .footer-menu-block a {
