@@ -989,7 +989,7 @@ input {
     #socials svg {
         width: 25px;
         height: 25px;
-        padding: 30px;
+        margin: 30px;
         box-sizing:border-box;
     }
 
