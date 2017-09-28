@@ -984,15 +984,14 @@ input {
     }
 
     #socials {
-        padding: 50px;
+        padding-bottom: 50px;
     }
     #socials svg {
         width: 25px;
         height: 25px;
-        margin: 30px;
-        box-sizing:border-box;
+        padding: 0px;
+        margin: 10px;
     }
-
     .slide {
         min-height: 100vh;
         max-width: 100%;
