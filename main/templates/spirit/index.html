@@ -521,11 +521,11 @@
 <footer class="footer">
     <div class="footer-block">
         {% if request.user.is_authenticated %}
-            <div><h4><a href="https://goto.msk.ru/test/profile/">Профиль</a></h4></div>
+            <div class="footer-menu-block"><h4><a href="https://goto.msk.ru/test/profile/">Профиль</a></h4></div>
         {% else %}
-            <div><h4><a onclick="toggle_login_placeholder()">Вход</a></h4></div>
+            <div class="footer-menu-block"><h4><a onclick="toggle_login_placeholder()">Вход</a></h4></div>
         {% endif %}
-        <div><h4><a href="/test/about_us/">О нас</a></h4></div>
+        	<div class="footer-menu-block"><h4><a href="/test/about_us/">О нас</a></h4></div>
     </div>
     <div class="footer-block">
         <div>
