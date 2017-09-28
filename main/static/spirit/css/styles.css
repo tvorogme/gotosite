@@ -29,11 +29,6 @@ h1 a:hover {
     background: #49B398;
 }
 
-.green-font {
-    color: #000;
-    background: #49B398;
-}
-
 #pic1 {
     background: url(/static/spirit/img/20170926-photo_2017-09-26_23-36-53.jpg);
     background-position: center;
@@ -174,7 +169,6 @@ a {
 }
 
 .slide-text h1 {
-    color: #484848;
     text-align: center;
     font-weight: 300 !important;
 }
@@ -503,17 +497,6 @@ input {
         color: #49B398;
     }
 
-    #about-us {
-        flex-direction: row;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #about-us h4 {
-        margin-right: 5%;
-    }
-
     #number a {
         pointer-events: none;
         cursor: default;
@@ -578,8 +561,7 @@ input {
     }
 
     #mail {
-        width: 50%;
-        margin-left: 25%;
+        width: 40%;
         font-size: 22px;
     }
 
@@ -734,16 +716,6 @@ input {
             opacity: 1.0;
         }
     }
-    #about-us {
-        flex-direction: row;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #about-us h4 {
-        margin-right: 5%;
-    }
 
     .footer {
         background: #FFF;
@@ -860,7 +832,6 @@ input {
 
     #mail {
         width: 40%;
-        margin-left: 30%;
         font-size: 20px;
     }
 
@@ -1012,26 +983,6 @@ input {
         font-size: 25px;
     }
 
-    #about-us {
-        height: 190px;
-        padding-top: 90px;
-        width: 280px;
-        margin: 10px;
-        background: #FFF;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-        box-sizing: content-box;
-    }
-
-    #about-us a {
-        color: #484848;
-        font-weight: 300;
-        font-size: 35px;
-    }
-
-    #about-us:active {
-        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
-    }
-
     #socials {
         padding: 50px;
     }
@@ -1087,7 +1038,7 @@ input {
         text-align: center;
     }
     #mail {
-        width: 40%;
+        width: 200px;
         font-size: 20px;
     }
 
@@ -1110,14 +1061,18 @@ input {
         order: 1;
     }
     .footer-menu-block {
-        height: 185px;
-        padding-top: 95px;
+        height: 170px;
+        padding-top: 110px;
         width: 280px;
-        margin: 10px;
-        box-sizing: border-box;
+        margin-bottom: 10px;
+        box-sizing: content-box;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
     }
     .footer-menu-block a {
         font-size: 35px;
     }
+    .green-font {
+    color: #FFF;
+    background: #49B398;
+}
 }
