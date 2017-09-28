@@ -160,15 +160,14 @@ a {
 
 .slide-text {
     margin: auto;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .slide-text h1 {
     color: #484848;
     text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    font-weight: 300 !important;
 }
 
 .numbers {
@@ -548,7 +547,6 @@ input {
     }
 
     .slide-text {
-        margin-top: 50px;
         max-width: 60%;
     }
 
@@ -565,15 +563,16 @@ input {
         margin: 20px;
     }
 
-    .subscribe > div {
+    .subscribe>div {
         width: 100%;
         margin: auto;
+        text-align: center;
     }
 
     #mail {
         width: 50%;
         margin-left: 25%;
-        font-size: 25px;
+        font-size: 22px;
     }
 
     .description > div {
@@ -824,7 +823,6 @@ input {
     }
 
     .slide-text {
-        margin-top: 50px;
         max-width: 80%;
     }
 
@@ -846,15 +844,16 @@ input {
         flex-direction: row;
     }
 
-    .subscribe > div {
+    .subscribe>div {
         width: 100%;
         margin: auto;
+        text-align: center;
     }
 
     #mail {
         width: 40%;
         margin-left: 30%;
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .description > div {
@@ -913,7 +912,6 @@ input {
     }
 
     .slide-text {
-        margin-top: 50px;
         max-width: 80%;
     }
 
@@ -1018,13 +1016,12 @@ input {
     }
 
     #socials {
-        padding-bottom: 30px;
+        padding: 50px;
     }
-
     #socials svg {
-        width: 25px;
-        height: 25px;
-        padding: 3px;
+        width: 50px;
+        height: 50px;
+        padding: 30px;
     }
 
     .slide {
@@ -1051,10 +1048,6 @@ input {
         margin: 20px;
     }
 
-    .slide-text {
-        max-width: 80%;
-    }
-
     .directions {
         width: 80%;
     }
@@ -1071,13 +1064,12 @@ input {
         width: 90%;
     }
 
-    .subscribe > div {
+    .subscribe>div {
         width: 100%;
+        text-align: center;
     }
 
     #mail {
-        width: 75%;
-        margin-left: 5%;
         font-size: 20px;
     }
 
