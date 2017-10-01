@@ -173,6 +173,11 @@ a {
     font-weight: 300 !important;
 }
 
+.green-font {
+    color: #FFF;
+    background: #49B398;
+}
+
 .numbers {
     min-height: 10vh;
     max-width: 100%;
@@ -196,7 +201,7 @@ a {
 .number-block {
     color: #F5E966;
     text-align: center;
-    padding: 20px;
+    padding: 30px;
 }
 
 .number-block + .number-block {
@@ -278,10 +283,6 @@ a {
     flex-direction: column;
 }
 
-.directions article {
-    color: #484848;
-}
-
 #background-pic {
     height: 100vh;
     width: 100%;
@@ -335,6 +336,11 @@ input {
     font-weight: 300;
     font-size: 35px;
 }
+
+.directions h2{
+    font-weight: 300 !important;
+}
+
 
 /*DesKtop*/
 
@@ -556,7 +562,7 @@ input {
 
     .subscribe>div {
         width: 100%;
-        margin: auto;
+        margin: 0px;
         text-align: center;
     }
 
@@ -810,11 +816,6 @@ input {
         width: 300px;
     }
 
-    .subscribe {
-        width: 80%;
-        margin: auto;
-    }
-
     .subscribe > div {
         width: 100%;
         margin: 20px;
@@ -826,7 +827,7 @@ input {
 
     .subscribe>div {
         width: 100%;
-        margin: auto;
+        margin: 0px;
         text-align: center;
     }
 
@@ -1018,14 +1019,12 @@ input {
 
     .directions {
         width: 80%;
+        text-align: center;
+        margin: auto;
     }
 
     .description {
         flex-direction: column;
-    }
-
-    .directions {
-        margin: auto;
     }
 
     .subscribe {
@@ -1071,8 +1070,4 @@ input {
     .footer-menu-block a {
         font-size: 35px;
     }
-    .green-font {
-    color: #FFF;
-    background: #49B398;
-}
 }
