@@ -19,7 +19,7 @@ urlpatterns = [
     # Pages
     url(r'^co-working/$', coWorking, name='about_us'),
     url(r'^studio/$', studio, name='about_us'),
-    url(r'^camp_autumn/$', camp_autumn, name='about_us'),
+    url(r'^camp_autumn_new/$', camp_autumn, name='about_us'),
 
     # Profile
     url(r'^profile/$', profile_page, name='SelfProfile'),
