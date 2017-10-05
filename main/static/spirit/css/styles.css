@@ -66,6 +66,10 @@ a {
     margin-bottom: 0px;
 }
 
+.slide {
+    background: #FFF;
+}
+
 .header {
     margin: auto;
 }
@@ -160,15 +164,18 @@ a {
 
 .slide-text {
     margin: auto;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .slide-text h1 {
-    color: #484848;
     text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    font-weight: 300 !important;
+}
+
+.green-font {
+    color: #FFF;
+    background: #49B398;
 }
 
 .numbers {
@@ -194,7 +201,7 @@ a {
 .number-block {
     color: #F5E966;
     text-align: center;
-    padding: 20px;
+    padding: 30px;
 }
 
 .number-block + .number-block {
@@ -245,7 +252,6 @@ a {
     justify-content: center;
     flex-flow: row wrap;
     align-items: center;
-    margin-top: 50px;
 }
 
 .chess article {
@@ -275,10 +281,6 @@ a {
     align-items: stretch;
     align-content: space-between;
     flex-direction: column;
-}
-
-.directions article {
-    color: #484848;
 }
 
 #background-pic {
@@ -334,6 +336,11 @@ input {
     font-weight: 300;
     font-size: 35px;
 }
+
+.directions h2{
+    font-weight: 300 !important;
+}
+
 
 /*DesKtop*/
 
@@ -476,8 +483,9 @@ input {
         flex: 1;
     }
 
-     .footer-block div {
-        margin: 20px;
+    .footer-block div {
+        margin-left: 20px;
+        margin-right: 20px;
     }
 
     .footer-block h4 {
@@ -493,17 +501,6 @@ input {
 
     .footer-block a:hover {
         color: #49B398;
-    }
-
-    #about-us {
-        flex-direction: row;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #about-us h4 {
-        margin-right: 5%;
     }
 
     #number a {
@@ -537,7 +534,6 @@ input {
     .slide {
         min-height: 50vh;
         max-width: 100%;
-        background: #FFF;
         display: flex;
         flex-direction: column;
         align-content: stretch;
@@ -548,7 +544,6 @@ input {
     }
 
     .slide-text {
-        margin-top: 50px;
         max-width: 60%;
     }
 
@@ -565,15 +560,15 @@ input {
         margin: 20px;
     }
 
-    .subscribe > div {
+    .subscribe>div {
         width: 100%;
-        margin: auto;
+        margin: 0px;
+        text-align: center;
     }
 
     #mail {
-        width: 50%;
-        margin-left: 25%;
-        font-size: 25px;
+        width: 40%;
+        font-size: 22px;
     }
 
     .description > div {
@@ -727,16 +722,6 @@ input {
             opacity: 1.0;
         }
     }
-    #about-us {
-        flex-direction: row;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #about-us h4 {
-        margin-right: 5%;
-    }
 
     .footer {
         background: #FFF;
@@ -756,8 +741,9 @@ input {
         justify-content: center;
         align-items: center;
     }
-     .footer-block div {
-        margin: 20px;
+    .footer-block div {
+        margin-left: 20px;
+        margin-right: 20px;
     }
 
     .footer-block a {
@@ -797,7 +783,6 @@ input {
     .slide {
         min-height: 50vh;
         width: 100%;
-        background: #FFF;
         display: flex;
         flex-direction: column;
         align-content: stretch;
@@ -824,17 +809,11 @@ input {
     }
 
     .slide-text {
-        margin-top: 50px;
         max-width: 80%;
     }
 
     .directions {
         width: 300px;
-    }
-
-    .subscribe {
-        width: 80%;
-        margin: auto;
     }
 
     .subscribe > div {
@@ -846,15 +825,15 @@ input {
         flex-direction: row;
     }
 
-    .subscribe > div {
+    .subscribe>div {
         width: 100%;
-        margin: auto;
+        margin: 0px;
+        text-align: center;
     }
 
     #mail {
         width: 40%;
-        margin-left: 30%;
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .description > div {
@@ -913,7 +892,6 @@ input {
     }
 
     .slide-text {
-        margin-top: 50px;
         max-width: 80%;
     }
 
@@ -950,11 +928,17 @@ input {
         box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
     }
 
+    .first-slide {
+        margin-top: 50px;
+    }
+
     .animated-line {
         width: 90%;
+        height: 300px;
         align-items: baseline;
         order: 0;
-        margin: auto;
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
 
     .animated-line h3 {
@@ -962,7 +946,7 @@ input {
         padding: 10px;
     }
 
-.footer {
+    .footer {
         background: #FFF;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
@@ -978,7 +962,9 @@ input {
         -ms-flex-align: center;
         align-items: center;
         margin: 0px;
+        box-sizing: border-box;
     }
+
     .footer-block {
         min-height: 20vh;
         background: #FFF;
@@ -986,6 +972,7 @@ input {
         text-align: center;
         font-weight: 300;
         color: #484848;
+        box-sizing: border-box;
     }
     .footer-block a {
         color: #484848;
@@ -995,42 +982,21 @@ input {
         color: #484848;
         font-weight: 300;
         font-size: 25px;
-    }
-
-    #about-us {
-        height: 190px;
-        padding-top: 90px;
-        width: 280px;
-        margin: 10px;
-        background: #FFF;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-        box-sizing: content-box;
-    }
-
-    #about-us a {
-        color: #484848;
-        font-weight: 300;
-        font-size: 35px;
-    }
-
-    #about-us:active {
-        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+        margin: 30px;
     }
 
     #socials {
-        padding-bottom: 30px;
+        padding-bottom: 50px;
     }
-
     #socials svg {
         width: 25px;
         height: 25px;
-        padding: 3px;
+        padding: 0px;
+        margin: 10px;
     }
-
     .slide {
         min-height: 100vh;
         max-width: 100%;
-        background: #FFF;
         display: flex;
         flex-direction: column;
         align-content: stretch;
@@ -1045,39 +1011,33 @@ input {
     }
 
     .partners > div {
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
         fill: #C4C4C4;
-        margin: 20px;
-    }
-
-    .slide-text {
-        max-width: 80%;
+        margin-bottom: 50px;
     }
 
     .directions {
         width: 80%;
+        text-align: center;
+        margin: auto;
     }
 
     .description {
         flex-direction: column;
     }
 
-    .directions {
-        margin: auto;
-    }
-
     .subscribe {
-        width: 90%;
-    }
-
-    .subscribe > div {
         width: 100%;
+        text-align: center;
     }
-
+    .subscribe>div {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
     #mail {
-        width: 75%;
-        margin-left: 5%;
+        width: 200px;
         font-size: 20px;
     }
 
@@ -1095,5 +1055,19 @@ input {
 
     .chess-block div {
         padding: 0px;
+    }
+    #pic2{
+        order: 1;
+    }
+    .footer-menu-block {
+        height: 190px;
+        padding-top: 90px;
+        width: 280px;
+        margin-bottom: 10px;
+        box-sizing: content-box;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    }
+    .footer-menu-block a {
+        font-size: 35px;
     }
 }
