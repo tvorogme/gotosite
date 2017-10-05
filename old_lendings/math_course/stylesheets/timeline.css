@@ -1,0 +1,215 @@
+/* -------------------------------------
+ * For horizontal version, set the
+ * $vertical variable to false
+ * ------------------------------------- */
+/* -------------------------------------
+ * General Style
+ * ------------------------------------- */
+/* -------------------------------------
+ * timeline
+ * ------------------------------------- */
+/* line 22, ../sass/timeline.sass */
+#timeline {
+  list-style: none;
+  margin: 50px 0 30px 120px;
+  padding-left: 30px;
+  border-left: 8px solid #eee9dc;
+}
+/* line 34, ../sass/timeline.sass */
+#timeline li {
+  margin: 40px 0;
+  position: relative;
+}
+/* line 43, ../sass/timeline.sass */
+#timeline p {
+  margin: 0 0 15px;
+}
+
+/* line 46, ../sass/timeline.sass */
+.date {
+  margin-top: -10px;
+  top: 50%;
+  left: -158px;
+  font-size: 0.95em;
+  line-height: 20px;
+  position: absolute;
+}
+
+/* line 59, ../sass/timeline.sass */
+.circle {
+  margin-top: -10px;
+  top: 50%;
+  left: -44px;
+  width: 10px;
+  height: 10px;
+  background: #4bb199;
+  border: 5px solid #eee9dc;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+}
+
+/* line 77, ../sass/timeline.sass */
+.content {
+  max-height: 20px;
+  padding: 50px 20px 0;
+  border-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 0.5em;
+  position: relative;
+}
+/* line 93, ../sass/timeline.sass */
+.content:before, .content:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  position: absolute;
+  pointer-events: none;
+  right: 100%;
+}
+/* line 104, ../sass/timeline.sass */
+.content:before {
+  border-right-color: inherit;
+  border-width: 20px;
+  top: 50%;
+  margin-top: -20px;
+}
+/* line 115, ../sass/timeline.sass */
+.content:after {
+  border-right-color: #4bb199;
+  border-width: 17px;
+  top: 50%;
+  margin-top: -17px;
+}
+/* line 126, ../sass/timeline.sass */
+.content p {
+  max-height: 0;
+  color: transparent;
+  text-align: justify;
+  word-break: break-word;
+  hyphens: auto;
+  overflow: hidden;
+}
+
+/* line 134, ../sass/timeline.sass */
+label {
+  font-size: 1.3em;
+  position: absolute;
+  z-index: 100;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  top: 20px;
+  transition: transform 0.2s linear;
+}
+
+/* line 154, ../sass/timeline.sass */
+label:hover {
+  text-decoration: underline;
+}
+
+/* line 157, ../sass/timeline.sass */
+.radio {
+  display: none;
+}
+
+/* line 161, ../sass/timeline.sass */
+.radio:checked + .relative label {
+  cursor: auto;
+  transform: translateX(42px);
+}
+/* line 168, ../sass/timeline.sass */
+.radio:checked + .relative .circle {
+  background: #ec8b6d;
+}
+/* line 170, ../sass/timeline.sass */
+.radio:checked ~ .content {
+  max-height: 400px;
+  border-color: #eee9dc;
+  margin-right: 20px;
+  transform: translateX(20px);
+  transition: max-height 0.4s linear, border-color 0.5s linear, transform 0.2s linear;
+}
+/* line 179, ../sass/timeline.sass */
+.radio:checked ~ .content p {
+  max-height: 400px;
+  color: #eee9dc;
+  transition: color 0.3s linear 0.3s;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 187, ../sass/timeline.sass */
+  #timeline {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+  }
+  /* line 191, ../sass/timeline.sass */
+  #timeline li {
+    margin: 50px 0;
+  }
+
+  /* line 193, ../sass/timeline.sass */
+  label {
+    width: 85%;
+    font-size: 1.1em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    transform: translateX(18px);
+  }
+
+  /* line 201, ../sass/timeline.sass */
+  .content {
+    padding-top: 45px;
+    border-color: #eee9dc;
+  }
+  /* line 204, ../sass/timeline.sass */
+  .content:before, .content:after {
+    border: solid transparent;
+    bottom: 100%;
+  }
+  /* line 207, ../sass/timeline.sass */
+  .content:before {
+    border-bottom-color: inherit;
+    border-width: 17px;
+    top: -16px;
+    left: 50px;
+    margin-left: -17px;
+  }
+  /* line 213, ../sass/timeline.sass */
+  .content:after {
+    border-bottom-color: #4bb199;
+    border-width: 20px;
+    top: -20px;
+    left: 50px;
+    margin-left: -20px;
+  }
+  /* line 219, ../sass/timeline.sass */
+  .content p {
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+
+  /* line 222, ../sass/timeline.sass */
+  .circle, .date {
+    display: none;
+  }
+
+  /* line 226, ../sass/timeline.sass */
+  .radio:checked + .relative {
+    transform: translateX(0);
+  }
+  /* line 229, ../sass/timeline.sass */
+  .radio:checked ~ .content {
+    transform: translateX(0);
+  }
+
+  /* line 233, ../sass/timeline.sass */
+  .content:before, .content:after {
+    display: none;
+  }
+}
