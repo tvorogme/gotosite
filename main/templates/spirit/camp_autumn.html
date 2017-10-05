@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Осенняя школа программирования и робототехники</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/test/static/spirit/img/favicon.ico" rel="shortcut icon"
+          type="image/vnd.microsoft.icon"/>
+
+    <meta name="description"
+          content="С 28 октября по 5 ноября в Санкт-Петербурге пройдет школа GoTo для старшеклассников и студентов 1-2 курса со всей России, прошедших предварительный отбор в рамках одного из направлений: прикладное программирование, анализ данных и машинное обучение, робототехника, биоинформатика и блокчейн."/>
+    <meta property="og:title" content="Осенняя школа GoTo в Технопарке ИТМО"/>
+    <meta name="keywords"
+          content="детский лагерь, обучение, программирование, проектная школа, анализ данных, машинное обучение,
+          биоинформатика, робототехника, интернет вещей, куда отправить ребенка, лучшие лагеря, лагерь городского типа,
+          городской лагерь, выездной лагерь, осенний лагерь, выездная школа, лагерь для подростков, робототехнический лагерь,
+           компьютерный лагерь, образовательный лагерь, москва, осенние каникулы, компьютерная школа, школа робототехники,
+           лагерь робототехники, хакатон, курсы, школьники, лагерь для школьников">
+    <meta property="og:image" content="https://goto.msk.ru/camp_autumn/socials.png">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/test/static/spirit/css/camp_autumn/bootstrap.css">
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="/test/static/spirit/css/camp_autumn/index.css">
+
+    <!-- Минималистический фонт -->
+    <link href="/test/static/spirit/css/camp_autumn/ubuntu-font.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Я прогружаю целую библиотеку для 1 функции, это говнокод, исправлю, сорь -->
+    <script src="/test/static/spirit/js/camp_autumn/jquery.js"></script>
+
+    <!-- Google normal-otstups API -->
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSi6YNKwuJPvgEf7WxvYqNVAqbtDc-jnY&callback=initialize"
+            type="text/javascript"></script>
+
+    <!-- Кастомный JS -->
+    <script src="/test/static/spirit/js/camp_autumn/index.js"></script>
+    <link href="/test/static/spirit/css/camp_autumn/screen.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.css">
+    <style>
+        .slick-prev {
+            left: 25px !important;
+            width: 40px;
+            height: 58px;
+            cursor: pointer;
+            background: url(/test/static/spirit/img/camp_autumn/buttons.png) center center no-repeat !important;
+            overflow: hidden;
+            background-position: -12px -31px !important;
+            z-index: 100;
+        }
+
+        .slick-next {
+            right: 25px !important;
+            width: 40px;
+            height: 58px;
+            cursor: pointer;
+            background: url(/test/static/spirit/img/camp_autumn/buttons.png) center center no-repeat !important;
+            overflow: hidden;
+            background-position: -70px -31px !important;
+            z-index: 100;
+        }
+
+        .slick-prev:before, .slick-next:before {
+            font-size: 0;
+        }
+    </style>
+
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2101650410062511');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1"
+             src="https://www.facebook.com/tr?id=2101650410062511&ev=PageView
+&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+</head>
+<body>
+
+
+<div id='ss_menu' style="transform: rotate(90deg)">
+    <div class="hor-fix"><a href="https://www.facebook.com/GoToCampPage/"><i class="fa fa-facebook-official"></i></a>
+    </div>
+    <div class="hor-fix"><a href="https://t.me/goto_channel"><i class="fa fa-telegram" aria-hidden="true"></i></a></div>
+    <div class="hor-fix"><a href="https://vk.com/goto_msk"><i class="fa fa-vk"></i></a></div>
+    <div class="hor-fix"><a href="https://www.instagram.com/goto_goto_goto/"><i class="fa fa-instagram"></i></a></div>
+    <div class='menu hor-fix'>
+        <div class='share' id='ss_toggle' data-rot='90'>
+            <div class='circle_menu'></div>
+            <div class='bar'></div>
+        </div>
+    </div>
+</div>
+<div id="header">
+    <a href="/">
+        <svg
+                xmlns:dc="http://purl.org/dc/elements/1.1/"
+                xmlns:cc="http://creativecommons.org/ns#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                version="1.1"
+                id="house"
+                width="682.66669"
+                height="682.66669"
+                viewBox="0 0 682.66669 682.66669"
+                sodipodi:docname="house.svg"
+                inkscape:version="0.92.0 r">
+            <metadata
+                    id="metadata4577">
+                <rdf:RDF>
+                    <cc:Work
+                            rdf:about="">
+                        <dc:format>image/svg+xml</dc:format>
+                        <dc:type
+                                rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                        <dc:title></dc:title>
+                    </cc:Work>
+                </rdf:RDF>
+            </metadata>
+            <defs
+                    id="defs4575"/>
+            <sodipodi:namedview
+                    pagecolor="#ffffff"
+                    bordercolor="#666666"
+                    borderopacity="1"
+                    objecttolerance="10"
+                    gridtolerance="10"
+                    guidetolerance="10"
+                    inkscape:pageopacity="0"
+                    inkscape:pageshadow="2"
+                    inkscape:window-width="1344"
+                    inkscape:window-height="710"
+                    id="namedview4573"
+                    showgrid="false"
+                    inkscape:zoom="0.7573242"
+                    inkscape:cx="-47.959622"
+                    inkscape:cy="591.59751"
+                    inkscape:window-x="9"
+                    inkscape:window-y="27"
+                    inkscape:window-maximized="0"
+                    inkscape:current-layer="svg4571"/>
+            <path
+                    style="fill:#373a3c;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+                    d="M 1.705746,347.20263 329.27946,8.4203564 l 4.45648,-1.815603 5.28176,-1.4854928 7.75757,0.330109 5.28176,2.3107668 5.28175,3.9613156 324.67756,336.201558 0.11672,6.65255 -1.28383,1.75067 -3.15121,1.51725 -2.21751,1.16711 -99.90494,-0.35013 1.63396,306.13393 -177.75142,-0.35013 1.0504,-187.32176 -118.11191,-0.11671 0.81698,188.02203 -177.40129,0.46684 0.11671,-305.31695 -98.154263,-0.23343 -3.734764,-2.21751 -1.517247,-1.63396 c 0,0 -1.4005369,-0.58356 -1.2838259,-3.96819 0.116712,-3.38463 0.4668459,-4.92199 0.4668459,-4.92199 z"
+                    id="path4583"
+                    inkscape:connector-curvature="0"
+                    sodipodi:nodetypes="cccccccccccccccccccccccsc"/>
+        </svg>
+    </a>
+    <img class="after_drawing" id="in_helper" src="/test/static/spirit/img/camp_autumn/down_arrow.png">
+    <div id="text_near_logo" class="after_drawing not-mobile">
+        <h2>Санкт-Петербург</h2>
+        <h2>28 октября</h2>
+        <h2 id="last_one">5 ноября</h2>
+    </div>
+    <div id="header_logo_wrapper">
+        <svg
+                xmlns:dc="http://purl.org/dc/elements/1.1/"
+                xmlns:cc="http://creativecommons.org/ns#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                id="logo"
+                version="1.1"
+                inkscape:version="0.92.0 r"
+                width="503.46667"
+                height="340.26666"
+                sodipodi:docname="logo.svg"
+                inkscape:export-filename="/root/Downloads/goto.svg.png"
+                inkscape:export-xdpi="90"
+                inkscape:export-ydpi="90"
+                viewBox="0 0 472 319">
+            <metadata
+                    id="metadata3045">
+                <rdf:RDF>
+                    <cc:Work
+                            rdf:about="">
+                        <dc:format>image/svg+xml</dc:format>
+                        <dc:type
+                                rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                        <dc:title/>
+                    </cc:Work>
+                </rdf:RDF>
+            </metadata>
+            <defs
+                    id="defs3043"/>
+            <sodipodi:namedview
+                    pagecolor="#ffffff"
+                    bordercolor="#666666"
+                    borderopacity="1"
+                    objecttolerance="10"
+                    gridtolerance="10"
+                    guidetolerance="10"
+                    inkscape:pageopacity="0"
+                    inkscape:pageshadow="2"
+                    inkscape:window-width="1344"
+                    inkscape:window-height="710"
+                    id="namedview3041"
+                    showgrid="false"
+                    inkscape:zoom="1.4142136"
+                    inkscape:cx="185.78381"
+                    inkscape:cy="138.46418"
+                    inkscape:window-x="9"
+                    inkscape:window-y="27"
+                    inkscape:window-maximized="0"
+                    inkscape:current-layer="svg3039"
+                    inkscape:measure-start="32.3279,65.2324"
+                    inkscape:measure-end="468.161,63.6944"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l14"
+                    width="25.254168"
+                    height="2.907552"
+                    x="181.43124"
+                    y="66.956772"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l13"
+                    width="38.711979"
+                    height="3.6552083"
+                    x="174.03777"
+                    y="76.759377"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l12"
+                    width="3.4070172"
+                    height="78.830986"
+                    x="191.73201"
+                    y="-159.10583"
+                    transform="scale(1,-1)"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l15"
+                    width="140.65633"
+                    height="2.2909138"
+                    x="193.96417"
+                    y="117.16447"
+                    ry="0"
+                    style="stroke-width:1.0046258"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l21"
+                    width="3.4648397"
+                    height="80.89315"
+                    x="331.15564"
+                    y="-117.16447"
+                    style="stroke-width:0.9938947"
+                    inkscape:label="#l21"
+                    transform="scale(1,-1)"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l16"
+                    width="3.3229043"
+                    height="80.414581"
+                    x="281.28488"
+                    y="36.884377"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l17"
+                    width="3.0545654"
+                    height="142.15425"
+                    x="281.37143"
+                    y="118.92671"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l18"
+                    width="153.5858"
+                    height="2.8195679"
+                    x="281.37143"
+                    y="258.26138"
+                    style="stroke-width:0.9798438"
+                    inkscape:label="#18"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l25"
+                    width="3.4648335"
+                    height="43.356323"
+                    x="331.15564"
+                    y="-160.52078"
+                    style="stroke-width:1.0544796"
+                    transform="scale(1,-1)"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l24"
+                    width="104.37209"
+                    height="3.171093"
+                    x="-435.50983"
+                    y="157.36731"
+                    style="stroke-width:1.30944657"
+                    transform="scale(-1,1)"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l23"
+                    width="2.8713379"
+                    height="124.2485"
+                    x="432.63849"
+                    y="36.289906"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l22"
+                    width="104.27111"
+                    height="2.9910061"
+                    x="331.15564"
+                    y="36.271313"
+                    style="stroke-width:1.16072607"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l8"
+                    width="165.31509"
+                    height="3.3229218"
+                    x="90.217186"
+                    y="156.34323"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l11"
+                    width="3.4890594"
+                    height="105.06878"
+                    x="252.04323"
+                    y="156.34323"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l9"
+                    width="3.5244904"
+                    height="103.85484"
+                    x="150.37804"
+                    y="-260.9635"
+                    transform="scale(1,-1)"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l7"
+                    width="3.7690902"
+                    height="43.059231"
+                    x="90.217186"
+                    y="-199.40247"
+                    transform="scale(1,-1)"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l6"
+                    width="45.593002"
+                    height="3.2895203"
+                    x="-135.81018"
+                    y="196.11295"
+                    style="stroke-width:0.99488616"
+                    transform="scale(-1,1)"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l5"
+                    width="2.8195882"
+                    height="64.615562"
+                    x="132.99059"
+                    y="-260.72852"
+                    transform="scale(1,-1)"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l4"
+                    width="105.5028"
+                    height="2.8839457"
+                    x="30.307379"
+                    y="257.84457"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l3"
+                    width="2.9768591"
+                    height="224.40488"
+                    x="30.307379"
+                    y="36.323631"
+                    style="stroke-width:1.00854242"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l2"
+                    width="102.48154"
+                    height="3.0746872"
+                    x="-132.78238"
+                    y="36.323631"
+                    transform="scale(-1,1)"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l1"
+                    width="2.6854546"
+                    height="61.299072"
+                    x="130.28442"
+                    y="-97.622704"
+                    style="stroke-width:2.54346585"
+                    transform="scale(1,-1)"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l10"
+                    width="105.15425"
+                    height="3.878531"
+                    x="-255.53229"
+                    y="257.53348"
+                    style="stroke-width:1.01679945"
+                    transform="scale(-1,1)"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l19"
+                    width="60.081383"
+                    height="3.2563105"
+                    x="-485.858"
+                    y="111.03612"
+                    transform="matrix(-0.7263686,-0.68730536,0.75530287,-0.6553759,0,0)"
+                    inkscape:transform-center-x="-2.0080374"
+                    inkscape:transform-center-y="1.2641921"
+                    style="stroke-width:0.54062748"/>
+            <rect
+                    stroke="#373a3c"
+                    fill="#373a3c"
+                    id="l20"
+                    width="59.504265"
+                    height="3.2257044"
+                    x="-171.79764"
+                    y="-497.78763"
+                    transform="matrix(-0.69850739,0.71560284,-0.64063175,-0.76784827,0,0)"
+                    inkscape:transform-center-x="-1.2841308"
+                    inkscape:transform-center-y="-1.9701991"
+                    style="stroke-width:0.53549027"/>
+            <rect
+                    style="fill:#633b92;fill-opacity:1;stroke:#633b92;stroke-width:1.01518762;stroke-opacity:1"
+                    id="f2"
+                    width="97.120377"
+                    height="12.89807"
+                    x="154.25607"
+                    y="160.08438"/>
+            <rect
+                    style="fill:#633b92;fill-opacity:1;stroke:#633b92;stroke-opacity:1"
+                    id="f3"
+                    width="14.101059"
+                    height="96.67984"
+                    x="237.45216"
+                    y="160.37509"/>
+            <rect
+                    style="fill:#633b92;fill-opacity:1;stroke:#633b92;stroke-width:0.99802643;stroke-opacity:1"
+                    id="f4"
+                    width="97.283607"
+                    height="12.554064"
+                    x="-251.54645"
+                    y="244.44427"
+                    transform="scale(-1,1)"/>
+            <rect
+                    style="fill:#633b92;fill-opacity:1;stroke:#633b92;stroke-width:1.00154507;stroke-opacity:1"
+                    id="f1"
+                    width="13.246033"
+                    height="96.530945"
+                    x="154.26285"
+                    y="-256.99835"
+                    inkscape:label="#f1"
+                    transform="scale(1,-1)"/>
+            <rect
+                    style="fill:#ec8b6d;fill-opacity:1;stroke:#ec8b6d;stroke-width:1.1043483;stroke-opacity:1"
+                    id="o2"
+                    width="85.080566"
+                    height="13.008534"
+                    x="195.65213"
+                    y="103.61953"
+                    inkscape:label="#o2"/>
+            <rect
+                    style="fill:#ec8b6d;fill-opacity:1;stroke:#ec8b6d;stroke-width:0.98586935;stroke-opacity:1"
+                    id="o1"
+                    width="12.3459"
+                    height="79.35215"
+                    x="284.99423"
+                    y="-116.72614"
+                    inkscape:label="#o1"
+                    transform="scale(1,-1)"/>
+            <rect
+                    style="fill:#ec8b6d;fill-opacity:1;stroke:#ec8b6d;stroke-opacity:1"
+                    id="o3"
+                    width="12.445862"
+                    height="137.87376"
+                    x="284.91214"
+                    y="119.85478"/>
+            <rect
+                    style="fill:#ec8b6d;fill-opacity:1;stroke:#ec8b6d;stroke-width:1.03497195;stroke-opacity:1"
+                    id="o4"
+                    width="133.78148"
+                    height="12.701582"
+                    x="284.91953"
+                    y="245.01959"
+                    ry="0"
+                    inkscape:label="#o4"/>
+            <path
+                    style="fill:#ec8b6d;fill-opacity:1;stroke:#ec8b6d;stroke-width:0.13236099;stroke-opacity:1"
+                    inkscape:transform-center-x="-0.043321041"
+                    inkscape:transform-center-y="-2.1486765"
+                    d="m 433.65201,258.22424 -15.54659,-0.0478 0.004,-11.86762 1.11489,-1.70548 3.90632,3.70888 z"
+                    id="o5"
+                    inkscape:connector-curvature="0"
+                    sodipodi:nodetypes="cccccc"/>
+            <rect
+                    style="fill:#4bb199;fill-opacity:1;stroke-width:0.94326967"
+                    id="g1"
+                    width="12.859791"
+                    height="118.06738"
+                    x="334.56671"
+                    y="-157.31934"
+                    transform="scale(1,-1)"/>
+            <rect
+                    style="fill:#4bb199;fill-opacity:1;stroke-width:0.93728149"
+                    id="g3"
+                    width="12.69458"
+                    height="118.0902"
+                    x="419.94391"
+                    y="39.259113"/>
+            <rect
+                    style="fill:#4bb199;fill-opacity:1;stroke-width:0.9375"
+                    id="g2"
+                    width="96.136391"
+                    height="12.768278"
+                    x="334.73193"
+                    y="39.251953"/>
+            <rect
+                    style="fill:#4bb199;fill-opacity:1;stroke-width:0.94800091"
+                    id="g4"
+                    width="98.07177"
+                    height="12.798264"
+                    x="-432.63849"
+                    y="144.55106"
+                    transform="scale(-1,1)"/>
+            <rect
+                    style="fill:#f6e76a;fill-opacity:1;stroke-width:0.94645733;image-rendering:auto"
+                    id="first_yellow"
+                    width="11.170944"
+                    height="58.465397"
+                    x="119.11347"
+                    y="-97.622711"
+                    transform="scale(1,-1)"/>
+            <rect
+                    style="fill:#f6e76a;fill-opacity:1;stroke-width:1.37446415"
+                    id="second_yellow"
+                    width="96.801811"
+                    height="13.744041"
+                    x="-130.28442"
+                    y="39.15731"
+                    transform="scale(-1,1)"/>
+            <rect
+                    style="fill:#f6e76a;fill-opacity:1;stroke-width:2.53241658"
+                    id="third_yellow"
+                    width="13.148556"
+                    height="218.69647"
+                    x="33.268436"
+                    y="39.157318"/>
+            <rect
+                    style="fill:#f6e76a;fill-opacity:1;stroke-width:1.04482234"
+                    id="five_yellow"
+                    width="99.74662"
+                    height="13.813522"
+                    x="33.268436"
+                    y="244.04027"/>
+            <rect
+                    style="fill:#f6e76a;fill-opacity:1;stroke-width:0.94531274"
+                    id="six_yellow"
+                    width="13.308807"
+                    height="58.496136"
+                    x="119.70625"
+                    y="-257.85379"
+                    transform="scale(1,-1)"/>
+            <rect
+                    style="fill:#f6e76a;fill-opacity:1;stroke-width:1.85976994"
+                    id="seven_yellow"
+                    width="55.683327"
+                    height="13.412837"
+                    x="-133.01506"
+                    y="199.35767"
+                    transform="scale(-1,1)"/>
+            <rect
+                    style="fill:#f6e76a;fill-opacity:1;stroke-width:1.20284641"
+                    id="eight_yellow"
+                    width="12.865559"
+                    height="43.096901"
+                    x="77.351624"
+                    y="-199.40247"
+                    transform="scale(1,-1)"/>
+            <flowRoot
+xml:space="preserve"
+id="flowRoot127"
+style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:25px;letter-spacing:0px;word-spacing:0px"><flowRegion
+id="flowRegion129"><rect
+id="rect131"
+width="386.11795"
+height="41.240044"
+x="35.503185"
+y="278.11041" /></flowRegion><flowPara
+id="flowPara133"></flowPara></flowRoot>  <text
+xml:space="preserve"
+style="font-style:normal;font-weight:normal;font-size:41.19104385px;line-height:25.74440193px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#373a3c;fill-opacity:1;stroke:none;stroke-width:1.0297761"
+x="194.32864"
+y="327.32184"
+id="text3859"
+transform="scale(1.0984278,0.9103921)"><tspan
+sodipodi:role="line"
+x="194.32864"
+y="327.32184"
+id="tspan3857"
+style="stroke-width:1.0297761"><tspan
+x="194.32864"
+y="327.32184"
+style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:49.42925262px;line-height:46.33992386px;font-family:'Ubuntu';-inkscape-font-specification:Roboto;text-align:center;text-anchor:middle;stroke-width:1.0297761"
+id="tspan3855">c    a    m    p</tspan></tspan></text>
+<text
+xml:space="preserve"
+style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:23.4375px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#373a3c;fill-opacity:1;stroke:none;stroke-width:0.9375"
+x="123.08036"
+y="293.84488"
+id="text145"><tspan
+sodipodi:role="line"
+id="tspan143"
+x="123.08036"
+y="293.84488"
+style="stroke-width:0.9375">     </tspan></text>
+        </svg>
+    </div>
+
+    <div class="take_part_wrapper after_drawing not-mobile">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-srXAd7yaBcTET4dpLgLsKmNp-P5TH1HyLq02EfSBa9qBqA/viewform">
+            Принять участие
+        </a>
+    </div>
+
+    <script src="/test/static/spirit/js/camp_autumn/logo_animation.js"></script>
+
+</div>
+
+<div class="mobile mobile-header">
+    <h2>Санкт-Петербург</h2>
+    <h2>28 октября</h2>
+    <h2 id="last_one">5 ноября</h2>
+</div>
+<div class="mobile take_part_wrapper">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-srXAd7yaBcTET4dpLgLsKmNp-P5TH1HyLq02EfSBa9qBqA/viewform">
+        Принять участие
+    </a>
+</div>
+
+<!-- Second block =) -->
+<div id="features" class="features green-background">
+    <table>
+        <tr>
+            <td valign="middle">
+                <div class="container green-background">
+                    <div class="row">
+                        <h1>Выездная школа программирования и робототехники <br> для школьников и студентов</h1>
+                        <div class="col-md-4 feature">
+                            <img src="/test/static/spirit/img/camp_autumn/features/1.png">
+                            <h4>Осенняя школа</h4>
+                            <p>С 28 октября по 5 ноября в Санкт-Петербурге пройдёт проектная школа
+                                программирования для студентов и старшеклассников, интересующихся биоинформатикой,
+                                робототехникой, прикладными
+                                разработками, криптовалютами, анализом данных, инфобезопасностью,
+                                и т.д.</p>
+                        </div>
+
+                        <div class="col-md-4 feature">
+                            <img src="/test/static/spirit/img/camp_autumn/features/2.png">
+                            <h4>Направления</h4>
+                            <p>Каждый участник получит возможность реализовать свой проект или решить задачу от
+                                партнеров под руководством экспертов и в деталях познакомиться с машинным обучением,
+                                мобильной разработкой, функциональным программированием, биоинформатикой, IoT, VR/AR,
+                                блокчейн и многим другим.</p>
+                        </div>
+
+                        <div class="col-md-4 feature mini">
+                            <img src="/test/static/spirit/img/camp_autumn/features/3.png">
+                            <h4>Программа</h4>
+                            <p>В программе школы помимо семинаров и работы над проектами представлены мастер-классы,
+                                встречи с успешными предпринимателями и учеными, профориентационные игры, экскурсии в
+                                компании и стартапы, а также спорт, прогулки, театры и самые необычные места СПб.</p>
+                        </div>
+                    </div>
+                    <div class="feature-text white-background">
+                        <p>GoTo помогает участникам: самостоятельно принимать решения, ставить цели и шаг за шагом,
+                            достигать
+                            их,
+                            развить мотивацию к получению новых знаний, расширить кругозор, осознать свои возможности и
+                            приобрести
+                            уверенность для дальнейшего саморазвития, научиться работать в команде, завести новых друзей
+                            и
+                            единомышленников.</p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <!--Как принять участие-->
+    <div class="how-to-take_part not-mobile">
+        <svg id="proto"></svg>
+        <div class="whitespace"></div>
+        <h2 class="title">Участие</h2>
+        <div class="texts">
+            <p id="first_step" style="margin-top: 10px;">Подача заявки<br>&#160;&#160;&#160;</p>
+            <p id="second_step">Школьники 7-11 класса <br> и студенты 1-2 курса</p>
+            <p id="third_step">С проживанием - 30 т.р. <br>
+                без проживания - 20 т.р.</p>
+            <p id="fourth_step">Зачисление <br>и оплата</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="whitespace"></div>
+
+        <h2 class="gotochallange_header">Грантовые конкурсы</h2>
+        <p class="gotochallange">Любой желающий может принять участие в конкурсах GoTo Challenges и выиграть грант,
+            частично
+            или полностью покрывающий стоимость обучения. В рамках конкурса участникам необходимо реализовать до 18
+            октября
+            один из
+            предложенных проектов.</p>
+
+        <a href="https://goto.msk.ru/camp_autumn/grants/" id="grants">GoTo Challenges</a>
+
+        <div class="whitespace not-mobile"></div>
+        <p class="norm_test not-mobile">Проживание организовано в <a href="http://sweetvillagehostel.ru/">Sweet
+            Village</a>. Хостел
+            будет полностью занят участниками школы.
+        </p>
+
+        <div class="whitespace"></div>
+    </div>
+
+    <!-- Смефнявые иконки в оранжевом аде -->
+    <div class="mini-features">
+        <div class="container">
+            <h2 class="main-header">Что ждёт участников?</h2>
+            <div style="padding-bottom: 30px;" class="row">
+                <div class="col-md-2">
+                    <img src="/test/static/spirit/img/camp_autumn/mini-features/1.png">
+                    <p>Проектная<br>деятельность</p>
+                </div>
+
+                <div class="col-md-2">
+                    <img src="/test/static/spirit/img/camp_autumn/mini-features/2.png">
+                    <p>Лекции<br>и воркшопы</p>
+                </div>
+
+                <div class="col-md-2">
+                    <img src="/test/static/spirit/img/camp_autumn/mini-features/3.png">
+                    <p>Единомышленники<br>и новые идеи</p>
+                </div>
+
+                <div class="col-md-2">
+                    <img src="/test/static/spirit/img/camp_autumn/mini-features/4.png">
+                    <p>Эмоции и<br>общение</p>
+                </div>
+
+                <div class="col-md-2">
+                    <img src="/test/static/spirit/img/camp_autumn/mini-features/5.png">
+                    <p>Встречи с<br>экспертами</p>
+                </div>
+
+                <div class="col-md-2">
+                    <img src="/test/static/spirit/img/camp_autumn/mini-features/6.png">
+                    <p>Спорт и <br>игры</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="whitespace not-mobile"></div>
+
+    <!-- Весёлые покрутяшки -->
+    <div class="krutyashki">
+        <div class="container">
+            <div class="row crugleski">
+                <div class="opisanie">
+                    <a onclick="awesome()">
+                        <svg width="64" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64"
+                             enable-background="new 0 0 64 64">
+                            <g>
+                                <path
+                                        d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"/>
+                            </g>
+                        </svg>
+                    </a>
+                    <table>
+                        <td valign="middle">
+                            <p class="programm-text">В рамках направления формируется 3 группы. В первой группе
+                                запланирован самый базовый курс из лекций и воркшопов, сопровождающихся заданиями из
+                                различных областей, в рамках которых ребята сделают 5-6 мини-проектов. Во второй группе
+                                ребят ждут несколько учебных проектов с погружением в мобильную и веб-разработку, базы
+                                данных, сети, анализ данных, применение алгоритмов. Участники, попавшие в старшую группу
+                                по результатам тестирования, все время посвятят реализации основного неучебного проекта
+                                в рамках задачи от компании-партнера или на основе своей идеи. Всех участников ждут как
+                                технологические мастер-классы, так и семинары по организации работы в проекте,
+                                формированию ТЗ и исследованию требований от пользователей, тестированию, а также
+                                ежедневная работа под руководством куратора.
+
+                            </p>
+
+                            <p class="robot-text">
+                                Участники направления будут разделены на 2 группы: опытные ребята возьмутся сразу за
+                                проекты от компаний или на основе своих идей, пройдут все стадии от идеи до реализации.
+                                Второй поток специально предназначен для новичков, которые получат базовые навыки и
+                                инструментарий: познакомятся с Arduino и средой разработки; научатся работать с
+                                различными датчиками, микросхемами, сервомоторами и объединять это все, чтобы получить
+                                умные устройства. Каждый участник направления получит к концу школы результат в виде
+                                прототипа или законченного устройства, а также пройдет серию мастер-классов по проектной
+                                работе, промдизайну и 3д-печати, интернету вещей.
+                            </p>
+
+                            <p class="cool_feature_text">
+                                После отбора на данное направление все участники будут разделены на 2 группы. Первая
+                                займется изучением базовых методов машинного обучения, поработает с нейронными сетями,
+                                прорешает некоторое кол-во соревнований с Kaggle и реализует несколько классических
+                                учебных проектов по работе с текстами, картинками и временными рядами. Также освоят
+                                основные инструментарии и разберутся с математикой и статистикой, которые стоят за
+                                основными методами в этих областях.
+                                Вторая группа ребят, уже имеющих опыт реализации проектов по анализу данных, займется
+                                исследовательскими проектами на основе более продвинутых методов и последних статей и
+                                задачами от компаний.
+
+                            </p>
+
+                            <p class="bio-text">
+                                Биоинформатика – это стремительно развивающаяся область, точка смешения биологии,
+                                медицины, информатики и математики, целью которой является выявление новых биологических
+                                закономерностей алгоритмическими и статистическими методами. С развитием технологий
+                                появилась возможность исследовать весь геном организма в целом, определять уровни
+                                активности генов, исследовать их более сложные взаимодействия. Участники узнают об
+                                основных задачах биоинформатики, получат опыт работы с реальными данными, рассмотрят
+                                примеры современных исследований. К участию приглашаются все, кто хочет познакомиться с
+                                новой областью и попробовать силы в решении нестандартных междисциплинарных задач.
+                                Знание биологии не является обязательным в отличие от знания Python/R и наличия опыта
+                                прикладного программирования.
+                            </p>
+
+                            <p class="fp-text">
+                                Обычно прикладные программисты живут на среднем уровне абстракции: не зная, что
+                                происходит ниже
+                                их языка программирования, но и не уходя в абстракции выше функций или классов.
+                                Мы глубоко изучаем разные системы - от Arduino до компилятора - и крутим их как
+                                бублик в
+                                процессе. Самостоятельно решаем нетривиальные задачи, видим - и применяем
+                                математические
+                                паттерны везде. Попутно, в формате интермиссий, разбираем (на бублики) модные темы
+                                типа
+                                блокчейна или React. Увеличиваем отношение сигнал / шум через ФП. Семинарим,
+                                прогуливаясь и
+                                носим светодиоды в волосах.
+
+                                Изучаемые методы полезны как при прототипировании, так и при написании математически
+                                корректного
+                                софта для бортового компьютера самолёта.
+                            </p>
+
+                            <p class="blockchain-text">
+                                На направлении по блокчейну участники займутся написанием своего блокчейна с нуля на
+                                Haskell, узнают о верификации и статическом анализе контрактов, об архитектуре
+                                распределенных систем и продолжат расширять платформу GoToChain своими разработками.
+                            </p>
+                        </td>
+                    </table>
+                </div>
+                <div onclick="cool(0)" class="up flip-container col-md-4">
+                    <div class="flipper">
+                        <div class="front robot">
+                            <table>
+                                <td valign="middle"><h3>Робототехника</h3></td>
+                            </table>
+                        </div>
+                        <div class="back robot-back">
+                            <table>
+                                <img src="/test/static/spirit/img/camp_autumn/arrow.png">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="cool(1)" class="up flip-container vertical col-md-4">
+                    <div class="flipper">
+                        <div class="front programm">
+                            <table>
+                                <td valign="middle"><h3>Прикладное программирование</h3></td>
+                            </table>
+                        </div>
+                        <div class="back programm-back">
+                            <table>
+                                <img src="/test/static/spirit/img/camp_autumn/arrow.png">
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="cool(2)" class="up flip-container col-md-4">
+                    <div class="flipper">
+                        <div class="front fp">
+                            <table>
+                                <td valign="middle"><h3>Функциональное программирование</h3></td>
+                            </table>
+                        </div>
+                        <div class="back fp-back">
+                            <table>
+                                <img src="/test/static/spirit/img/camp_autumn/arrow.png">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="ntcool(0)" class="down flip-container vertical col-md-4">
+                    <div class="flipper">
+                        <div class="front ad">
+                            <table>
+                                <td valign="middle"><h3>Анализ данных</h3></td>
+                            </table>
+                        </div>
+                        <div class="back ad-back">
+                            <table>
+                                <img src="/test/static/spirit/img/camp_autumn/arrow.png">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="ntcool(1)" class="down flip-container col-md-4">
+                    <div class="flipper">
+                        <div class="front bio">
+                            <table>
+                                <td valign="middle"><h3>Биоинформатика</h3></td>
+                            </table>
+                        </div>
+                        <div class="back bio-back">
+                            <table>
+                                <img src="/test/static/spirit/img/camp_autumn/arrow.png">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="ntcool(2)" class="down flip-container vertical col-md-4">
+                    <div class="flipper">
+                        <div class="front blockchain">
+                            <table>
+                                <td valign="middle"><h3>Блокчейн</h3></td>
+                            </table>
+                        </div>
+                        <div class="back blockchain-back">
+                            <table>
+                                <img src="/test/static/spirit/img/camp_autumn/arrow.png">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Наши препы -->
+    <div class="prepi">
+        <table>
+            <tr>
+                <td valign="middle">
+                    <h2 style="margin-top: 70px;" class="main-header">Преподаватели и гости</h2>
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-md-6 prep">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p1.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Алексей Перепёлкин</h3>
+                                        <p>Руководитель направления робототехники GoTo и ЛИОТ МФТИ, автор
+                                            онлайн-курса на
+                                            Coursera "Строим роботов на Arduino", автор и судья номинации "Hello,
+                                            Robot!
+                                            Arduino" Робофеста, организатор Роболабораторий от КРОК.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 prep">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p2.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Иван Бибилов</h3>
+                                        <p>
+                                            Руководитель направления прикладного программирования GoTo, куратор
+                                            образовательных программ Яндекса, преподаватель различных курсов в
+                                            университетах
+                                            и школы анализа данных Яндекса.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 prep">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p3.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Надежда Янушкевич</h3>
+                                        <p>Руководитель направления поддержки и развития школьного IT-образования
+                                            компании
+                                            КРОК, специалист по корпоративной культуре, организатор соревнований,
+                                            хакатонов
+                                            и школ.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 prep">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p7.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Александр Панин</h3>
+                                        <p>
+                                            Преподаватель направления анализа данных в GoTo.
+                                            Специалист в области машинного обучения, разработчик проектов
+                                            CERN-Яндекс,
+                                            преподаватель ФКН ВШЭ и школы анализа данных Яндекса, ЛЭШ.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p9.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Алексей Саватеев</h3>
+                                        <p>Доктор физико-математических наук, профессор МФТИ. Работает ведущим научным
+                                            сотрудником в РЭШ и ЦЭМИ. Занимается исследованиями в Яндексе.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p12.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Александр Петров</h3>
+                                        <p>
+                                            Преподаватель направления анализа данных в GoTo.
+                                            Специалист в области машинного обучения и рекомендательных систем,
+                                            технический
+                                            директор E-contenta, руководил R&D-отделом Data-Centric Alliance,
+                                            работал в
+                                            Tinkoff, Яндекс и Mail.Ru.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p10.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Николай Кутрухин</h3>
+                                        <p>
+                                            Преподаватель направления робототехники в GoTo, специалист в области
+                                            программной
+                                            инженерии, координатор МКШ, руководитель робототехнических кружков.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/pavel.png">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Павел Куликов</h3>
+                                        <p>Преподаватель направления прикладного программирования в GoTo,
+                                            инженер-программист с
+                                            10-летним стажем, full stack разработчик, фрилансер.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p14.jpeg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Ростислав Бородин</h3>
+                                        <p> Преподаватель направления
+                                            прикладного программирования в GoTo и Политехническом музее.
+                                            Выпускник ФКН НИУ ВШЭ, профессиональный full-stack веб-разработчик.
+                                            Специалист по разработке медицинских сервисов. </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="http://bioinformaticsinstitute.ru/sites/default/files/shchukina_irina.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Ирина Щукина</h3>
+                                        <p>Преподаватель направления биоинформатики в GoTo.
+                                            Выпускник матмеха СПбАУ. Исследователь в Оксфордском университете.
+                                            Преподаватель в Институте Биоинформатики.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding-left: 0;padding-right: 0;">
+                                <div class="col-md-6 prep hid">
+                                    <div class="row">
+                                        <div class="col-md-4 xs-force-center">
+                                            <img src="http://bioinformaticsinstitute.ru/sites/default/files/prodanov.timofey.png">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h3>Тимофей Проданов</h3>
+                                            <p> Преподаватель направления биоинформатики в GoTo.
+                                                Выпускник матмеха СПбАУ. Исследователь в Центре Алгоритмической
+                                                Биотехнологии СПбГУ, преподаватель в Институте Биоинформатики.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 prep hid">
+                                    <div class="row">
+                                        <div class="col-md-4 xs-force-center">
+                                            <img src="https://retailrocket.ru/wp-content/uploads/2016/04/1.png">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h3>Cергей Aбдульманов</h3>
+                                            <p>
+                                                Гостевой лектор.
+                                                Директор по маркетингу «Мосигра».
+
+                                                Соучредитель бутикового рекламного агентства.
+
+                                                Сергей достаточно часто пишет на Хабре о деятельности внутри Мосигры,
+                                                участвует в разработке новых игр.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="https://goto.msk.ru/media/k2/items/cache/9911ecbea07a30e7c89fdadbe8a058e8_L.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Михаил Диченко</h3>
+                                        <p>Преподаватель направления робототехники в GoTo.
+                                            Выпускник МГПУ, руководитель инженерного профиля школы ОРТ, преподаватель
+                                            лицея 1535, руководитель робототехнических кружков в Москве. </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="https://goto.msk.ru/media/k2/items/cache/274936c4b649c88ffad7944bfc7a744a_L.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Алёна Ильина</h3>
+                                        <p>Предприниматель, основатель школы GoTo, организатор TEDxSadovoeRing, серии
+                                            научных школ по робототехнике и искусственному интеллекту RAIC для молодых
+                                            специалистов и других образовательных проектов.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p20.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Михаил Фуников</h3>
+                                        <p> Android-разработчик (Middle+) в e-Legion. Сфера
+                                            профессиональных интересов —построение наиболее простой и гибкой архитектуры
+                                            приложения.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p21.png">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Александр Шаенко</h3>
+                                        <p> Руководитель проекта «Маяк», первого российского спутника созданного руками
+                                            энтузиастов космонавтики на средства, собранные методом краудфандинга.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p22.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Сергей Юдин</h3>
+                                        <p> Преподаватель направления анализа данных в GoTo. Аспирант МехМата МГУ,
+                                            специалист в области машинного обучения и математической статистики.
+                                            Работает аналитиком-разработчиком в Поиске Яндекса.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 prep hid">
+                                <div class="row">
+                                    <div class="col-md-4 xs-force-center">
+                                        <img src="/test/static/spirit/img/camp_autumn/prepi/p24.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Виктор Петухов</h3>
+                                        <p>Закончил магистратуру СПбПУ по направлению Биоинформатика. За время обучения
+                                            проходил стажировку в Harvard Medical School. Специализируется в области
+                                            статистиески и машинного обучения.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+
+                                <div class="col-md-6 prep hid">
+                                    <div class="row">
+                                        <div class="col-md-4 xs-force-center">
+                                            <img src="/test/static/spirit/img/camp_autumn/prepi/p25.jpg">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h3>Анастасия Иванова-Московская</h3>
+                                            <p>Aспирант и сотрудник факультета журналистики МГУ им. М. В. Ломоносова,
+                                                координатор школьного отделения мастерской "Школа "Наука и журналистка"
+                                                проекта "Летняя школа".
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 prep hid">
+                                    <div class="row">
+                                        <div class="col-md-4 xs-force-center">
+                                            <img src="/test/static/spirit/img/camp_autumn/prepi/p23.jpg">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h3>Александр Ветушинский</h3>
+                                            <p>Преподаватель философского факультета МГУ, сотрудник Moscow Game Center,
+                                                ведет курс о прикладных аспектах game studies на факультете медиа,
+                                                дизайна и
+                                                коммуникаций в НИУ ВШЭ.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="more-gosti">
+                        <a onclick="toggle()">Просмотреть всех</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--&lt;!&ndash; Место проведения &ndash;&gt;-->
+    <div>
+        <div class="map-title">
+            <h2 class="main-header">Место проведения</h2>
+        </div>
+        <div id="map"></div>
+    </div>
+    <div class="slider not-mobile">
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0007.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0008.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0009.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0010.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0011.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0012.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0014.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0015.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0016.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0017.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0021.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0022.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0023.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0024.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0025.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0026.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0027.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0028.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0029.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0030.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0031.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0032.jpg">
+        </div>
+
+        <div class="slide">
+            <img src="/test/static/spirit/img/camp_autumn/slides/0033.jpg">
+        </div>
+    </div>
+
+    <div class="comments-wrapper not-mobile">
+        <div class="map-title">
+            <h2 style="color: white" class="main-header">Отзывы участников</h2>
+        </div>
+        <div class="container">
+            <div class="comments">
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/nast.jpg">
+                    <h3>Черемисина Анастасия</h3>
+                    <h2>Лицей №2101, г. Москва</h2>
+                    <p>Приехав один раз в GoTo, ты не сможешь не поехать туда снова. Это место в котором ты можешь
+                        получить знания, необходимые для реализации своих идей и проектов, даже самых немыслимых, ты
+                        всегда можешь обсудить это с преподавателем и понять, с чего надо начать, чтобы проект был
+                        завершен. А еще GoTo это место где ты всегда найдешь интересных людей, море ламповости и тепла,
+                        уютные разговоры на свечках и чаепития. GoTo это место где ты можешь оставаться собой,
+                        совершенствоваться, это маленький мир, в котором хочется жить.</p>
+                </div>
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/kurilev.jpg">
+                    <h3>Александр Курылёв</h3>
+                    <h2>Школа №1357, г. Москва</h2>
+                    <p> В GoTo большое количество времени отводится образованию. Чаще всего бывает по три-четыре пары за
+                        день. В это время можно либо заниматься заранее выбранным проектом, с которым тебе будут
+                        помогать преподаватели, либо учиться.
+                        На протяжении всех своих смен в лагере я реализовал 3 проекта по робототехнике, 1 учебный проект
+                        по анализу данных и несколько мини-проектов по программированию.
+                        Во всех сменах преподаватели уделяли должное внимание каждому из участников и помогали
+                        разбираться с той или иной проблемой. За одну-две недели реально подтянуть свои навыки в
+                        программировании или научиться всему с нуля.
+                    </p>
+                </div>
+
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/gleb.jpg">
+                    <h3>Статкевич Глеб</h3>
+                    <h2>Гимназия №5, г. Чебоксары</h2>
+                    <p>В апреле мне удалось побывать на занятиях весенней школы GoTo в Иннополисе. В самом
+                        городе я уже не первый раз, он великолепен, но особенно меня впечатлили занятия КМБ под
+                        руководством мастера Ростислава! Хочу выразить ему признательность и уважение за то, что в
+                        столь краткое время он, как истинный знаток своего дела, сумел запихнуть в наши черепные
+                        коробки массу полезной инфы и раскрутил наши 2-х ядерные процессоры до 4-х! Мне очень понравился
+                        стиль его обучения. Занятия были очень интенсивны и информативны! Собираюсь возобновить их
+                        летом!</p>
+                </div>
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/svatoslav.jpg">
+                    <h3>Пушкарев Святослав</h3>
+                    <h2>Гимназия №31, г. Курган</h2>
+                    <p> На каждой смене GoTo Camp представлено большое количество разнообразных направлений, а участие в
+                        обучении принимает большое количество IT специалистов. Образовательный процесс увлекателен,
+                        состоит из интересных лекций и реализации различных идей учеников лагеря. Каждый, приехав в этот
+                        лагерь увозит с собой не только полученные знания, но и "жизнеспособный" проект.
+                        В GoTo Camp я принимал участие в реализации "LinuxBot","SmartFluffyBrick" и "Определитель
+                        номеров". Два из них до сих пор развиваются, что является показателем профессионального подхода
+                        всей команды GoTo к обучению.</p>
+                </div>
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/popkova.jpg">
+                    <h3>Екатерина Попкова</h3>
+                    <h2>МГУ, г. Москва</h2>
+                    <p>Весення смена в лагере «GoTo» на специализации «биоинформатика» была для меня очень полезной и
+                        интересной. За неделю мы изучили и самостоятельно реализовали несколько базовых алгоритмов,
+                        применяющихся в биоинформатике: алгоритм Нидлмана-Вунша для выравнивания последовательностей,
+                        алгоритм восстановления вторичной структуры РНК, научились с помощью статистического теста
+                        выделять гены, изменяющие уровень экспрессии при данных условиях, относить человека к той или
+                        иной национальности исходя только из его генетического кода<span class="first_long">.</span> <a
+                                class="more"
+                                onclick="$(this).toggle(); $('.first_long').css('display', 'inline');">...</a> <span
+                                class="first_long">Мне показалось особенно интересным,
+                        что после выполнения задания мы могли опробовать написанный алгоритм на реальных биологических
+                        данных. Параллельно мне удалось сделать проект по теме: «Оптимизация поиска сайтов
+                        РНК-редактирования в данных ICE-seq». Хотя это и был достаточно небольшой однодневный проект,
+                        было здорово попробовать себя в реальной, а не учебной, задаче, которая могла бы стоять перед
+                        исследователем-биоинформатиком.</span></p>
+                </div>
+
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/sere.jpg">
+                    <h3>Сергей Филиппов</h3>
+                    <h2>Экстернат Фоксфорд, г. Санкт-Петербург</h2>
+                    <p>Я очень благодарен лагерю GoTo. В нем я нашел множество интересных людей. Получил огромнейшую
+                        базу знаний в различных областях и закрепил эти знания различными проектами. Такими как, Мишка
+                        на дистанционном управлении через telegram для общения с детьми на расстоянии, манипулятор для
+                        автономной игры в шашки, интеллектуальную гантелю от Intel и многое другое.</p>
+                </div>
+
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/tsiplenkov.jpg">
+                    <h3>Цыпленков Севастьян</h3>
+                    <h2>Гимназия №5, г. Чебоксары</h2>
+                    <p>Ростислав отлично объясняет материал! Всегда готов помочь, если что-то не получается. С ним
+                        интересно. За эту неделю мы с ним можно сказать подружились. Хоть в нашей группе были люди,
+                        которые были продвинуты в этом направлении, благодаря Ростиславу новички не уступали по
+                        качеству продукта и иногда наоборот превосходно делали поставленную задачу.</p>
+                </div>
+
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/kabo.jpg">
+                    <h3>Евгений Кабо</h3>
+                    <h2>Разработчик, г. Минск</h2>
+                    <p>Свою первую заявку подал за 30 минут до окончания срока. И никогда об этом не жалел. В этом месте
+                        прекрасно всё: от круга общения, состоящего из людей который ты вряд ли забудешь (преподаватели,
+                        вожатые, организаторы, гости, участники), до практической-полезной части, как среди
+                        программной стороны (прикладное программирование, анализ данных, биоинформатика), так среди и
+                        аппаратной(робототехника). Я
+                        был по обе стороны баррикад и знаю о чём говорю. Если вы ещё сомневаетесь, не сомневайтесь.
+                    </p>
+                </div>
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/dimaantonov.jpg">
+                    <h3>Дмитрий Антонов</h3>
+                    <h2>Школа №806, г. Москва</h2>
+                    <p>Образовательная программа в рамках GoTo camp очень хорошая. За время поездок в лагерь я
+                        реализовал различные проекты: определение болезни по ДНК, определение изображенного на
+                        фотографии, определение человека по голосу. Это было бы невозможно, если бы не
+                        преподаватели-профессионалы, которые с радостью делятся своим опытом и знаниями. Если вам
+                        хочется освоить прикладное программирование, анализ данных и машинное обучение, биоинформатику,
+                        робототехнику и получить опыт проектной работы, то этот лагерь для вас.
+                    </p>
+                </div>
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/andreeva.jpg">
+                    <h3>Андреева Мария</h3>
+                    <h2>Школа №179, г. Москва</h2>
+                    <p>В GoTo какая-то особенная атмосфера в которой даже летом хочется работать и узнавать новое) Я
+                        была на нескольких сменах, но пока что попробовала только два направления: робототехнику и
+                        анализ данных. На первом мы делали много разных проектов, начиная рисующим роботом, заканчивая
+                        умной гантелей. Потом я решила что-нибудь поменять и пошла на направление АДа. Там пока что было
+                        только обучение, тк это довольно сложная тема и в ней много чего надо изучить, что б делать
+                        какие-то стоящие проекты. Очень классно объясняют, если что-то непонятно разбирают по мелочам.
+                    </p>
+                </div>
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/zajceva.jpg">
+                    <h3>Зайцева Татьяна</h3>
+                    <h2>МГУ, г. Москва</h2>
+                    <p> Поездка в GoTo - отличная возможность совместить активный отдых и попробовать себя в интересных
+                        проектах, а также познакомиться с ребятами со всей России, у которых горят глаза от того же, что
+                        и у тебя. В свою первую смену мы в команде реализовали управляемую оператором тележку с камерой,
+                        способную вращаться почти как угодно и так помогать оператору снимать то, что нужно, под
+                        правильным углом и освещением, а во вторую я сделала робота, запоминающего свою исходную
+                        настроенную траекторию, и потом ездящего по ней даже после выключения питания. Как оказалось,
+                        можно всего за одну смену сделать полностью задачу, в чём нам помогали отзывчивые и опытные
+                        преподаватели. Мне всё понравилось, а знания с этих смен я использую до сих пор.
+                    </p>
+                </div>
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/gridasov.jpg">
+                    <h3>Гридасов Илья</h3>
+                    <h2>МФТИ, г. Магнитогорск</h2>
+                    <p> Мне очень понравилось в GoTo. Здесь я написал первое работающее приложение на android.
+                        Благодаря данной школе я получил полезный опыт написания проекта, причём делали его я с моим
+                        напарником почти самостоятельно, обсуждая идеи и технологии с куратором. Мы кодили приложение,
+                        которое выдавало тебе интересный факт, со встроенной рекомендательной системой. Работу мы
+                        разделили примерно так, что я занимался back-end-ом и рекомендательной системой, а напарник
+                        больше front-end-ом. В итоге, не без трудностей и неудач, мы реализовали работающее готовое
+                        приложение, которое можно было выпускать в production, ну почти. Хочется отметить, что здесь
+                        также было время на активный отдых, игры в волейбол, футбол многое другое<span
+                                class="second_long">.</span> <a class="more"
+                                                                onclick="$(this).toggle(); $('.second_long').css('display', 'inline');">...</a>
+                        <span
+                                class="second_long"> А также несмотря на
+                        достаточную погруженность людей в свои проекты, в воздухе царила атмосфера семьи, все обсуждали
+                        свои проекты с другими, предлагали новые идеи, а также вместе наслаждались играми и общением по
+                        душам, которому значительно способствовали очень сердечные свечки по вечерам. Таким образом,
+                        жизнь в GoTo Camp насыщает человека как мыслями, идеями, новыми технологиями, но и эмоциями,
+                            конечно, позитивными!</span>
+                    </p>
+                </div>
+
+                <div class="comment">
+                    <img src="/test/static/spirit/img/camp_autumn/comments/maxim.jpg">
+                    <h3>Максим Манайнен</h3>
+                    <h2>Школа РИД, г. Санкт-Петербург</h2>
+                    <p> Поездки в GoTo стали одними из самых ярких моментов моей жизни, ведь это не просто лагерь с
+                        воспитательницами и няничками, а хаб единомышленников, по совместительству являющийся детским
+                        лагерем. Это одно из тех мест, где людям всё равно какого вы возраста, на каком месте в рейтинге
+                        российских школ стоит ваша, или какая у вас была оценка по математике в третьей четверти второго
+                        класса. Всё что важно здесь - это желание и способность к работе и учёбе, а так же ваш характер
+                        и мировоззрение.
+                        Моей первой поездкой в GoTo была поездка на смену в самый прекрасный город России -
+                        Санкт-Петербург. Я поехал на направление "Аналих данных", о чём нисколько не пожалел<span
+                                class="third_long">.</span> <a class="more"
+                                                               onclick="$(this).toggle(); $('.third_long').css('display', 'inline');">...</a>
+                        <span
+                                class="third_long"> Тогда я
+                        уже какое-то время изучал техники Data Science'а, но дальше решения Титаника линейной
+                        регрессией, или каким-нибудь Random Forest'ом дело не зашло, однако эта смена дала мне так
+                        нужный буст.
+                        Дни в лагере состояли из лекций, времени работы над проектом и вечерних активити. Лекции были
+                        очень интересными, нам рассказывали о всём от байесовских сетей до использования машинного
+                        обучения в продакшене. Правда, для части материала мне на тот момент не хватало знаний
+                        математики, так что если вы не хотите попасть в такую же ситуацию, добавьте в свой график,
+                        где-то между выполнением домашнего задания по литературе и изучением Scala, прохождение пары
+                        курсов по линалу и теор.веру, вам это очень поможет.
+                        Проектом над которым работал я и один мой товарищ была рекоммендательная система фильмов,
+                        работающая на данных со страницы пользователя в Вк. Делалось это для решения проблемы, так
+                        называемого, "холодного старта", когда система еще ничего не знает о пользовтеле. Многие
+                        реальные рекоммендательные системы используют для этого кластерные методы, чтобы находить
+                        похожих юзеров по данным учетки, а потом рекоммендовать понравившиеся им фильмы пользователю, мы
+                        же попробовали два различных варианта: рекоммендовать фильмы в зависимости от того, что
+                        пользователь указал в графе "любимые фильмы" и в зависимости от групп, в которых он состоит. С
+                        алгоритмической точки зрения и с точки зрения анализа данных эта задача не является слишком
+                        сложной, однако на тот момент для меня было триумфом получить первые рекоммендации для себя и
+                        своих друзей.
+                        Так же стоит отметить экскурсии, проходвишие время от времени после занятий. Мы съездили в такие
+                        компании, как "Biocad" и "Parseq labs", эти компании занимаются анализом генома для различых
+                        целей. В компаниях нам рассказали о проблемах, над которыми они работают, какие проекты начнут в
+                        скором времени, всё это познакомило меня с новым для меня миром биоинформатики, область, которой
+                        я думаю заниматься в университете, и надеюсь полсе него.
+                        Ну и конечно вечернии посиделки на кухне хостела и прогулки по вечернему Питеру, которые были
+                        приятным завершением наших дней. Здесь собралась настолько разнящаяся, но в то же время очень
+                        близкая по духу компания, что разговоры и споры с этими людьми позволят вам по новому взглянуть
+                        на волнующие вас темы. Здесь каждый является экспертом в своей области, будь то математика,
+                        шахматы, или западная философия: темы для разговоров здесь не иссякнут никогда.
+                        GoTo - это то место, где вы научитесь работать, познакомитесь с единомышленниками и хорошо
+                        проеведете время. Так что если у вас есть выбор между ним и лагерем "Юный юрист", считайте выбор
+                            уже сделан.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Партнёры -->
+    <div class="partners normal-otstup">
+        <table>
+            <tr>
+                <td valign="middle">
+                    <div class="header">
+                        <h2 class="main-header">Организаторы</h2>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="partner col-md-3 little-partner">
+                                <table>
+                                    <td valign="middle"><a href="https://goto.msk.ru/"><img
+                                            src="https://goto.msk.ru/templates/gk_university/images/system/logo.svg"></a>
+                                    </td>
+                                </table>
+                            </div>
+
+
+                            <div class="partner col-md-3 little-partner">
+                                <table>
+                                    <td valign="middle"><a href="http://technopark.ifmo.ru"><img
+                                            src="/test/static/spirit/img/camp_autumn/Technopark.jpg"></a></td>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!-- Партнёры -->
+    <div id="partners" class="partners normal-otstup">
+        <table>
+            <tr>
+                <td valign="middle">
+                    <div class="header">
+                        <h2 class="main-header">Партнёры</h2>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="partner col-md-3 big-partner">
+                                <table>
+                                    <td valign="middle"><a href="http://www.ifmo.ru/ru/"><img style="max-height: 120%;"
+                                                                                              src="/test/static/spirit/img/camp_autumn/partners/itmo.jpg"></a>
+                                    </td>
+                                </table>
+                            </div>
+
+                            <div class="partner col-md-3 little-partner">
+                                <table>
+                                    <td valign="middle"><a href="https://mipt.ru/"><img src="/test/static/spirit/img/camp_autumn/partners/mfti.png"></a>
+                                    </td>
+                                </table>
+                            </div>
+
+                            <div class="partner col-md-3 big-partner">
+                                <table>
+                                    <td valign="middle"><a href="https://www.rvc.ru/"><img
+                                            src="/test/static/spirit/img/camp_autumn/partners/rvk.png"></a></td>
+                                </table>
+                            </div>
+
+                            <div class="partner col-md-3 little-partner">
+                                <table>
+                                    <td valign="middle"><a href="http://www.intel.ru/"><img id="intel"
+                                                                                            src="/test/static/spirit/img/camp_autumn/partners/intel.png"></a>
+                                    </td>
+                                </table>
+                            </div>
+                            <div class="partner col-md-3 little-partner">
+                                <table>
+                                    <td valign="middle"><a href="https://www.hse.ru/"><img id="hse"
+                                                                                           src="/test/static/spirit/img/camp_autumn/partners/hse.jpg"></a>
+                                    </td>
+                                </table>
+                            </div>
+                            <div class="partner col-md-3">
+                                <table>
+                                    <td valign="middle"><a href="https://kids.ifmo.ru/"><img style="max-height: 120%;"
+                                                                                             src="/test/static/spirit/img/camp_autumn/partners/kids.png"></a>
+                                    </td>
+                                </table>
+                            </div>
+
+
+                            <div class="partner col-md-3 little-partner">
+                                <table>
+                                    <td valign="middle"><a href="http://www.croc.ru/"><img
+                                            src="/test/static/spirit/img/camp_autumn/partners/croc.png"></a></td>
+                                </table>
+                            </div>
+
+                            <div class="partner col-md-3">
+                                <table>
+                                    <td valign="middle"><a href="http://parseq.pro/ru"><img
+                                            src="/test/static/spirit/img/camp_autumn/partners/parseq.png"></a></td>
+                                </table>
+                            </div>
+
+                            <div class="partner col-md-3 big-partner">
+                                <table>
+                                    <td valign="middle"><a href="https://biocad.ru/"><img
+                                            src="/test/static/spirit/img/camp_autumn/partners/biocad.png"></a></td>
+                                </table>
+                            </div>
+
+                            <div class="partner col-md-3 big-partner">
+                                <table>
+                                    <td valign="middle"><a href="https://www.abbyy.com/ru-ru/"><img id="abbyy"
+                                                                                                    src="/test/static/spirit/img/camp_autumn/partners/logo_abbyy.png"></a>
+                                    </td>
+                                </table>
+                            </div>
+
+                            <div class="partner col-md-3 little-partner">
+                                <table>
+                                    <td valign="middle"><a href="http://letnyayashkola.org/"><img
+                                            src="/test/static/spirit/img/camp_autumn/partners/LS-logo.png"></a></td>
+                                </table>
+                            </div>
+
+                            <div class="partner col-md-3 little-partner">
+                                <table>
+                                    <td valign="middle"><a href="http://motorica.org/"><img
+                                            src="/test/static/spirit/img/camp_autumn/partners/motorika.png"></a></td>
+                                </table>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Подвальчик -->
+    <div id="footer" class="footer">
+        <div class="green-line"></div>
+        <div class="container">
+            <div class="row footer-inside ">
+                <div class="col-md-2  not-mobile">
+                    <img src="/test/static/spirit/img/camp_autumn/logo.png">
+                </div>
+                <div class="mobile"><img style="margin: 0 auto; float: none; display: block" src="/test/static/spirit/img/camp_autumn/logo.png">
+                </div>
+
+                <div class="col-md-4 description not-mobile">
+                    <p style="font-size: 11px;line-height: 1.5;">Образовательный проект, посвященный проектной
+                        деятельности
+                        в различных высокотехнологических
+                        областях. Использование визуальных материалов только с согласия создателей проекта. Все
+                        права
+                        защищены. </p>
+                </div>
+
+                <div class="description mobile">
+                    <p style="text-align: center; ">Образовательный проект, посвященный проектной деятельности в
+                        различных
+                        высокотехнологических
+                        областях. Использование визуальных материалов только с согласия создателей проекта. Все
+                        права
+                        защищены. </p>
+                </div>
+                <div class="col-md-6 contacts">
+                    <div class="not-mobile">
+                        <h4>Контакты</h4>
+                        <p><a style="color: rgb(230, 25, 25)" href="tel:89852443226">+7 (985) 2443226</a></p>
+                        <a><a style="color: rgb(230, 25, 25)"
+                              href="mailto:school@goto.msk.ru">school@goto.msk.ru</a></a>
+                    </div>
+                    <div class="mobile">
+                        <h4 style="text-align: center">Контакты</h4>
+                        <p style="text-align: center"><a style="color: rgb(230, 25, 25)" href="tel:89852443226">+7 (985)
+                            2443226</a></p>
+                        <p style="text-align: center"><a style="color: rgb(230, 25, 25)"
+                                                         href="mailto:school@goto.msk.ru">school@goto.msk.ru</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Трекер большого брата -->
+    <div style='display: none;'>
+        <!-- Yandex.Metrika informer -->
+        <a href="https://metrika.yandex.ru/stat/?id=27106058&amp;from=informer"
+           target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/27106058/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+                                               style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика"
+                                               title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"
+                                               onclick="try{Ya.Metrika.informer({i:this,id:27106058,lang:'ru'});return false}catch(e){}"/></a>
+        <!-- /Yandex.Metrika informer -->
+
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript">
+            (function (d, w, c) {
+                (w[c] = w[c] || []).push(function () {
+                    try {
+                        w.yaCounter27106058 = new Ya.Metrika({
+                            id: 27106058,
+                            webvisor: true,
+                            clickmap: true,
+                            trackLinks: true,
+                            accurateTrackBounce: true
+                        });
+                    } catch (e) {
+                    }
+                });
+
+                var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                    f = function () {
+                        n.parentNode.insertBefore(s, n);
+                    };
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+                if (w.opera == "[object Opera]") {
+                    d.addEventListener("DOMContentLoaded", f, false);
+                } else {
+                    f();
+                }
+            })(document, window, "yandex_metrika_callbacks");
+        </script>
+        <noscript>
+            <div><img src="//mc.yandex.ru/watch/27106058" style="position:absolute; left:-9999px;" alt=""/></div>
+        </noscript>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            if ($("body").width() > 1010) {
+                $('.slider').slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 5000
+                });
+
+                $('.comments').slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 120000
+                });
+            }
+        });
+
+        $(document).resize(function () {
+            setTimeout(function () {
+                $(".golovinka-special").css("height", $('#normal').height());
+            }, 300);
+
+            if ($("body").width() > 1010) {
+                $('.slider').slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 5000
+                });
+
+                $('.comments').slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 120000
+                });
+            }
+        });
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/easing/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script>
+    <!--[if IE]>
+    <link href="stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/test/static/spirit/js/camp_autumn/header.js"></script>
+    <script src="/test/static/spirit/js/camp_autumn/menu.js"></script>
+    <script src="/test/static/spirit/js/camp_autumn/logo_animation.js"></script>
+    <script src="/test/static/spirit/js/camp_autumn/shari.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-69153546-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>
+</html>

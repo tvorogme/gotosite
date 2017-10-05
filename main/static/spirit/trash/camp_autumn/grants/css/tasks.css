@@ -1,0 +1,14 @@
+h1{
+    text-align: center;
+    margin: 1.5em 0 !important;
+}
+
+img{
+    float: none;
+    display: block;
+    margin: 0 auto;
+}
+
+.button_wrapper{
+    margin: 60px 0;
+}
