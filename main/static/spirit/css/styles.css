@@ -64,6 +64,11 @@ a {
     padding-bottom: 10px;
 }
 
+.button_wrapper {
+    text-align: center;
+    margin-top: 30px;
+}
+
 .button_wrapper button {
     border: none;
     padding: 10px 40px;
@@ -183,6 +188,8 @@ a {
 .slide-text h1 {
     text-align: center;
     font-weight: 300 !important;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .green-font {
