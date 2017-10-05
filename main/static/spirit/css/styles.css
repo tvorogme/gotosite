@@ -59,6 +59,18 @@ a {
     display: flex;
     flex-direction: column;
     align-content: stretch;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+.button_wrapper button {
+    border: none;
+    padding: 10px 40px;
+    font-size: 20px;
+    color: white;
+    font-weight: 300;
+    margin: 0 auto;
 }
 
 .first-slide {
@@ -337,10 +349,9 @@ input {
     font-size: 35px;
 }
 
-.directions h2{
+.directions h2 {
     font-weight: 300 !important;
 }
-
 
 /*DesKtop*/
 
@@ -560,7 +571,7 @@ input {
         margin: 20px;
     }
 
-    .subscribe>div {
+    .subscribe > div {
         width: 100%;
         margin: 0px;
         text-align: center;
@@ -741,6 +752,7 @@ input {
         justify-content: center;
         align-items: center;
     }
+
     .footer-block div {
         margin-left: 20px;
         margin-right: 20px;
@@ -825,7 +837,7 @@ input {
         flex-direction: row;
     }
 
-    .subscribe>div {
+    .subscribe > div {
         width: 100%;
         margin: 0px;
         text-align: center;
@@ -974,10 +986,12 @@ input {
         color: #484848;
         box-sizing: border-box;
     }
+
     .footer-block a {
         color: #484848;
         font-weight: 300;
     }
+
     .footer-block h4 {
         color: #484848;
         font-weight: 300;
@@ -988,12 +1002,14 @@ input {
     #socials {
         padding-bottom: 50px;
     }
+
     #socials svg {
         width: 25px;
         height: 25px;
         padding: 0px;
         margin: 10px;
     }
+
     .slide {
         min-height: 100vh;
         max-width: 100%;
@@ -1031,11 +1047,13 @@ input {
         width: 100%;
         text-align: center;
     }
-    .subscribe>div {
+
+    .subscribe > div {
         width: 100%;
         margin: auto;
         text-align: center;
     }
+
     #mail {
         width: 200px;
         font-size: 20px;
@@ -1056,9 +1074,11 @@ input {
     .chess-block div {
         padding: 0px;
     }
-    #pic2{
+
+    #pic2 {
         order: 1;
     }
+
     .footer-menu-block {
         height: 190px;
         padding-top: 90px;
@@ -1067,6 +1087,7 @@ input {
         box-sizing: content-box;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
     }
+
     .footer-menu-block a {
         font-size: 35px;
     }
