@@ -16,6 +16,10 @@ urlpatterns = [
         # About
         url(r'^about_us/$', about_us, name='about_us'),
 
+        # Pages
+        url(r'^co-working/$', coWorking, name='about_us'),
+        url(r'^studio/$', studio, name='about_us'),
+
         # Profile
         url(r'^profile/$', profile_page, name='SelfProfile'),
         url(r'^profile/(?P<_id>[0-9]+)/$', profile_page, name='Profile'),

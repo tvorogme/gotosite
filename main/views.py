@@ -6,7 +6,6 @@ import pandas as pd
 from allauth.socialaccount.models import SocialAccount
 from django.contrib.auth import logout, authenticate, login
 from django.core.files.base import ContentFile
-from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -44,6 +43,14 @@ def about_us(request):
     }
 
     return render(request, 'spirit/about_us.html', context)
+
+
+def coWorking(request):
+    return render(request, 'spirit/co-working.html')
+
+
+def studio(request):
+    return render(request, 'spirit/studio.html')
 
 
 def shop(request):
@@ -118,7 +125,7 @@ def logout_wrapper(request):
     # just logout
     # no comments
     logout(request)
-    return redirect("/")
+    return redirect("/test")
 
 
 def login_wrapper(request):
