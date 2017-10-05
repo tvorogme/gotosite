@@ -59,12 +59,12 @@ a {
     display: flex;
     flex-direction: column;
     align-content: stretch;
-    max-width: 900px;
     margin: 0 auto;
     padding-bottom: 10px;
 }
 
 .centered {
+    max-width: 900px;
     align-items: center;
     justify-content: center;
 }
