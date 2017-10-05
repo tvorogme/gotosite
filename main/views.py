@@ -52,8 +52,18 @@ def coWorking(request):
 def studio(request):
     return render(request, 'spirit/studio.html')
 
+
 def camp_autumn(request):
     return render(request, 'spirit/camp_autumn.html')
+
+
+def grants(request):
+    return render(request, 'spirit/grants.html')
+
+
+def tasks(request):
+    return render(request, 'spirit/tasks.html')
+
 
 def shop(request):
     context = {

@@ -305,7 +305,7 @@ a {
     text-align: center;
     display: block;
     margin: 0 auto;
-    background-image: url("../img/back.jpg");
+    background-image: url("../../img/grants/back.jpg");
     background-size: cover;
     background-position: center;
     z-index: -1;
