@@ -501,10 +501,10 @@
         <div id="schools" class="block_menu" onclick="window.location='/camp_autumn/';">
             <h1><a href="https://goto.msk.ru/camp_autumn/">Школы</a></h1>
         </div>
-        <div id="co-working" class="block_menu" onclick="window.location='/test/co-working'">
+        <div id="co-working" class="block_menu" onclick="window.location='/test/co-working/'">
             <h1><a>Коворкинг</a></h1>
         </div>
-        <div id="studio" class="block_menu" onclick="window.location='/test/studio'">
+        <div id="studio" class="block_menu" onclick="window.location='/test/studio/'">
             <h1><a>Студия</a></h1>
         </div>
     </div>
@@ -521,7 +521,7 @@
 <footer class="footer">
     <div class="footer-block">
         {% if request.user.is_authenticated %}
-            <div class="footer-menu-block"><h4><a href="https://goto.msk.ru/test/profile/">Профиль</a></h4></div>
+            <div class="footer-menu-block"><h4><a href="/test/profile/">Профиль</a></h4></div>
         {% else %}
             <div class="footer-menu-block"><h4><a onclick="toggle_login_placeholder()">Вход</a></h4></div>
         {% endif %}
