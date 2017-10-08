@@ -137,6 +137,6 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 SITE_ID = 1
-STATIC_ROOT = '/root/gotosite/main/static'
+STATIC_ROOT = '/root/gotosite/main/django_media'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
