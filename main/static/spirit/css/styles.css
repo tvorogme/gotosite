@@ -1067,6 +1067,7 @@ input {
     .subscribe {
         width: 100%;
         text-align: center;
+        min-height: 200px;
     }
 
     .subscribe > div {
