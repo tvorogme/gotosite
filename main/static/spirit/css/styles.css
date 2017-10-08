@@ -336,6 +336,10 @@ input {
     outline: none;
 }
 
+.directions p {
+    font-size: 14px;
+}
+
 .arrow {
     outline: none;
     border: 0px;
@@ -902,7 +906,7 @@ input {
         color: #FFF;
         background: #49B398;
     }
-    
+
     .main-block-container {
         flex-direction: column;
         order: 1;
