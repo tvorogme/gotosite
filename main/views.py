@@ -44,11 +44,6 @@ def about_us(request):
 
     return render(request, 'spirit/about_us.html', context)
 
-
-def coWorking(request):
-    return render(request, 'spirit/co-working.html')
-
-
 def studio(request):
     return render(request, 'spirit/studio.html')
 
