@@ -196,11 +196,6 @@ a {
     margin-bottom: 0;
 }
 
-.green-font {
-    color: #FFF;
-    background: #49B398;
-}
-
 .numbers {
     min-height: 10vh;
     max-width: 100%;
@@ -903,6 +898,11 @@ input {
 /*Smartphones*/
 
 @media screen and (max-width: 767px) {
+    .green-font {
+        color: #FFF;
+        background: #49B398;
+    }
+    
     .main-block-container {
         flex-direction: column;
         order: 1;
