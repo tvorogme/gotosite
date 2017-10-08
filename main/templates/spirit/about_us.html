@@ -163,6 +163,7 @@
         <div class="subscribe">
             <div>
                 <form action="/api/add_subscriber/" method="post">
+                    {% csrf_token %}
                     <p><input id="mail" type="email" name="email" placeholder="example@mail.com">
                         <button input type="submit" class="arrow">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
