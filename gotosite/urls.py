@@ -14,7 +14,6 @@ urlpatterns = [
     url(r'^$', index, name='index'),
 
     # Pages
-    url(r'^co-working/$', coWorking, name='about_us'),
     url(r'^studio/$', studio, name='about_us'),
     url(r'^about_us/$', about_us, name='about_us'),
 
