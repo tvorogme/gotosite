@@ -13,9 +13,6 @@ urlpatterns = [
     # Index
     url(r'^$', index, name='index'),
 
-    # About
-    url(r'^about_us/$', about_us, name='about_us'),
-
     # Pages
     url(r'^co-working/$', coWorking, name='about_us'),
     url(r'^studio/$', studio, name='about_us'),
@@ -50,6 +47,7 @@ urlpatterns = [
     url(r'^api/get_needed_schools_names/', get_needed_schools_names),
     url(r'^api/update_avatar/', update_avatar),
     url(r'^api/get_user_info/', generate_csv),
+    url(r'^api/add_subscriber/', subscribe_email),
 
     # Bank
     url(r'^bank/shop/', shop),

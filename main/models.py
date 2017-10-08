@@ -274,3 +274,14 @@ class Event(models.Model):
     class Meta:
         verbose_name = "мероприятия"
         verbose_name_plural = "мероприятие"
+
+
+class Emails(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return "{}".format(self.email)
+
+    class Meta:
+        verbose_name = "emails"
+        verbose_name_plural = "email"

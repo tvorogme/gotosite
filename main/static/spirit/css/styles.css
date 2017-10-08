@@ -60,7 +60,6 @@ a {
     flex-direction: column;
     align-content: stretch;
     margin: 0 auto;
-    padding-bottom: 10px;
 }
 
 .centered {
@@ -365,6 +364,11 @@ input {
     font-weight: 300 !important;
 }
 
+#socials {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
 /*DesKtop*/
 
 @media screen and (min-width: 1160px) {
@@ -540,14 +544,10 @@ input {
         margin-right: 20px;
     }
 
-    #socials {
-        margin: 0px;
-    }
-
     #socials svg {
         width: 25px;
         height: 25px;
-        padding: 3px;
+        padding: 2px;
     }
 
     #socials svg:hover {
@@ -620,7 +620,7 @@ input {
 
     .arrow {
         width: 50px;
-        height: 49px;
+        height: 48px;
     }
 }
 

@@ -356,6 +356,16 @@ def update_profile(request):
 # API
 #
 
+
+def subscribe_email(request):
+    if 'email' in request.POST:
+        # Get skill from user
+        tmp_email = Emails(email=request.POST['email'])
+        tmp_email.save()
+        print(tmp_email)
+    return redirect('/about_us')
+
+
 def get_needed_skills(request):
     if 'skill' in request.GET:
         # Get skill from user
