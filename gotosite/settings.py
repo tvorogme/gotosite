@@ -11,13 +11,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-# from .settings_secret import *
-
-SECRET_KEY = 'usldaklsdkasdkamskldamlslqwi09-801-93-ijqijwkqwnfQ!##$!'
+from .settings_secret import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-DEBUG = True
+DEBUG = False
 MAX_UPLOAD_SIZE = 5242880
 
 ALLOWED_HOSTS = ['goto.msk.ru', 'localhost', '127.0.0.1']
