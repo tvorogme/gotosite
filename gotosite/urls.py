@@ -9,7 +9,7 @@ urlpatterns = [
     # url(r'^/', include([
     # Admin
     url(r'^admin/', admin.site.urls),
-    
+
     # Index
     url(r'^$', index, name='index'),
 
