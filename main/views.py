@@ -5,6 +5,7 @@ import os
 import pandas as pd
 from allauth.socialaccount.models import SocialAccount
 from django.contrib.auth import logout, authenticate, login
+from django.contrib.staticfiles.views import serve
 from django.core.files.base import ContentFile
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -53,13 +54,6 @@ def shop(request):
         "goods": Good.objects.all(),
     }
     return render(request, 'pages/bank/shop.html', context)
-
-
-def sitemap(request):
-    return render(request, 'sitemap.xml')
-
-def robot(request):
-    return render(request, 'robot.txt')
 
 #############
 #

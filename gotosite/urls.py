@@ -9,10 +9,7 @@ urlpatterns = [
     # url(r'^/', include([
     # Admin
     url(r'^admin/', admin.site.urls),
-
-    url(r'^sitemap.xml', sitemap),
-    url(r'^robot.txt', robot),
-
+    
     # Index
     url(r'^$', index, name='index'),
 
