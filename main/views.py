@@ -55,6 +55,12 @@ def shop(request):
     return render(request, 'pages/bank/shop.html', context)
 
 
+def sitemap(request):
+    return render(request, 'sitemap.xml')
+
+def robot(request):
+    return render(request, 'robot.txt')
+
 #############
 #
 # PROFILE PAGES

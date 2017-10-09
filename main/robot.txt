@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /joomla/
+Sitemap: sitemap.xml
