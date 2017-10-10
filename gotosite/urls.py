@@ -13,9 +13,9 @@ urlpatterns = [
     # Index
     url(r'^$', index, name='index'),
 
-    url(r'^camp_summer$', to_home),
-    url(r'^camp_spring$', to_home),
-    url(r'^camp_winter$', to_home),
+    url(r'^camp_summer', to_home),
+    url(r'^camp_spring', to_home),
+    url(r'^camp_winter', to_home),
 
     # Pages
     url(r'^studio/$', studio, name='about_us'),
