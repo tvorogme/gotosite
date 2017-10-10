@@ -5,7 +5,6 @@ import os
 import pandas as pd
 from allauth.socialaccount.models import SocialAccount
 from django.contrib.auth import logout, authenticate, login
-from django.contrib.staticfiles.views import serve
 from django.core.files.base import ContentFile
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -45,6 +44,11 @@ def about_us(request):
 
     return render(request, 'spirit/about_us.html', context)
 
+
+def to_home(request):
+    return redirect("/")
+
+
 def studio(request):
     return render(request, 'spirit/studio.html')
 
@@ -54,6 +58,7 @@ def shop(request):
         "goods": Good.objects.all(),
     }
     return render(request, 'pages/bank/shop.html', context)
+
 
 #############
 #
