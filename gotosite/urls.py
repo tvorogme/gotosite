@@ -13,6 +13,8 @@ urlpatterns = [
     # Index
     url(r'^$', index, name='index'),
 
+    url(r'camp_summer/^$', lambda: redirect('/')),
+
     # Pages
     url(r'^studio/$', studio, name='about_us'),
     url(r'^about_us/$', about_us, name='about_us'),
