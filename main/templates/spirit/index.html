@@ -21,11 +21,31 @@
 
     <base href="https://goto.msk.ru/"/>
 
+    <link href={% static "/spirit/css/styles.css" %} rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link rel="shortcut icon" href={% static "/img/favicon.ico" %} type="image/x-icon">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Красивые значки-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Большая не нужная библиотека -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!--Бутстрап-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
 </head>
 
 <body>
 {% include 'helpers/login.html' %}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src={% static "/spirit/js/logo_animation.js" %}></script>
 
 <div class="main">
     <!-- Лого -->
@@ -578,24 +598,6 @@
     </div>
 </footer>
 
-<link href={% static "/spirit/css/styles.css" %} rel="stylesheet">
-
-<!--Красивые значки-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!--Бутстрап-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-<!-- Большая не нужная библиотека -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src={% static "/spirit/js/logo_animation.js" %}></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
@@ -664,7 +666,6 @@
     ga('send', 'pageview');
 
 </script>
-
 </body>
 
 </html>
