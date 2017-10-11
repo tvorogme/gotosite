@@ -6,7 +6,7 @@
 {% block login %}
     {% load static %}
     <!--Стили логинштуки-->
-    <link rel="stylesheet" type="text/css" href="{% static "/css/helpers/login.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "/css/helpers/login.min.css" %}"/>
 
     <table id="login_placeholder_table" onclick="toggle_login_placeholder()">
         <tr>
@@ -117,5 +117,5 @@
     </table>
 
     <!--Логин скрипты-->
-    <script src="{% static "/js/profile/login.js" %}"></script>
+    <script src="{% static "/js/profile/login.min.js" %}"></script>
 {% endblock %}
