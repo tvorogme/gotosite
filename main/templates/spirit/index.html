@@ -29,22 +29,14 @@
     <!--Красивые значки-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Большая не нужная библиотека -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
     <!--Бутстрап-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-{% include 'helpers/login.html' %}
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src={% static "/spirit/js/logo_animation.min.js" %}></script>
+{#{% include 'helpers/login.html' %}#}
 
 <div class="main">
     <!-- Лого -->
@@ -525,8 +517,6 @@
     <div class="animated-line">
         <h3>Мы занимаемся образованием и разработкой <br> в сфере <span id='innovations'>высоких технологий</span></h3>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js"></script>
-    <script src={% static "/spirit/js/animated_line.min.js" %}></script>
 </div>
 
 <!-- Футер -->
@@ -597,6 +587,15 @@
     </div>
 </footer>
 
+
+<!-- Большая не нужная библиотека -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src={% static "/spirit/js/logo_animation.min.js" %}></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js"></script>
+<script src={% static "/spirit/js/animated_line.min.js" %}></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
