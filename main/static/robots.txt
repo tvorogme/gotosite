@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /joomla/
 Sitemap: https://goto.msk.ru/sitemap.xml
+Host: https://goto.msk.ru
