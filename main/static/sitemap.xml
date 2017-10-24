@@ -6,37 +6,34 @@
     </url>
     <url>
         <loc>https://goto.msk.ru/hackathon/</loc>
-        <lastmod>2017-10-05T06:28:39+00:00</lastmod>
         <changefreq>hourly</changefreq>
     </url>
     <url>
         <loc>https://goto.msk.ru/camp_autumn/</loc>
-        <lastmod>2017-10-09T14:09:52+00:00</lastmod>
         <changefreq>hourly</changefreq>
     </url>
     <url>
         <loc>https://goto.msk.ru/about_us/</loc>
-        <lastmod>2017-10-05T06:28:39+00:00</lastmod>
         <changefreq>hourly</changefreq>
     </url>
     <url>
         <loc>https://goto.msk.ru/studio/</loc>
-        <lastmod>2017-10-05T06:28:39+00:00</lastmod>
         <changefreq>hourly</changefreq>
     </url>
     <url>
         <loc>https://goto.msk.ru/math_course/</loc>
-        <lastmod>2017-10-05T06:28:39+00:00</lastmod>
         <changefreq>hourly</changefreq>
     </url>
     <url>
         <loc>https://goto.msk.ru/start_course/</loc>
-        <lastmod>2017-10-05T06:28:39+00:00</lastmod>
         <changefreq>hourly</changefreq>
     </url>
     <url>
         <loc>https://goto.msk.ru/dumbbell/</loc>
-        <lastmod>2017-10-05T06:28:39+00:00</lastmod>
+        <changefreq>hourly</changefreq>
+    </url>
+    <url>
+        <loc>https://goto.msk.ru/old/</loc>
         <changefreq>hourly</changefreq>
     </url>
 </urlset>
