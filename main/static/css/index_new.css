@@ -1125,8 +1125,8 @@ body {
 }
 
 .input__label-content--akira {
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
+    -webkit-transition: -webkit-transform 0.1s;
+    transition: transform 0.1s;
 }
 
 .input__field--akira + .input__label--akira::before,
@@ -1379,8 +1379,8 @@ textarea:focus {
     transform: rotate(180deg);
     -webkit-transform-origin: 50% -10px;
     transform-origin: 50% -10px;
-    -webkit-transition: -webkit-transform 0.3s ease 0.3s, opacity 0.3s ease, visibility 0s 0.3s ease;
-    transition: transform 0.3s ease 0.3s, opacity 0.3s ease, visibility 0s 0.3s ease;
+    -webkit-transition: -webkit-transform 0.1s ease 0.1s, opacity 0.1s ease, visibility 0s 0.1s ease;
+    transition: transform 0.1s ease 0.1s, opacity 0.1s ease, visibility 0s 0.1s ease;
 }
 
 .dotstyle-hop li a:focus {
@@ -1401,8 +1401,8 @@ textarea:focus {
     opacity: 1;
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
-    -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    -webkit-transition: -webkit-transform 0.1s ease, opacity 0.1s ease;
+    transition: transform 0.1s ease, opacity 0.1s ease;
 }
 
 #subscribe_submit {
