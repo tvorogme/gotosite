@@ -5,6 +5,8 @@ from django.contrib import admin
 
 from main.views import *
 
+handler404 = 'main.views.custom_not_found'
+
 urlpatterns = [
     # url(r'^/', include([
     # Admin

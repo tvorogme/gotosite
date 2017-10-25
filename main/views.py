@@ -9,6 +9,8 @@ from django.core.files.base import ContentFile
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.utils import timezone
 
 from main.apps import SOCIALS
@@ -43,6 +45,12 @@ def about_us(request):
     }
 
     return render(request, 'spirit/about_us.html', context)
+
+
+def custom_not_found(request):
+    response = render_to_response('spirit/404.html', {})
+    response.status_code = 404
+    return response
 
 
 def to_home(request):
