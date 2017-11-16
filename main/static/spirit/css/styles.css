@@ -247,6 +247,7 @@ a {
     justify-content: center;
     align-items: center;
     margin: auto;
+    flex-wrap: wrap;
     margin-top: 0px;
     padding-bottom: 30px;
 }
@@ -266,6 +267,11 @@ a {
     display: flex;
     align-items: center;
     margin: 0px;
+}
+
+.block_center{
+    display: block;
+    margin: 0 auto;
 }
 
 .chess {
@@ -575,8 +581,7 @@ input {
 
     .partners {
         width: 80%;
-        flex-flow: row;
-        margin-bottom: 50px;
+        /*flex-flow: row;*/
     }
 
     .partners > div {
@@ -1045,7 +1050,7 @@ input {
 
     .partners {
         padding-top: 50px;
-        flex-flow: row wrap;
+        /*flex-flow: row wrap;*/
     }
 
     .partners > div {
