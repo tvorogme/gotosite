@@ -585,7 +585,7 @@ input {
     }
 
     .partners > div {
-        width: 9%;
+        min-width: 9%;
         height: 9%;
         fill: #C4C4C4;
         margin: 20px;
@@ -1054,7 +1054,7 @@ input {
     }
 
     .partners > div {
-        width: 20%;
+        min-width: 20%;
         fill: #C4C4C4;
         margin-bottom: 50px;
     }
