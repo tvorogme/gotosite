@@ -258,6 +258,7 @@ a {
 
 .partners > div:hover {
     fill: #484848;
+    cursor: pointer;
 }
 
 .footer {
