@@ -269,7 +269,7 @@ a {
     margin: 0px;
 }
 
-.block_center{
+.block_center {
     display: block;
     margin: 0 auto;
 }
@@ -1054,8 +1054,7 @@ input {
     }
 
     .partners > div {
-        width: 55px;
-        height: 55px;
+        width: 20%;
         fill: #C4C4C4;
         margin-bottom: 50px;
     }
