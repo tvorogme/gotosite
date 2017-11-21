@@ -912,6 +912,10 @@ input {
 /*Smartphones*/
 
 @media screen and (max-width: 767px) {
+    .mobile-padding{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
     .green-font {
         color: #FFF;
         background: #49B398;
