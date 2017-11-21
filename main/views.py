@@ -60,6 +60,9 @@ def to_home(request):
 def studio(request):
     return render(request, 'spirit/studio.html')
 
+def ad_program(request):
+    return render(request, 'spirit/ad_program.html')
+
 
 def shop(request):
     context = {

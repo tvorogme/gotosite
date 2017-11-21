@@ -20,6 +20,8 @@ urlpatterns = [
     url(r'^camp_winter', to_home),
     url(r'^camp/', to_home),
 
+    url(r'^ad_program/', ad_program),
+
     # Pages
     url(r'^studio/$', studio, name='about_us'),
     url(r'^about_us/$', about_us, name='about_us'),
