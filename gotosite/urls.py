@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^camp/', to_home),
 
     url(r'^ml_program/', ad_program),
+    url(r'^ver_berlin/', ver_berlin),
 
     # Pages
     url(r'^studio/$', studio, name='about_us'),

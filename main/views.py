@@ -63,6 +63,9 @@ def studio(request):
 def ad_program(request):
     return render(request, 'spirit/ad_program.html')
 
+def ver_berlin(request):
+    return render(request, 'spirit/ver_berlin.html')
+
 
 def shop(request):
     context = {
