@@ -10,7 +10,6 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.shortcuts import render_to_response
-from django.template import RequestContext
 from django.utils import timezone
 
 from main.apps import SOCIALS
@@ -60,8 +59,14 @@ def to_home(request):
 def studio(request):
     return render(request, 'spirit/studio.html')
 
+
 def ad_program(request):
-    return render(request, 'spirit/ad_program.html')
+    return render(request, 'spirit/programs/ad_program.html')
+
+
+def alg_program(request):
+    return render(request, 'spirit/programs/alg_program.html')
+
 
 def ver_berlin(request):
     return render(request, 'spirit/ver_berlin.html')

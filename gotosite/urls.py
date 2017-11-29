@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^camp_winter', to_home),
     url(r'^camp/', to_home),
 
+    url(r'^alg_program/', alg_program),
     url(r'^ml_program/', ad_program),
     url(r'^ver_berlin/', ver_berlin),
 
