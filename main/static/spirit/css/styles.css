@@ -381,6 +381,10 @@ input {
 /*DesKtop*/
 
 @media screen and (min-width: 1160px) {
+    .left_padding{
+        padding-left: 13px;
+    }
+
     .chess div {
         width: 50%;
         height: 420px;
