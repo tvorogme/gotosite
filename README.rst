@@ -10,6 +10,7 @@ GoTo_
 .. code-block::
 
   pip install -r requirements.txt
+  echo "SECRET_KEY = 'test'" > gotosite/settings_secret.py
   python manage.py migrate --run-syncdb
   python manage.py createsuperuser
   python manage.py runserver
