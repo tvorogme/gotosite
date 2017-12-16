@@ -357,6 +357,11 @@ a {
     background: #080808;
 }
 
+#mail::-webkit-input-placeholder {color:#613D8D;}
+#mail::-moz-placeholder          {color:#613D8D;}/* Firefox 19+ */
+#mail:-moz-placeholder           {color:#613D8D;}/* Firefox 18- */
+#mail:-ms-input-placeholder      {color:#613D8D;}
+
 input {
     outline: none;
 }
