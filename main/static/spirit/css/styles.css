@@ -589,7 +589,7 @@ input {
     }
 
     .partners > div {
-        min-width: 9vw;
+        width: 9vw;
         height: 9vh;
         fill: #C4C4C4;
         margin: 20px;
