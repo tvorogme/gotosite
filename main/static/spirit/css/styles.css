@@ -338,8 +338,23 @@ a {
 
 #mail {
     border: 0px;
-    border-bottom: 2px solid #000;
+    /*border-bottom: 2px solid #000;*/
+    height: 50px;
     background: rgba(0, 0, 0, 0);
+}
+
+.subscribe_wrapper{
+    display: inline-flex;
+    position: relative;
+}
+
+.subscribe_wrapper:after{
+    content: "";
+    width: 98%;
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background: #080808;
 }
 
 input {
@@ -354,7 +369,6 @@ input {
     outline: none;
     border: 0px;
     background: #FFF;
-    border-bottom: 2px solid #000;
     margin: 0px;
     margin-left: -5px;
 }
@@ -607,7 +621,7 @@ input {
     }
 
     #mail {
-        width: 40%;
+        width: 210px;
         font-size: 22px;
     }
 
