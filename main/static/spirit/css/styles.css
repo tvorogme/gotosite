@@ -381,7 +381,7 @@ input {
 /*DesKtop*/
 
 @media screen and (min-width: 1160px) {
-    .left_padding{
+    .left_padding {
         padding-left: 13px;
     }
 
@@ -589,15 +589,17 @@ input {
     }
 
     .partners > div {
-        min-width: 9%;
-        height: 9%;
+        min-width: 9vw;
+        height: 9vh;
         fill: #C4C4C4;
         margin: 20px;
+        overflow: hidden;
+        display: inline-flex;
     }
 
     .subscribe > div {
         width: 100%;
-        margin: 0px;
+        margin: 0;
         text-align: center;
     }
 
@@ -916,10 +918,11 @@ input {
 /*Smartphones*/
 
 @media screen and (max-width: 767px) {
-    .mobile-padding{
+    .mobile-padding {
         padding-left: 20px;
         padding-right: 20px;
     }
+
     .green-font {
         color: #FFF;
         background: #49B398;
