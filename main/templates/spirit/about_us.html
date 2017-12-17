@@ -181,7 +181,8 @@
             <div>
                 <form action="/api/add_subscriber/" method="post">
                     {% csrf_token %}
-                    <p class="subscribe_wrapper"><input id="mail" type="email" name="email" placeholder="example@mail.com">
+                    <p class="subscribe_wrapper"><input id="mail" type="email" name="email"
+                                                        placeholder="example@mail.com">
                         <button input type="submit" class="arrow">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                                 <path d="M62.4 22.4l23.5 23.5H4.3C2 45.9.2 47.7.2 50s1.8 4.1 4.1 4.1h81.6L62.4 77.6c-1.6 1.6-1.6 4.2 0 5.8 1.6 1.6 4.2 1.6 5.8 0l30.5-30.5c.4-.4.7-.8.9-1.3v-.1c.2-.5.3-1 .3-1.5s-.1-1-.3-1.5v-.1c-.2-.5-.5-1-.9-1.3L68.2 16.6c-1.6-1.6-4.2-1.6-5.8 0-1.6 1.6-1.6 4.2 0 5.8z"/>
@@ -191,7 +192,136 @@
                 </form>
             </div>
         </div>
+
+
+        <div class="slide-text">
+            <header style="margin-bottom: 50px;">
+                <h1>Партнеры</h1>
+            </header>
+        </div>
+        <div class="partners">
+            <div title="Высшая Школа Экономики" onclick="location.href='https://www.hse.ru/';">
+                <img src="{% static "/spirit/partners/hse.svg" %}">
+            </div>
+            <div title="КРОК" onclick="location.href='https://www.croc.ru/';">
+                <img src="{% static "/spirit/partners/krok.svg" %}">
+            </div>
+            <div title="Intel" onclick="location.href='https://www.intel.ru/content/www/ru/ru/homepage.html';">
+                <img src="{% static "/spirit/partners/intel.svg" %}">
+            </div>
+            <div title="ИТМО" onclick="location.href='http://www.ifmo.ru/ru/';">
+                <img src="{% static "/spirit/partners/itmo.svg" %}">
+            </div>
+            <div title="Школа Новых Технологий" onclick="location.href='http://snt.mos.ru/';">
+                <img src="{% static "/spirit/partners/snt.svg" %}">
+            </div>
+            <div title="МФТИ" onclick="location.href='https://mipt.ru/';">
+                <img src="{% static "/spirit/partners/mfti.svg" %}">
+            </div>
+            <div title="Иннополис" onclick="location.href='http://www.innopolis.com/';">
+                <img src="{% static "/spirit/partners/innopolis.svg" %}">
+            </div>
+            <div title="РВК" onclick="location.href='http://www.rvc.ru/';">
+                <img src="{% static "/spirit/partners/rvk.svg" %}">
+            </div>
+            <div title="Амперка" onclick="location.href='http://amperka.ru/';">
+                <img src="{% static "/spirit/partners/amperka.svg" %}">
+            </div>
+            <div title="ABBYY" onclick="location.href='https://www.abbyy.com/ru-ru/';">
+                <img src="{% static "/spirit/partners/abby.svg" %}">
+            </div>
+            <div title="Exonum" onclick="location.href='https://exonum.com/';">
+                <img src="{% static "/spirit/partners/exonum.svg" %}">
+            </div>
+        </div>
+
+        <div class="slide-text">
+            <header style="margin-bottom: 50px;">
+                <h1>О нас пишут</h1>
+            </header>
+        </div>
+        <div class="partners">
+            <div title="ИТМО" onclick="location.href='http://news.ifmo.ru/ru/education/trend/news/7100/';">
+                <img src="{% static "/spirit/partners/itmo.svg" %}">
+            </div>
+            <div title="Коммерсант"
+                 onclick="location.href='https://www.kommersant.ru/doc/2703368';">
+                <img src="{% static "/spirit/partners/kommersant.svg" %}">
+            </div>
+            <div title="Иннополис"
+                 onclick="location.href='https://university.innopolis.ru/news/spring-school-goto/';">
+                <img src="{% static "/spirit/partners/innopolis.svg" %}">
+            </div>
+            <div title="Intel" onclick="location.href='https://iq.intel.ru/2638-2/';">
+                <img src="{% static "/spirit/partners/intel.svg" %}">
+            </div>
+            <div title="Высшая Школа Экономики"
+                 onclick="location.href='https://cs.hse.ru/announcements/185380104.html';">
+                <img src="{% static "/spirit/partners/hse.svg" %}">
+            </div>
+            <div title="Олимпиада НТИ"
+                 onclick="location.href='http://nti-contest.ru/%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%BD%D0%B8%D0%BA%D0%B8-%D0%BE%D0%BB%D0%B8%D0%BC%D0%BF%D0%B8%D0%B0%D0%B4%D1%8B-%D0%BD%D1%82%D0%B8-%D0%BD%D0%B0%D1%83%D1%87%D0%B0%D1%82%D1%81%D1%8F-%D1%80%D0%B0%D0%B1/';">
+                <img src="{% static "/spirit/partners/olimp_nti.svg" %}">
+            </div>
+            <div title="Хабрахабр"
+                 onclick="location.href='https://habrahabr.ru/company/goto/blog/342996/';">
+                <img src="{% static "/spirit/partners/habrahabr.svg" %}">
+            </div>
+            <div title="TimeOut"
+                 onclick="location.href='http://www.timeout.ru/msk/feature/464374';">
+                <img src="{% static "/spirit/partners/timeout.svg" %}">
+            </div>
+            <div title="NewToNew"
+                 onclick="location.href='https://newtonew.com/tech/goto-camp-kids-2015';">
+                <img src="{% static "/spirit/partners/newtonew.svg" %}">
+            </div>
+            <div title="Московский Политех"
+                 onclick="location.href='http://mospolytech.ru/news_new.php?id=8624';">
+                <img src="{% static "/spirit/partners/politech.svg" %}">
+            </div>
+            <div title="Мел"
+                 onclick="location.href='https://mel.fm/blog/politekh-moskovsky/64591-ya-u-mamy-inzhener';">
+                <img src="{% static "/spirit/partners/mel.svg" %}">
+            </div>
+            <div title="Rusbase"
+                 onclick="location.href='https://rb.ru/opinion/12-let-it-specialist/';">
+                <img src="{% static "/spirit/partners/rusbase.svg" %}">
+            </div>
+            <div title="Популярная механика"
+                 onclick="location.href='https://www.popmech.ru/editorial/58210-idet-nabor-v-letnie-vyezdnye-shkoly-goto-camp/';">
+                <img src="{% static "/spirit/partners/popmech.svg" %}">
+            </div>
+            <div title="Научная Россия"
+                 onclick="location.href='https://scientificrussia.ru/articles/shkola-robototehniki-i-prikladnogo-programmirovaniya-goto';">
+                <img src="{% static "/spirit/partners/nauch_russia.svg" %}">
+            </div>
+            <div title="GeekBrains"
+                 onclick="location.href='https://geekbrains.ru/posts/code_camps';">
+                <img src="{% static "/spirit/partners/GeekBrains.svg" %}">
+            </div>
+            <div title="BitNovosti"
+                 onclick="location.href='https://bitnovosti.com/2017/10/28/bitfury-group-exonum-shkola-go-to/';">
+                <img src="{% static "/spirit/partners/BitNovosti.svg" %}">
+            </div>
+            <div title="Рамблер"
+                 onclick="location.href='https://news.rambler.ru/other/38055196-v-peterburge-proydet-shkola-goto-dlya-yunyh-blokcheyn-razrabotchikov/?updated';">
+                <img src="{% static "/spirit/partners/rumbler.svg" %}">
+            </div>
+            <div title="Forklog"
+                 onclick="location.href='https://forklog.com/v-sankt-peterburge-provedut-nabor-v-proektnuyu-shkolu-dlya-yunyh-blokchejn-razrabotchikov/';">
+                <img src="{% static "/spirit/partners/forklog.svg" %}">
+            </div>
+            <div title="Наука и жизнь"
+                 onclick="location.href='https://www.nkj.ru/open/28222/';">
+                <img src="{% static "/spirit/partners/naukaizizny.svg" %}">
+            </div>
+            <div title="Теории и практики"
+                 onclick="location.href='https://special.theoryandpractice.ru/intel-physics?utm_source=tp&utm_medium=article&utm_campaign=intel-iq';">
+                <img src="{% static "/spirit/partners/teoii.svg" %}">
+            </div>
+        </div>
     </div>
+
 </div>
 
 <footer class="footer">

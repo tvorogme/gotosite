@@ -343,12 +343,12 @@ a {
     background: rgba(0, 0, 0, 0);
 }
 
-.subscribe_wrapper{
+.subscribe_wrapper {
     display: inline-flex;
     position: relative;
 }
 
-.subscribe_wrapper:after{
+.subscribe_wrapper:after {
     content: "";
     width: 98%;
     position: absolute;
@@ -357,10 +357,23 @@ a {
     background: #080808;
 }
 
-#mail::-webkit-input-placeholder {color:#613D8D;}
-#mail::-moz-placeholder          {color:#613D8D;}/* Firefox 19+ */
-#mail:-moz-placeholder           {color:#613D8D;}/* Firefox 18- */
-#mail:-ms-input-placeholder      {color:#613D8D;}
+#mail::-webkit-input-placeholder {
+    color: #613D8D;
+}
+
+#mail::-moz-placeholder {
+    color: #613D8D;
+}
+
+/* Firefox 19+ */
+#mail:-moz-placeholder {
+    color: #613D8D;
+}
+
+/* Firefox 18- */
+#mail:-ms-input-placeholder {
+    color: #613D8D;
+}
 
 input {
     outline: none;
@@ -400,7 +413,7 @@ input {
 /*DesKtop*/
 
 @media screen and (min-width: 1160px) {
-    .left_padding{
+    .left_padding {
         padding-left: 13px;
     }
 
@@ -608,14 +621,21 @@ input {
     }
 
     .partners > div {
-        min-width: 9%;
-        height: 9%;
+        min-width: 9vw;
+        height: 65px;
         fill: #C4C4C4;
+        opacity: 0.5;
         margin: 20px;
+        display: flex;
+        justify-content: center;
 
     }
 
-    .hotfix{
+    .partners img {
+        max-width: 100%;
+    }
+
+    .hotfix {
         display: none;
     }
 
@@ -658,6 +678,7 @@ input {
         width: 50px;
         height: 49px;
     }
+
 }
 
 /*Tablets*/
@@ -940,10 +961,11 @@ input {
 /*Smartphones*/
 
 @media screen and (max-width: 767px) {
-    .mobile-padding{
+    .mobile-padding {
         padding-left: 20px;
         padding-right: 20px;
     }
+
     .green-font {
         color: #FFF;
         background: #49B398;
