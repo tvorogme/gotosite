@@ -55,6 +55,8 @@ def custom_not_found(request):
 def to_home(request):
     return redirect("/")
 
+def to_contest(request):
+    return redirect("https://contest.yandex.ru/contest/6939/standings/")
 
 def studio(request):
     return render(request, 'spirit/studio.html')
