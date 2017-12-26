@@ -55,8 +55,6 @@ def custom_not_found(request):
 def to_home(request):
     return redirect("/")
 
-def to_contest(request):
-    return redirect("https://contest.yandex.ru/contest/6939/standings/")
 
 def studio(request):
     return render(request, 'spirit/studio.html')
@@ -72,6 +70,10 @@ def alg_program(request):
 
 def ver_berlin(request):
     return render(request, 'spirit/ver_berlin.html')
+
+
+def alg_challenge(request):
+    return render(request, 'spirit/alg_challenge.html')
 
 
 def shop(request):

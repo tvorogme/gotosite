@@ -19,10 +19,10 @@ urlpatterns = [
     url(r'^camp_spring', to_home),
     url(r'^camp_winter', to_home),
     url(r'^camp/', to_home),
-    url(r'^algorithm_challenge_winter2018', to_contest),
 
     url(r'^alg_program/', alg_program),
     url(r'^ml_program/', ad_program),
+    url(r'^algorithm_challenge_winter2018/', alg_challenge),
     url(r'^ver_berlin/', ver_berlin),
 
     # Pages
