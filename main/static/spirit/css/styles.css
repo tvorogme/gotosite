@@ -266,8 +266,7 @@ a {
     background: #FFF;
     display: flex;
     align-items: center;
-    order: 2;
-    margin: 10px;
+    margin: 0px;
 }
 
 .block_center {
@@ -962,6 +961,11 @@ input {
 /*Smartphones*/
 
 @media screen and (max-width: 767px) {
+    .footer {
+        order: 2;
+        margin: 10px;
+    }
+
     .mobile-padding {
         padding-left: 20px;
         padding-right: 20px;
