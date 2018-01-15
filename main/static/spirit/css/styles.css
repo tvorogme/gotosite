@@ -266,7 +266,8 @@ a {
     background: #FFF;
     display: flex;
     align-items: center;
-    margin: 0px;
+    order: 2;
+    margin: 10px;
 }
 
 .block_center {
