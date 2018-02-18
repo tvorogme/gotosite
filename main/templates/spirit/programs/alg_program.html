@@ -24,7 +24,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+    <style>
+        b, strong {
+            font-weight: 400;
+        }
 
+        h2{
+            text-align: center;
+        }
+
+        table{
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,131 +53,372 @@
 
     <div class="info-page">
         <div class="info-page-content mobile-padding">
-
-            <p>
-                На направлении по алгоритмам участники делятся на 2 группы: продвинутая и
-                базовая. Основной язык программирования – C++. Для тех, кто с ним мало знаком, в начале будет
-                небольшой блок про синтаксис и основные конструкции. В базовом треке мы поговорим про то, какие
-                бывают
-                олимпиады по информатике, чем отличаются разные соревнования, как к ним правильно готовиться.
-                Практика будет
-                представлять собой решение контестов по пройденным темам.
-                <br>
-                Список тем носит предварительный характер и будет дополнительно подстроен под уровень участников,
-                поэтому рекомендуется максимально подробно описать свой опыт в заявке.
-                Участники, которые уже уверенно чувствуют себя во всех предложенных темах, также приглашаются к
-                участию. Им может быть предложена индивидуальная образовательная траектория.В частности, список тем может быть расширен в  сторону суффиксных структур, алгоритмов поиска минимального остова, алгоритмов поиска максимального потока.
-
-            </p>
-            <b>Базовый трек:</b><br><br>
-            <ul>
-                <li>Теоретико-числовые алгоритмы: проверка на простоту, решето Эратосфена, алгоритм Евклида.
-                </li>
-                <br>
-                <li>Бинарный и тернарный поиск. Бинарный поиск по ответу.
-                </li>
-                <br>
-                <li>Базовые структуры данных: список, очередь, стек, куча, set, map, hashmap.
-                </li>
-                <br>
-                <li>Графы: вариации и представления, обходы в ширину и глубину, алгоритмы поиска кратчайших путей (Флойд, Дейкстра, Форд-Беллман).
-                </li>
-                <br>
-                <li>Рекурсивные алгоритмы, перебор и комбинаторная оптимизация. Быстрое возведение в степень.
-                </li>
-
-            </ul>
-            <br><b>Продвинутый трек:</b><br><br>
-            <ul>
-                <li>Динамическое программирование и вариации: по деревьями, по подотрезкам, по профилю. Применения
-                    при расчете вероятностных моделей.
-                </li>
-                <br>
-                <li>Основы линейной алгебры и вычислительной геометрии: матричные вычисления и векторные операции.
-                    Методы оптимизации.
-                </li>
-                <br>
-                <li>Деревья поиска: декартово дерево и декартово дерево по неявному ключу.
-                    Различные алгоритмы балансировки деревьев. Деревья отрезков и двумерные вариация.
-                </li>
-                <br>
-                <li>Строковые алгоритмы: быстрый поиск подстроки, бор, Ахо-Корасик. Конечные автоматы и машины
-                    состояний.
-                </li>
-                <br>
-                <li>Хэши: хэш-таблицы, хэширование строк, хэширование множеств, locality-sensitive hashing.
-                </li>
-            </ul>
-            <br>
-
-            <b>Помимо двух треков представлен общий блок "Приложения":</b><br><br>
-            Графы <br>
-
-            <div class="left_padding">
-                Теорию графов часто используется для моделирования взаимосвязей между реальными объектами. В
-                “полевых”
-                условиях работа с графами может вызывать нетривиальные проблемы с производительностью. Участники
-                познакомятся с приложениями в следующих областях:
-                <ul>
-                    <li>Геоинформационные системы</li>
-                    <li>Анализ социальных графов</li>
-                    <li>Оптимизации нейросетей и других графов вычислений</li>
-                    <li>Анализ центров влияния через PageRank</li>
-
-                </ul>
-            </div>
-
-            <br>Конечные автоматы<br>
-
-            <div class="left_padding">
-                Natural language processing, на самом деле, может быть осуществлен не только с помощью
-                методов
-                машинного обучения. Мы познакомимся с теорией формальных языков в следующих сценариях:<br>
-                <ul>
-                    <li>Диалоговые системы</li>
-                    <li>Парсеры и регулярные выражения</li>
-                    <li>Порождающие грамматики и генератор естественной речи</li>
-                </ul>
-            </div>
-
-            <br>Бинарный поиск и структуры данных<br>
-            <div class="left_padding">
-                Простые структуры данных возникают при написании практически любого кода. Помимо двоичного поиска,
-                схожие
-                идеи часто применяют в следующих областях:
-                <ul>
-                    <li>Поиск ближайших соседей в пространстве большой размерности (участники реализуют свою поисковую
-                        систему).
-                    </li>
-                    <li>Планировщик выполнения многопоточных программ</li>
-                    <li>Одномерная оптимизация</li>
-                </ul>
-            </div>
-
-            <br>Числовые алгоритмы и хэши<br>
-
-            <div class="left_padding">
-                Алгоритмы из этого класса имеют широкое применение в криптографии, в частности, будут
-                рассмотрены:
-                <br>
-                <ul>
-                    <li>Шифрование RSA</li>
-                    <li>Цифровая подпись</li>
-                    <li>Аутентификация и проверка корректности больших объемов данных</li>
-                </ul>
-            </div>
-
-            <br>
-            Другие приложения
-            <br>
-            <div class="left_padding">Помимо основных тем, участники познакомятся с некоторыми любопытными
-                сценариями:<br>
-                <ul>
-                    <li>Как применяется динамическое программирование в моделировании случайности (марковские цепи).
-                    </li>
-                    <li> Как обучаются нейронные сети, и где математика расходится с практикой.</li>
-                </ul>
-            </div>
+            <P STYLE="margin-bottom: 0in"><BR>
+            </P>
+            <P STYLE="margin-bottom: 0in">Материал состоит из
+                двух логических, тесно связанных друг
+                с другом частей: Алгоритмы и Приложения.
+            </P>
+            <P STYLE="margin-bottom: 0in">В блоке по алгоритмам
+                участники познакомятся с теорией и
+                методами решения классических классов
+                задач. Мы также поговорим про то, какие
+                бывают олимпиады по информатике, чем
+                отличаются разные соревнования, как к
+                ним правильно готовиться. Практика
+                будет представлять собой решение
+                контестов по пройденным темам.
+            </P>
+            <P STYLE="margin-bottom: 0in"><BR>
+            </P>
+            <P STYLE="margin-bottom: 0in">В блоке по приложениям
+                мы постараемся построить связи между
+                теоретическим материалом и реальными
+                задачами в разработке систем, изучим
+                известные алгоритмы, выходящие за рамки
+                классического подхода. Практическая
+                часть будет состоять из мини-проектов,
+                практикумов и необычных контестов.</P>
+            <P STYLE="margin-bottom: 0in"><BR>
+            </P>
+            <P STYLE="margin-bottom: 0in">К участию приглашаются
+                школьники, уже умеющие программировать
+                на каком-нибудь языке. Основной язык
+                курса –&nbsp;С++, но жестких ограничений
+                нет. Для тех, кто мало знаком c C++, в начале
+                запланирован небольшой блок про синтаксис
+                и основные конструкции.
+            </P>
+            <P STYLE="margin-bottom: 0in"><BR>
+            </P>
+            <P STYLE="margin-bottom: 0in">Планируется два потока,
+                разделение на потоки будет произведено
+                в начале школы на основе входного
+                тестирования.
+            </P>
+            <H2 CLASS="western" STYLE="margin-top: 0.14in; margin-bottom: 0in; line-height: 100%"><A
+                    NAME="_s31dd19p1bg"></A>
+                <FONT FACE="Trebuchet MS, serif"><FONT SIZE=3 STYLE="font-size: 13pt"><B>Структуры
+                    данных</B></FONT></FONT></H2>
+            <P STYLE="margin-bottom: 0in"><BR>
+            </P>
+            <TABLE WIDTH=627 CELLPADDING=7 CELLSPACING=0>
+                <COL WIDTH=300>
+                <COL WIDTH=297>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Базовый поток</B></P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Продвинутый поток</B></P>
+                    </TD>
+                </TR>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Базовые структуры данных: список,
+                            очередь, стек, куча, set, map, hashmap.</P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Хэши (хэш-таблицы, хэширование строк,
+                            хэширование множеств, locality-sensitive
+                            hashing).
+                        </P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=14 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Деревья поиска</P>
+                    </TD>
+                </TR>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P STYLE="widows: 0; orphans: 0">Бинарный поиск</P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Декартово дерево и декартово дерево
+                            по неявному ключу. Различные алгоритмы
+                            балансировки деревьев. Деревья отрезков
+                            и двумерные вариация.</P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=14 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Приложения</B></P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=13 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P STYLE="margin-bottom: 0in">Простые структуры
+                            данных возникают при написании
+                            практически любого кода.
+                        </P>
+                        <P STYLE="margin-bottom: 0in">Помимо двоичного
+                            поиска, схожие идеи часто применяют
+                            в следующих областях:
+                        </P>
+                        <UL>
+                            <LI><P STYLE="margin-bottom: 0in">Поиск ближайших
+                                соседей в пространстве большой
+                                размерности (участники реализуют
+                                свою поисковую систему)</P>
+                            <LI><P>Планировщик выполнения многопоточных
+                                программ</P>
+                        </UL>
+                    </TD>
+                </TR>
+            </TABLE>
+            <P STYLE="margin-bottom: 0in"><BR>
+            </P>
+            <H2 CLASS="western" STYLE="margin-top: 0.14in; margin-bottom: 0in; line-height: 100%"><A
+                    NAME="_aj6nilseikpw"></A>
+                <FONT FACE="Trebuchet MS, serif"><FONT SIZE=3 STYLE="font-size: 13pt"><B>Графы
+                </B></FONT></FONT>
+            </H2>
+            <P STYLE="margin-bottom: 0in"><BR>
+            </P>
+            <TABLE WIDTH=627 CELLPADDING=7 CELLSPACING=0>
+                <COL WIDTH=300>
+                <COL WIDTH=297>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Базовый поток</B></P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Продвинутый поток</B></P>
+                    </TD>
+                </TR>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P STYLE="margin-bottom: 0in">Вариации и представления</P>
+                        <P><BR>
+                        </P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Алгоритмы поиска кратчайших путей
+                            (Флойд, Дейкстра, Форд-Беллман) и их
+                            вариации</P>
+                    </TD>
+                </TR>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 HEIGHT=14 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Обходы в ширину и глубину</P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Остовные деревья</P>
+                    </TD>
+                </TR>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Алгоритмы поиска кратчайших путей
+                            (Флойд, Дейкстра, Форд-Беллман).</P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Поиск максимального потока и связанные
+                            задачи</P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=14 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Приложения</B></P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=13 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P STYLE="margin-bottom: 0in">Теорию графов часто
+                            используется для моделирования
+                            взаимосвязей между реальными объектами.
+                            В “полевых” условиях работа с графами
+                            может вызывать нетривиальные проблемы
+                            с производительностью. Участники
+                            познакомятся с приложениями в следующих
+                            областях:
+                        </P>
+                        <UL>
+                            <UL>
+                                <LI><P STYLE="margin-bottom: 0in">Геоинформационные
+                                    системы</P>
+                                <LI><P STYLE="margin-bottom: 0in">Анализ социальных
+                                    графов</P>
+                                <LI><P STYLE="margin-bottom: 0in">Оптимизации
+                                    нейросетей и других графов вычислений</P>
+                                <LI><P>Анализ центров влияния через
+                                    PageRank</P>
+                            </UL>
+                        </UL>
+                    </TD>
+                </TR>
+            </TABLE>
+            <H2 CLASS="western" STYLE="margin-top: 0.14in; margin-bottom: 0in; line-height: 100%"><A
+                    NAME="_2r3gqjzhy15g"></A>
+                <FONT FACE="Trebuchet MS, serif"><FONT SIZE=3 STYLE="font-size: 13pt"><B>Строки
+                    и конечные автоматы</B></FONT></FONT></H2>
+            <P STYLE="margin-bottom: 0in"><BR>
+            </P>
+            <TABLE WIDTH=627 CELLPADDING=7 CELLSPACING=0>
+                <COL WIDTH=300>
+                <COL WIDTH=297>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Базовый поток</B></P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Продвинутый поток</B></P>
+                    </TD>
+                </TR>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Работа со строками, хэширование</P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Быстрый поиск подстроки</P>
+                    </TD>
+                </TR>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Бор</P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Бор, Ахо-Корасик</P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=14 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Теория формальных языков. Конечные
+                            автоматы и машины состояний.</P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=14 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Приложения</B></P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=13 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P STYLE="margin-bottom: 0in">Natural language processing, на
+                            самом деле,может быть осуществлен не
+                            только с помощью методов машинного
+                            обучения. Мы познакомимся с теорией
+                            формальных языков в следующих сценариях:</P>
+                        <UL>
+                            <UL>
+                                <LI><P STYLE="margin-bottom: 0in">Диалоговые системы</P>
+                                <LI><P STYLE="margin-bottom: 0in">Парсеры и регулярные
+                                    выражения</P>
+                                <LI><P>Порождающие грамматики и генератор
+                                    естественной речи</P>
+                            </UL>
+                        </UL>
+                    </TD>
+                </TR>
+            </TABLE>
+            <H2 CLASS="western" STYLE="margin-top: 0.14in; margin-bottom: 0in; line-height: 100%"><A
+                    NAME="_xsetx0ac3et8"></A>
+                <FONT FACE="Trebuchet MS, serif"><FONT SIZE=3 STYLE="font-size: 13pt"><B>Методы
+                    оптимизации</B></FONT></FONT></H2>
+            <P STYLE="margin-bottom: 0in"><BR>
+            </P>
+            <P STYLE="margin-bottom: 0in">Темы этого блока будут
+                рассмотрены ограничено, в зависимости
+                от объема времени, потраченного на
+                предыдущие темы.</P><br><br>
+            <TABLE WIDTH=627 CELLPADDING=7 CELLSPACING=0>
+                <COL WIDTH=300>
+                <COL WIDTH=297>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Базовый поток</B></P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Продвинутый поток</B></P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=14 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P STYLE="margin-bottom: 0in">Разные постановки
+                            задач оптимизации:</P>
+                        <UL>
+                            <LI><P STYLE="margin-bottom: 0in">Линейное
+                                программирование</P>
+                            <LI><P>Глобальная оптимизация vs локальная</P>
+                        </UL>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=14 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Переборы, отсечение по дереву обхода.
+                        </P>
+                    </TD>
+                </TR>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P STYLE="widows: 0; orphans: 0">Тернарный поиск</P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Задача коммивояжера, приближенные
+                            алгоритмы решения</P>
+                    </TD>
+                </TR>
+                <TR VALIGN=TOP>
+                    <TD WIDTH=300 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P STYLE="margin-bottom: 0in; widows: 0; orphans: 0">Динамическое
+                            программирование</P>
+                        <P STYLE="widows: 0; orphans: 0">Задача о рюкзаке</P>
+                    </TD>
+                    <TD WIDTH=297 BGCOLOR="#ffffff" STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Градиентный спуск</P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=14 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P>Генетические алгоритмы, метод отжига</P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=14 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <P ALIGN=CENTER><B>Приложения</B></P>
+                    </TD>
+                </TR>
+                <TR>
+                    <TD COLSPAN=2 WIDTH=611 HEIGHT=13 VALIGN=TOP BGCOLOR="#ffffff"
+                        STYLE="border: 1.00pt solid #000001; padding: 0.07in">
+                        <UL>
+                            <LI><P STYLE="margin-bottom: 0in">Как обучаются
+                                нейронные сети, и где математика
+                                расходится с практикой</P>
+                            <LI><P STYLE="margin-bottom: 0in">Поиск стратегии в
+                                играх (например, крестики-нолики на
+                                бесконечном поле)</P>
+                            <LI><P>Решение алгоритмических задач с
+                                помощью методов оптимизации</P>
+                        </UL>
+                    </TD>
+                </TR>
+            </TABLE>
+            <P STYLE="margin-bottom: 0in"><BR>
+            </P>
+            <P STYLE="margin-bottom: 0in">Список тем носит
+                предварительный характер и будет
+                дополнительно подстроен под уровень
+                участников, поэтому рекомендуется
+                максимально подробно описать свой опыт
+                в заявке. Участники, которые уже уверенно
+                чувствуют себя во всех предложенных
+                темах все равно приглашаются к участию.
+                Им может быть предложена индивидуальная
+                образовательная траектория.
+            </P>
         </div>
     </div>
 </div>
