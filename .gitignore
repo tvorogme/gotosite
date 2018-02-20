@@ -145,3 +145,4 @@ db.sqlite3
 media/
 
 gotosite/settings_secret.py
+.vscode

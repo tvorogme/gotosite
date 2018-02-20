@@ -73,7 +73,11 @@ def ver_berlin(request):
 
 
 def alg_challenge(request):
-    return render(request, 'spirit/alg_challenge.html')
+    #return render(request, 'spirit/alg_challenge.html')
+    return redirect("/algorithm_challenge_spring2018",permanent=False)
+
+def alg_challenge_spring18(request):
+    return render(request, 'spirit/alg_challenge_spring18.html')
 
 
 def shop(request):
