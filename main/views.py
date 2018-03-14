@@ -73,11 +73,16 @@ def ver_berlin(request):
 
 
 def alg_challenge(request):
-    #return render(request, 'spirit/alg_challenge.html')
-    return redirect("/algorithm_challenge_spring2018",permanent=False)
+    # return render(request, 'spirit/alg_challenge.html')
+    return redirect("/algorithm_challenge_spring2018", permanent=False)
+
 
 def alg_challenge_spring18(request):
     return render(request, 'spirit/alg_challenge_spring18.html')
+
+
+def marhi(request):
+    return render(request, 'spirit/marhi.html')
 
 
 def shop(request):
@@ -124,7 +129,7 @@ def profile_page(request, _id=None):
         if profile['id'] != user.id:
             # One of all fields must be not None
             if profile['first_name'] is not None or profile['middle_name'] is not None or \
-                            profile['last_name'] is not None:
+                    profile['last_name'] is not None:
                 # Generate one string
                 full_name = "{} {} {}".format(profile['first_name'], profile['middle_name'], profile['last_name'])
 
