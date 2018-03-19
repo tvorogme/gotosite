@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^algorithm_challenge_winter2018/', alg_challenge),
     url(r'^algorithm_challenge_spring2018/', alg_challenge_spring18),
     url(r'^marhi_challenge_spring2018/', marhi),
-    url(r'^spring_challenge/', spring_challange),
+    url(r'^spring_challenge/', spring_challenge),
     url(r'^ver_berlin/', ver_berlin),
 
     # Pages
