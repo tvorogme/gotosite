@@ -85,8 +85,8 @@ def marhi(request):
     return render(request, 'spirit/marhi.html')
 
 
-def spring_challange(request):
-    return render(request, 'spirit/spring_challange.html')
+def spring_challenge(request):
+    return render(request, 'spirit/spring_challenge.html')
 
 
 def shop(request):
